@@ -1,0 +1,34 @@
+{
+  "definitions": [
+    {
+      "title": "Search Banner",
+      "id": "search-banner",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Search Banner",
+              "model": "search-banner"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "search-banner",
+      "fields": [
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "link",
+          "label": "Search Index or Results Page",
+          "description": "Link to a query index (.json) for live results, or to a search results page"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

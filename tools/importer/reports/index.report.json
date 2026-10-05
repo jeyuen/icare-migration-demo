@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/",
+  "path": "index",
+  "timestamp": "2026-10-05T01:55:08.443Z",
+  "title": "Insurance and Care NSW | icare",
+  "template": "homepage",
+  "blocks": [
+    "hero",
+    "search-banner",
+    "cards-audience",
+    "columns-links",
+    "columns-campaign",
+    "columns-story",
+    "cards-news",
+    "cards-resources"
+  ]
+}

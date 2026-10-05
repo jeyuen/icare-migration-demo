@@ -1,0 +1,36 @@
+{
+  "variantName": "hero",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + text + 1 CTAs"
+  },
+  "contentPattern": {
+    "structure": "heading + text + 1 CTA",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.icare.nsw.gov.au/",
+        "instanceId": "3e607af6",
+        "screenshot": ".pages/www_icare_nsw_gov_au--786f6e78/blocks/3e607af6.jpg"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-05T01:20:12.656155Z",
+    "documentPaths": [
+      "/index"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_e7c9b94a0259"
+  ]
+}

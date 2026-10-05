@@ -1,0 +1,15 @@
+{
+  "variantName": "columns-story",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "vs 'columns': image-led feature, left promo image + pill CTA, right 3 thumbnail items on grey panel with green left border (catalog v_9657e0a65815, unclassified)",
+  "contentPattern": "1 row, 2 cells: [h2, image, p, cta link | (image, h3, p, link) x3]",
+  "usage": {
+    "pagesUsing": [
+      { "url": "https://www.icare.nsw.gov.au/" }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": []
+}

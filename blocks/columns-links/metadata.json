@@ -1,0 +1,15 @@
+{
+  "variantName": "columns-links",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "vs 'columns' (light, icon/image column): two columns of bordered link rows with arrow icons (arrows are CSS)",
+  "contentPattern": "1 row, 2 cells: [bulleted list of 5 links | bulleted list of 5 links]",
+  "usage": {
+    "pagesUsing": [
+      { "url": "https://www.icare.nsw.gov.au/" }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": []
+}

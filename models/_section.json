@@ -33,6 +33,10 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Grey",
+              "value": "grey"
             }
           ]
         }
@@ -50,7 +54,16 @@
         "hero",
         "cards",
         "columns",
-        "fragment"
+        "fragment",
+        "accordion",
+        "carousel",
+        "search-banner",
+        "cards-audience",
+        "columns-links",
+        "columns-campaign",
+        "columns-story",
+        "cards-news",
+        "cards-resources"
       ]
     }
   ]

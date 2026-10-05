@@ -1,0 +1,38 @@
+{
+  "variantName": "columns",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "icon",
+    "structure": "image"
+  },
+  "contentPattern": {
+    "structure": "multi-column layout; columns of heading + text, or image/icon column",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.icare.nsw.gov.au/contact-us",
+        "instanceId": "2cf263b8",
+        "screenshot": ".pages/www_icare_nsw_gov_au_contact-us--3573871c/blocks/2cf263b8.jpg"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/about-us",
+        "instanceId": "6b327a3a",
+        "screenshot": ".pages/www_icare_nsw_gov_au_about-us--b913f1d0/blocks/6b327a3a.jpg"
+      }
+    ],
+    "reuseCount": 2
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_5cf2bf009dfd",
+    "v_f7b6985aa037"
+  ]
+}

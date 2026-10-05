@@ -1,0 +1,15 @@
+{
+  "variantName": "cards-resources",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "vs 'cards' 0.50; vs in-page 'cards-audience' 0.70 (different purpose, has body text, 3-col shadowed white cards)",
+  "contentPattern": "3 rows, 2 cells: [icon image | h3, p, link 'Explore hub']",
+  "usage": {
+    "pagesUsing": [
+      { "url": "https://www.icare.nsw.gov.au/" }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": []
+}

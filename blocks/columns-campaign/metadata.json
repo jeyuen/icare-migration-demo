@@ -1,0 +1,15 @@
+{
+  "variantName": "columns-campaign",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "vs 'columns': grey band, left heading/text/outlined CTA, right stacked white linked panels with green arrow bar",
+  "contentPattern": "1 row, 2 cells: [h2, p, link(button) | h3 link 'Employer Lookup', p, h3 link 'Claims Service Provider Quarterly Performance Data', p]",
+  "usage": {
+    "pagesUsing": [
+      { "url": "https://www.icare.nsw.gov.au/" }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": []
+}

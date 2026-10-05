@@ -9,11 +9,37 @@
   min-height: 300px;
 }
 
-.hero h1 {
+/* text row: constrained to the content width, left-aligned within it */
+.hero .hero-content > div {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.hero .hero-content > div > *:first-child {
+  margin-top: 0;
+}
+
+.hero h1 {
   color: var(--background-color);
+}
+
+.hero .hero-content p {
+  color: var(--background-color);
+}
+
+.hero .hero-empty {
+  display: none;
+}
+
+/* image row only hosts the absolutely-positioned picture; take no space */
+.hero .hero-image,
+.hero .hero-image p {
+  margin: 0;
+}
+
+.hero .hero-image {
+  flex: 0 0 0;
 }
 
 .hero picture {
@@ -30,8 +56,30 @@
   height: 100%;
 }
 
+/* without a background image the text sits on the page background */
+.hero.no-image {
+  min-height: unset;
+}
+
+.hero.no-image h1,
+.hero.no-image .hero-content p {
+  color: inherit;
+}
+
 @media (width >= 900px) {
   .hero {
+    display: flex;
+    align-items: center;
     padding: 40px 32px;
+    min-height: 420px;
+  }
+
+  .hero .hero-content {
+    flex: 1 1 auto;
+  }
+
+  /* source places the copy in the left half, clear of the photo on the right */
+  .hero .hero-content > div > * {
+    max-width: 50%;
   }
 }
