@@ -18,18 +18,18 @@ function buildPanels(cell) {
   children.forEach((child) => {
     if (isLinkedHeading(child)) {
       current = document.createElement('div');
-      current.className = 'columns-campaign-panel';
+      current.className = 'columns-campaign-tile';
       panels.push(current);
       const link = child.querySelector('a[href]');
-      link.classList.add('columns-campaign-panel-link');
+      link.classList.add('columns-campaign-tile-link');
       const bar = document.createElement('span');
-      bar.className = 'columns-campaign-panel-arrow';
+      bar.className = 'columns-campaign-tile-arrow';
       bar.setAttribute('aria-hidden', 'true');
       const body = document.createElement('div');
-      body.className = 'columns-campaign-panel-body';
+      body.className = 'columns-campaign-tile-body';
       current.append(body, bar);
     }
-    if (current) current.querySelector('.columns-campaign-panel-body').append(child);
+    if (current) current.querySelector('.columns-campaign-tile-body').append(child);
   });
   if (panels.length) {
     // Keep any leading content that preceded the first linked heading.
@@ -63,7 +63,7 @@ export default function decorate(block) {
       const linkedHeadings = [...cell.children].filter(isLinkedHeading).length;
       // The panel column is the one whose headings are links; the other is the intro.
       if (linkedHeadings && buildPanels(cell)) {
-        cell.classList.add('columns-campaign-panels');
+        cell.classList.add('columns-campaign-tiles');
       } else {
         cell.classList.add('columns-campaign-intro');
         decorateIntroCta(cell);
