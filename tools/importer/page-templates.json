@@ -1,0 +1,204 @@
+{
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.icare.nsw.gov.au/"
+      ],
+      "coverageGaps": [],
+      "description": "Landing page with full-width hero banner, image-led feature section and tabbed audience content with links and lists",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            ".hero-banner-container .homepage-hero-banner"
+          ]
+        },
+        {
+          "name": "search-banner",
+          "instances": [
+            ".banner-search form"
+          ]
+        },
+        {
+          "name": "cards-audience",
+          "instances": [
+            ".all-category-home-tile-wrapper .home-tile-wrapper"
+          ]
+        },
+        {
+          "name": "columns-links",
+          "instances": [
+            ".cta-long-wrapper .cta-long-section"
+          ]
+        },
+        {
+          "name": "columns-campaign",
+          "instances": [
+            "section.cm-campaign-module"
+          ]
+        },
+        {
+          "name": "columns-story",
+          "instances": [
+            ".cm-story-module > .sl"
+          ]
+        },
+        {
+          "name": "cards-news",
+          "instances": [
+            ".sl-list.has-feature-left"
+          ]
+        },
+        {
+          "name": "cards-resources",
+          "instances": [
+            ".icare-resources .icare-resources-grid"
+          ]
+        }
+      ],
+      "representativeUrl": "https://www.icare.nsw.gov.au/",
+      "sections": [
+        {
+          "id": "1",
+          "name": "Hero banner",
+          "selector": [
+            ".hero-banner-container"
+          ],
+          "style": null,
+          "blocks": [
+            "hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "Search banner",
+          "selector": [
+            ".banner-search"
+          ],
+          "style": null,
+          "blocks": [
+            "search-banner"
+          ],
+          "defaultContent": [
+            ".banner-search .search-box-headding"
+          ]
+        },
+        {
+          "id": "3",
+          "name": "Audience tiles",
+          "selector": [
+            ".all-category-home-tile-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-audience"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "4",
+          "name": "I want to... quick links",
+          "selector": [
+            ".cta-long-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-links"
+          ],
+          "defaultContent": [
+            ".cta-long-wrapper .col-2:first-child .cta-coloumn-headding h2"
+          ]
+        },
+        {
+          "id": "5",
+          "name": "Feedback and complaints",
+          "selector": [
+            ".l-main > section.breakout-area"
+          ],
+          "style": "grey",
+          "blocks": [
+            "columns-campaign"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "6",
+          "name": "Safety Speakers Program feature",
+          "selector": [
+            ".cm-story-module"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-story"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "7",
+          "name": "News and stories",
+          "selector": [
+            "section.content-hero.has-alt-bg:has(.sl-list.has-feature-left)",
+            ".l-layout > section.content-hero.has-alt-bg:nth-of-type(3)"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-news"
+          ],
+          "defaultContent": [
+            "section.content-hero.has-alt-bg:has(.has-feature-left) > .l-padding > h2",
+            "section.content-hero.has-alt-bg:has(.has-feature-left) > .l-padding > a.cta.is-secondary"
+          ]
+        },
+        {
+          "id": "8",
+          "name": "Resources and Acknowledgement",
+          "selector": [
+            "section.content-hero.has-alt-bg:has(.icare-resources)",
+            ".l-layout > section.content-hero.has-alt-bg:nth-of-type(4)"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-resources"
+          ],
+          "defaultContent": [
+            ".icare-resources .icare-section-title",
+            ".icare-resources ~ h3",
+            ".icare-resources ~ p"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "section-landing",
+      "urls": [
+        "https://www.icare.nsw.gov.au/about-us"
+      ],
+      "coverageGaps": [],
+      "description": "Section landing page with large campaign hero banner, featured content module and repeated rows of three-up card grids",
+      "blocks": []
+    },
+    {
+      "name": "contact-directory",
+      "urls": [
+        "https://www.icare.nsw.gov.au/contact-us"
+      ],
+      "coverageGaps": [],
+      "description": "Directory-style page with simple content header, rich text intro, grid of icon tile links and an accordion explainer",
+      "blocks": []
+    },
+    {
+      "name": "content-detail",
+      "urls": [
+        "https://www.icare.nsw.gov.au/workers-compensation/employers/who-needs-a-policy"
+      ],
+      "coverageGaps": [],
+      "description": "Detail page with breadcrumbs, composite hero header, on-this-page anchor navigation and long-form rich text sections with call-to-action panels",
+      "blocks": []
+    }
+  ],
+  "metadata": {
+    "projectType": "xwalk"
+  }
+}

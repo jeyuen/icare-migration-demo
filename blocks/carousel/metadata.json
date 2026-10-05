@@ -1,0 +1,32 @@
+{
+  "variantName": "carousel",
+  "baseBlock": "carousel",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + text + 1 CTAs + list"
+  },
+  "contentPattern": {
+    "structure": "repeating slides: optional image cell + content cell (heading + text + CTA + link list); single slide renders static",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.icare.nsw.gov.au/about-us",
+        "instanceId": "4f3b8622",
+        "screenshot": ".pages/www_icare_nsw_gov_au_about-us--b913f1d0/blocks/4f3b8622.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_e7f4641ed81d"
+  ]
+}

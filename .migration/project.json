@@ -1,0 +1,15 @@
+{
+  "type": "xwalk",
+  "sites": {
+    "icare-migration-demo": {
+      "previewOrg": "jeyuen",
+      "previewSite": "icare-migration-demo",
+      "contentHostUrl": "author-p9606-e71941.adobeaemcloud.com",
+      "aemSitePath": "/content/icare-migration-demo",
+      "aemAssetsFolderPath": "/content/dam/icare-migration-demo",
+      "aemSiteName": "icare-migration-demo",
+      "aemSiteTitle": "iCare Migration Demo",
+      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json"
+    }
+  }
+}
