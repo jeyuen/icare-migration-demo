@@ -22,6 +22,25 @@ async function fetchFooter() {
   return wrapper;
 }
 
+/**
+ * Linked images don't survive authoring, so a linked logo is authored as an
+ * image paragraph followed by a link paragraph. Moves the image into the link.
+ * @param {Element} fragment the parsed footer fragment
+ */
+function joinImageLinks(fragment) {
+  fragment.querySelectorAll('p').forEach((p) => {
+    const media = p.querySelector('picture, img');
+    const next = p.nextElementSibling;
+    if (!media || p.textContent.trim() || p.querySelector('a') || next?.tagName !== 'P') return;
+    const link = next.querySelector('a');
+    if (!link || next.children.length !== 1) return;
+    if (next.textContent.trim() !== link.textContent.trim()) return;
+    if (!link.title && link.textContent.trim()) link.title = link.textContent.trim();
+    link.replaceChildren(media);
+    p.remove();
+  });
+}
+
 // a link whose only visible content is an image
 function isImageLink(link) {
   return !!link.querySelector('img') && !link.textContent.trim();
@@ -40,7 +59,8 @@ function sectionType(section) {
   const links = [...section.querySelectorAll('a')];
   if (section.querySelector('ul') && links.length && links.every(isImageLink)) return 'social';
   if (section.querySelector('ul')) return 'links';
-  if (links.length && links.every(isImageLink)) return 'brand';
+  // links without text are image links whose media failed to load
+  if (links.length && links.every((link) => !link.textContent.trim())) return 'brand';
   return 'bottom';
 }
 
@@ -78,6 +98,7 @@ export default async function decorate(block) {
   const fragment = await fetchFooter();
   block.textContent = '';
   if (!fragment) return;
+  joinImageLinks(fragment);
 
   const main = document.createElement('div');
   main.className = 'footer-main';
