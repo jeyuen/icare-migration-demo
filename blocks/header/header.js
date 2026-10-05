@@ -17,7 +17,44 @@ async function fetchNav() {
   if (!resp.ok) return null;
   const wrapper = document.createElement('div');
   wrapper.innerHTML = await resp.text();
+  // media paths are relative to the fragment, not the page that loads it
+  const base = new URL(resp.url, window.location.href);
+  wrapper.querySelectorAll('img[src]').forEach((img) => {
+    img.src = new URL(img.getAttribute('src'), base).href;
+  });
+  wrapper.querySelectorAll('source[srcset]').forEach((source) => {
+    source.srcset = new URL(source.getAttribute('srcset'), base).href;
+  });
   return wrapper;
+}
+
+/**
+ * Brings published markup back to the authored shape: list items in "loose"
+ * lists get their content wrapped in <p> by the delivery pipeline, and a linked
+ * image followed by text is split into two links with the same href.
+ * @param {Element} fragment the parsed nav fragment
+ */
+function normalizeNav(fragment) {
+  fragment.querySelectorAll('li > p').forEach((p) => {
+    p.replaceWith(document.createTextNode(' '), ...p.childNodes, document.createTextNode(' '));
+  });
+  fragment.querySelectorAll('li').forEach((li) => {
+    const links = [...li.children].filter((el) => el.tagName === 'A');
+    links.forEach((link, i) => {
+      const next = links[i + 1];
+      if (!next || !link.parentElement || next.getAttribute('href') !== link.getAttribute('href')) return;
+      link.append(document.createTextNode(' '), ...next.childNodes);
+      next.remove();
+    });
+  });
+}
+
+// direct text of an element (ignoring nested elements), removed from the element
+function takeOwnText(el) {
+  const nodes = [...el.childNodes].filter((n) => n.nodeType === Node.TEXT_NODE);
+  const text = nodes.map((n) => n.textContent).join(' ').replace(/\s+/g, ' ').trim();
+  nodes.forEach((n) => n.remove());
+  return text;
 }
 
 function createButton(className, label, html = '') {
@@ -111,7 +148,19 @@ function setLanguage(code) {
 function buildBrand(section) {
   section.className = 'nav-brand';
   const link = section.querySelector('a');
-  if (link) link.setAttribute('aria-label', 'icare home');
+  const logo = section.querySelector('picture') || section.querySelector('img');
+  if (link) {
+    // the logo may be authored as its own image paragraph next to the home link
+    if (logo && !link.contains(logo)) {
+      const label = link.textContent.trim();
+      const holder = logo.closest('p');
+      link.textContent = '';
+      link.append(logo);
+      if (label) link.setAttribute('aria-label', label);
+      if (holder && !holder.querySelector('a')) holder.remove();
+    }
+    if (!link.hasAttribute('aria-label')) link.setAttribute('aria-label', 'icare home');
+  }
   return section;
 }
 
@@ -125,8 +174,7 @@ function buildUtility(nav, section) {
     if (!submenu) return;
     // a list item with a nested list is a language selector
     item.classList.add('nav-languages');
-    const label = item.firstChild.textContent.trim();
-    item.firstChild.remove();
+    const label = takeOwnText(item);
     const trigger = createButton('nav-languages-toggle', label);
     trigger.textContent = label;
     setExpanded(trigger, false);
@@ -191,7 +239,10 @@ function buildTools(nav, section) {
   section.className = 'nav-tools';
   const paragraphs = [...section.querySelectorAll(':scope > p')];
   const searchLink = paragraphs.find((p) => p.querySelector('a') && !p.querySelector('img'));
-  const loginLabel = paragraphs.find((p) => p.querySelector('img'));
+  // login label and icon: one paragraph when authored, or split in two when published
+  const loginIconPara = paragraphs.find((p) => p.querySelector('img'));
+  const loginTextPara = paragraphs.find((p) => !p.querySelector('a, img') && p.textContent.trim());
+  const loginLabel = loginIconPara || loginTextPara;
   const loginList = section.querySelector(':scope > ul');
 
   // search: toggle button + panel with form built from the authored link
@@ -232,11 +283,20 @@ function buildTools(nav, section) {
 
   // login: button + slide-in drawer with the authored portal list
   if (loginLabel && loginList) {
-    const label = loginLabel.textContent.trim();
+    const label = [loginIconPara, loginTextPara]
+      .filter((p, i, all) => p && all.indexOf(p) === i)
+      .map((p) => p.textContent.trim())
+      .filter(Boolean)
+      .join(' ');
     const toggleBtn = createButton('nav-login-toggle', `Click to open the ${label} menu`);
-    const icon = loginLabel.querySelector('img');
-    icon.alt = '';
-    toggleBtn.append(icon, Object.assign(document.createElement('span'), { textContent: label }));
+    const icon = loginIconPara && (loginIconPara.querySelector('picture') || loginIconPara.querySelector('img'));
+    if (icon) {
+      icon.querySelectorAll('img').forEach((img) => { img.alt = ''; });
+      if (icon.tagName === 'IMG') icon.alt = '';
+      toggleBtn.append(icon);
+    }
+    toggleBtn.append(Object.assign(document.createElement('span'), { textContent: label }));
+    if (loginTextPara && loginTextPara !== loginLabel) loginTextPara.remove();
     setExpanded(toggleBtn, false);
     const drawer = document.createElement('div');
     drawer.className = 'nav-login-panel';
@@ -435,6 +495,7 @@ function buildTabBar(nav, section, hamburger, searchToggle) {
 export default async function decorate(block) {
   const fragment = await fetchNav();
   if (!fragment) return;
+  normalizeNav(fragment);
   block.textContent = '';
 
   const nav = document.createElement('nav');

@@ -815,9 +815,11 @@ header.is-login-open .nav-overlay {
 
   header .nav-login-toggle img {
     position: absolute;
+    top: 50%;
     left: 24px;
     width: 22px;
     height: 24px;
+    transform: translateY(-50%);
   }
 
   /* search band */
