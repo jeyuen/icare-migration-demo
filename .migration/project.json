@@ -3,7 +3,8 @@
     "icare-migration-demo": {
       "previewOrg": "jeyuen",
       "previewSite": "icare-migration-demo",
-      "contentHostUrl": "author-p9606-e71941.adobeaemcloud.com"
+      "contentHostUrl": "author-p9606-e71941.adobeaemcloud.com",
+      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json"
     }
   }
 }
