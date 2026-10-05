@@ -1,0 +1,15 @@
+{
+  "variantName": "search-banner",
+  "baseBlock": "search",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "No local search block; white search card overlapping hero with heading above",
+  "contentPattern": "1 row, 1 cell: link to search endpoint/query index (e.g. /search or /query-index.json)",
+  "usage": {
+    "pagesUsing": [
+      { "url": "https://www.icare.nsw.gov.au/" }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": []
+}

@@ -1,0 +1,15 @@
+{
+  "variantName": "cards-news",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "vs 'cards': featured image card with blue overlay + text news tiles with date eyebrow and Read more",
+  "contentPattern": "3 rows, 2 cells: [image (optional; first item only) | eyebrow p (category/date), h3, p teaser, link 'Read more']",
+  "usage": {
+    "pagesUsing": [
+      { "url": "https://www.icare.nsw.gov.au/" }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": []
+}

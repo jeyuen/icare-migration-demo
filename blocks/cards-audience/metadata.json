@@ -1,0 +1,15 @@
+{
+  "variantName": "cards-audience",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "vs 'cards' (dark, noimg, heading+text): light 4x2 bordered icon tiles with arrow, whole-tile link",
+  "contentPattern": "8 rows, 2 cells: [icon image | heading wrapped in link to audience page]",
+  "usage": {
+    "pagesUsing": [
+      { "url": "https://www.icare.nsw.gov.au/" }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": []
+}

@@ -1,0 +1,86 @@
+/* columns-campaign: intro (heading/text/CTA) beside a stack of whole-panel links with a side arrow bar */
+.columns-campaign > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.columns-campaign .columns-campaign-intro > *:first-child {
+  margin-top: 0;
+}
+
+.columns-campaign .columns-campaign-cta-wrapper {
+  margin-top: 24px;
+}
+
+/* intro CTA: outlined pill-shaped link (shape only; colours left to the design pass) */
+.columns-campaign .columns-campaign-cta {
+  display: inline-block;
+  padding: 0.5em 2em;
+  border: 1px solid currentcolor;
+  border-radius: 2em;
+  text-decoration: none;
+}
+
+.columns-campaign .columns-campaign-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.columns-campaign .columns-campaign-panel {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.columns-campaign .columns-campaign-panel-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 24px;
+}
+
+.columns-campaign .columns-campaign-panel-body > *:first-child {
+  margin-top: 0;
+}
+
+.columns-campaign .columns-campaign-panel-body > *:last-child {
+  margin-bottom: 0;
+}
+
+/* stretch the heading link across the whole panel */
+.columns-campaign .columns-campaign-panel-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.columns-campaign .columns-campaign-panel-arrow {
+  position: relative;
+  flex: 0 0 48px;
+}
+
+.columns-campaign .columns-campaign-panel-arrow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid currentcolor;
+  border-right: 2px solid currentcolor;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+@media (width >= 900px) {
+  .columns-campaign > div {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .columns-campaign > div > div {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
