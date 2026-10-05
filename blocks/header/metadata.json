@@ -1,0 +1,27 @@
+{
+  "variantName": "header",
+  "baseBlock": "header",
+  "canonicalModel": "configuration",
+  "visualCharacteristics": {
+    "colorScheme": "mixed",
+    "complexity": "advanced",
+    "density": "moderate"
+  },
+  "contentPattern": {
+    "structure": "global header loaded from /nav fragment: brand, navigation sections, tools"
+  },
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.icare.nsw.gov.au/",
+        "instanceId": "header-global",
+        "screenshot": ".pages/_global/header.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": [
+    "header-global"
+  ]
+}

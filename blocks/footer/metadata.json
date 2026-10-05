@@ -1,0 +1,27 @@
+{
+  "variantName": "footer",
+  "baseBlock": "footer",
+  "canonicalModel": "configuration",
+  "visualCharacteristics": {
+    "colorScheme": "mixed",
+    "complexity": "simple",
+    "density": "moderate"
+  },
+  "contentPattern": {
+    "structure": "global footer loaded from /footer fragment: link groups, social/legal rows"
+  },
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.icare.nsw.gov.au/",
+        "instanceId": "footer-global",
+        "screenshot": ".pages/_global/footer.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": [
+    "footer-global"
+  ]
+}

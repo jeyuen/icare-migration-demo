@@ -1,0 +1,73 @@
+/* cards-audience: 1 / 2 / 4 column grid of bordered icon tiles, whole tile clickable */
+.cards-audience > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-audience .cards-audience-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 160px;
+  padding: 24px;
+  border: 1px solid currentcolor;
+  box-sizing: border-box;
+}
+
+.cards-audience .cards-audience-tile-icon picture,
+.cards-audience .cards-audience-tile-icon img {
+  display: block;
+  width: 32px;
+  height: auto;
+}
+
+.cards-audience .cards-audience-tile-body {
+  flex: 1 1 auto;
+}
+
+.cards-audience .cards-audience-tile-body > * {
+  margin: 0;
+}
+
+.cards-audience .cards-audience-tile-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* stretch the heading link across the whole tile */
+.cards-audience .cards-audience-tile.is-linked .cards-audience-tile-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.cards-audience .cards-audience-tile-arrow {
+  align-self: flex-end;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid currentcolor;
+  border-right: 2px solid currentcolor;
+  transform: rotate(45deg);
+}
+
+@media (width >= 600px) {
+  .cards-audience > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-audience > ul {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .cards-audience .cards-audience-tile {
+    min-height: 220px;
+  }
+}

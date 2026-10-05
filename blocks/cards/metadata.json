@@ -1,0 +1,38 @@
+{
+  "variantName": "cards",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "heading + text"
+  },
+  "contentPattern": {
+    "structure": "grid of cards; each card: heading + text (no image)",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.icare.nsw.gov.au/about-us",
+        "instanceId": "31582adc",
+        "screenshot": ".pages/www_icare_nsw_gov_au_about-us--b913f1d0/blocks/31582adc.jpg"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/about-us",
+        "instanceId": "699d0257",
+        "screenshot": ".pages/www_icare_nsw_gov_au_about-us--b913f1d0/blocks/699d0257.jpg"
+      }
+    ],
+    "reuseCount": 2
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_32fc1df69715",
+    "v_825111af5fce"
+  ]
+}

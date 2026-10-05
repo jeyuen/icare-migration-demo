@@ -1,0 +1,32 @@
+{
+  "variantName": "accordion",
+  "baseBlock": "accordion",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "icon",
+    "structure": "text + image + list"
+  },
+  "contentPattern": {
+    "structure": "repeating items: label row (optional leading icon + title) with expandable rich-text body; plus/minus toggle at right",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.icare.nsw.gov.au/contact-us",
+        "instanceId": "53683a60",
+        "screenshot": ".pages/www_icare_nsw_gov_au_contact-us--3573871c/blocks/53683a60.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_e378b774de09"
+  ]
+}
