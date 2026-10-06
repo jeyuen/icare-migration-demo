@@ -69,30 +69,26 @@ main > .section.search-banner-container > .default-content-wrapper > :is(p, h2, 
 
 .search-banner .search-banner-input {
   flex: 1 1 auto;
-  align-self: stretch;
   min-width: 0;
+  height: 45px;
   box-sizing: border-box;
   margin: 0;
-  padding: 0 10px;
-  border: 0;
-  border-radius: 4px 0 0 4px;
-  background: transparent;
+  padding: 14px 10px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
   font-weight: 300;
   line-height: 30px;
+  appearance: none;
 }
 
-.search-banner .search-banner-input::placeholder {
-  color: rgb(117 117 117);
-  font-weight: 300;
-  opacity: 1;
-}
-
-.search-banner .search-banner-input:focus-visible {
-  outline: 2px solid var(--focus-color);
-  outline-offset: 2px;
+/* the source field has no native clear button */
+.search-banner .search-banner-input::-webkit-search-cancel-button,
+.search-banner .search-banner-input::-webkit-search-decoration {
+  appearance: none;
 }
 
 .search-banner .search-banner-button {
@@ -100,31 +96,34 @@ main > .section.search-banner-container > .default-content-wrapper > :is(p, h2, 
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  align-self: stretch;
+  width: 42px;
+  height: 45px;
+  box-sizing: border-box;
   margin: 0 10px 0 0;
-  padding: 0 12px;
-  border: 0;
+  padding: 14px 13px;
+  border: 1px solid transparent;
   background: transparent;
-  color: inherit;
+  color: var(--brand-purple);
   cursor: pointer;
 }
 
+/* empty field: disabled button with the grey glyph (the source keeps the pointer cursor) */
+.search-banner .search-banner-button:disabled {
+  color: #888;
+}
+
+.search-banner .search-banner-button svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
+/* focus ring from the source: light border + blue glow */
+.search-banner .search-banner-input:focus,
 .search-banner .search-banner-button:focus-visible {
-  outline: 2px solid var(--focus-color);
-  outline-offset: -2px;
-}
-
-/* source shows a 14px #888 glyph; the shared black icon has padding in its
-   viewBox, so it is sized up and toned down to match */
-.search-banner .search-banner-button .icon {
-  display: block;
-  width: 18px;
-  height: 18px;
-  opacity: 0.47;
-}
-
-.search-banner .search-banner-button .icon img {
-  display: block;
+  border-color: #919fba;
+  outline: none;
+  box-shadow: 0 0 5px 2px var(--brand-blue);
 }
 
 /* live results (query-index mode) */

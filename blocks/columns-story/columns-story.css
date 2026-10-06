@@ -210,3 +210,15 @@
     display: block;
   }
 }
+
+/* section spacing from the source: 39px / 80px above, 76px below */
+main .section.columns-story-container {
+  margin: 0;
+  padding: 39px 0 76px;
+}
+
+@media (width >= 900px) {
+  main .section.columns-story-container {
+    padding-top: 80px;
+  }
+}

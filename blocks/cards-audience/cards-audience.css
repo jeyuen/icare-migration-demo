@@ -3,9 +3,10 @@
   padding: 0 0 20px;
   background-color: var(--light-color);
 
-  /* extend the light band to the full viewport width and up into the section gap */
+  /* extend the light band to the full viewport width and up to the hero's bottom edge;
+     the hero and search card sit above it, as on the source */
   box-shadow: 0 0 0 100vmax var(--light-color);
-  clip-path: inset(calc(-1 * var(--section-spacing)) -100vmax 0);
+  clip-path: inset(-300px -100vmax 0);
 }
 
 .cards-audience > ul {
@@ -154,4 +155,8 @@
   .cards-audience .cards-audience-tile-body h2 {
     font-size: 20px;
   }
+}
+
+main .section.cards-audience-container {
+  margin-bottom: 0;
 }

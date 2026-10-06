@@ -350,6 +350,11 @@ main > .section:first-of-type {
   margin-top: 0;
 }
 
+/* a section emptied by metadata extraction must not add spacing */
+main > .section:empty {
+  display: none;
+}
+
 /* section metadata */
 main .section.light,
 main .section.highlight,
