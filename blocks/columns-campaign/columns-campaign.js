@@ -1,7 +1,31 @@
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 const HEADING_SELECTOR = 'h1, h2, h3, h4, h5, h6';
 
 function isLinkedHeading(el) {
   return el.matches(HEADING_SELECTOR) && !!el.querySelector('a[href]');
+}
+
+function isLinkParagraph(el) {
+  const links = el.tagName === 'P' ? el.querySelectorAll('a[href]') : [];
+  return links.length === 1 && el.textContent.trim() === links[0].textContent.trim();
+}
+
+/**
+ * Tile titles are authored as linked headings, but AEM publishes linked headings
+ * inside columns as plain link paragraphs. In a cell without its own (intro) heading,
+ * turn each link paragraph back into the h2 it was authored as.
+ * @param {Element} cell
+ */
+function restoreLinkedHeadings(cell) {
+  const children = [...cell.children];
+  if (children.some((child) => child.matches(HEADING_SELECTOR))) return;
+  children.filter(isLinkParagraph).forEach((p) => {
+    const h2 = document.createElement('h2');
+    moveInstrumentation(p, h2);
+    h2.append(...p.childNodes);
+    p.replaceWith(h2);
+  });
 }
 
 /**
@@ -60,6 +84,7 @@ export default function decorate(block) {
 
   [...block.children].forEach((row) => {
     [...row.children].forEach((cell) => {
+      restoreLinkedHeadings(cell);
       const linkedHeadings = [...cell.children].filter(isLinkedHeading).length;
       // The panel column is the one whose headings are links; the other is the intro.
       if (linkedHeadings && buildPanels(cell)) {
