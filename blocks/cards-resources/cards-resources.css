@@ -132,3 +132,27 @@
     gap: 28px;
   }
 }
+
+/* section spacing from the source */
+main .section.cards-resources-container {
+  padding-bottom: 40px;
+}
+
+main .section.cards-resources-container > .default-content-wrapper:first-child > :is(h2, h3) {
+  margin-bottom: 39px;
+}
+
+/* Acknowledgement of Country follows the cards (its heading margin collapses into this) */
+main .section.cards-resources-container > .cards-resources-wrapper + .default-content-wrapper {
+  margin-top: 88px;
+}
+
+@media (width >= 900px) {
+  main .section.cards-resources-container > .default-content-wrapper:first-child > :is(h2, h3) {
+    margin-bottom: 28px;
+  }
+
+  main .section.cards-resources-container > .cards-resources-wrapper + .default-content-wrapper {
+    margin-top: 104px;
+  }
+}

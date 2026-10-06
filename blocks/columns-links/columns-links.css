@@ -102,3 +102,19 @@
     gap: 20px;
   }
 }
+
+/* section spacing from the source: 60px above the heading, 104px / 81px below the links */
+main .section.columns-links-container {
+  margin: 0;
+  padding: 60px 0 104px;
+}
+
+main .section.columns-links-container > .default-content-wrapper > :first-child {
+  margin-top: 0;
+}
+
+@media (width >= 900px) {
+  main .section.columns-links-container {
+    padding-bottom: 81px;
+  }
+}

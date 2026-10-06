@@ -229,7 +229,7 @@ main .section.cards-news-container > .default-content-wrapper {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 35px;
+  margin-bottom: 81px;
 }
 
 main .section.cards-news-container > .default-content-wrapper > * {
@@ -266,4 +266,8 @@ main .section.cards-news-container > .default-content-wrapper a:focus-visible {
   main .section.cards-news-container > .default-content-wrapper a:any-link {
     padding: 12px 40px;
   }
+}
+
+main .section.cards-news-container {
+  padding-bottom: 101px;
 }
