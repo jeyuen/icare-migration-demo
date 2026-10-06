@@ -249,7 +249,6 @@ function buildTools(nav, section) {
   if (searchLink) {
     const link = searchLink.querySelector('a');
     const action = new URL(link.href, window.location.href).pathname;
-    const placeholder = link.textContent.trim();
     const toggleBtn = createButton(
       'nav-search-toggle',
       'Toggle search',
@@ -260,8 +259,8 @@ function buildTools(nav, section) {
     panel.className = 'nav-search-panel';
     panel.setAttribute('role', 'search');
     panel.innerHTML = `<form action="${action}" method="get">
-        <label for="header-search-keyword" class="nav-search-label">${placeholder}</label>
-        <input id="header-search-keyword" type="search" name="keyword" autocomplete="off" placeholder="${placeholder}">
+        <label for="header-search-keyword" class="nav-search-label"><span class="nav-visually-hidden">For </span>Search (results will filter as you type)<span class="nav-visually-hidden">, to enable Search Button please enter search text.</span></label>
+        <input id="header-search-keyword" type="search" name="keyword" autocomplete="off" spellcheck="false">
         <button type="submit" class="nav-search-submit" aria-label="Search button" disabled><span class="nav-icon-search" aria-hidden="true"></span></button>
         <button type="button" class="nav-search-close" aria-label="click to close search dropdown menu">${closeIcon()}<span>Close</span></button>
       </form>`;

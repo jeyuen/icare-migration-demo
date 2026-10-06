@@ -1,30 +1,28 @@
-import { decorateIcons } from '../../scripts/aem.js';
-
 const MIN_QUERY_LENGTH = 3;
+const LABEL = 'Search (results will filter as you type)';
+// magnifier glyph from the source site; coloured via currentColor (grey disabled, purple enabled)
+const ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.027 14.027" aria-hidden="true" focusable="false">'
+  + '<path transform="translate(-10.236 0.5)" fill="currentColor" stroke="currentColor" stroke-width="1" d="M23.692,12.611l-3.8-3.8a5.055,5.055,0,0,0,1.568-3.645A5.273,5.273,0,0,0,16.1,0a5.273,5.273,0,0,0-5.364,5.165A5.273,5.273,0,0,0,16.1,10.33a5.465,5.465,0,0,0,3.419-1.188l3.8,3.81a.262.262,0,0,0,.361.007A.24.24,0,0,0,23.692,12.611ZM16.1,9.838a4.771,4.771,0,0,1-4.853-4.673A4.771,4.771,0,0,1,16.1.492a4.771,4.771,0,0,1,4.853,4.673A4.771,4.771,0,0,1,16.1,9.838Z"/></svg>';
 
 /**
  * Reads the configured search target from the block's single link cell.
  * A `.json` link is treated as a query index (live results rendered in-block);
  * any other link is treated as a search results page (form submits `?q=`).
  * @param {Element} block
- * @returns {{ source: string, isIndex: boolean, placeholder: string }}
+ * @returns {{ source: string, isIndex: boolean }}
  */
 function readConfig(block) {
   const link = block.querySelector('a[href]');
   const href = link?.getAttribute('href') || '';
   const fallback = `${window.hlx?.codeBasePath || ''}/query-index.json`;
   const source = href || fallback;
-  // A descriptive link label (not the raw URL) doubles as the input placeholder.
-  const linkText = link?.textContent.trim() || '';
-  const isUrlLike = !linkText || linkText === href || /^(https?:|\/)/.test(linkText);
-  const placeholder = isUrlLike ? 'Search' : linkText;
   let isIndex = false;
   try {
     isIndex = new URL(source, window.location.href).pathname.endsWith('.json');
   } catch {
     isIndex = source.endsWith('.json');
   }
-  return { source, isIndex, placeholder };
+  return { source, isIndex };
 }
 
 async function fetchIndex(source) {
@@ -84,23 +82,25 @@ export default async function decorate(block) {
   const label = document.createElement('label');
   label.className = 'search-banner-label';
   label.htmlFor = inputId;
-  label.textContent = config.placeholder;
+  label.textContent = LABEL;
 
   const input = document.createElement('input');
   input.type = 'search';
   input.id = inputId;
   input.name = 'q';
   input.className = 'search-banner-input';
-  input.placeholder = config.placeholder;
   input.autocomplete = 'off';
+  input.spellcheck = false;
 
+  // As on the source, the submit button stays disabled until something is typed.
   const button = document.createElement('button');
   button.type = 'submit';
   button.className = 'search-banner-button';
   button.setAttribute('aria-label', 'Search');
-  const icon = document.createElement('span');
-  icon.className = 'icon icon-search';
-  button.append(icon);
+  button.disabled = true;
+  button.innerHTML = ICON;
+  const syncButton = () => { button.disabled = !input.value.trim(); };
+  input.addEventListener('input', syncButton);
 
   const box = document.createElement('div');
   box.className = 'search-banner-box';
@@ -147,6 +147,7 @@ export default async function decorate(block) {
     if (e.code === 'Escape') {
       input.value = '';
       results.replaceChildren();
+      syncButton();
     }
   });
 
@@ -158,8 +159,7 @@ export default async function decorate(block) {
   if (q) {
     // Reflect the current query back into the field (e.g. when placed on the results page).
     input.value = q;
+    syncButton();
     if (config.isIndex) runSearch();
   }
-
-  decorateIcons(block);
 }
