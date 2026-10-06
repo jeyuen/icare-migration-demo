@@ -1,51 +1,119 @@
-/* columns-campaign: intro (heading/text/CTA) beside a stack of whole-panel links with a side arrow bar */
+/*
+ * columns-campaign: grey band with an intro (heading/text/outline CTA) beside
+ * a stack of whole-panel links with a green arrow bar.
+ * Values extracted from section.cm-campaign-module on https://www.icare.nsw.gov.au/
+ */
+
+/* the grey band comes from the section's grey style; the block owns its own spacing */
+main .section.columns-campaign-container {
+  padding: 0;
+}
+
+.columns-campaign {
+  padding: 40px 0 0;
+}
+
 .columns-campaign > div {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 35px;
 }
 
-.columns-campaign .columns-campaign-intro > *:first-child {
-  margin-top: 0;
+/* intro */
+.columns-campaign .columns-campaign-intro {
+  padding: 0 0 14px;
 }
 
-.columns-campaign .columns-campaign-cta-wrapper {
-  margin-top: 24px;
+.columns-campaign .columns-campaign-intro h2 {
+  margin: 0 0 25px;
+  padding: 4px 0 10px;
 }
 
-/* intro CTA: outlined pill-shaped link (shape only; colours left to the design pass) */
-.columns-campaign .columns-campaign-cta {
+.columns-campaign .columns-campaign-intro p {
+  margin: 14px 0 50px;
+  line-height: 24px;
+}
+
+.columns-campaign .columns-campaign-intro > *:last-child {
+  margin-bottom: 0;
+}
+
+.columns-campaign .columns-campaign-intro p.columns-campaign-cta-wrapper {
+  margin: 0;
+}
+
+/* intro CTA: blue outline pill */
+.columns-campaign a.columns-campaign-cta:any-link {
   display: inline-block;
-  padding: 0.5em 2em;
-  border: 1px solid currentcolor;
-  border-radius: 2em;
+  padding: 12px 40px;
+  border: 1px solid var(--brand-blue);
+  border-radius: 40px;
+  background-color: transparent;
+  color: var(--brand-blue);
+  font-size: var(--body-font-size-m);
+  font-weight: 500;
+  line-height: 24px;
   text-decoration: none;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
 }
 
+.columns-campaign a.columns-campaign-cta:hover,
+.columns-campaign a.columns-campaign-cta:focus-visible {
+  border-color: var(--brand-blue);
+  background-color: var(--brand-blue);
+  color: var(--background-color);
+}
+
+/* linked panels */
 .columns-campaign .columns-campaign-tiles {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 5px;
+  padding: 10px 0 20px;
 }
 
 .columns-campaign .columns-campaign-tile {
   position: relative;
   display: flex;
   align-items: stretch;
+  background-color: var(--background-color);
+  transition: background-color 0.15s;
+}
+
+.columns-campaign .columns-campaign-tile:hover {
+  background-color: #cceee2;
 }
 
 .columns-campaign .columns-campaign-tile-body {
   flex: 1 1 auto;
   min-width: 0;
-  padding: 24px;
+  padding: 38px 33px 46px;
 }
 
-.columns-campaign .columns-campaign-tile-body > *:first-child {
-  margin-top: 0;
+.columns-campaign .columns-campaign-tile-body h2 {
+  margin: 0 0 26px;
+  padding: 4px 0 10px;
+  color: var(--heading-color);
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.columns-campaign .columns-campaign-tile-body p {
+  margin: 14px 0 0;
+  line-height: 23px;
 }
 
 .columns-campaign .columns-campaign-tile-body > *:last-child {
   margin-bottom: 0;
+}
+
+.columns-campaign a.columns-campaign-tile-link:any-link,
+.columns-campaign a.columns-campaign-tile-link:hover,
+.columns-campaign a.columns-campaign-tile-link:active {
+  color: var(--heading-color);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 /* stretch the heading link across the whole panel */
@@ -53,11 +121,14 @@
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 2;
 }
 
+/* green side bar with white arrow */
 .columns-campaign .columns-campaign-tile-arrow {
   position: relative;
-  flex: 0 0 48px;
+  flex: 0 0 41px;
+  background-color: #00a870;
 }
 
 .columns-campaign .columns-campaign-tile-arrow::before {
@@ -65,22 +136,58 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 8px;
-  height: 8px;
-  border-top: 2px solid currentcolor;
-  border-right: 2px solid currentcolor;
-  transform: translate(-50%, -50%) rotate(45deg);
+  width: 18px;
+  height: 15px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M17.096 9.16L10.71 4.223a.644.644 0 0 1-.071-.989.86.86 0 0 1 .598-.234.875.875 0 0 1 .527.171l7.815 6.044a.708.708 0 0 1 .41.765.705.705 0 0 1-.426.532l-7.8 6.03a.871.871 0 0 1-1.124-.062.644.644 0 0 1 .071-.989l6.378-4.931H1.358a.705.705 0 1 1 0-1.4h15.738z' fill='%23FFFFFF'/%3E%3C/svg%3E") center / cover no-repeat;
+  transform: translate(-50%, -50%);
 }
 
-@media (width >= 900px) {
+/* breakpoint-exception: the source switches to its two-column layout at 1024px */
+@media (width >= 1024px) {
+  .columns-campaign {
+    padding: 60px 0;
+  }
+
   .columns-campaign > div {
     flex-direction: row;
-    align-items: center;
-    gap: 48px;
+    align-items: flex-start;
+    gap: 12px;
   }
 
   .columns-campaign > div > div {
-    flex: 1 1 0;
+    box-sizing: border-box;
+    flex: 0 0 calc(50% - 6px);
     min-width: 0;
+  }
+
+  .columns-campaign .columns-campaign-intro {
+    padding: 56px 142px 30px 0;
+  }
+
+  .columns-campaign .columns-campaign-tiles {
+    gap: 10px;
+  }
+
+  .columns-campaign .columns-campaign-tile-body {
+    padding: 22px 50px 42px 38px;
+  }
+
+  .columns-campaign .columns-campaign-tile-body h2 {
+    margin-bottom: 13px;
+    font-size: var(--heading-font-size-l);
+    line-height: 40px;
+  }
+
+  .columns-campaign .columns-campaign-tile-body p {
+    line-height: 25px;
+  }
+
+  .columns-campaign .columns-campaign-tile-arrow {
+    flex-basis: 52px;
+  }
+
+  .columns-campaign .columns-campaign-tile-arrow::before {
+    width: 20px;
+    height: 16px;
   }
 }

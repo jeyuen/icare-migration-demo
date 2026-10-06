@@ -1,12 +1,49 @@
-/* search-banner: card containing a single search field + submit button */
+/*
+ * search-banner: white card overlapping the bottom of the hero, holding the
+ * "How can we help?" heading (default content authored before the block in the
+ * same section) and a single search field + submit button.
+ * The section itself is styled as the card so heading and field share one box.
+ */
+main > .section.search-banner-container {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+
+  /* overlap the hero by 40px; offsets the hero section's bottom spacing */
+  margin: calc(-40px - var(--section-spacing)) var(--content-gutter) 46px;
+  padding: 0 24px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--background-color);
+  box-shadow: 0 6px 26px 0 rgb(145 159 186 / 10%);
+}
+
+main > .section.search-banner-container > div {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* "How can we help?" heading */
+main > .section.search-banner-container > .default-content-wrapper {
+  padding-top: 15px;
+}
+
+main > .section.search-banner-container > .default-content-wrapper > :is(p, h2, h3) {
+  margin: 0;
+  color: #000;
+  font-family: var(--heading-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
+  line-height: 30px;
+}
+
 .search-banner {
   position: relative;
 }
 
 .search-banner .search-banner-form {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: block;
 }
 
 .search-banner .search-banner-label {
@@ -19,22 +56,43 @@
 }
 
 .search-banner .search-banner-box {
+  box-sizing: border-box;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   width: 100%;
-  border: 1px solid currentcolor;
+  height: 49.5px;
+  margin-top: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--background-color);
 }
 
 .search-banner .search-banner-input {
   flex: 1 1 auto;
+  align-self: stretch;
   min-width: 0;
   box-sizing: border-box;
   margin: 0;
-  padding: 0.75em 1em;
+  padding: 0 10px;
   border: 0;
+  border-radius: 4px 0 0 4px;
   background: transparent;
-  font: inherit;
-  color: inherit;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 300;
+  line-height: 30px;
+}
+
+.search-banner .search-banner-input::placeholder {
+  color: rgb(117 117 117);
+  font-weight: 300;
+  opacity: 1;
+}
+
+.search-banner .search-banner-input:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
 }
 
 .search-banner .search-banner-button {
@@ -42,17 +100,31 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  margin: 0;
-  padding: 0 1em;
+  align-self: stretch;
+  margin: 0 10px 0 0;
+  padding: 0 12px;
   border: 0;
   background: transparent;
   color: inherit;
   cursor: pointer;
 }
 
+.search-banner .search-banner-button:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: -2px;
+}
+
+/* source shows a 14px #888 glyph; the shared black icon has padding in its
+   viewBox, so it is sized up and toned down to match */
 .search-banner .search-banner-button .icon {
-  width: 20px;
-  height: 20px;
+  display: block;
+  width: 18px;
+  height: 18px;
+  opacity: 0.47;
+}
+
+.search-banner .search-banner-button .icon img {
+  display: block;
 }
 
 /* live results (query-index mode) */
@@ -73,6 +145,22 @@
 }
 
 @media (width >= 900px) {
+  main > .section.search-banner-container {
+    /* overlap the hero by 80px, align with the content column */
+    margin-top: calc(-80px - var(--section-spacing));
+    margin-inline: max(var(--content-gutter), (100% - var(--content-max-width)) / 2);
+    padding-bottom: 49px;
+  }
+
+  main > .section.search-banner-container > .default-content-wrapper {
+    padding-top: 25px;
+  }
+
+  main > .section.search-banner-container > .default-content-wrapper > :is(p, h2, h3) {
+    font-size: var(--heading-font-size-l);
+    line-height: 40px;
+  }
+
   .search-banner .search-banner-results {
     grid-template-columns: repeat(2, 1fr);
   }

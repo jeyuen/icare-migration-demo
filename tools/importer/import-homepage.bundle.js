@@ -419,6 +419,8 @@ var CustomImportScript = (() => {
     return null;
   }
   var SOURCE_ORIGIN = "https://www.icare.nsw.gov.au";
+  var MEDIA_CDN = "https://edge.sitecorecloud.io/insuranceanf0c2-xmcprodf24d-xmprod74a5-5eb4/media/";
+  var MEDIA_PATH = /^https?:\/\/(www\.)?icare\.nsw\.gov\.au\/-\/media\//i;
   function absolutizeImage(document2, img) {
     let src = (img.getAttribute("src") || "").trim();
     if (!src || /^data:/i.test(src)) return;
@@ -434,6 +436,7 @@ var CustomImportScript = (() => {
       } catch (e) {
       }
     }
+    src = src.replace(MEDIA_PATH, MEDIA_CDN);
     if (/\.svg$/i.test(src)) src += "?iar=0";
     img.setAttribute("src", src);
   }
