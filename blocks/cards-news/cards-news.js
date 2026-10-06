@@ -82,6 +82,22 @@ export default function decorate(block) {
     });
 
     if (li.querySelector('.cards-news-card-image')) li.classList.add('is-featured');
+
+    // The whole tile links to the article; "Read more" stays as a visual cue inside it.
+    const readMore = li.querySelector('a.cards-news-link');
+    if (readMore) {
+      const tileLink = document.createElement('a');
+      tileLink.className = 'cards-news-card-link';
+      tileLink.href = readMore.getAttribute('href');
+      const label = document.createElement('span');
+      label.className = 'cards-news-link';
+      label.textContent = readMore.textContent;
+      moveInstrumentation(readMore, label);
+      readMore.replaceWith(label);
+      while (li.firstElementChild) tileLink.append(li.firstElementChild);
+      li.append(tileLink);
+    }
+
     ul.append(li);
   });
 

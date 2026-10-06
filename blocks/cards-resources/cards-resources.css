@@ -1,4 +1,4 @@
-/* cards-resources: 1 / 2 / 3 column grid of icon cards with a bottom-aligned link */
+/* cards-resources: 1 / 2 / 3 column grid of bordered icon cards; whole card links to the hub */
 .cards-resources > ul {
   display: grid;
   grid-template-columns: 1fr;
@@ -9,44 +9,126 @@
 }
 
 .cards-resources .cards-resources-card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 24px;
+  justify-content: space-between;
   box-sizing: border-box;
+  min-height: 220px;
+  padding: 32px;
+  border: 1px solid #e5e7eb;
+  border-radius: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 500;
+  line-height: 30px;
+  transition: border-color 0.2s;
 }
 
-.cards-resources .cards-resources-card-icon picture,
+.cards-resources .cards-resources-card:hover,
+.cards-resources .cards-resources-card:focus-within {
+  border-color: #f973b5;
+}
+
+/* let heading, text and link take part in the card's space-between column */
+.cards-resources .cards-resources-card-body {
+  display: contents;
+}
+
+/* icon */
+.cards-resources .cards-resources-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 0 20px;
+  line-height: 1;
+}
+
+.cards-resources .cards-resources-card-icon p {
+  margin: 0;
+}
+
+.cards-resources .cards-resources-card-icon picture {
+  display: contents;
+}
+
 .cards-resources .cards-resources-card-icon img {
   display: block;
-  width: 40px;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
 }
 
-.cards-resources .cards-resources-card-body {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
+/* title */
+.cards-resources .cards-resources-card h3 {
+  margin: 0 0 12px;
+  color: #111827;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 34px;
 }
 
-.cards-resources .cards-resources-card-body > *:first-child {
-  margin-top: 0;
+/* body text */
+.cards-resources .cards-resources-card p {
+  margin: 0 0 24px;
+  color: #4b5563;
+  font-size: 15.2px;
+  line-height: 1.6;
 }
 
-.cards-resources .cards-resources-link-wrapper {
-  margin-top: auto;
-  margin-bottom: 0;
-  padding-top: 16px;
+/* call to action: "Explore hub ->" */
+.cards-resources .cards-resources-card p.cards-resources-link-wrapper {
+  margin: 0;
+  line-height: 28.5px;
+}
+
+.cards-resources a.cards-resources-link:any-link,
+.cards-resources a.cards-resources-link:hover,
+.cards-resources a.cards-resources-link:focus {
+  display: inline-flex;
+  align-items: center;
+  gap: 5.6px;
+  color: #e11d74;
+  font-size: 15.2px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cards-resources a.cards-resources-link::after {
+  content: '→' / '';
+  font-size: 16.8px;
+  line-height: 31.5px;
+}
+
+/* stretch the link so the whole card is clickable, as on the source */
+.cards-resources a.cards-resources-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.cards-resources a.cards-resources-link:focus-visible {
+  outline: none;
+}
+
+.cards-resources .cards-resources-card:has(a.cards-resources-link:focus-visible) {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
 }
 
 @media (width >= 600px) {
   .cards-resources > ul {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (width >= 900px) {
   .cards-resources > ul {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
   }
 }

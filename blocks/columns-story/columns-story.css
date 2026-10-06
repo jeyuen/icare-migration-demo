@@ -1,8 +1,11 @@
-/* columns-story: feature column (heading, promo image, text, CTA) beside a list of thumbnail items */
+/* columns-story: feature column (heading, promo image, text, pill CTA) beside a grey
+   panel listing thumbnail story items. Values from icare.nsw.gov.au .cm-story-module */
+
+/* layout: stacked on mobile, two equal columns from 900px */
 .columns-story > div {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 35px;
 }
 
 .columns-story img {
@@ -11,86 +14,199 @@
   height: auto;
 }
 
-.columns-story .columns-story-feature > *:first-child {
-  margin-top: 0;
+/* ---------- feature column ---------- */
+.columns-story .columns-story-feature {
+  padding: 4px 10px 15px 0;
 }
 
-/* feature CTA: filled pill-shaped link (shape only; colours left to the design pass) */
-.columns-story .columns-story-feature-cta-wrapper {
-  margin-top: 24px;
+.columns-story .columns-story-feature h2 {
+  margin: 0 0 18px;
+  padding-top: 4px;
+  color: var(--heading-color);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+  line-height: 40px;
 }
 
-.columns-story .columns-story-feature-cta {
+.columns-story .columns-story-feature > p {
+  margin: 19px 0 2px;
+  padding: 0 2px;
+  line-height: 30px;
+}
+
+.columns-story .columns-story-feature > .columns-story-feature-media {
+  margin: 0;
+  padding: 0;
+}
+
+/* feature CTA: magenta filled pill */
+.columns-story .columns-story-feature > .columns-story-feature-cta-wrapper {
+  margin: 20px 0 0;
+  padding: 0;
+}
+
+.columns-story a.columns-story-feature-cta:any-link {
   display: inline-block;
-  padding: 0.5em 2em;
-  border: 1px solid currentcolor;
-  border-radius: 2em;
+  margin: 0 20px 0 0;
+  padding: 3px 25px;
+  border: 1px solid var(--brand-magenta);
+  border-radius: 40px;
+  background-color: var(--brand-magenta);
+  color: #fff;
+  font-size: var(--body-font-size-xs);
+  font-weight: 500;
+  line-height: 29px;
   text-decoration: none;
 }
 
-/* list item link: text + trailing chevron */
-.columns-story .columns-story-item-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.columns-story a.columns-story-feature-cta:hover,
+.columns-story a.columns-story-feature-cta:focus {
+  border-color: var(--brand-magenta-hover);
+  background-color: var(--brand-magenta-hover);
+  color: #fff;
+  text-decoration: none;
 }
 
-.columns-story .columns-story-item-link::after {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-top: 2px solid currentcolor;
-  border-right: 2px solid currentcolor;
-  transform: rotate(45deg);
-}
-
+/* ---------- story list panel ---------- */
 .columns-story .columns-story-list {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 24px;
-  border-left: 4px solid currentcolor;
+  padding: 15px;
+  border-left: 6px solid #00a870;
+  background-color: var(--light-color);
 }
 
 .columns-story .columns-story-item {
-  display: grid;
-  grid-template-columns: 96px 1fr;
-  gap: 16px;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
 }
 
-.columns-story .columns-story-item.no-media {
-  grid-template-columns: 1fr;
+.columns-story .columns-story-item-media {
+  display: none;
+  flex: 0 0 150px;
+}
+
+.columns-story .columns-story-item-media p {
+  margin: 0;
 }
 
 .columns-story .columns-story-item-media img {
-  aspect-ratio: 1 / 1;
+  width: 150px;
+  height: 140px;
   object-fit: cover;
 }
 
-.columns-story .columns-story-item-body > *:first-child {
-  margin-top: 0;
+.columns-story .columns-story-item-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: 22px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.columns-story .columns-story-item-body > *:last-child {
+.columns-story .columns-story-item-body h3 {
+  margin: 0;
+  color: var(--heading-color);
+  font-size: var(--heading-font-size-m);
+  font-weight: 700;
+  line-height: 37.5px;
+}
+
+.columns-story .columns-story-item-body p {
+  margin: 14px 0;
+}
+
+.columns-story .columns-story-item-body > p:last-child {
   margin-bottom: 0;
 }
 
+/* list item link: blue text with trailing circled arrow */
+.columns-story a.columns-story-item-link:any-link {
+  display: inline-block;
+  position: relative;
+  padding: 0 35px 0 15px;
+  color: var(--brand-blue);
+  font-size: var(--body-font-size-s);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.columns-story a.columns-story-item-link:hover,
+.columns-story a.columns-story-item-link:focus {
+  color: var(--brand-blue);
+  text-decoration: none;
+}
+
+.columns-story a.columns-story-item-link::after,
+.columns-story a.columns-story-item-link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.columns-story a.columns-story-item-link::after {
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: var(--brand-blue);
+}
+
+.columns-story a.columns-story-item-link::before {
+  right: 7px;
+  z-index: 1;
+  width: 12px;
+  height: 12px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M17.096 9.16L10.71 4.223a.644.644 0 0 1-.071-.989.86.86 0 0 1 .598-.234.875.875 0 0 1 .527.171l7.815 6.044a.708.708 0 0 1 .41.765.705.705 0 0 1-.426.532l-7.8 6.03a.871.871 0 0 1-1.124-.062.644.644 0 0 1 .071-.989l6.378-4.931H1.358a.705.705 0 1 1 0-1.4h15.738z' fill='%23FFFFFF'/%3E%3C/svg%3E") no-repeat center / cover;
+}
+
+/* thumbnails shown from tablet width */
 @media (width >= 600px) {
-  .columns-story .columns-story-item {
-    grid-template-columns: 120px 1fr;
+  .columns-story .columns-story-item-media {
+    display: block;
   }
 }
 
 @media (width >= 900px) {
   .columns-story > div {
     flex-direction: row;
-    align-items: flex-start;
-    gap: 48px;
+    align-items: stretch;
+    gap: 0;
   }
 
   .columns-story > div > div {
-    flex: 1 1 0;
+    box-sizing: border-box;
+    flex: 0 0 50%;
     min-width: 0;
+  }
+
+  .columns-story .columns-story-feature {
+    padding: 0 12px 0 0;
+  }
+
+  .columns-story .columns-story-feature h2 {
+    margin-bottom: 15px;
+    line-height: 50px;
+  }
+
+  .columns-story a.columns-story-feature-cta:any-link {
+    padding: 12px 40px;
+    font-size: var(--body-font-size-m);
+    line-height: 24px;
+  }
+
+  /* two-column panel is too narrow for thumbnails until 1200px */
+  .columns-story .columns-story-item-media {
+    display: none;
+  }
+}
+
+@media (width >= 1200px) {
+  .columns-story .columns-story-feature {
+    padding-right: 116px;
+  }
+
+  .columns-story .columns-story-item-media {
+    display: block;
   }
 }

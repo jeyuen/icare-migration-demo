@@ -38,6 +38,11 @@ function siblingAfter(el, selector) {
 // (src="-/media/icare/...svg"), which html2md would turn into :icon: shortcodes.
 // Resolve them to absolute URLs on the source origin.
 const SOURCE_ORIGIN = 'https://www.icare.nsw.gov.au';
+// www.icare.nsw.gov.au/-/media/* 308-redirects to the Sitecore media CDN with a
+// same-origin resource policy, so browsers block it cross-origin. Point straight at the
+// CDN (the host the site's other icons already use).
+const MEDIA_CDN = 'https://edge.sitecorecloud.io/insuranceanf0c2-xmcprodf24d-xmprod74a5-5eb4/media/';
+const MEDIA_PATH = /^https?:\/\/(www\.)?icare\.nsw\.gov\.au\/-\/media\//i;
 function absolutizeImage(document, img) {
   let src = (img.getAttribute('src') || '').trim();
   if (!src || /^data:/i.test(src)) return;
@@ -51,6 +56,7 @@ function absolutizeImage(document, img) {
       src = new URL(src.startsWith('/') ? src : `/${src}`, base).href;
     } catch (e) { /* leave as is */ }
   }
+  src = src.replace(MEDIA_PATH, MEDIA_CDN);
   // html2md's convertIcons rule turns any <img> whose src ends with ".svg" into an :icon:
   // shortcode. These are authorable card images (model field "image"), so add the Sitecore
   // media query param (same convention as the site's other icon URLs) to keep them as images.

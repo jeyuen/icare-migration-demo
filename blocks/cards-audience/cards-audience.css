@@ -1,8 +1,17 @@
-/* cards-audience: 1 / 2 / 4 column grid of bordered icon tiles, whole tile clickable */
+/* cards-audience: grid of white bordered icon tiles on a light band, whole tile clickable */
+.cards-audience {
+  padding: 0 0 20px;
+  background-color: var(--light-color);
+
+  /* extend the light band to the full viewport width and up into the section gap */
+  box-shadow: 0 0 0 100vmax var(--light-color);
+  clip-path: inset(calc(-1 * var(--section-spacing)) -100vmax 0);
+}
+
 .cards-audience > ul {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -12,31 +21,52 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  min-height: 160px;
-  padding: 24px;
-  border: 1px solid currentcolor;
+  align-items: flex-start;
+  min-height: 146px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  color: var(--brand-blue);
   box-sizing: border-box;
+  transition: box-shadow 0.5s;
 }
 
 .cards-audience .cards-audience-tile-icon picture,
 .cards-audience .cards-audience-tile-icon img {
   display: block;
-  width: 32px;
-  height: auto;
+  width: 26px;
+  height: 26px;
+}
+
+.cards-audience .cards-audience-tile-icon p {
+  margin: 0;
 }
 
 .cards-audience .cards-audience-tile-body {
   flex: 1 1 auto;
+  width: 100%;
+  margin-top: 6px;
 }
 
 .cards-audience .cards-audience-tile-body > * {
   margin: 0;
 }
 
-.cards-audience .cards-audience-tile-link {
-  text-decoration: none;
+.cards-audience .cards-audience-tile-body h2 {
+  padding: 4px 0 10px;
+  font-family: var(--heading-font-family);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  text-align: left;
+  color: #000;
+}
+
+.cards-audience .cards-audience-tile-link,
+.cards-audience .cards-audience-tile-link:any-link {
   color: inherit;
+  text-decoration: none;
+  outline: none;
 }
 
 /* stretch the heading link across the whole tile */
@@ -48,26 +78,80 @@
 
 .cards-audience .cards-audience-tile-arrow {
   align-self: flex-end;
-  width: 12px;
-  height: 12px;
-  border-top: 2px solid currentcolor;
-  border-right: 2px solid currentcolor;
-  transform: rotate(45deg);
+  width: 26px;
+  height: 26px;
+  margin-top: auto;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960' fill='%2304A76F'%3E%3Cpath d='M685-452H190q-13 0-21.5-8.5T160-482q0-13 8.5-21.5T190-512h495L537-660q-9-9-8.5-21t9.5-21q9-9 21-9t21 9l199 199q5 5 7 10t2 11q0 6-2 11t-7 10L581-263q-9 9-21 9t-21-9q-9-9-9-21.5t9-21.5l146-146Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform 0.5s;
+}
+
+/* hover / focus states */
+.cards-audience .cards-audience-tile:hover {
+  box-shadow: 0 6px 26px rgb(145 159 186 / 10%);
+}
+
+.cards-audience .cards-audience-tile:hover h2 {
+  color: var(--brand-purple);
+}
+
+.cards-audience .cards-audience-tile:active h2 {
+  color: #000;
+}
+
+.cards-audience .cards-audience-tile:hover .cards-audience-tile-arrow {
+  transform: translateX(8px);
+}
+
+.cards-audience .cards-audience-tile:has(.cards-audience-tile-link:focus-visible) {
+  box-shadow: 0 0 5px 2px var(--brand-blue);
 }
 
 @media (width >= 600px) {
-  .cards-audience > ul {
-    grid-template-columns: repeat(2, 1fr);
+  .cards-audience .cards-audience-tile-icon picture,
+  .cards-audience .cards-audience-tile-icon img,
+  .cards-audience .cards-audience-tile-arrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .cards-audience .cards-audience-tile-body h2 {
+    font-size: 14px;
+    line-height: 23px;
   }
 }
 
 @media (width >= 900px) {
   .cards-audience > ul {
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: 12px;
   }
 
+  .cards-audience .cards-audience-tile-icon picture,
+  .cards-audience .cards-audience-tile-icon img,
+  .cards-audience .cards-audience-tile-arrow {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (width >= 1200px) {
   .cards-audience .cards-audience-tile {
-    min-height: 220px;
+    min-height: 232px;
+    padding: 25px;
+  }
+
+  .cards-audience .cards-audience-tile-icon picture,
+  .cards-audience .cards-audience-tile-icon img,
+  .cards-audience .cards-audience-tile-arrow {
+    width: 48px;
+    height: 48px;
+  }
+
+  .cards-audience .cards-audience-tile-body {
+    margin-top: 18px;
+  }
+
+  .cards-audience .cards-audience-tile-body h2 {
+    font-size: 20px;
   }
 }

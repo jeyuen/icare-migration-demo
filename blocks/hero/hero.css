@@ -1,3 +1,4 @@
+/* hero: full-bleed banner. Values extracted from icare .homepage-hero-banner */
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -5,15 +6,32 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  isolation: isolate;
 }
 
-/* text row: constrained to the content width, left-aligned within it */
-.hero .hero-content > div {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+/* mobile: image stacked above a solid brand-blue text panel */
+.hero .hero-image,
+.hero .hero-image p {
+  margin: 0;
+}
+
+.hero picture {
+  display: block;
+}
+
+.hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.hero .hero-content {
+  position: relative;
+  z-index: 1;
+  background-color: var(--brand-blue);
+  padding: 20px 20px 60px;
 }
 
 .hero .hero-content > div > *:first-child {
@@ -21,44 +39,29 @@
 }
 
 .hero h1 {
+  max-width: 620px;
+  margin: 0;
   color: var(--background-color);
+  font-size: var(--heading-font-size-xxl);
+  font-weight: 400;
+  line-height: 40px;
 }
 
 .hero .hero-content p {
+  max-width: 600px;
+  margin: 0 0 10px;
   color: var(--background-color);
+  font-size: 18px;
+  line-height: normal;
 }
 
 .hero .hero-empty {
   display: none;
 }
 
-/* image row only hosts the absolutely-positioned picture; take no space */
-.hero .hero-image,
-.hero .hero-image p {
-  margin: 0;
-}
-
-.hero .hero-image {
-  flex: 0 0 0;
-}
-
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
-}
-
-.hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
 /* without a background image the text sits on the page background */
-.hero.no-image {
-  min-height: unset;
+.hero.no-image .hero-content {
+  background-color: transparent;
 }
 
 .hero.no-image h1,
@@ -67,19 +70,53 @@
 }
 
 @media (width >= 900px) {
-  .hero {
-    display: flex;
-    align-items: center;
-    padding: 40px 32px;
-    min-height: 420px;
+  /* image becomes a full-bleed cover background behind the copy */
+  .hero picture {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+  }
+
+  .hero img {
+    height: 100%;
   }
 
   .hero .hero-content {
-    flex: 1 1 auto;
+    background-color: transparent;
+    padding: 0 var(--content-gutter);
   }
 
-  /* source places the copy in the left half, clear of the photo on the right */
-  .hero .hero-content > div > * {
-    max-width: 50%;
+  .hero .hero-content > div {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: 40px 0 70px;
+  }
+
+  .hero h1 {
+    margin: 0 0 12px;
+    font-size: 40px;
+  }
+}
+
+@media (width >= 1200px) {
+  .hero .hero-content > div {
+    padding: 70px 0 140px;
+  }
+
+  .hero h1 {
+    margin: 0 0 20px;
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 60px;
+  }
+
+  .hero .hero-content p {
+    margin: 0 0 5px;
+  }
+}
+
+@media (width >= 1440px) {
+  .hero .hero-content > div {
+    padding: 78px 0 160px;
   }
 }
