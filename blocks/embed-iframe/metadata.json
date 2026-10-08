@@ -1,0 +1,23 @@
+{
+  "variantName": "embed-iframe",
+  "baseBlock": "embed",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "purpose": "embed-iframe: full-width third-party app/form iframe inside the content column",
+    "imagePattern": "noimg",
+    "structure": "single URL cell -> iframe (title attr) at full content width, tall auto/min-height (~2600px desktop)",
+    "isFullWidth": false,
+    "hasGrid": false
+  },
+  "contentPattern": "single-cell: link to embed URL (optional placeholder image) -> full-width tall iframe with title and fallback link",
+  "usage": {
+    "pagesUsing": [
+      { "url": "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/premiums/premium-calculator" }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": []
+}

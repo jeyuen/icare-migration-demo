@@ -63,7 +63,9 @@
         "columns-campaign",
         "columns-story",
         "cards-news",
-        "cards-resources"
+        "cards-resources",
+        "cards-feature",
+        "embed-iframe"
       ]
     }
   ]

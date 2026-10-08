@@ -184,6 +184,25 @@
     ]
   },
   {
+    "id": "cards-feature-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "cards-news-item",
     "fields": [
       {
@@ -339,6 +358,40 @@
         "name": "rows",
         "value": "",
         "label": "Rows"
+      }
+    ]
+  },
+  {
+    "id": "embed-iframe",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "embed_placeholder",
+        "label": "Placeholder Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "embed_placeholderAlt",
+        "value": "",
+        "label": "Placeholder Image Alt Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "embed_uri",
+        "label": "Embed URL",
+        "description": "Full https:// URL of the page or app to embed"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "embed_title",
+        "value": "",
+        "label": "Title",
+        "description": "Accessible title for the embedded frame and fallback link text (e.g. Premium Calculator)"
       }
     ]
   },

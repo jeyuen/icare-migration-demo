@@ -258,9 +258,33 @@ button.button.primary:disabled:focus-visible {
 
 a.button.secondary,
 button.button.secondary {
-  border-color: var(--brand-blue);
+  border-color: var(--brand-magenta);
   background-color: transparent;
-  color: var(--brand-blue);
+  color: var(--brand-magenta);
+}
+
+/* external-link icon on outlined buttons that leave the site */
+a.button.secondary[href^="http"]:not([href*="icare.nsw.gov.au"])::after,
+main .default-content-wrapper a:any-link:not(.button)[href^="http"]:not([href*="icare.nsw.gov.au"])::after {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0;
+  width: 14px;
+  height: 12px;
+  margin-left: 10px;
+  background-color: currentcolor;
+  mask: url("/icons/external-link.svg") center / contain no-repeat;
+}
+
+/* source sits the icon at the top of the text line */
+a.button.secondary[href^="http"]:not([href*="icare.nsw.gov.au"])::after {
+  align-self: flex-start;
+  margin-top: 1px;
+}
+
+main .default-content-wrapper a:any-link:not(.button)[href^="http"]:not([href*="icare.nsw.gov.au"])::after {
+  margin-right: 2px;
+  vertical-align: text-top;
 }
 
 a.button.secondary:hover,
@@ -384,4 +408,65 @@ main .section.dark {
 main .section.dark :is(h1, h2, h3, h4, h5, h6),
 main .section.dark a:any-link {
   color: var(--background-color);
+}
+
+/* links inside running text */
+main .default-content-wrapper a:any-link:not(.button) {
+  font-weight: 500;
+}
+
+/* page intro: H1 + lede paragraph, then body copy (content-header + rich text on source) */
+main .default-content-wrapper > h1:first-child {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+/* page intro opening the page: source leaves room for the (empty) breadcrumb row */
+main > .section:first-of-type > .default-content-wrapper:first-child > h1:first-child {
+  margin-top: 85px;
+}
+
+main .default-content-wrapper > h1:first-child ~ p {
+  margin: 0 0 14px;
+}
+
+main .default-content-wrapper > h1:first-child + p {
+  margin: 30px 0 40px;
+  color: #212121;
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1.46;
+}
+
+main .default-content-wrapper > h1:first-child ~ p.button-wrapper {
+  margin: 0;
+}
+
+@media (width >= 600px) {
+  main .default-content-wrapper > h1:first-child {
+    line-height: 50px;
+  }
+}
+
+@media (width >= 900px) {
+  main > .section:first-of-type > .default-content-wrapper:first-child > h1:first-child {
+    margin-top: 95px;
+  }
+
+  /* source keeps the intro in the wider of two columns */
+  main .default-content-wrapper:has(> h1:first-child) > * {
+    max-width: 66.25%;
+  }
+}
+
+/* short label above a row of audience tiles, e.g. "I want to" */
+main .section .default-content-wrapper:has(+ .cards-audience-wrapper) > p:last-child {
+  margin: 0 0 10px;
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 37.5px;
+  color: #000;
 }

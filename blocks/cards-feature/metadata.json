@@ -1,0 +1,27 @@
+{
+  "variantName": "cards-feature",
+  "baseBlock": "cards",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "imagePattern": "multiple",
+    "purpose": "cards-feature — grid of borderless feature cards, each a landscape image above a heading, short description and arrow call-to-action link; the whole card is clickable via that link",
+    "structure": "3-column grid on desktop (2 at tablet, stacked on mobile); full-width 16:9 image on top of each card; text link with circled arrow icon",
+    "hasGrid": true,
+    "isFullWidth": false
+  },
+  "contentPattern": {
+    "structure": "2 cells — cell 1: image (landscape picture); cell 2: rich text with an h3 heading, a description paragraph, and a paragraph containing one link (the card's call to action; its text is the link label)",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "usage": {
+    "pagesUsing": [
+      { "url": "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors" }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": []
+}

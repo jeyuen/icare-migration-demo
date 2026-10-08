@@ -1,0 +1,153 @@
+/* cards-feature: stacked on mobile/tablet, 3 equal columns on desktop; borderless cards */
+.cards-feature {
+  margin: 35px 0;
+}
+
+.cards-feature > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-feature .cards-feature-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+}
+
+/* image: full card width, landscape crop (source ratio 1440 x 788) */
+.cards-feature .cards-feature-card-image {
+  line-height: 0;
+}
+
+.cards-feature .cards-feature-card-image p {
+  margin: 0;
+}
+
+.cards-feature .cards-feature-card-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1440 / 788;
+  object-fit: cover;
+}
+
+/* body: heading, description, link stacked; link pinned to the bottom */
+.cards-feature .cards-feature-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  border-top: 1px solid #eeeef1;
+  padding: 20px 24px;
+}
+
+.cards-feature .cards-feature-card-body h3 {
+  margin: 0 0 15px;
+  color: var(--heading-color);
+  font-size: 20.8px;
+  font-weight: 700;
+  line-height: 34px;
+}
+
+.cards-feature .cards-feature-card-body p {
+  margin: 0 0 24px;
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  line-height: 26px;
+}
+
+.cards-feature .cards-feature-card-body > :last-child {
+  margin-bottom: 0;
+}
+
+.cards-feature .cards-feature-card-body p.cards-feature-link-wrapper {
+  margin-top: auto;
+  margin-bottom: 0;
+  line-height: 30px;
+}
+
+.cards-feature a.cards-feature-link:any-link {
+  color: var(--link-color);
+  font-size: var(--body-font-size-s);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+/* circled arrow after the link text */
+.cards-feature a.cards-feature-link::after {
+  content: '';
+  box-sizing: border-box;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  background-color: var(--brand-magenta);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M17.096 9.16L10.71 4.223a.644.644 0 0 1-.071-.989.86.86 0 0 1 .598-.234.875.875 0 0 1 .527.171l7.815 6.044a.708.708 0 0 1 .41.765.705.705 0 0 1-.426.532l-7.8 6.03a.871.871 0 0 1-1.124-.062.644.644 0 0 1 .071-.989l6.378-4.931H1.358a.705.705 0 1 1 0-1.4h15.738z' fill='%23FFFFFF'/%3E%3C/svg%3E");
+  background-position: 2px center;
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+
+/* stretch the link so the whole card is clickable */
+.cards-feature a.cards-feature-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+/* keyboard focus: link text keeps brand colour, the whole card is outlined */
+.cards-feature a.cards-feature-link:focus {
+  color: var(--link-color);
+}
+
+.cards-feature a.cards-feature-link:focus-visible {
+  outline: none;
+}
+
+.cards-feature a.cards-feature-link:active {
+  color: var(--link-active-color);
+  text-decoration: underline;
+}
+
+/* hover anywhere on the card: lighter text, outlined circle nudged right */
+.cards-feature .cards-feature-card:hover a.cards-feature-link {
+  color: var(--link-hover-color);
+}
+
+.cards-feature .cards-feature-card:hover a.cards-feature-link::after {
+  border-color: var(--link-hover-color);
+  background-color: var(--background-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M17.096 9.16L10.71 4.223a.644.644 0 0 1-.071-.989.86.86 0 0 1 .598-.234.875.875 0 0 1 .527.171l7.815 6.044a.708.708 0 0 1 .41.765.705.705 0 0 1-.426.532l-7.8 6.03a.871.871 0 0 1-1.124-.062.644.644 0 0 1 .071-.989l6.378-4.931H1.358a.705.705 0 1 1 0-1.4h15.738z' fill='%23E0499A'/%3E%3C/svg%3E");
+  transform: translate(3px, -1px);
+}
+
+.cards-feature .cards-feature-card:hover a.cards-feature-link:active {
+  color: var(--link-active-color);
+}
+
+.cards-feature .cards-feature-card:has(a.cards-feature-link:focus-visible) {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 4px;
+}
+
+/* any additional inline links stay clickable above the stretched overlay */
+.cards-feature .cards-feature-card-body a:not(.cards-feature-link) {
+  position: relative;
+  z-index: 1;
+}
+
+/* breakpoint-exception: source switches to 3 columns at 1024px (64em) */
+@media (width >= 1024px) {
+  .cards-feature > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+}

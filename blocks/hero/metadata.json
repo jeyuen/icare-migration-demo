@@ -21,12 +21,17 @@
         "url": "https://www.icare.nsw.gov.au/",
         "instanceId": "3e607af6",
         "screenshot": ".pages/www_icare_nsw_gov_au--786f6e78/blocks/3e607af6.jpg"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors",
+        "documentPath": "/builders-and-homeowners/builders-and-distributors"
       }
     ],
-    "reuseCount": 1,
-    "lastUsed": "2026-10-05T01:20:12.656155Z",
+    "reuseCount": 2,
+    "lastUsed": "2026-10-07T00:25:41.885437Z",
     "documentPaths": [
-      "/index"
+      "/index",
+      "/builders-and-homeowners/builders-and-distributors"
     ]
   },
   "options": [],
