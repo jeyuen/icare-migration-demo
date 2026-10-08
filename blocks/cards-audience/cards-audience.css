@@ -160,3 +160,68 @@
 main .section.cards-audience-container {
   margin-bottom: 0;
 }
+
+/* inside a section that already paints its own band, the block's band is redundant
+   and its clip-path stacking context would paint over the preceding label */
+main .section:is(.light, .highlight, .grey, .lavender, .dark) .cards-audience {
+  padding-bottom: 0;
+  background-color: transparent;
+  box-shadow: none;
+  clip-path: none;
+}
+
+/* text-only tiles (no icon authored): single column on mobile, heading at the top,
+   arrow at a fixed offset under the heading rather than pinned to the tile bottom.
+   Homepage icon tiles never get the no-icon class, so none of this applies to them. */
+.cards-audience > ul:has(> .cards-audience-tile-no-icon) {
+  grid-template-columns: 1fr;
+  padding-right: 15px;
+}
+
+.cards-audience .cards-audience-tile.cards-audience-tile-no-icon .cards-audience-tile-body {
+  margin-top: 0;
+}
+
+.cards-audience .cards-audience-tile.cards-audience-tile-no-icon .cards-audience-tile-body h2 {
+  font-weight: 700;
+}
+
+.cards-audience .cards-audience-tile.cards-audience-tile-no-icon .cards-audience-tile-arrow {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  margin-top: 0;
+}
+
+@media (width >= 600px) {
+  .cards-audience .cards-audience-tile.cards-audience-tile-no-icon .cards-audience-tile-arrow {
+    top: 51px;
+  }
+}
+
+@media (width >= 900px) {
+  .cards-audience > ul:has(> .cards-audience-tile-no-icon) {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 6px 0 0;
+  }
+
+  .cards-audience .cards-audience-tile.cards-audience-tile-no-icon .cards-audience-tile-arrow {
+    top: 62px;
+  }
+}
+
+@media (width >= 1200px) {
+  .cards-audience .cards-audience-tile.cards-audience-tile-no-icon .cards-audience-tile-body {
+    margin-top: 10px;
+  }
+
+  .cards-audience .cards-audience-tile.cards-audience-tile-no-icon .cards-audience-tile-body h2 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .cards-audience .cards-audience-tile.cards-audience-tile-no-icon .cards-audience-tile-arrow {
+    top: 106px;
+    right: 25px;
+  }
+}

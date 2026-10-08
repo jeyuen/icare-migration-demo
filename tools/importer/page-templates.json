@@ -5,7 +5,7 @@
       "urls": [
         "https://www.icare.nsw.gov.au/"
       ],
-      "coverageGaps": [],
+      "representativeUrl": "https://www.icare.nsw.gov.au/",
       "description": "Landing page with full-width hero banner, image-led feature section and tabbed audience content with links and lists",
       "blocks": [
         {
@@ -57,7 +57,6 @@
           ]
         }
       ],
-      "representativeUrl": "https://www.icare.nsw.gov.au/",
       "sections": [
         {
           "id": "1",
@@ -168,34 +167,189 @@
             ".icare-resources ~ p"
           ]
         }
-      ]
+      ],
+      "coverageGaps": [],
+      "urlPattern": "/"
     },
     {
       "name": "section-landing",
       "urls": [
         "https://www.icare.nsw.gov.au/about-us"
       ],
-      "coverageGaps": [],
+      "representativeUrl": "https://www.icare.nsw.gov.au/about-us",
       "description": "Section landing page with large campaign hero banner, featured content module and repeated rows of three-up card grids",
-      "blocks": []
-    },
-    {
-      "name": "contact-directory",
-      "urls": [
-        "https://www.icare.nsw.gov.au/contact-us"
-      ],
+      "blocks": [],
       "coverageGaps": [],
-      "description": "Directory-style page with simple content header, rich text intro, grid of icon tile links and an accordion explainer",
-      "blocks": []
+      "urlPattern": "/*"
     },
     {
       "name": "content-detail",
       "urls": [
+        "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors",
         "https://www.icare.nsw.gov.au/workers-compensation/employers/who-needs-a-policy"
       ],
-      "coverageGaps": [],
+      "representativeUrl": "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors",
       "description": "Detail page with breadcrumbs, composite hero header, on-this-page anchor navigation and long-form rich text sections with call-to-action panels",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            "header.hero-composite-section"
+          ]
+        },
+        {
+          "name": "cards-audience",
+          "instances": [
+            ".all-category-home-tile-wrapper .home-tile-wrapper"
+          ]
+        },
+        {
+          "name": "columns-links",
+          "instances": [
+            ".cta-long-wrapper .cta-long-section"
+          ]
+        },
+        {
+          "name": "cards-feature",
+          "instances": [
+            ".l-main > div.sl"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "1",
+          "name": "Page hero",
+          "selector": [
+            "header.hero-composite-section"
+          ],
+          "style": null,
+          "blocks": [
+            "hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "I want to (quick task tiles)",
+          "selector": [
+            ".l-one-column > section.all-category-home-tile-wrapper"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-audience"
+          ],
+          "defaultContent": [
+            ".l-one-column > section.all-category-home-tile-wrapper .home-tile-content-header"
+          ]
+        },
+        {
+          "id": "3",
+          "name": "Getting started with (link rows)",
+          "selector": [
+            ".l-main > section.cta-long-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-links"
+          ],
+          "defaultContent": [
+            ".cta-long-wrapper .col-2:first-child .cta-coloumn-headding h2"
+          ]
+        },
+        {
+          "id": "4",
+          "name": "Already with icare (quick task tiles)",
+          "selector": [
+            ".l-main > section.all-category-home-tile-wrapper"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-audience"
+          ],
+          "defaultContent": [
+            ".l-main > section.all-category-home-tile-wrapper .home-tile-content-header"
+          ]
+        },
+        {
+          "id": "5",
+          "name": "Help and Resources",
+          "selector": [
+            ".l-main > h2"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-feature"
+          ],
+          "defaultContent": [
+            ".l-main > h2",
+            ".l-main > div.tags"
+          ]
+        }
+      ],
+      "coverageGaps": [],
+      "urlPattern": "/*"
+    },
+    {
+      "name": "contact-directory",
+      "urls": [
+        "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/premiums/premium-calculator",
+        "https://www.icare.nsw.gov.au/contact-us"
+      ],
+      "representativeUrl": "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/premiums/premium-calculator",
+      "description": "Directory-style page with simple content header, rich text intro, grid of icon tile links and an accordion explainer",
+      "blocks": [
+        {
+          "name": "embed-iframe",
+          "instances": [
+            ".l-main > div.cm-iframe"
+          ]
+        }
+      ],
+      "coverageGaps": [],
+      "urlPattern": "/*",
+      "sections": [
+        {
+          "id": "1",
+          "name": "Page intro and portal CTA",
+          "selector": [
+            ".l-main > div.sl"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".l-main > div.sl header.content-header h1",
+            ".l-main > div.sl header.content-header p.intro",
+            ".l-main > div.sl .cm-rich-text p",
+            ".l-main > div.sl .cm-rich-text > a.cta-is-secondary"
+          ]
+        },
+        {
+          "id": "2",
+          "name": "Premium calculator embed",
+          "selector": [
+            ".l-main > div.cm-iframe"
+          ],
+          "style": null,
+          "blocks": [
+            "embed-iframe"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "3",
+          "name": "Tags",
+          "selector": [
+            ".l-main > div.tags"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".l-main > div.tags strong",
+            ".l-main > div.tags ul"
+          ]
+        }
+      ]
     }
   ],
   "metadata": {

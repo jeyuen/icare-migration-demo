@@ -59,14 +59,71 @@
   display: none;
 }
 
-/* without a background image the text sits on the page background */
+/*
+ * no-image: solid brand-blue page-title band with a green accent bar beside the copy.
+ * Values extracted from icare header.hero-composite-section (top padding also
+ * reserves the space of the unmigrated source breadcrumb that sits on the band).
+ */
 .hero.no-image .hero-content {
-  background-color: transparent;
+  background-color: var(--brand-blue);
+  padding: 100px var(--content-gutter) 48px;
 }
 
-.hero.no-image h1,
+.hero.no-image .hero-content > div {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 0 0 32px;
+}
+
+.hero.no-image .hero-content > div::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 48px;
+  left: 0;
+  width: 8px;
+  background-color: #04a76f;
+}
+
+.hero.no-image h1 {
+  max-width: none;
+  margin: 0;
+  color: var(--background-color);
+  font-size: 41px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
 .hero.no-image .hero-content p {
-  color: inherit;
+  max-width: none;
+  margin: 24px 0 0;
+  color: var(--background-color);
+  font-size: 16px;
+  line-height: 1.63;
+}
+
+/* breakpoint-exception: source title band switches layout at 768px and 1280px */
+@media (width >= 768px) {
+  .hero.no-image h1 {
+    max-width: 456px;
+    line-height: 50px;
+  }
+
+  .hero.no-image .hero-content p {
+    max-width: 456px;
+  }
+}
+
+@media (width >= 1280px) {
+  .hero.no-image .hero-content {
+    padding-top: 108px;
+    padding-bottom: 64px;
+  }
+
+  .hero.no-image h1,
+  .hero.no-image .hero-content p {
+    max-width: 760px;
+  }
 }
 
 @media (width >= 900px) {
@@ -125,4 +182,9 @@
 main > .section.hero-container {
   position: relative;
   z-index: 1;
+}
+
+/* no-image source: 20px gap between the title band and the next section */
+main > .section.hero-container:has(.hero.no-image) {
+  margin-bottom: 20px;
 }

@@ -27,6 +27,9 @@ export default function decorate(block) {
       if (!cell.children.length && !cell.textContent.trim()) cell.remove();
     });
 
+    // Text-only tiles (no icon authored) use a tighter, heading-led layout.
+    if (!li.querySelector('.cards-audience-tile-icon')) li.classList.add('cards-audience-tile-no-icon');
+
     const link = li.querySelector('.cards-audience-tile-body a[href]');
     if (link) {
       link.classList.remove('button');

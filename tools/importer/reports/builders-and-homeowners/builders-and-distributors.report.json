@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors",
+  "path": "builders-and-homeowners/builders-and-distributors",
+  "timestamp": "2026-10-07T00:46:56.425Z",
+  "title": "Builders - HBCF | icare",
+  "template": "content-detail",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-audience",
+    "columns-links",
+    "cards-feature"
+  ]
+}

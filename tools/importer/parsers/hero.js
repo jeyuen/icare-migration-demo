@@ -2,7 +2,8 @@
 /* global WebImporter */
 /**
  * Parser for hero. Base: hero. Source: https://www.icare.nsw.gov.au/
- * Instance selector: .hero-banner-container .homepage-hero-banner
+ * Instance selectors: .hero-banner-container .homepage-hero-banner (homepage),
+ *   header.hero-composite-section (content-detail; no image -> empty image row)
  * UE model (blocks/hero/_hero.json): image (+imageAlt collapsed), text (richtext)
  * Rows: 1) image  2) text (heading, subheading, CTA)
  *
@@ -16,9 +17,10 @@ export default function parse(element, { document }) {
   // Image: <div class="image-container"><img class="image" ...></div>
   const image = scope.querySelector('.image-container img, img.image, img');
 
-  // Text: <div class="content"><h1 class="hero-banner-heading"> + <p>
-  const content = scope.querySelector('.content') || scope;
-  const heading = content.querySelector('h1, h2, .hero-banner-heading');
+  // Text: homepage <div class="content"><h1 class="hero-banner-heading"> + <p>
+  // Detail pages (header.hero-composite-section): .content > .content-inner > h1.hero-composite-title + <p>
+  const content = scope.querySelector('.content-inner') || scope.querySelector('.content') || scope;
+  const heading = content.querySelector('h1, h2, .hero-banner-heading, .hero-composite-title');
   const paragraphs = [...content.querySelectorAll(':scope > p')];
   const ctas = [...content.querySelectorAll('a')].filter((a) => !paragraphs.some((p) => p.contains(a)));
 

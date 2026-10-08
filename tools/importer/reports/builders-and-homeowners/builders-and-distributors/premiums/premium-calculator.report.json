@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/premiums/premium-calculator",
+  "path": "builders-and-homeowners/builders-and-distributors/premiums/premium-calculator",
+  "timestamp": "2026-10-08T05:47:23.838Z",
+  "title": "HBCF premium calculator for homeowners and builders | icare",
+  "template": "contact-directory",
+  "blocks": [
+    "embed-iframe"
+  ]
+}

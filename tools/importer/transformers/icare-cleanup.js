@@ -34,6 +34,30 @@ export default function transform(hookName, element, payload) {
       '.modal-bg',
       '.shade-bg',
     ]);
+
+    // ReadSpeaker "Listen" widget at the top of main#main (content-detail pages)
+    // Found: <div id="readspeaker_button1" class="rs_skip rsbtn rs_preserve mega_toggle">
+    //          (button.rsbtn_tooltoggle, div#readspeaker_button1_toolpanel, a.rsbtn_play)
+    // Removed before parsing so its link is never swept into default content.
+    WebImporter.DOMUtils.remove(element, [
+      '#readspeaker_button1',
+      '.rsbtn',
+    ]);
+
+    // Empty CTA module placeholder (contact-directory pages)
+    // Found: <div class="sl-item"><section class="cm cm-cta-module is-theme-purple"></section></div>
+    // Only removed when it has no text and no media; its now-empty .sl-item wrapper goes too.
+    element.querySelectorAll('section.cm-cta-module').forEach((el) => {
+      const hasText = el.textContent.replace(/ /g, ' ').trim().length > 0;
+      const hasMedia = el.querySelector('img, picture, video, iframe, a');
+      if (hasText || hasMedia) return;
+      const wrapper = el.parentElement;
+      el.remove();
+      if (wrapper && wrapper !== element && wrapper.classList.contains('sl-item')
+        && !wrapper.textContent.trim() && !wrapper.children.length) {
+        wrapper.remove();
+      }
+    });
   }
 
   if (hookName === TransformHook.afterTransform) {
@@ -54,6 +78,22 @@ export default function transform(hookName, element, payload) {
 
     // Global footer. Found: <footer class="global-footer">
     WebImporter.DOMUtils.remove(element, ['footer.global-footer']);
+
+    // Breadcrumb trail above the hero (content-detail pages)
+    // Found: <div id="skip-to-main"><nav class="breadcrumbs breadcrumbs-cm">
+    // NOTE: the sibling <header class="hero-composite-section"> is the hero block and must be kept;
+    // header removal above is scoped to header.global-header only.
+    WebImporter.DOMUtils.remove(element, ['nav.breadcrumbs']);
+
+    // Empty rich-text containers (content-detail pages)
+    // Found in main#main: <div class="cm cm-rich-text is-large"></div> and
+    //   <div class="cm cm-rich-text is-large"><div><div class="ck-content"></div></div></div>
+    // Only removed when they contain no text and no media.
+    element.querySelectorAll('.cm-rich-text').forEach((el) => {
+      const hasText = el.textContent.replace(/ /g, ' ').trim().length > 0;
+      const hasMedia = el.querySelector('img, picture, video, table, iframe, hr');
+      if (!hasText && !hasMedia) el.remove();
+    });
 
     // Google Translate leftovers
     // Found: <div class="skiptranslate"> (top of body), <div id="google_translate_element">,
@@ -89,12 +129,32 @@ export default function transform(hookName, element, payload) {
       'byoc-registration',
     ]);
 
+    // Standalone outlined CTA left as default content -> secondary button (<em>-wrapped link)
+    // Found (contact-directory): <div class="cm-rich-text is-medium">...<a class="cta-is-secondary">HBCF portal</a></div>
+    // Runs after parsing, so only CTAs not consumed by a block parser are affected.
+    element.querySelectorAll('a.cta-is-secondary').forEach((a) => {
+      if (a.closest('table') || a.closest('em')) return;
+      a.removeAttribute('class');
+      const em = document.createElement('em');
+      a.replaceWith(em);
+      em.append(a);
+      if (em.parentElement && em.parentElement.tagName !== 'P') {
+        const p = document.createElement('p');
+        em.replaceWith(p);
+        p.append(em);
+      }
+    });
+
     // Non-authorable elements. Found: many <link href=...> preloads at top of body, empty <iframe>, <meta>
+    // Iframes inside parsed block tables (e.g. embed-iframe from div.cm-iframe) are preserved;
+    // Google Translate / reCAPTCHA iframes are removed above or here.
     WebImporter.DOMUtils.remove(element, [
       'link',
-      'iframe',
       'noscript',
       'meta',
     ]);
+    element.querySelectorAll('iframe').forEach((iframe) => {
+      if (!iframe.closest('table')) iframe.remove();
+    });
   }
 }

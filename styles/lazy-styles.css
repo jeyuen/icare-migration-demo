@@ -1,1 +1,40 @@
 /* add global styles that can be loaded post LCP here */
+
+/* "Tagged in:" label + tag chips at the foot of content pages */
+main .default-content-wrapper p:has(> strong:only-child):has(+ ul a[href*="/searchresults"]) {
+  display: inline;
+  margin: 0 10px 0 0;
+}
+
+main .default-content-wrapper p:has(> strong:only-child):has(+ ul a[href*="/searchresults"]) strong {
+  color: var(--heading-color);
+  font-weight: 400;
+  line-height: 25px;
+}
+
+main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/searchresults"]) {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/searchresults"]) li {
+  display: inline-block;
+  margin: 0 7px 7px 0;
+}
+
+main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/searchresults"]) a:any-link {
+  display: block;
+  padding: 5px;
+  background-color: var(--light-color);
+  color: var(--link-color);
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  line-height: 14px;
+  text-decoration: none;
+}
+
+main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/searchresults"]) a:hover {
+  text-decoration: underline;
+}

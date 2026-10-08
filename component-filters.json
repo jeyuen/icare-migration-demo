@@ -24,7 +24,9 @@
       "columns-campaign",
       "columns-story",
       "cards-news",
-      "cards-resources"
+      "cards-resources",
+      "cards-feature",
+      "embed-iframe"
     ]
   },
   {
@@ -37,6 +39,12 @@
     "id": "cards-audience",
     "components": [
       "cards-audience-item"
+    ]
+  },
+  {
+    "id": "cards-feature",
+    "components": [
+      "cards-feature-item"
     ]
   },
   {
