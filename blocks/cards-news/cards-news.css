@@ -122,9 +122,14 @@
   background-size: cover;
 }
 
-/* text tiles */
+/* text tiles; stacked, the source leaves 35px (8px on the last tile) under "Read more" */
 .cards-news .cards-news-card:not(.is-featured) {
+  padding-bottom: 39px;
   background-color: var(--background-color);
+}
+
+.cards-news .cards-news-card:not(.is-featured):last-child {
+  padding-bottom: 11px;
 }
 
 .cards-news .cards-news-card:not(.is-featured) .cards-news-card-body {
@@ -135,6 +140,12 @@
 .cards-news .cards-news-card.is-featured .cards-news-card-image {
   position: absolute;
   inset: 0;
+}
+
+/* decorateMain wraps the picture in a <p>; keep it flush with the card */
+.cards-news .cards-news-card.is-featured .cards-news-card-image > p {
+  height: 100%;
+  margin: 0;
 }
 
 .cards-news .cards-news-card.is-featured .cards-news-card-image picture,
@@ -189,6 +200,10 @@
   .cards-news .cards-news-card.is-featured .cards-news-card-body {
     width: 289px;
   }
+
+  .cards-news .cards-news-card:not(.is-featured):last-child {
+    padding-bottom: 39px;
+  }
 }
 
 /* breakpoint-exception: the source puts all news tiles on one row from 1024px */
@@ -204,6 +219,11 @@
 
   .cards-news .cards-news-card.is-featured .cards-news-card-body {
     border-bottom-right-radius: 20px;
+  }
+
+  .cards-news .cards-news-card:not(.is-featured),
+  .cards-news .cards-news-card:not(.is-featured):last-child {
+    padding-bottom: 0;
   }
 
   .cards-news .cards-news-card:not(.is-featured) .cards-news-card-body {

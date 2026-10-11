@@ -66,12 +66,14 @@
  */
 .hero.no-image .hero-content {
   background-color: var(--brand-blue);
-  padding: 100px var(--content-gutter) 48px;
+  padding: 148px 20px 48px;
 }
 
 .hero.no-image .hero-content > div {
   position: relative;
   box-sizing: border-box;
+  max-width: none;
+  margin: 0 auto;
   padding: 0 0 0 32px;
 }
 
@@ -102,8 +104,22 @@
   line-height: 1.63;
 }
 
-/* breakpoint-exception: source title band switches layout at 768px and 1280px */
+/*
+ * breakpoint-exception: source title band follows the source grid
+ * (breadcrumb unwraps to one line at ~455px, 768px / 1024px containers with 20px then 36px
+ * padding from 1244px, 1272px desktop container)
+ */
+@media (width >= 455px) {
+  .hero.no-image .hero-content {
+    padding-top: 100px;
+  }
+}
+
 @media (width >= 768px) {
+  .hero.no-image .hero-content > div {
+    max-width: 728px;
+  }
+
   .hero.no-image h1 {
     max-width: 456px;
     line-height: 50px;
@@ -114,10 +130,30 @@
   }
 }
 
-@media (width >= 1280px) {
+@media (width >= 1024px) {
+  .hero.no-image .hero-content > div {
+    max-width: 984px;
+  }
+}
+
+@media (width >= 1244px) {
+  .hero.no-image .hero-content {
+    padding-inline: 36px;
+  }
+
+  .hero.no-image .hero-content > div {
+    max-width: 952px;
+  }
+}
+
+@media (width >= 1272px) {
   .hero.no-image .hero-content {
     padding-top: 108px;
     padding-bottom: 64px;
+  }
+
+  .hero.no-image .hero-content > div {
+    max-width: var(--content-max-width);
   }
 
   .hero.no-image h1,

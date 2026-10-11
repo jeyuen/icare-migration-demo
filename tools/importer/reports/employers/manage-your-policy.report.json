@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/employers/manage-your-policy",
+  "path": "employers/manage-your-policy",
+  "timestamp": "2026-10-11T09:45:21.494Z",
+  "title": "Manage your policy | icare",
+  "template": "section-landing",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-audience",
+    "columns-links",
+    "cards-feature"
+  ]
+}

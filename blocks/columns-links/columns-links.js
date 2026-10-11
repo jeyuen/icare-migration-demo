@@ -26,6 +26,12 @@ function normaliseCell(cell) {
     li.classList.add('columns-links-item');
     a.classList.remove('button', 'primary', 'secondary', 'accent');
     a.classList.add('columns-links-link');
+    if (!a.querySelector('.columns-links-label')) {
+      const label = document.createElement('span');
+      label.className = 'columns-links-label';
+      label.append(...a.childNodes);
+      a.append(label);
+    }
     if (!a.querySelector('.columns-links-arrow')) {
       const arrow = document.createElement('span');
       arrow.className = 'columns-links-arrow';
@@ -39,6 +45,10 @@ export default function decorate(block) {
   const firstRow = block.firstElementChild;
   const cols = firstRow ? [...firstRow.children] : [];
   block.classList.add(`columns-links-${cols.length}-cols`);
+  // The homepage "I want to..." list uses the compact arrow/spacing of the source
+  // homepage; inner pages use the larger arrow. The homepage is identified by its
+  // search banner (same signal as styles.css). Authors can also set the "compact" variant.
+  if (block.closest('main')?.querySelector('.search-banner')) block.classList.add('compact');
 
   [...block.children].forEach((row) => {
     [...row.children].forEach((cell) => {

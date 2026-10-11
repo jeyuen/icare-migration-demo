@@ -46,7 +46,16 @@ export default function decorate(block) {
 
   ul.querySelectorAll('picture > img').forEach((img) => {
     const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
-    moveInstrumentation(img, optimizedPic.querySelector('img'));
+    const optimizedImg = optimizedPic.querySelector('img');
+    // reserve the rendition's ratio before load (images render uncropped at natural ratio)
+    const { searchParams } = new URL(img.src, window.location.href);
+    const w = img.getAttribute('width') || searchParams.get('w');
+    const h = img.getAttribute('height') || searchParams.get('h');
+    if (w && h) {
+      optimizedImg.width = w;
+      optimizedImg.height = h;
+    }
+    moveInstrumentation(img, optimizedImg);
     img.closest('picture').replaceWith(optimizedPic);
   });
 

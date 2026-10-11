@@ -49,6 +49,7 @@
 
 .cards-resources .cards-resources-card-icon p {
   margin: 0;
+  line-height: 1;
 }
 
 .cards-resources .cards-resources-card-icon picture {
@@ -72,8 +73,8 @@
   line-height: 34px;
 }
 
-/* body text */
-.cards-resources .cards-resources-card p {
+/* body text (scoped to the text cell so its margin cannot leak into the icon cell) */
+.cards-resources .cards-resources-card-body p {
   margin: 0 0 24px;
   color: #4b5563;
   font-size: 15.2px;
@@ -138,8 +139,24 @@ main .section.cards-resources-container {
   padding-bottom: 40px;
 }
 
+/* on small screens the source insets the heading and the grid by 48px / 24px */
+main .section.cards-resources-container > .default-content-wrapper:first-child,
+main .section.cards-resources-container > .cards-resources-wrapper {
+  padding-inline: calc(var(--content-gutter) + 24px);
+}
+
+main .section.cards-resources-container > .default-content-wrapper:first-child {
+  padding-top: 48px;
+}
+
+/* "Resources" section title */
 main .section.cards-resources-container > .default-content-wrapper:first-child > :is(h2, h3) {
-  margin-bottom: 39px;
+  margin: 0 0 28px;
+  padding: 4px 0 10px;
+  color: #111827;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 36.4px;
 }
 
 /* Acknowledgement of Country follows the cards (its heading margin collapses into this) */
@@ -148,8 +165,13 @@ main .section.cards-resources-container > .cards-resources-wrapper + .default-co
 }
 
 @media (width >= 900px) {
-  main .section.cards-resources-container > .default-content-wrapper:first-child > :is(h2, h3) {
-    margin-bottom: 28px;
+  main .section.cards-resources-container > .default-content-wrapper:first-child,
+  main .section.cards-resources-container > .cards-resources-wrapper {
+    padding-inline: var(--content-gutter);
+  }
+
+  main .section.cards-resources-container > .default-content-wrapper:first-child {
+    padding-top: 0;
   }
 
   main .section.cards-resources-container > .cards-resources-wrapper + .default-content-wrapper {
