@@ -1,0 +1,149 @@
+/* cards-downloads: vertical list of document links on a grey panel; icon column + text column per item
+ * values from source section.cm-links-downloads > ul (migration-work/cards-downloads-extracted.css) */
+.cards-downloads {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+
+  /* the source component sits 35px from the heading above and the content below */
+  margin: var(--section-spacing) 0;
+  padding: 40px 30px;
+  background-color: #eeeef1;
+  color: var(--text-color);
+}
+
+/* top rule: short magenta lead-in, then blue */
+.cards-downloads::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background-image: linear-gradient(to right, var(--brand-magenta) 40px, var(--brand-blue) 40px);
+}
+
+.cards-downloads > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-downloads .cards-downloads-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  column-gap: 15px;
+  align-items: start;
+}
+
+.cards-downloads .cards-downloads-item + .cards-downloads-item {
+  margin-top: 24px;
+}
+
+/* file-type icon column */
+.cards-downloads .cards-downloads-icon {
+  color: var(--brand-magenta);
+  line-height: 0;
+}
+
+.cards-downloads .cards-downloads-icon p {
+  margin: 0;
+}
+
+.cards-downloads .cards-downloads-icon img,
+.cards-downloads .cards-downloads-file-icon svg {
+  display: block;
+  width: 20px;
+  height: 25px;
+  object-fit: contain;
+}
+
+/* text column: title line box starts 5px above the icon, as on the source */
+.cards-downloads .cards-downloads-body {
+  margin-top: -5px;
+
+  /* the source's inline-block link adds 1px of baseline gap below each item */
+  padding-bottom: 1px;
+}
+
+.cards-downloads .cards-downloads-body > * {
+  margin: 0;
+}
+
+.cards-downloads .cards-downloads-title {
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  line-height: 25px;
+}
+
+.cards-downloads a.cards-downloads-link:any-link {
+  color: var(--link-color);
+  text-decoration: underline;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
+}
+
+.cards-downloads a.cards-downloads-link:hover {
+  color: var(--link-hover-color);
+  text-decoration: none;
+}
+
+.cards-downloads a.cards-downloads-link:active {
+  color: var(--link-active-color);
+}
+
+.cards-downloads .cards-downloads-meta {
+  color: #666;
+  font-size: var(--body-font-size-xs);
+  font-weight: 700;
+  line-height: 26px;
+}
+
+.cards-downloads .cards-downloads-file-type {
+  text-transform: uppercase;
+}
+
+.cards-downloads .cards-downloads-description {
+  color: var(--text-color);
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  line-height: 26px;
+}
+
+/* the source hides the upload date and description on small screens */
+.cards-downloads .cards-downloads-date,
+.cards-downloads .cards-downloads-description {
+  display: none;
+}
+
+/* stretch the title link so the whole item is clickable, as on the source */
+.cards-downloads a.cards-downloads-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.cards-downloads .cards-downloads-item:has(a.cards-downloads-link:focus-visible) {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 4px;
+}
+
+.cards-downloads a.cards-downloads-link:focus-visible {
+  outline: none;
+}
+
+/* breakpoint-exception: the source reveals date and description from 768px */
+@media (width >= 768px) {
+  .cards-downloads .cards-downloads-date {
+    display: inline;
+  }
+
+  .cards-downloads .cards-downloads-description {
+    display: block;
+  }
+}
+
+/* breakpoint-exception: the source widens the panel padding at 1024px, with the two-column layout */
+@media (width >= 1024px) {
+  .cards-downloads {
+    padding: 40px;
+  }
+}

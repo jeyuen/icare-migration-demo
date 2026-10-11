@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/how-to-access-your-monthly-cost-of-claims-report",
+  "path": "workers-compensation/employers/manage-your-policy/how-to-access-your-monthly-cost-of-claims-report",
+  "timestamp": "2026-10-11T11:45:47.409Z",
+  "title": "How to access your monthly Cost of Claims report | icare",
+  "template": "guide-with-page-nav",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "accordion"
+  ]
+}

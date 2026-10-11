@@ -26,7 +26,10 @@
       "cards-news",
       "cards-resources",
       "cards-feature",
-      "embed-iframe"
+      "embed-iframe",
+      "embed-video",
+      "cards-downloads",
+      "table"
     ]
   },
   {
@@ -39,6 +42,12 @@
     "id": "cards-audience",
     "components": [
       "cards-audience-item"
+    ]
+  },
+  {
+    "id": "cards-downloads",
+    "components": [
+      "cards-downloads-item"
     ]
   },
   {
@@ -102,6 +111,54 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "table",
+    "components": [
+      "table-row"
+    ]
+  },
+  {
+    "id": "table-2-columns",
+    "components": [
+      "table-col-2"
+    ]
+  },
+  {
+    "id": "table-3-columns",
+    "components": [
+      "table-col-3"
+    ]
+  },
+  {
+    "id": "table-4-columns",
+    "components": [
+      "table-col-4"
+    ]
+  },
+  {
+    "id": "table-5-columns",
+    "components": [
+      "table-col-5"
+    ]
+  },
+  {
+    "id": "table-6-columns",
+    "components": [
+      "table-col-6"
+    ]
+  },
+  {
+    "id": "table-7-columns",
+    "components": [
+      "table-col-7"
+    ]
+  },
+  {
+    "id": "table-8-columns",
+    "components": [
+      "table-col-8"
     ]
   }
 ]

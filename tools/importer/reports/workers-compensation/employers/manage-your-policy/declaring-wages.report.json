@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages",
+  "path": "workers-compensation/employers/manage-your-policy/declaring-wages",
+  "timestamp": "2026-10-11T11:44:12.880Z",
+  "title": "Declaring Wages to Calculate Workers Compensation premiums | icare",
+  "template": "guide-with-page-nav",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-audience",
+    "embed-video",
+    "cards-downloads"
+  ]
+}

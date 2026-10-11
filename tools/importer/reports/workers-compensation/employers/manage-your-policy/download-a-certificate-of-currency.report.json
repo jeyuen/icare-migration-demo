@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/download-a-certificate-of-currency",
+  "path": "workers-compensation/employers/manage-your-policy/download-a-certificate-of-currency",
+  "timestamp": "2026-10-11T11:45:24.924Z",
+  "title": "Download a Certificate of Currency | icare",
+  "template": "guide-with-page-nav",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-audience",
+    "cards-downloads"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/new-policy/understanding-wics-and-premium-rates",
+  "path": "workers-compensation/employers/new-policy/understanding-wics-and-premium-rates",
+  "timestamp": "2026-10-11T11:48:58.309Z",
+  "title": "Understanding WICS and premium rates | icare",
+  "template": "guide-with-page-nav",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-audience",
+    "cards-downloads",
+    "cards-downloads"
+  ]
+}

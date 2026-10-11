@@ -515,3 +515,44 @@ main .section .default-content-wrapper:has(+ .cards-audience-wrapper) > p:last-c
   line-height: 37.5px;
   color: #000;
 }
+
+/* "On this page": jump links to the page's headings, with a green rule beside the list */
+main > .section.on-this-page {
+  margin: 0;
+  padding: 37px 0;
+}
+
+main .section.on-this-page .default-content-wrapper > h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  line-height: 25px;
+}
+
+main .section.on-this-page .default-content-wrapper > ul {
+  margin: 0;
+  border-left: 8px solid var(--brand-green);
+  padding-left: 16px;
+  list-style: none;
+}
+
+main .section.on-this-page .default-content-wrapper li {
+  padding: 0;
+  line-height: 24px;
+}
+
+main .section.on-this-page .default-content-wrapper li + li {
+  margin-top: 8px;
+}
+
+main .section.on-this-page .default-content-wrapper a:any-link {
+  color: var(--brand-blue);
+  text-underline-offset: 4px;
+}
+
+/* guide body copy sits in the wider of two columns, as on the source
+ * breakpoint-exception: the source widens to two columns at 1024px */
+@media (width >= 1024px) {
+  main > .section.content-column > div > * {
+    max-width: 66.25%;
+  }
+}

@@ -44,6 +44,14 @@ export default function transform(hookName, element, payload) {
       '.rsbtn',
     ]);
 
+    // Salesforce Embedded Messaging chat widget (guide pages, end of body)
+    // Found: <iframe class="embeddedMessagingSiteContextFrame" id="embeddedMessagingSiteContextFrame">,
+    //        <div id="embedded-messaging" class="embedded-messaging"> (button "Chat with the team" + inline svg img)
+    WebImporter.DOMUtils.remove(element, [
+      '#embedded-messaging',
+      '#embeddedMessagingSiteContextFrame',
+    ]);
+
     // Empty CTA module placeholder (contact-directory pages)
     // Found: <div class="sl-item"><section class="cm cm-cta-module is-theme-purple"></section></div>
     // Only removed when it has no text and no media; its now-empty .sl-item wrapper goes too.
@@ -95,6 +103,15 @@ export default function transform(hookName, element, payload) {
       if (!hasText && !hasMedia) el.remove();
     });
 
+    // Empty responsive placeholder (guide pages)
+    // Found in main#main right after the ReadSpeaker widget: <div class="mobile-only"></div>
+    // Only removed when it contains no text and no media, so populated mobile-only content is untouched.
+    element.querySelectorAll('div.mobile-only').forEach((el) => {
+      const hasText = el.textContent.replace(/ /g, ' ').trim().length > 0;
+      const hasMedia = el.querySelector('img, picture, video, table, iframe, hr');
+      if (!hasText && !hasMedia) el.remove();
+    });
+
     // Google Translate leftovers
     // Found: <div class="skiptranslate"> (top of body), <div id="google_translate_element">,
     //        <div id="goog-gt-tt" class="VIpgJd-yAWNEb-L7lbkb skiptranslate">,
@@ -142,6 +159,22 @@ export default function transform(hookName, element, payload) {
         const p = document.createElement('p');
         em.replaceWith(p);
         p.append(em);
+      }
+    });
+
+    // Standalone filled CTA left as default content -> primary button (<strong>-wrapped link)
+    // Found (guide pages): <div class="cm-rich-text">...<p><a class="cta">Find out what ... covers</a></p></div>
+    // Only links whose sole class is "cta"; modifier variants (is-secondary, ...) are left alone.
+    element.querySelectorAll('a[class="cta"]').forEach((a) => {
+      if (a.closest('table') || a.closest('strong, em')) return;
+      a.removeAttribute('class');
+      const strong = document.createElement('strong');
+      a.replaceWith(strong);
+      strong.append(a);
+      if (strong.parentElement && strong.parentElement.tagName !== 'P') {
+        const p = document.createElement('p');
+        strong.replaceWith(p);
+        p.append(strong);
       }
     });
 

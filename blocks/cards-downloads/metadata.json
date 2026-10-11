@@ -1,0 +1,20 @@
+{
+  "variantName": "cards-downloads",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "structure": "vertical list of document links on a light grey panel with a coloured top rule; each item: PDF file icon, bold link title, size/type/upload-date line, short description",
+    "imagePattern": "icon",
+    "colorScheme": "light",
+    "density": "medium"
+  },
+  "contentPattern": "one row per document: link (title + href), meta line (size, type, date), description",
+  "usage": {
+    "pagesUsing": [
+      { "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages" }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": []
+}
