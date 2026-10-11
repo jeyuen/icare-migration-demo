@@ -3,10 +3,10 @@
     {
       "name": "homepage",
       "urls": [
-        "https://www.icare.nsw.gov.au/"
+        "https://icare.nsw.gov.au/"
       ],
-      "representativeUrl": "https://www.icare.nsw.gov.au/",
-      "description": "Landing page with full-width hero banner, image-led feature section and tabbed audience content with links and lists",
+      "coverageGaps": [],
+      "description": "Audience landing page with full-width hero image, overlaid search and headline, tabbed content and promo sections",
       "blocks": [
         {
           "name": "hero",
@@ -57,6 +57,7 @@
           ]
         }
       ],
+      "representativeUrl": "https://icare.nsw.gov.au/",
       "sections": [
         {
           "id": "1",
@@ -167,29 +168,1717 @@
             ".icare-resources ~ p"
           ]
         }
+      ]
+    },
+    {
+      "name": "section-overview-hub",
+      "urls": [
+        "https://icare.nsw.gov.au/about-us",
+        "https://icare.nsw.gov.au/about-us/improvement-at-icare",
+        "https://icare.nsw.gov.au/crisis-support",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/broker-hub",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/small-business-hub",
+        "https://icare.nsw.gov.au/employers/manage-your-policy/whats-new-in-policy",
+        "https://icare.nsw.gov.au/employers/understanding-workers-insurance",
+        "https://icare.nsw.gov.au/government-agencies/risk-education-express",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/shine-magazine",
+        "https://icare.nsw.gov.au/mental-health-claims-hub/employers",
+        "https://icare.nsw.gov.au/practitioners-and-providers/allied-health-e-newsletter-form",
+        "https://icare.nsw.gov.au/practitioners-and-providers/invoicing-and-payment/digital-invoicing",
+        "https://icare.nsw.gov.au/social-connections-toolkit"
       ],
       "coverageGaps": [],
-      "urlPattern": "/"
+      "description": "Section hub with image hero banner, intro with related-links sidebar, feature card and stacked topic rows each paired with a side promo card",
+      "blocks": []
+    },
+    {
+      "name": "hero-image-document-library",
+      "urls": [
+        "https://icare.nsw.gov.au/about-us/annual-reports",
+        "https://icare.nsw.gov.au/about-us/customer-engagement/medical-support-panel",
+        "https://icare.nsw.gov.au/ageing-well",
+        "https://icare.nsw.gov.au/employers/employer-obligations/injury-prevention/road-safety-program",
+        "https://icare.nsw.gov.au/employers/employer-obligations/lung-screening-service",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/construction/construction-insurance-insights",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/construction/covid-19-strategies-for-managing-stress-for-construction-workers",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/construction/how-to-best-communicate-with-workers-from-different-cultural-backgrounds-about-safety",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/construction/how-to-minimise-shift-work-fatigue-for-construction-workers",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/construction/the-need-to-work-at-heights-might-not-change",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/health/employer-toolkit-stress-management-strategies-for-healthcare-workers",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/health/health-insurance-insights",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/health/managing-patient-and-client-aggression",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/health/minimising-the-risks-of-injury-for-older-workers-in-health-and-community-services",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/health/reducing-psychological-injuries-for-employees-after-a-physical-injury",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/health/supporting-health-workers-return-to-work-after-experiencing-mental-health-issues",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/manufacturing/complacency-and-inattention-may-be-your-biggest-risks",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/manufacturing/how-to-reduce-and-prevent-repetitive-injuries-in-your-manufacturing-business",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/manufacturing/manufacturing-insurance-insights",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/manufacturing/safety-guarding-what-you-can-do-to-prevent-injuries-from-machinery",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/manufacturing/the-importance-of-early-intervention-and-treatment-for-psychological-injuries",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/manufacturing/work-health-and-safety-inductions-for-new-and-young-workers",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/transport/how-to-help-transport-workers-manage-stress",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/transport/managing-customer-and-public-aggression",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/transport/social-support-during-physical-isolation-for-transport-workers",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/transport/transport-insurance-insights",
+        "https://icare.nsw.gov.au/government-agencies/risk-education-express/connect-and-care",
+        "https://icare.nsw.gov.au/injured-or-ill-people/shine-writers-prize/shine-writers-prize-2023-winners",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/faqs",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/faqs/key-dates",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/research-funding",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/research-funding/discovery-and-innovation-grants",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/research-funding/funding-awarded-in-fy24-25-or-later",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/research-funding/research-funding-awarded-in-fy23-24-or-earlier",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/research-funding/research-translation-grants",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/researcher-development",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/researcher-development/phd-scholarships",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/researcher-development/postdoctoral-fellowships",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/researcher-development/projects-awarded-research-funding-in-fy24-25-or-later",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/support-organisations",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/payments/for-financial-dependants",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/services-and-support/lung-screening-service",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/make-a-claim/notify-us-that-you-have-been-injured",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/types-of-payments",
+        "https://icare.nsw.gov.au/news-and-stories/2023/shine-writers-prize-winners",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/requesting-services-on-behalf-of-an-injured-person",
+        "https://icare.nsw.gov.au/practitioners-and-providers/invoicing-and-payment"
+      ],
+      "coverageGaps": [],
+      "description": "Full-width image banner, intro text with sidebar promo cards, long grouped lists of downloadable documents and accordions",
+      "blocks": []
+    },
+    {
+      "name": "content-article",
+      "urls": [
+        "https://icare.nsw.gov.au/about-us/core-services-information",
+        "https://icare.nsw.gov.au/about-us/customer-engagement",
+        "https://icare.nsw.gov.au/about-us/customer-engagement/customer-advocate",
+        "https://icare.nsw.gov.au/about-us/customer-engagement/lifetime-care-advisory-groups",
+        "https://icare.nsw.gov.au/about-us/events-and-awards",
+        "https://icare.nsw.gov.au/about-us/events-and-awards/seminars-and-workshops",
+        "https://icare.nsw.gov.au/about-us/our-people",
+        "https://icare.nsw.gov.au/about-us/our-people/our-group-leadership-team",
+        "https://icare.nsw.gov.au/about-us/our-people/our-group-leadership-team/andrea-walsh",
+        "https://icare.nsw.gov.au/about-us/our-people/our-group-leadership-team/chris-bertuch",
+        "https://icare.nsw.gov.au/about-us/our-people/our-group-leadership-team/dai-liu",
+        "https://icare.nsw.gov.au/about-us/our-people/our-group-leadership-team/geniere-aplin",
+        "https://icare.nsw.gov.au/about-us/our-people/our-group-leadership-team/natasha-walls",
+        "https://icare.nsw.gov.au/about-us/our-people/our-group-leadership-team/paulette-pang",
+        "https://icare.nsw.gov.au/about-us/our-people/our-group-leadership-team/rashi-bansal",
+        "https://icare.nsw.gov.au/about-us/our-people/our-group-leadership-team/sarah-johnson-psm",
+        "https://icare.nsw.gov.au/about-us/our-people/our-group-leadership-team/stuart-farquharson",
+        "https://icare.nsw.gov.au/about-us/our-people/our-group-leadership-team/tony-wessling",
+        "https://icare.nsw.gov.au/about-us/our-strategy/our-reconciliation-journey",
+        "https://icare.nsw.gov.au/about-us/our-strategy/our-reconciliation-journey/creating-a-deeper-understanding-of-nsw-communities",
+        "https://icare.nsw.gov.au/about-us/our-strategy/our-reconciliation-journey/culturally-safe-support-and-planning",
+        "https://icare.nsw.gov.au/about-us/our-strategy/our-reconciliation-journey/keeping-the-fires-burning-first-nations-working-group",
+        "https://icare.nsw.gov.au/about-us/our-strategy/our-reconciliation-journey/snacking-with-purpose-sustainable-procurement",
+        "https://icare.nsw.gov.au/about-us/publications/customer-advocate-report",
+        "https://icare.nsw.gov.au/about-us/research-and-funding",
+        "https://icare.nsw.gov.au/about-us/statistics",
+        "https://icare.nsw.gov.au/about-us/statistics/claims-service-provider-performance",
+        "https://icare.nsw.gov.au/about-us/statistics/icare-dust-disease-care-quarterly-data",
+        "https://icare.nsw.gov.au/access-to-information/using-ai-tools-to-communicate",
+        "https://icare.nsw.gov.au/accessibility-settings",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/eligibility",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/eligibility/builder-document-checklist",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/eligibility/new-eligibility-manual",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/eligibility/securities-held-by-hbcf",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/hbcf-builders-app-privacy-statement",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/hbcf-builders-app-terms-and-conditions",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/premiums",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/premiums/premium-calculator",
+        "https://icare.nsw.gov.au/builders-and-homeowners/disputes",
+        "https://icare.nsw.gov.au/builders-and-homeowners/homeowners/hbcf-am-i-ready-to-make-a-claim",
+        "https://icare.nsw.gov.au/contact-us",
+        "https://icare.nsw.gov.au/contact-us/raise-a-complaint",
+        "https://icare.nsw.gov.au/contact-us/raise-a-complaint/ctp-care",
+        "https://icare.nsw.gov.au/contact-us/raise-a-complaint/dust-diseases-care",
+        "https://icare.nsw.gov.au/contact-us/raise-a-complaint/employer-engagement",
+        "https://icare.nsw.gov.au/contact-us/raise-a-complaint/hbcf",
+        "https://icare.nsw.gov.au/contact-us/raise-a-complaint/insurance-for-nsw",
+        "https://icare.nsw.gov.au/contact-us/raise-a-complaint/lifetime-care-workers-care",
+        "https://icare.nsw.gov.au/contact-us/raise-a-complaint/sporting-injuries",
+        "https://icare.nsw.gov.au/contact-us/raise-a-complaint/workers-insurance-claims",
+        "https://icare.nsw.gov.au/contact-us/raise-a-complaint/workers-insurance-policy",
+        "https://icare.nsw.gov.au/copyright",
+        "https://icare.nsw.gov.au/declaration-training",
+        "https://icare.nsw.gov.au/declaration-training/general-tips",
+        "https://icare.nsw.gov.au/declaration-training/liability",
+        "https://icare.nsw.gov.au/declaration-training/miscellaneous",
+        "https://icare.nsw.gov.au/declaration-training/motor-vehicle",
+        "https://icare.nsw.gov.au/declaration-training/property",
+        "https://icare.nsw.gov.au/declaration-training/workers-compensation",
+        "https://icare.nsw.gov.au/document-not-found",
+        "https://icare.nsw.gov.au/employers",
+        "https://icare.nsw.gov.au/employers-information-access-agreement",
+        "https://icare.nsw.gov.au/employers/employer-obligations",
+        "https://icare.nsw.gov.au/employers/employer-obligations/complaints-and-enquiries",
+        "https://icare.nsw.gov.au/employers/employer-obligations/disputes-and-complaints",
+        "https://icare.nsw.gov.au/employers/employer-obligations/injury-prevention/icare-wearables-advisory-service",
+        "https://icare.nsw.gov.au/employers/employer-obligations/injury-prevention/icare-wearables-advisory-service-register-interest",
+        "https://icare.nsw.gov.au/employers/employer-obligations/injury-prevention/mental-health-resources/supporting-mental-health-at-work",
+        "https://icare.nsw.gov.au/employers/employer-obligations/keeping-records",
+        "https://icare.nsw.gov.au/employers/employer-obligations/lung-screening-service/lung-bus-bookings-for-employers",
+        "https://icare.nsw.gov.au/employers/employer-obligations/lung-screening-service/lung-screening-in-the-sydney-cbd",
+        "https://icare.nsw.gov.au/employers/employer-obligations/return-to-work-programs",
+        "https://icare.nsw.gov.au/employers/employer-obligations/return-to-work-programs/medium-to-large-employers",
+        "https://icare.nsw.gov.au/employers/employer-obligations/return-to-work-programs/small-employers",
+        "https://icare.nsw.gov.au/employers/employer-obligations/understanding-claims-management",
+        "https://icare.nsw.gov.au/employers/events-and-awards",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/accountants-and-book-keepers",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/announcing-updated-claims-management-options-for-employers",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/construction",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/effective-communication-with-gps",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/maximising-return-to-work",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/maximising-return-to-work-outcomes",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/new-year-reset---prepare-your-mind-and-body-for-2026---jan-2026",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/premium-calculation-for-small-employers",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/premium-calculation-webinar-for-experience-rated-employers",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/premium-calculation-webinar-for-experienced-rated-employers---june-2026",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/premium-calculation-webinar-for-small-employers---2026",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/protecting-your-workforce-from-occupational-violence",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/psychological-injury-claims-and-s11a-legal-insights-for-employers",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/retail-hospitality-personal-services",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/savings-and-incentives-to-support-small-business-webinar",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/silicosis---what-you-need-to-know",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/simplifying-wc-in-15-road-safety-initiative",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/simplifying-wc-in-30-premium-calculation-webinar",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/simplifying-wc-in-30-return-to-work-program-webinar",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/simplifying-wc-in-30-what-you-need-to-know-about-workers-compensation",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/simplifying-workers-compensation---cross-border-and-interstate-workers",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/simplifying-workers-compensation---loss-prevention-and-recovery-premium-model-webinar---nov-2025",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/simplifying-workers-compensation---treatment-of-contractors-and-deemed-workers-webinar",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/simplifying-workers-compensation-in-30-brokers-and-accountants-premium-calculation-webinar",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/simplifying-workers-compensation-in-30-changes-to-certificate-of-capacity",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/small-business-hub---your-one-stop-shop",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/treatment-of-contractors-and-interstate-workers",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/understanding-impacts-from-covid-on-your-business-2021",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/understanding-your-workers-compensation-policy---for-small-business",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/welcome-to-icare-what-you-need-to-know-webinar-august-2026",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/winter-wellness-series---heal-your-body-through-food-with-anthony-minichiello",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/winter-wellness-series---timeless-practices-with-jeff-hardy",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/workers-compensation-premium-updates-for-the-disability-sector-webinar",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/workers-compensation-reforms-explained-webinar---july-2026",
+        "https://icare.nsw.gov.au/employers/forms-and-resources/employer-reporting",
+        "https://icare.nsw.gov.au/employers/industry-and-partners",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/information-for-brokers",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/nominal-insurer-claims-model-2023",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/partner-with-us",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/small-business-hub/small-business-workers-compensation-fundamentals",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/transfer-policies-to-csps",
+        "https://icare.nsw.gov.au/employers/make-a-claim",
+        "https://icare.nsw.gov.au/employers/make-a-claim/claims-management-service-model",
+        "https://icare.nsw.gov.au/employers/make-a-claim/payments",
+        "https://icare.nsw.gov.au/employers/make-a-claim/payments/calculating-piawe",
+        "https://icare.nsw.gov.au/employers/make-a-claim/understanding-the-new-claims-process",
+        "https://icare.nsw.gov.au/employers/make-a-claim/update-your-claim",
+        "https://icare.nsw.gov.au/employers/premiums/premium-updates/premium-updates-for-2019-to-2020",
+        "https://icare.nsw.gov.au/employers/take-out-a-policy",
+        "https://icare.nsw.gov.au/employers/take-out-a-policy/sports-insurance",
+        "https://icare.nsw.gov.au/employers/understanding-workers-insurance/about-csps-and-choice",
+        "https://icare.nsw.gov.au/employers/understanding-workers-insurance/future-enhancements-to-the-premium-model",
+        "https://icare.nsw.gov.au/employers/understanding-workers-insurance/the-importance-of-injury-prevention",
+        "https://icare.nsw.gov.au/employers/understanding-workers-insurance/what-happens-if-i-cant-pay-my-premium",
+        "https://icare.nsw.gov.au/employers/understanding-workers-insurance/what-is-the-loss-prevention-and-recovery-premium-model",
+        "https://icare.nsw.gov.au/government-agencies",
+        "https://icare.nsw.gov.au/government-agencies/about-insurance-for-nsw",
+        "https://icare.nsw.gov.au/government-agencies/about-insurance-for-nsw/insurance-for-nsw-portal-faqs-and-troubleshooting",
+        "https://icare.nsw.gov.au/government-agencies/about-insurance-for-nsw/insurance-for-nsw-portal-help",
+        "https://icare.nsw.gov.au/government-agencies/about-insurance-for-nsw/jira-has-been-decommissioned",
+        "https://icare.nsw.gov.au/government-agencies/forms-and-resources",
+        "https://icare.nsw.gov.au/government-agencies/making-a-claim",
+        "https://icare.nsw.gov.au/government-agencies/our-funds-and-schemes",
+        "https://icare.nsw.gov.au/government-agencies/our-funds-and-schemes/construction-risks-insurance-fund",
+        "https://icare.nsw.gov.au/government-agencies/our-funds-and-schemes/construction-risks-insurance-fund/construction-risks-insurance-fund",
+        "https://icare.nsw.gov.au/government-agencies/our-funds-and-schemes/construction-risks-insurance-fund/construction-risks-insurance-fund-faqs",
+        "https://icare.nsw.gov.au/government-agencies/our-funds-and-schemes/construction-risks-insurance-fund/new-way-to-apply-for-your-crif-policy",
+        "https://icare.nsw.gov.au/government-agencies/our-funds-and-schemes/treasury-managed-fund/tmf-rfp-faqs",
+        "https://icare.nsw.gov.au/icare-coronavirus-information/accountants-enhance-your-advice-on-workers-compensation-amid-covid-19-workplace-changes",
+        "https://icare.nsw.gov.au/icare-coronavirus-information/covid-19-fact-sheets",
+        "https://icare.nsw.gov.au/icare-coronavirus-information/covid-19-information-for-dust-diseases-service-providers",
+        "https://icare.nsw.gov.au/icare-risk-advisory",
+        "https://icare.nsw.gov.au/icare-speakers-program",
+        "https://icare.nsw.gov.au/injured-or-ill-people",
+        "https://icare.nsw.gov.au/injured-or-ill-people/dust-diseases-results-delivery",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries-ctp-care",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries-ctp-care/complaints-and-disputes",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries-ctp-care/complaints-and-disputes/complaints-and-feedback",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries-ctp-care/complaints-and-disputes/disputes-about-your-treatment-and-care-needs",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries-ctp-care/expense-claims",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries-ctp-care/guidelines-and-legislation",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries-ctp-care/treatment-and-care",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries-ctp-care/who-we-care-for",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries-ctp-care/working-together",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/working-with-an-attendant-care-provider",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/working-with-a-case-manager",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/complaints-and-disputes",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/complaints-and-disputes/complaints-and-feedback",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/complaints-and-disputes/disputes-about-eligibility",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/complaints-and-disputes/disputes-about-your-treatment-and-care-needs",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/families-and-carers",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/guidelines-and-policies",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/make-an-application",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/managing-your-supports",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/my-plan",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/returning-to-work-or-education",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/returning-to-work-or-education/returning-to-school-and-study",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/returning-to-work-or-education/returning-to-work-after-a-severe-injury",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/advocacy",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/amputation-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/brain-injury-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/equipment",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/expense-claims",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/home-and-vehicle-modifications",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/home-and-vehicle-modifications/home-modifications-process",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/home-and-vehicle-modifications/home-modifications-process/a-way-to-stay-at-home",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/home-and-vehicle-modifications/home-modifications-process/into-the-future",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/home-and-vehicle-modifications/home-modifications-process/major-modifications",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/home-and-vehicle-modifications/home-modifications-process/relocating-and-rebuilding",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/medical-treatment-and-rehabilitation",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/psychological-wellbeing",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/resources-and-support-groups",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/who-we-care-for",
+        "https://icare.nsw.gov.au/injured-or-ill-people/sporting-injuries",
+        "https://icare.nsw.gov.au/injured-or-ill-people/volunteer-firefighter-claims-for-cancer",
+        "https://icare.nsw.gov.au/injured-or-ill-people/volunteering-injuries",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/assessment-process",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/attendant-care-and-domestic-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/attendant-care-and-domestic-services/working-with-an-attendant-care-provider",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/about-us/dr-alexandra---alix---smith",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/about-us/james-barben",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/about-us/kate-cole",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/about-us/malcolm-sim",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/about-us/peter-tighe",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/about-us/professor-david-currow-fahms",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/about-us/professor-sanchia-aranda-am",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/about-us/sherri-hayward",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/make-an-application",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/make-an-application/request-solicitor-access",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/payments",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/services-and-support",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/services-and-support/equipment-and-modifications",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/services-and-support/lung-screening-service/im-interested-in-a-lung-health-check",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/services-and-support/lung-screening-service/workers-free-lung-screening-in-the-sydney-cbd",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/services-and-support/lung-screening-service/workers-mobile-clinic-lung-bus-bookings-for-workers",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/services-and-support/prepare-for-your-lung-health-check-with-icare",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/services-and-support/support-groups",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/disputes",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/make-a-claim/permanent-impairment-claims",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/make-a-claim/update-your-claim",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/hearing-impairment-payments",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/medical-and-rehabilitation-expenses/medical-payments-section-59a-arabic-language-video",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/medical-and-rehabilitation-expenses/medical-payments-section-59a-macedonian-language-video",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/medical-and-rehabilitation-expenses/medical-payments-section-59a-serbian-language-video",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/medical-and-rehabilitation-expenses/medical-payments-section-59a-simplified-chinese-language-video",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/medical-and-rehabilitation-expenses/medical-payments-section-59a-vietnamese-language-video",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/medical-and-rehabilitation-expenses/medication-in-the-workers-compensation-scheme",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/payments-for-bereaved-families",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/piawe-assessment-process",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/piawe-reassessment-faq",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/work-break-or-journey-payments",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/severe-workplace-injuries",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/severe-workplace-injuries/expense-claims",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/severe-workplace-injuries/planning-for-the-future",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/severe-workplace-injuries/services-and-support",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/severe-workplace-injuries/who-we-care-for",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/what-are-the-most-common-work-injuries-in-nsw",
+        "https://icare.nsw.gov.au/injured-workers-privacy-principles-statement",
+        "https://icare.nsw.gov.au/mental-health-claims-hub",
+        "https://icare.nsw.gov.au/news-and-stories",
+        "https://icare.nsw.gov.au/news-and-stories/2020/icare-selects-new-legal-service-provider-panel-for-workers-compensation",
+        "https://icare.nsw.gov.au/news-and-stories/2021/9-6-million-for-research-centre-to-improve-injured-people-health-outcomes",
+        "https://icare.nsw.gov.au/news-and-stories/2021/allys-story",
+        "https://icare.nsw.gov.au/news-and-stories/2021/evaluation-report-released-for-study-into-wearable-technology",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-aligns-csp-contract-tenures-for-the-nominal-insurer",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-announces-new-hbcf-distributor-panel",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-announces-new-nominal-insurer-leader",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-board-renewal-continues-with-key-new-appointments",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-continues-industry-engagement-on-claims-model-through-a-market-study",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-customer-advocates-customer-vulnerability-report-released",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-extends-contract-with-allianz-for-12-months",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-extends-current-arrangements-with-third-party-service-providers",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-finds-wearable-technologies-can-help-safeguard-workers",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-procurement-improvement-program",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-provides-update-on-historical-underpayments-remediation",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-releases-guidance-to-support-people-with-a-limb-amputation",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-responds-to-law-and-justice-committee",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-seeking-input-on-the-future-of-workers-compensation-claims",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-selects-new-legal-service-provider-panel-for-general-lines",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-to-pay-out-38-million-to-injured-workers",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-to-review-payments-to-dust-disease-care-participants",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-updates-covid-19-information-on-adverse-reactions-to-vaccinations",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-welcomes-release-of-the-mcdougall-review",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-welcomes-richard-harding-as-ceo-and-md",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icare-welcomes-surgical-fee-changes",
+        "https://icare.nsw.gov.au/news-and-stories/2021/icares-wearable-technology-study-helps-keep-m4-m5-link-tunnels-workers-safer",
+        "https://icare.nsw.gov.au/news-and-stories/2021/improvement-at-icare-october-2021",
+        "https://icare.nsw.gov.au/news-and-stories/2021/improvement-at-icare-update-june-2021",
+        "https://icare.nsw.gov.au/news-and-stories/2021/insights-today-for-a-better-workplace-tomorrow",
+        "https://icare.nsw.gov.au/news-and-stories/2021/interim-establishment-report-for-improvement-program-released",
+        "https://icare.nsw.gov.au/news-and-stories/2021/its-just-common-sensei",
+        "https://icare.nsw.gov.au/news-and-stories/2021/jakes-helping-hand-leads-workers-above-and-beyond",
+        "https://icare.nsw.gov.au/news-and-stories/2021/jarrods-story-always-looking-forward",
+        "https://icare.nsw.gov.au/news-and-stories/2021/jess-story-sister-daughter-young-carer",
+        "https://icare.nsw.gov.au/news-and-stories/2021/kims-story-reaching-the-road-to-normal",
+        "https://icare.nsw.gov.au/news-and-stories/2021/lukes-story-from-crash-survivor-to-community-activist",
+        "https://icare.nsw.gov.au/news-and-stories/2021/mental-health-platform-helps-manage-covid-19",
+        "https://icare.nsw.gov.au/news-and-stories/2021/new-ceo-confirms-leadership-changes-at-icare",
+        "https://icare.nsw.gov.au/news-and-stories/2021/new-ceo-releases-governance-report",
+        "https://icare.nsw.gov.au/news-and-stories/2021/new-customer-advocate-appointed",
+        "https://icare.nsw.gov.au/news-and-stories/2021/new-technology-to-improve-age-old-injury-issue",
+        "https://icare.nsw.gov.au/news-and-stories/2021/nsw-manufacturer-adopts-wearable-technology-device-following-pilot",
+        "https://icare.nsw.gov.au/news-and-stories/2021/person-centred-approach-captures-hearts-and-minds",
+        "https://icare.nsw.gov.au/news-and-stories/2021/productivity-and-your-workplace",
+        "https://icare.nsw.gov.au/news-and-stories/2021/promontory-named-as-improvement-program-independent-assurer",
+        "https://icare.nsw.gov.au/news-and-stories/2021/shine-magazine-winter-2021-edition-out-now",
+        "https://icare.nsw.gov.au/news-and-stories/2021/statement-on-privium-group",
+        "https://icare.nsw.gov.au/news-and-stories/2021/support-for-young-construction-workers",
+        "https://icare.nsw.gov.au/news-and-stories/2021/tackling-customer-misbehaviour-though-respect-and-resilience",
+        "https://icare.nsw.gov.au/news-and-stories/2021/the-power-of-friendship",
+        "https://icare.nsw.gov.au/news-and-stories/2021/tims-story-surviving-severe-burns-and-supporting-other-survivors",
+        "https://icare.nsw.gov.au/news-and-stories/2021/true-courage-vickis-story",
+        "https://icare.nsw.gov.au/news-and-stories/2021/update-on-historical-piawe-remediation",
+        "https://icare.nsw.gov.au/news-and-stories/2021/update-on-historical-underpayments-remediation",
+        "https://icare.nsw.gov.au/news-and-stories/2021/update-on-icares-dust-diseases-care-participant-payment-review",
+        "https://icare.nsw.gov.au/news-and-stories/2021/using-a-crisis-to-connect-and-care",
+        "https://icare.nsw.gov.au/news-and-stories/2021/westpac-remittance-advice-changes",
+        "https://icare.nsw.gov.au/news-and-stories/2021/what-does-good-workplace-safety-look-like",
+        "https://icare.nsw.gov.au/news-and-stories/2021/what-does-the-future-of-work-look-like",
+        "https://icare.nsw.gov.au/news-and-stories/2021/what-will-the-future-of-staff-engagement-will-look-like",
+        "https://icare.nsw.gov.au/news-and-stories/2021/workers-compensation-premiums-adjust-to-future-risks",
+        "https://icare.nsw.gov.au/news-and-stories/2021/workers-insurance-premium-update-for-2021-22",
+        "https://icare.nsw.gov.au/news-and-stories/2022/alisons-story-life-and-art-after-a-brain-injury",
+        "https://icare.nsw.gov.au/news-and-stories/2022/andrews-story-a-wheelchair-entrepreneur",
+        "https://icare.nsw.gov.au/news-and-stories/2022/at-hub-technology-showcase",
+        "https://icare.nsw.gov.au/news-and-stories/2022/bills-story-i-want-my-life-to-be-fulfilling",
+        "https://icare.nsw.gov.au/news-and-stories/2022/dust-diseases-care-successfully-completes-remediation-program",
+        "https://icare.nsw.gov.au/news-and-stories/2022/fourth-quarterly-update-of-icares-improvement-program-released",
+        "https://icare.nsw.gov.au/news-and-stories/2022/freeze-announced-on-eligible-employers-moving-between-claim-service-providers",
+        "https://icare.nsw.gov.au/news-and-stories/2022/hbcf-continues-partnership-with-equifax-australia",
+        "https://icare.nsw.gov.au/news-and-stories/2022/hbcf-is-simplifying-construction-types",
+        "https://icare.nsw.gov.au/news-and-stories/2022/hbcf-launches-new-eligibility-assessment-process",
+        "https://icare.nsw.gov.au/news-and-stories/2022/home-building-compensation-insurance-fast-tracked",
+        "https://icare.nsw.gov.au/news-and-stories/2022/how-paralympians-are-changing-workplace-safety-attitudes",
+        "https://icare.nsw.gov.au/news-and-stories/2022/huntah-hawkins-wins-the-shine-arts-prize-2022",
+        "https://icare.nsw.gov.au/news-and-stories/2022/icare-announces-changes-to-executive-remuneration-framework",
+        "https://icare.nsw.gov.au/news-and-stories/2022/icare-announces-education-partnership-with-the-personal-injury-education-foundation",
+        "https://icare.nsw.gov.au/news-and-stories/2022/icare-announces-plan-to-launch-open-market-tender",
+        "https://icare.nsw.gov.au/news-and-stories/2022/icare-announces-selection-of-claims-service-providers-for-workers-compensation",
+        "https://icare.nsw.gov.au/news-and-stories/2022/icare-announces-successful-tenderers-for-workplace-rehabilitation-medico-legal-and-investigation-services",
+        "https://icare.nsw.gov.au/news-and-stories/2022/icare-appoints-stuart-farquharson-cfo",
+        "https://icare.nsw.gov.au/news-and-stories/2022/icare-backs-revolution-in-adaptive-sport-and-recreation",
+        "https://icare.nsw.gov.au/news-and-stories/2022/icare-confirms-new-panel-of-claims-service-providers-for-workers-compensation-scheme",
+        "https://icare.nsw.gov.au/news-and-stories/2022/icare-is-helping-to-prevent-injuries-in-the-construction-industry",
+        "https://icare.nsw.gov.au/news-and-stories/2022/icare-launches-open-market-tender-for-claims-and-injury-management-services",
+        "https://icare.nsw.gov.au/news-and-stories/2022/icare-launches-open-market-tender-for-rehabilitation-medico-legal-and-investigation-services",
+        "https://icare.nsw.gov.au/news-and-stories/2022/icare-response-to-sira-letter-of-censure",
+        "https://icare.nsw.gov.au/news-and-stories/2022/icare-to-provide-relief-for-customers-impacted-by-the-floods",
+        "https://icare.nsw.gov.au/news-and-stories/2022/icares-partnership-with-paralympics-australia-continues",
+        "https://icare.nsw.gov.au/news-and-stories/2022/independent-review-of-icares-improvement-program-released",
+        "https://icare.nsw.gov.au/news-and-stories/2022/introducing-the-assistive-technologies-hub",
+        "https://icare.nsw.gov.au/news-and-stories/2022/ipic-and-rmit-story",
+        "https://icare.nsw.gov.au/news-and-stories/2022/is-improving-how-work-is-organised-the-solution-to-bullying-and-harassment",
+        "https://icare.nsw.gov.au/news-and-stories/2022/kirsten-armstrong-appointed-to-icare-board",
+        "https://icare.nsw.gov.au/news-and-stories/2022/launch-of-ctp-care",
+        "https://icare.nsw.gov.au/news-and-stories/2022/mark-goodsell-appointed-to-icare-board",
+        "https://icare.nsw.gov.au/news-and-stories/2022/ministerial-announcement-premium-predictability-for-nsw-businesses",
+        "https://icare.nsw.gov.au/news-and-stories/2022/musical-miracle-follows-a-long-recovery-journey-for-professional-singer-doug-merrick",
+        "https://icare.nsw.gov.au/news-and-stories/2022/shine-magazine-winter-2022",
+        "https://icare.nsw.gov.au/news-and-stories/2022/social-brain-toolkit",
+        "https://icare.nsw.gov.au/news-and-stories/2022/statement-on-elderton-homes",
+        "https://icare.nsw.gov.au/news-and-stories/2022/statement-on-oracle-building-corporation",
+        "https://icare.nsw.gov.au/news-and-stories/2022/third-quarterly-update-of-icares-improvement-program-released",
+        "https://icare.nsw.gov.au/news-and-stories/2022/toms-story-moving-onwards-and-upwards",
+        "https://icare.nsw.gov.au/news-and-stories/2022/warrens-story",
+        "https://icare.nsw.gov.au/news-and-stories/2022/we-are-changing-the-way-you-get-your-remittance-advice",
+        "https://icare.nsw.gov.au/news-and-stories/2022/welcome-to-our-latest-edition-of-shine-magazine",
+        "https://icare.nsw.gov.au/news-and-stories/2022/were-here-to-support-people-with-a-dust-disease",
+        "https://icare.nsw.gov.au/news-and-stories/2023/2022-23-annual-report-highlights",
+        "https://icare.nsw.gov.au/news-and-stories/2023/carers-way-ahead-program",
+        "https://icare.nsw.gov.au/news-and-stories/2023/celebrating-excellence-icare-sporting-injuries-and-the-champions-of-sport-awards",
+        "https://icare.nsw.gov.au/news-and-stories/2023/community-support-services-linked-to-strong-wellbeing-improvements-for-injured-workers",
+        "https://icare.nsw.gov.au/news-and-stories/2023/council-promotes-october-safety-month-with-icare-nsw-and-paralympian-nigel-smith",
+        "https://icare.nsw.gov.au/news-and-stories/2023/ctp-care-supporting-those-injured-on-nsw-roads",
+        "https://icare.nsw.gov.au/news-and-stories/2023/danettes-story-sewing-as-therapy",
+        "https://icare.nsw.gov.au/news-and-stories/2023/dust-diseases-board-research-informs-practical-ways-to-protect-workers",
+        "https://icare.nsw.gov.au/news-and-stories/2023/eighth-quarterly-update-of-icares-improvement-program-released",
+        "https://icare.nsw.gov.au/news-and-stories/2023/fifth-quarterly-update-of-icares-improvement-program-released",
+        "https://icare.nsw.gov.au/news-and-stories/2023/gallagher-bassett-new-claims-service-provider-for-the-nominal-insurer",
+        "https://icare.nsw.gov.au/news-and-stories/2023/health-maintenance-tool-now-as-an-app",
+        "https://icare.nsw.gov.au/news-and-stories/2023/icare-adds-pricing-transparency-to-hbcf-premium-calculator",
+        "https://icare.nsw.gov.au/news-and-stories/2023/icare-announces-program-to-enhance-access-to-builders-warranty-insurance",
+        "https://icare.nsw.gov.au/news-and-stories/2023/icare-opens-new-dust-diseases-care-health-screening-clinic",
+        "https://icare.nsw.gov.au/news-and-stories/2023/icare-publishes-new-performance-data-on-claims-service-providers",
+        "https://icare.nsw.gov.au/news-and-stories/2023/icare-responds-to-hwl-ebsworth-cyber-incident",
+        "https://icare.nsw.gov.au/news-and-stories/2023/icare-rex-celebrates-five-years-of-delivering-risk-management-education-to-nsw-government",
+        "https://icare.nsw.gov.au/news-and-stories/2023/icare-supports-the-oz-day-10k-wheelchair-race",
+        "https://icare.nsw.gov.au/news-and-stories/2023/icare-to-review-and-remediate-historical-indexation-issue",
+        "https://icare.nsw.gov.au/news-and-stories/2023/icare-to-work-with-uniting-nsw-act-to-expand-access-to-community-support-services",
+        "https://icare.nsw.gov.au/news-and-stories/2023/icares-risk-education-express-supports-workplace-safety-in-the-public-sector",
+        "https://icare.nsw.gov.au/news-and-stories/2023/improving-the-wellbeing-of-nsw-farmers-and-their-families",
+        "https://icare.nsw.gov.au/news-and-stories/2023/jasons-story",
+        "https://icare.nsw.gov.au/news-and-stories/2023/met-increases-support",
+        "https://icare.nsw.gov.au/news-and-stories/2023/mock-court-trial-sheds-light-on-mental-health-management",
+        "https://icare.nsw.gov.au/news-and-stories/2023/motor-traders-association-of-nsw-renews-partnership-with-icare",
+        "https://icare.nsw.gov.au/news-and-stories/2023/partnering-with-like-minded-employers-to-create-change",
+        "https://icare.nsw.gov.au/news-and-stories/2023/preparing-for-the-nsw-fire-season-vital-steps-for-safety",
+        "https://icare.nsw.gov.au/news-and-stories/2023/protecting-sydneys-water---the-resilience-of-warragamba-dam-against-natural-disasters",
+        "https://icare.nsw.gov.au/news-and-stories/2023/seventh-quarterly-update-of-icares-improvement-program-released",
+        "https://icare.nsw.gov.au/news-and-stories/2023/shine-magazine-winter-2023",
+        "https://icare.nsw.gov.au/news-and-stories/2023/sixth-quarterly-update-of-icares-improvement-program-released",
+        "https://icare.nsw.gov.au/news-and-stories/2023/steves-story-getting-back-to-work",
+        "https://icare.nsw.gov.au/news-and-stories/2023/supporting-carers-to-care-for-those-they-love-the-carers-journal",
+        "https://icare.nsw.gov.au/news-and-stories/2023/update-on-icares-hearing-device-schedule",
+        "https://icare.nsw.gov.au/news-and-stories/2023/update-on-icares-payment-remediation-activities",
+        "https://icare.nsw.gov.au/news-and-stories/2023/uts-students-offer-the-winning-solutions-to-challenging-workplace-problems",
+        "https://icare.nsw.gov.au/news-and-stories/2023/welcome-to-our-latest-edition-of-shine-magazine-summer-2023",
+        "https://icare.nsw.gov.au/news-and-stories/2024/2024-annual-report---icare-reports-reform-progress-in-year-of-continued-change",
+        "https://icare.nsw.gov.au/news-and-stories/2024/april-2024-update-on-icares-payment-remediation-activities",
+        "https://icare.nsw.gov.au/news-and-stories/2024/are-you-doing-enough-to-protect-your-workforce",
+        "https://icare.nsw.gov.au/news-and-stories/2024/august-2024-update-on-icares-payment-remediation-activities",
+        "https://icare.nsw.gov.au/news-and-stories/2024/breakthrough-research-giving-new-hope-for-treatment-of-dust-diseases",
+        "https://icare.nsw.gov.au/news-and-stories/2024/celebrating-35-years-of-ensuring-nsw-the-treasury-managed-fund",
+        "https://icare.nsw.gov.au/news-and-stories/2024/daljinders-story---strength-and-determination",
+        "https://icare.nsw.gov.au/news-and-stories/2024/digital-role-playing-game-enhances-communication",
+        "https://icare.nsw.gov.au/news-and-stories/2024/dust-diseases-board-to-boost-the-fight-against-dust-diseases-with-major-research-grants",
+        "https://icare.nsw.gov.au/news-and-stories/2024/dust-diseases-board-to-fund-support-services",
+        "https://icare.nsw.gov.au/news-and-stories/2024/final-report-of-the-nsw-treasury-operational-expenditure-review-of-insurance-and-care-nsw",
+        "https://icare.nsw.gov.au/news-and-stories/2024/final-update-of-icares-improvement-program-released",
+        "https://icare.nsw.gov.au/news-and-stories/2024/icare-announce-8-percent-average-workers-compensation-premium-rate-increase-for-2024-25",
+        "https://icare.nsw.gov.au/news-and-stories/2024/icare-board-announces-two-new-appointments-to-group-executive",
+        "https://icare.nsw.gov.au/news-and-stories/2024/icare-celebrates-partnership-with-disability-enterprise-flagstaff",
+        "https://icare.nsw.gov.au/news-and-stories/2024/icare-commences-consultation-on-proposed-structural-changes",
+        "https://icare.nsw.gov.au/news-and-stories/2024/icare-highlights-the-importance-of-workplace-safety-and-inclusion-on-international-day-of-people-with-disability",
+        "https://icare.nsw.gov.au/news-and-stories/2024/icare-supports-australian-first-physiotherapy-guidelines-for-spinal-cord-injury",
+        "https://icare.nsw.gov.au/news-and-stories/2024/icare-supports-the-oz-day-10k-wheelchair-race",
+        "https://icare.nsw.gov.au/news-and-stories/2024/icare-welcomes-two-new-paralympians-to-the-paralympic-speakers-program",
+        "https://icare.nsw.gov.au/news-and-stories/2024/important-advice-for-some-ddc-participants",
+        "https://icare.nsw.gov.au/news-and-stories/2024/information-for-workers-and-employers-impacted-by-the-westfield-bondi-junction-critical-incident",
+        "https://icare.nsw.gov.au/news-and-stories/2024/international-day-of-mourning-service-2024",
+        "https://icare.nsw.gov.au/news-and-stories/2024/introducing-automated-mutual-recognition-at-hbcf",
+        "https://icare.nsw.gov.au/news-and-stories/2024/making-invisible-visible-icare-joins-the-hidden-disabilities-sunflower-program",
+        "https://icare.nsw.gov.au/news-and-stories/2024/marks-story",
+        "https://icare.nsw.gov.au/news-and-stories/2024/mock-court-highlights-psychosocial-risk",
+        "https://icare.nsw.gov.au/news-and-stories/2024/ninth-quarterly-update-of-icares-improvement-program-released",
+        "https://icare.nsw.gov.au/news-and-stories/2024/referrals-to-assistive-technology-hub-now-open-support-for-people-living-with-brain-injury",
+        "https://icare.nsw.gov.au/news-and-stories/2024/resignation-of-icare-ceo-and-managing-director-richard-harding",
+        "https://icare.nsw.gov.au/news-and-stories/2024/shine-magazine-winter-2024",
+        "https://icare.nsw.gov.au/news-and-stories/2024/supporting-our-nsw-employers-to-keep-safety-simple",
+        "https://icare.nsw.gov.au/news-and-stories/2024/tenth-quarterly-update-of-icares-improvement-program-released",
+        "https://icare.nsw.gov.au/news-and-stories/2024/three-new-icare-dust-diseases-board-appointments-welcomed",
+        "https://icare.nsw.gov.au/news-and-stories/2024/trevors-story---living-with-mesothelioma",
+        "https://icare.nsw.gov.au/news-and-stories/2025/11/19/05/48/shine-exhibition-at-parliament-house",
+        "https://icare.nsw.gov.au/news-and-stories/2025/bridging-the-gap-new-resources-for-dust-disease-awareness",
+        "https://icare.nsw.gov.au/news-and-stories/2025/expanding-access-to-assistive-technology-in-rural-nsw--at-wrap-launches",
+        "https://icare.nsw.gov.au/news-and-stories/2025/hbcf-premium-filing-2025",
+        "https://icare.nsw.gov.au/news-and-stories/2025/icare-aligns-with-industry-wide-directive-to-review-workers-compensation-payments",
+        "https://icare.nsw.gov.au/news-and-stories/2025/icare-announces-improvements-to-service-delivery-model-for-lifetime-and-workers-care",
+        "https://icare.nsw.gov.au/news-and-stories/2025/icare-announces-research-grants-to-advance-prevention-and-treatment-of-dust-diseases-including-new-fellowship",
+        "https://icare.nsw.gov.au/news-and-stories/2025/icare-announces-research-grants-to-improve-health-outcomes-for-workers",
+        "https://icare.nsw.gov.au/news-and-stories/2025/icare-appoints-new-chief-executive-officer",
+        "https://icare.nsw.gov.au/news-and-stories/2025/icare-confirms-8-average-workers-compensation-premium-rate-increase-in-2025-26",
+        "https://icare.nsw.gov.au/news-and-stories/2025/icare-to-launch-enhanced-case-management-platform-for-dust-diseases-care",
+        "https://icare.nsw.gov.au/news-and-stories/2025/icare-updates-claims-services-panel",
+        "https://icare.nsw.gov.au/news-and-stories/2025/icares-extensive-reforms-spark-major-improvements-for-nsw-communities",
+        "https://icare.nsw.gov.au/news-and-stories/2025/innovative-nsw-dust-disease-board-research-investigates-new-avenues-for-silicosis-treatment",
+        "https://icare.nsw.gov.au/news-and-stories/2025/low-back-pain-model-of-care",
+        "https://icare.nsw.gov.au/news-and-stories/2025/marking-naidoc-week-2025-with-a-new-acknowledgement-of-country-video",
+        "https://icare.nsw.gov.au/news-and-stories/2025/new-phone-number-for-hbcf-from-30-january-2025",
+        "https://icare.nsw.gov.au/news-and-stories/2025/shine-winter-2025---purposeful-paths---meaningful-work-giving-back-and-self-care",
+        "https://icare.nsw.gov.au/news-and-stories/2025/strengthening-safety-and-quality--with-icares-clinical-governance-committee",
+        "https://icare.nsw.gov.au/news-and-stories/2025/turning-ideas-into-impact-highlights-from-the-inaugural-dust-diseases-researcher-forum",
+        "https://icare.nsw.gov.au/news-and-stories/2025/welcoming-two-new-members-to-the-dust-diseases-board",
+        "https://icare.nsw.gov.au/news-and-stories/2026/fy26-dust-diseases-board-research-grants-and-awards-announced",
+        "https://icare.nsw.gov.au/news-and-stories/2026/icare-announces-fy27-research-grants-to-advance-worker-health-and-workplace-safety",
+        "https://icare.nsw.gov.au/news-and-stories/2026/nsw-employers-invited-to-help-shape-the-future-of-workers-compensation-premiums",
+        "https://icare.nsw.gov.au/news-and-stories/2026/organisational-changes-to-strengthen-delivery-of-essential-services",
+        "https://icare.nsw.gov.au/practitioners-and-providers",
+        "https://icare.nsw.gov.au/practitioners-and-providers/forms-and-resources",
+        "https://icare.nsw.gov.au/practitioners-and-providers/forms-and-resources/ctp-care",
+        "https://icare.nsw.gov.au/practitioners-and-providers/forms-and-resources/lifetime-care",
+        "https://icare.nsw.gov.au/practitioners-and-providers/forms-and-resources/workers-care-program",
+        "https://icare.nsw.gov.au/practitioners-and-providers/forms-and-resources/workers-insurance",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/certificate-of-capacity",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/fees-payment-and-processing",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/screening-for-dust-disease",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/support-and-complaints",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/support-and-complaints/complaints-and-feedback",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/support-and-complaints/contact-the-scheme-agent",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/treatment-and-recovery",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/treatment-and-recovery/importance-of-recovery-at-work",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/treatment-and-recovery/treatment-and-referrals",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/understanding-workers-compensation",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/understanding-workers-compensation/privacy-and-confidentiality-of-patient-information",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/understanding-workers-compensation/workers-rights-and-responsibilities",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/working-with-stakeholders",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/working-with-stakeholders/case-conferences",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/assessment-tools-and-resources",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/attendant-care-providers",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/case-managers",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/equipment-and-healthcare-consumables",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/equipment-and-healthcare-consumables/easyorder",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/equipment-and-healthcare-consumables/equipment-panel",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/equipment-and-healthcare-consumables/equipment-repairs-and-maintenance",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/equipment-and-healthcare-consumables/equipment-requests",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/equipment-and-healthcare-consumables/healthcare-consumables",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/equipment-and-healthcare-consumables/prosthetics",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/icare-panel-providers",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/planning-with-an-injured-person",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/planning-with-an-injured-person/development",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/planning-with-an-injured-person/preparation",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/planning-with-an-injured-person/resources",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/requesting-services-on-behalf-of-an-injured-person/how-to-request-services-on-behalf-of-a-ctp-care-client",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/working-with-us",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/working-with-us/ctp-care-equipment-requests",
+        "https://icare.nsw.gov.au/practitioners-and-providers/healthcare-and-service-providers/working-with-us/working-with-ctp-care",
+        "https://icare.nsw.gov.au/practitioners-and-providers/invoicing-and-payment/ctp-care",
+        "https://icare.nsw.gov.au/practitioners-and-providers/invoicing-and-payment/dust-diseases-care",
+        "https://icare.nsw.gov.au/practitioners-and-providers/invoicing-and-payment/form-vendor-business-details",
+        "https://icare.nsw.gov.au/practitioners-and-providers/invoicing-and-payment/lifetime-care-and-workers-care",
+        "https://icare.nsw.gov.au/practitioners-and-providers/invoicing-and-payment/vendor-business-details-form",
+        "https://icare.nsw.gov.au/practitioners-and-providers/invoicing-and-payment/workers-insurance",
+        "https://icare.nsw.gov.au/practitioners-and-providers/statement-of-business-ethics",
+        "https://icare.nsw.gov.au/practitioners-and-providers/what-we-pay-for",
+        "https://icare.nsw.gov.au/privacy/data-breach-public-notification-register",
+        "https://icare.nsw.gov.au/sitemap",
+        "https://icare.nsw.gov.au/social-connections-toolkit/connecting-work-home-and-community",
+        "https://icare.nsw.gov.au/social-connections-toolkit/creative-ways-to-keep-your-team-connected",
+        "https://icare.nsw.gov.au/social-connections-toolkit/rebuilding-workplaces",
+        "https://icare.nsw.gov.au/social-connections-toolkit/social-connections-help-prevent-injury",
+        "https://icare.nsw.gov.au/social-connections-toolkit/social-connections-toolkit-videos",
+        "https://icare.nsw.gov.au/social-connections-toolkit/when-a-worker-is-off-with-injury",
+        "https://icare.nsw.gov.au/workers-compensation/workers-comp-advisory-service",
+        "https://icare.nsw.gov.au/workers-compensation/workers-comp-advisory-service/thank-you",
+        "https://icare.nsw.gov.au/workers-insurance-claims/about-the-workers-compensation-claims-portal",
+        "https://icare.nsw.gov.au/workers-insurance-claims/claims-management-service-model",
+        "https://icare.nsw.gov.au/workers-insurance-claims/claims-portal-features-and-benefits",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/13-week-stepdown",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/13-week-stepdown-arabic",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/13-week-stepdown-arabic-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/13-week-stepdown-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/13-week-stepdown-hindi",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/13-week-stepdown-hindi-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/13-week-stepdown-korean",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/13-week-stepdown-korean-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/13-week-stepdown-mandarin",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/13-week-stepdown-mandarin-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/13-week-stepdown-vietnamese",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/13-week-stepdown-vietnamese-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/a-workers-insurance-claims-journey",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/a-workers-insurance-claims-journey-arabic",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/a-workers-insurance-claims-journey-arabic-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/a-workers-insurance-claims-journey-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/a-workers-insurance-claims-journey-hindi",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/a-workers-insurance-claims-journey-hindi-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/a-workers-insurance-claims-journey-korean",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/a-workers-insurance-claims-journey-korean-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/a-workers-insurance-claims-journey-mandarin",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/a-workers-insurance-claims-journey-mandarin-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/a-workers-insurance-claims-journey-vietnamese",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/a-workers-insurance-claims-journey-vietnamese-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/changes-in-your-payments",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/changes-in-your-payments-arabic",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/changes-in-your-payments-arabic-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/changes-in-your-payments-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/changes-in-your-payments-english-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/changes-in-your-payments-hindi",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/changes-in-your-payments-hindi-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/changes-in-your-payments-korean",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/changes-in-your-payments-korean-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/changes-in-your-payments-mandarin",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/changes-in-your-payments-mandarin-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/changes-in-your-payments-vietnamese",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/changes-in-your-payments-vietnamese-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-a-workers-claim",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-a-workers-claim-arabic",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-a-workers-claim-arabic-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-a-workers-claim-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-a-workers-claim-hindi",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-a-workers-claim-hindi-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-a-workers-claim-korean",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-a-workers-claim-korean-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-a-workers-claim-mandarin",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-a-workers-claim-mandarin-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-a-workers-claim-vietnamese",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-a-workers-claim-vietnamese-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-your-claim",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-your-claim-arabic",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-your-claim-arabic-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-your-claim-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-your-claim-hindi",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-your-claim-hindi-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-your-claim-korean",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-your-claim-korean-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-your-claim-mandarin",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-your-claim-mandarin-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-your-claim-vietnamese",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/the-first-few-weeks-of-your-claim-vietnamese-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/when-goals-change",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/when-goals-change-arabic",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/when-goals-change-arabic-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/when-goals-change-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/when-goals-change-hindi",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/when-goals-change-hindi-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/when-goals-change-korean",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/when-goals-change-korean-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/when-goals-change-mandarin",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/when-goals-change-mandarin-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/when-goals-change-vietnamese",
+        "https://icare.nsw.gov.au/workers-insurance-claims/videos/when-goals-change-vietnamese-audio-description",
+        "https://icare.nsw.gov.au/workers-insurance-policy-portal",
+        "https://icare.nsw.gov.au/workers-insurance-policy-portal-helper"
+      ],
+      "coverageGaps": [],
+      "description": "Standard text content page: title and lead paragraph, rich text body, right sidebar promo card, tag list and related-content card row",
+      "blocks": []
+    },
+    {
+      "name": "content-article-variant",
+      "urls": [
+        "https://icare.nsw.gov.au/about-us/customer-engagement/icare-customer-experience",
+        "https://icare.nsw.gov.au/icare-coronavirus-information",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/commutation-payments",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/who-we-care-for",
+        "https://icare.nsw.gov.au/mental-health-claims-hub/employers/recovery-at-work",
+        "https://icare.nsw.gov.au/mental-health-claims-hub/employers/your-return-to-work-obligations",
+        "https://icare.nsw.gov.au/privacy/your-privacy"
+      ],
+      "coverageGaps": [],
+      "description": "Text content page with compact title area and rich text body, close variant of the standard content article",
+      "blocks": []
+    },
+    {
+      "name": "award-detail",
+      "urls": [
+        "https://icare.nsw.gov.au/about-us/events-and-awards/industry-champions-2020",
+        "https://icare.nsw.gov.au/injured-or-ill-people/shine-writers-prize"
+      ],
+      "coverageGaps": [],
+      "description": "Tall banner with title, followed by accordion and several stacked content sections",
+      "blocks": []
+    },
+    {
+      "name": "content-with-accordions",
+      "urls": [
+        "https://icare.nsw.gov.au/about-us/our-people/our-corporate-governance",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/am-i-eligible-for-hbcf",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/builder-self-service-portal",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/do-i-need-hbcf",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/find-out-how-much-hbcf-cover-costs",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/how-do-i-manage-hbcf-cover",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/quoting-for-rectification-work-on-hbcf-claims",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/register-as-a-service-provider",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/something-not-right---get-help-with-hbcf",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/what-does-hbcf-cover",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/what-is-a-certificate-of-insurance",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/what-is-the-hbcf-portal",
+        "https://icare.nsw.gov.au/employers/email-preference",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/make-a-claim",
+        "https://icare.nsw.gov.au/news-and-stories/2025/11/19/02/41/fy25-dust-diseases-board-research-grants-and-awards-announced",
+        "https://icare.nsw.gov.au/news-and-stories/2026/icare-confirms-2026-27-workers-compensation-premium-settings",
+        "https://icare.nsw.gov.au/news-and-stories/2026/icare-is-committed-to-protecting-your-data",
+        "https://icare.nsw.gov.au/news-and-stories/2026/preparing-your-business-for-nsw-workers-compensation-reform-excess-and-medical-benefits",
+        "https://icare.nsw.gov.au/news-and-stories/2026/shine-winter-2026---grit-determination-and-finding-another-way-forward"
+      ],
+      "coverageGaps": [],
+      "description": "Text content page with short title area, multiple stacked sections and accordion groups (FAQs, governance lists)",
+      "blocks": []
+    },
+    {
+      "name": "person-profile",
+      "urls": [
+        "https://icare.nsw.gov.au/about-us/our-people/our-corporate-governance/dan-hunter",
+        "https://icare.nsw.gov.au/about-us/our-people/our-corporate-governance/john-robertson",
+        "https://icare.nsw.gov.au/about-us/our-people/our-corporate-governance/kirsten-armstrong",
+        "https://icare.nsw.gov.au/about-us/our-people/our-corporate-governance/kirsten-armstrong---ddc",
+        "https://icare.nsw.gov.au/about-us/our-people/our-corporate-governance/leah-fricke",
+        "https://icare.nsw.gov.au/about-us/our-people/our-corporate-governance/lisa-mcintyre",
+        "https://icare.nsw.gov.au/about-us/our-people/our-corporate-governance/mark-goodsell",
+        "https://icare.nsw.gov.au/about-us/our-people/our-corporate-governance/mark-morey",
+        "https://icare.nsw.gov.au/about-us/our-people/our-corporate-governance/michael-coutts-trotter",
+        "https://icare.nsw.gov.au/about-us/our-people/our-corporate-governance/peeyush-gupta",
+        "https://icare.nsw.gov.au/about-us/our-people/our-corporate-governance/rachel-johnson-kelly",
+        "https://icare.nsw.gov.au/about-us/our-people/our-corporate-governance/virginia-malley",
+        "https://icare.nsw.gov.au/about-us/our-strategy/our-reconciliation-journey/culturally-sensitive-new-mobile-lung-clinic",
+        "https://icare.nsw.gov.au/about-us/our-strategy/our-reconciliation-journey/discovering-our-story-in-our-artwork",
+        "https://icare.nsw.gov.au/employers/manage-your-policy/whats-new-in-policy/you-asked",
+        "https://icare.nsw.gov.au/practitioners-and-providers/treating-patients-with-a-workplace-injury"
+      ],
+      "coverageGaps": [],
+      "description": "Short profile page with tall hero containing name and portrait, followed by a brief biography",
+      "blocks": []
+    },
+    {
+      "name": "hero-image-content-with-sidebar",
+      "urls": [
+        "https://icare.nsw.gov.au/about-us/our-story",
+        "https://icare.nsw.gov.au/about-us/test-story",
+        "https://icare.nsw.gov.au/employers/employer-obligations/notify-us-of-an-injury-or-make-a-claim",
+        "https://icare.nsw.gov.au/employers/employer-obligations/payments-to-injured-workers",
+        "https://icare.nsw.gov.au/employers/make-a-claim/notify-us-of-an-injury-or-make-a-claim",
+        "https://icare.nsw.gov.au/employers/make-a-claim/payments/payments-for-your-employees",
+        "https://icare.nsw.gov.au/government-agencies/our-funds-and-schemes/treasury-managed-fund",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/guidelines-and-policies",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/payments/for-workers",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/reviews",
+        "https://icare.nsw.gov.au/practitioners-and-providers/training-and-workshops",
+        "https://icare.nsw.gov.au/workers-insurance-claims",
+        "https://icare.nsw.gov.au/workers-insurance-claims/notify-us-of-an-injury-or-make-a-claim"
+      ],
+      "coverageGaps": [],
+      "description": "Full-width image banner, long rich text body with sidebar promo cards, document download list and related-content cards",
+      "blocks": []
+    },
+    {
+      "name": "content-with-sidebar-cards",
+      "urls": [
+        "https://icare.nsw.gov.au/about-us/our-strategy",
+        "https://icare.nsw.gov.au/about-us/publications",
+        "https://icare.nsw.gov.au/accessibility-statement",
+        "https://icare.nsw.gov.au/authority-forms",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/eligibility/eligibility-reviews",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/eligibility/open-job-limits",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/premiums/premium-rates",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/premiums/premium-rates/risk-factors",
+        "https://icare.nsw.gov.au/builders-and-homeowners/forms-and-resources",
+        "https://icare.nsw.gov.au/builders-and-homeowners/homeowners/before-i-build-what-do-i-need-to-know",
+        "https://icare.nsw.gov.au/builders-and-homeowners/homeowners/claims",
+        "https://icare.nsw.gov.au/builders-and-homeowners/homeowners/hbcf-i-need-help",
+        "https://icare.nsw.gov.au/builders-and-homeowners/homeowners/hbcf-lodge-a-dispute-or-complaint",
+        "https://icare.nsw.gov.au/builders-and-homeowners/homeowners/hbcf-what-am-i-covered-for",
+        "https://icare.nsw.gov.au/builders-and-homeowners/homeowners/hbcf-when-something-goes-wrong-what-do-i-do",
+        "https://icare.nsw.gov.au/builders-and-homeowners/homeowners/what-is-icare-hbcf",
+        "https://icare.nsw.gov.au/customer-complaints-our-commitment-to-you/complaints-policy",
+        "https://icare.nsw.gov.au/disclaimer",
+        "https://icare.nsw.gov.au/employers/employer-obligations/lung-screening-service/working-safely-with-crystalline-silica",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/2026-27-premium-updates-briefing-looped-in-webinar",
+        "https://icare.nsw.gov.au/employers/events-and-awards/mobile-engagement-team-events/becoming-an-experience-rated-employer---june-2026",
+        "https://icare.nsw.gov.au/employers/forms-and-resources/working-with-a-treating-doctor",
+        "https://icare.nsw.gov.au/employers/make-a-claim/claims-management-decision-framework",
+        "https://icare.nsw.gov.au/government-agencies/our-funds-and-schemes/other-managed-funds",
+        "https://icare.nsw.gov.au/government-agencies/our-funds-and-schemes/special-liability-insurance-scheme",
+        "https://icare.nsw.gov.au/injured-or-ill-people/forms-and-resources/other-languages",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support/spinal-cord-injury-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/payments/funeral-expenses",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/services-and-support/grief-support",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/services-and-support/medical-treatment",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/services-and-support/psychological-wellbeing",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/who-we-care-for",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/working-together",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/disputes/how-to-lodge-a-dispute",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/disputes/organisations-involved-in-your-dispute",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/grief-support",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/make-a-claim/psychological-injuries",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/medical-and-rehabilitation-expenses",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/property-damage-payments",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/payments/weekly-payments",
+        "https://icare.nsw.gov.au/mental-health-claims-hub/employers/injured-worker-obligations",
+        "https://icare.nsw.gov.au/mental-health-claims-hub/employers/psychological-injuries-in-the-workplace",
+        "https://icare.nsw.gov.au/mental-health-claims-hub/employers/return-to-work",
+        "https://icare.nsw.gov.au/mental-health-claims-hub/employers/weekly-payments-for-exempt-workers-and-volunteers",
+        "https://icare.nsw.gov.au/mental-health-claims-hub/employers/workplace-rehabilitation-providers",
+        "https://icare.nsw.gov.au/news-and-stories/2021/meet-icare-brain-injury-psychiatry-fellow-dr-daniel-smoothy",
+        "https://icare.nsw.gov.au/news-and-stories/2025/icare-confirms-refreshed-panel-of-treasury-managed-fund-workers-compensation-claim-service-providers",
+        "https://icare.nsw.gov.au/our-legislative-framework",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/support-and-complaints/how-to-escalate-concerns",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/treatment-and-recovery/health-benefits-of-good-work",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/treatment-and-recovery/how-to-address-psychosocial-concerns",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/treatment-and-recovery/psychological-injuries",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/understanding-workers-compensation/the-role-of-the-nominated-treating-doctor",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/working-with-stakeholders/communicating-with-employers",
+        "https://icare.nsw.gov.au/privacy",
+        "https://icare.nsw.gov.au/privacy/website-privacy",
+        "https://icare.nsw.gov.au/searchresults",
+        "https://icare.nsw.gov.au/terms-of-use"
+      ],
+      "coverageGaps": [],
+      "description": "Text content page with stacked sidebar promo cards, icon/text rows, related downloads panel and related-content cards",
+      "blocks": []
+    },
+    {
+      "name": "hero-banner-content",
+      "urls": [
+        "https://icare.nsw.gov.au/about-us/our-strategy/our-reconciliation-journey/cultural-learning-program"
+      ],
+      "coverageGaps": [],
+      "description": "Tall hero banner with title followed by a single content section",
+      "blocks": []
+    },
+    {
+      "name": "hero-intro-short",
+      "urls": [
+        "https://icare.nsw.gov.au/about-us/procurement-central"
+      ],
+      "coverageGaps": [],
+      "description": "Short page with hero banner and brief intro content",
+      "blocks": []
+    },
+    {
+      "name": "embedded-form-page",
+      "urls": [
+        "https://icare.nsw.gov.au/about-us/publications/csp-e-newsletter-form",
+        "https://icare.nsw.gov.au/employers/employer-obligations/return-to-work-programs/return-to-work-assistance",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-insight-tools",
+        "https://icare.nsw.gov.au/injured-or-ill-people/shine-arts-prize-icare",
+        "https://icare.nsw.gov.au/injured-or-ill-people/shine-arts-prize-icare/online-exhibitions",
+        "https://icare.nsw.gov.au/injured-or-ill-people/shine-arts-prize-icare/online-exhibitions/shine-art-prize-2020-online-exhibition",
+        "https://icare.nsw.gov.au/injured-or-ill-people/shine-arts-prize-icare/online-exhibitions/shine-arts-prize-2022-online-exhibition",
+        "https://icare.nsw.gov.au/injured-or-ill-people/shine-arts-prize-icare/online-exhibitions/shine-arts-prize-2024-online-exhibition",
+        "https://icare.nsw.gov.au/injured-or-ill-people/shine-arts-prize-icare/online-exhibitions/shine-arts-prize-2026-online-exhibition"
+      ],
+      "coverageGaps": [],
+      "description": "Minimal page with title and an embedded sign-up or request form",
+      "blocks": []
+    },
+    {
+      "name": "long-form-policy-page",
+      "urls": [
+        "https://icare.nsw.gov.au/access-to-information",
+        "https://icare.nsw.gov.au/customer-complaints-our-commitment-to-you",
+        "https://icare.nsw.gov.au/customer-complaints-our-commitment-to-you/conduct-guide-for-those-we-serve",
+        "https://icare.nsw.gov.au/employers/make-a-claim/in-the-event-of-a-fatality",
+        "https://icare.nsw.gov.au/injured-or-ill-people/forms-and-resources",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/make-a-claim/work-injury-damages",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/working-with-stakeholders/stakeholders-involved"
+      ],
+      "coverageGaps": [],
+      "description": "Long text-only policy page with compact title area and many headed sections",
+      "blocks": []
+    },
+    {
+      "name": "campaign-landing",
+      "urls": [
+        "https://icare.nsw.gov.au/archive/lifeline"
+      ],
+      "coverageGaps": [],
+      "description": "Campaign landing with breadcrumbs, stacked hero banners, card row and multiple promo sections",
+      "blocks": []
+    },
+    {
+      "name": "guide-with-page-nav",
+      "urls": [
+        "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages",
+        "https://icare.nsw.gov.au/archive/wage-declarations",
+        "https://icare.nsw.gov.au/employers/employer-obligations/injury-prevention",
+        "https://icare.nsw.gov.au/employers/employer-obligations/injury-prevention/education-and-training",
+        "https://icare.nsw.gov.au/employers/forms-and-resources",
+        "https://icare.nsw.gov.au/employers/premiums/calculating-the-cost-of-your-premium",
+        "https://icare.nsw.gov.au/employers/premiums/premium-reviews",
+        "https://icare.nsw.gov.au/employers/premiums/premium-updates",
+        "https://icare.nsw.gov.au/employers/premiums/ways-to-lower-your-premiums",
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/understanding-workers-compensation/the-nsw-workers-compensation-system",
+        "https://icare.nsw.gov.au/workers-compensation/employers/apprentice-incentive-scheme",
+        "https://icare.nsw.gov.au/workers-compensation/employers/classifying-your-workers",
+        "https://icare.nsw.gov.au/workers-compensation/employers/forms-and-resources",
+        "https://icare.nsw.gov.au/workers-compensation/employers/how-much-will-it-cost",
+        "https://icare.nsw.gov.au/workers-compensation/employers/insurance-for-related-businesses",
+        "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/cancel-your-workers-insurance-policy",
+        "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/download-a-certificate-of-currency",
+        "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/faqs-wage-audit-process",
+        "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/how-to-access-your-monthly-cost-of-claims-report",
+        "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/premium-disputes",
+        "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/renew-your-policy",
+        "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/update-your-policy-details",
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy/2026-premium-rate-freeze",
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy/claims-performance-adjustment-rates",
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy/how-to-lower-your-premium",
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy/how-to-pay-your-premium",
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy/loss-prevention-and-recovery",
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy/multiple-business-activities-and-wic-classification",
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy/premium-calculation-experience-rated",
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy/premium-calculation-for-small-employers",
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy/take-out-a-policy",
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy/understanding-wics-and-premium-rates",
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy/understanding-your-cover",
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy/understanding-your-premium",
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy/what-is-premium-capping-and-how-does-it-work",
+        "https://icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/adssi-limited",
+        "https://icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/asbjv",
+        "https://icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/ebos-group",
+        "https://icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/expert-consultation",
+        "https://icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/injury-prevention",
+        "https://icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/metcash",
+        "https://icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/the-safety-locker",
+        "https://icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/training-programs",
+        "https://icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/weathertex",
+        "https://icare.nsw.gov.au/workers-compensation/employers/understanding-icare-and-workers-compensation",
+        "https://icare.nsw.gov.au/workers-compensation/employers/whats-covered",
+        "https://icare.nsw.gov.au/workers-compensation/employers/whats-new",
+        "https://icare.nsw.gov.au/workers-compensation/employers/who-needs-a-policy",
+        "https://icare.nsw.gov.au/workers-compensation/employers/workers-compensation-reform-faqs",
+        "https://icare.nsw.gov.au/workers-compensation/employers/your-responsibilities-as-an-employer",
+        "https://icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/injury-prevention-resource-hub"
+      ],
+      "coverageGaps": [],
+      "description": "Coloured breadcrumb banner, on-this-page anchor list, quick-link cards, long guide content with video, accordions and related downloads",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            "header.hero-composite-section"
+          ]
+        },
+        {
+          "name": "cards-audience",
+          "instances": [
+            ".all-category-home-tile-wrapper .home-tile-wrapper"
+          ]
+        },
+        {
+          "name": "columns-links",
+          "instances": [
+            ".cta-long-wrapper .cta-long-section"
+          ]
+        },
+        {
+          "name": "embed-video",
+          "instances": [
+            ".cm-video .intrinsic"
+          ]
+        },
+        {
+          "name": "cards-downloads",
+          "instances": [
+            "section.cm-links-downloads > ul"
+          ]
+        },
+        {
+          "name": "accordion",
+          "instances": [
+            ".l-main section.cm-accordion"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            ".grouped-highlight .sl-list"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            ".l-main .cm-rich-text table"
+          ]
+        },
+        {
+          "name": "cards-feature",
+          "instances": [
+            ".l-main > div.sl"
+          ]
+        }
+      ],
+      "representativeUrl": "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages",
+      "sections": [
+        {
+          "id": "1",
+          "name": "Page intro banner",
+          "selector": [
+            "header.hero-composite-section"
+          ],
+          "style": null,
+          "blocks": [
+            "hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "On this page",
+          "selector": [
+            "nav.on-this-page"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "nav.on-this-page .on-this-page__title",
+            "nav.on-this-page .on-this-page__list"
+          ]
+        },
+        {
+          "id": "3",
+          "name": "Quick links",
+          "selector": [
+            "section.all-category-home-tile-wrapper:has(~ div.l-layout)"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-audience"
+          ],
+          "defaultContent": [
+            "section.all-category-home-tile-wrapper:has(~ div.l-layout) .home-tile-content-header"
+          ]
+        },
+        {
+          "id": "4",
+          "name": "Guide body",
+          "selector": [
+            "div.l-layout"
+          ],
+          "style": null,
+          "blocks": [
+            "embed-video",
+            "cards-downloads",
+            "accordion",
+            "columns",
+            "table"
+          ],
+          "defaultContent": [
+            ".l-main .cm-rich-text",
+            ".l-main .cm-video .video-desc",
+            ".l-main section.cm-image",
+            ".l-main section.cm-links-downloads > h2",
+            ".l-main section.cm-links-related"
+          ]
+        },
+        {
+          "id": "5",
+          "name": "Getting started links",
+          "selector": [
+            ".l-main > section.cta-long-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-links"
+          ],
+          "defaultContent": [
+            ".l-main > section.cta-long-wrapper .col-2:first-child .cta-coloumn-headding h2"
+          ]
+        },
+        {
+          "id": "6",
+          "name": "In-page quick task tiles",
+          "selector": [
+            ".l-main > section.all-category-home-tile-wrapper"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-audience"
+          ],
+          "defaultContent": [
+            ".l-main > section.all-category-home-tile-wrapper .home-tile-content-header"
+          ]
+        },
+        {
+          "id": "7",
+          "name": "Help and resources",
+          "selector": [
+            ".l-main > section.all-category-home-tile-wrapper + *"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-feature"
+          ],
+          "defaultContent": [
+            ".l-main > h2",
+            ".l-main > div.tags"
+          ]
+        },
+        {
+          "id": "8",
+          "name": "Related content",
+          "selector": [
+            "div.l-layout ~ section.all-category-home-tile-wrapper"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-audience"
+          ],
+          "defaultContent": [
+            "div.l-layout ~ section.all-category-home-tile-wrapper .home-tile-content-header"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "contact-detail",
+      "urls": [
+        "https://icare.nsw.gov.au/contact-us/ctp-care",
+        "https://icare.nsw.gov.au/contact-us/dust-diseases-care",
+        "https://icare.nsw.gov.au/contact-us/feedback-and-complaints",
+        "https://icare.nsw.gov.au/contact-us/icare-media",
+        "https://icare.nsw.gov.au/contact-us/insurance-for-nsw",
+        "https://icare.nsw.gov.au/contact-us/lifetime-and-workers-care-program",
+        "https://icare.nsw.gov.au/contact-us/workers-insurance-claim-enquiries",
+        "https://icare.nsw.gov.au/injured-or-ill-people/dust-diseases-results-delivery/making-an-application-to-ddc-scheme",
+        "https://icare.nsw.gov.au/injured-or-ill-people/dust-diseases-results-delivery/support-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/dust-diseases-results-delivery/understanding-your-dust-disease",
+        "https://icare.nsw.gov.au/injured-or-ill-people/dust-diseases-results-delivery/working-with-a-dust-disease",
+        "https://icare.nsw.gov.au/injured-or-ill-people/dust-diseases-results-delivery/your-health-and-lifestyle"
+      ],
+      "coverageGaps": [],
+      "description": "Contact page with banner, hero intro and stacked contact-method sections",
+      "blocks": []
+    },
+    {
+      "name": "contact-detail-short",
+      "urls": [
+        "https://icare.nsw.gov.au/contact-us/home-building-compensation-fund",
+        "https://icare.nsw.gov.au/contact-us/make-a-public-interest-disclosure",
+        "https://icare.nsw.gov.au/contact-us/report-fraud",
+        "https://icare.nsw.gov.au/contact-us/sporting-injuries"
+      ],
+      "coverageGaps": [],
+      "description": "Short contact page with banner, hero intro and a single contact section",
+      "blocks": []
+    },
+    {
+      "name": "contact-detail-cards",
+      "urls": [
+        "https://icare.nsw.gov.au/contact-us/workers-insurance-policy-enquiries"
+      ],
+      "coverageGaps": [],
+      "description": "Contact page with banner, grid of contact cards and several follow-on sections",
+      "blocks": []
+    },
+    {
+      "name": "lookup-tool",
+      "urls": [
+        "https://icare.nsw.gov.au/employer-lookup"
+      ],
+      "coverageGaps": [],
+      "description": "Tool page with tall title banner and a search/lookup form",
+      "blocks": []
+    },
+    {
+      "name": "resource-hub-with-cards",
+      "urls": [
+        "https://icare.nsw.gov.au/employers/employer-obligations/injury-prevention/mental-health-resources"
+      ],
+      "coverageGaps": [],
+      "description": "Hero banner, stacked content sections and a closing resource card grid",
+      "blocks": []
+    },
+    {
+      "name": "card-index",
+      "urls": [
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub",
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/professional-standards-framework"
+      ],
+      "coverageGaps": [],
+      "description": "Index page with banner and a grid of navigation cards",
+      "blocks": []
+    },
+    {
+      "name": "industry-hub-article",
+      "urls": [
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/construction",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/construction/how-to-make-a-claim-for-a-new-psychological-injury-in-the-construction-industry",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/construction/tips-on-breaking-down-barriers-for-women-in-the-construction-industry",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/health",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/health/how-employers-can-best-support-senior-workers-in-the-healthcare-industry",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/health/shift-worker-fatigue-in-the-healthcare-industry",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/manufacturing",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/manufacturing/preventing-hazardous-manual-task-injuries-in-the-manufacturing-industry",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/transport",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/transport/common-risk-factors-in-the-truck-driving-industry",
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/transport/mental-health-injuries-in-the-truck-driving-industry",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/about-us",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/research-funding/dust-diseases-prevention-grants",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/researcher-development/clinical-fellowships"
+      ],
+      "coverageGaps": [],
+      "description": "Banner with accordion navigation, hero intro, stacked content sections and a closing hero promo",
+      "blocks": []
+    },
+    {
+      "name": "long-insight-article",
+      "urls": [
+        "https://icare.nsw.gov.au/employers/industry-and-partners/industry-hub/health/bullying-and-harassment-claims-rising-in-aged-care"
+      ],
+      "coverageGaps": [],
+      "description": "Long article with tall title area and multiple stacked content sections",
+      "blocks": []
+    },
+    {
+      "name": "app-embed-page",
+      "urls": [
+        "https://icare.nsw.gov.au/employers/industry-and-partners/safe-and-healthy-workplace-program-finder"
+      ],
+      "coverageGaps": [],
+      "description": "Tall hero banner with an embedded interactive application below",
+      "blocks": []
+    },
+    {
+      "name": "program-detail-carousel",
+      "urls": [
+        "https://icare.nsw.gov.au/government-agencies/risk-education-express/grit"
+      ],
+      "coverageGaps": [],
+      "description": "Program page with banner and carousel-driven content",
+      "blocks": []
+    },
+    {
+      "name": "directory-listing",
+      "urls": [
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider",
+        "https://icare.nsw.gov.au/news-and-stories/2024/winner-of-the-shine-arts-prize-2024"
+      ],
+      "coverageGaps": [],
+      "description": "Directory index page with compact title and an alphabetical list of directory entries",
+      "blocks": []
+    },
+    {
+      "name": "directory-profile",
+      "urls": [
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/a/ability-options",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/a/acquired-brain-injury-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/a/ads-care",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/a/all-about-caring",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/a/allcare-nursing-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/a/alliance-community",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/a/aviscare-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/b/bower-your-nursing-agency",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/b/bundaleer",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/c/care1",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/c/civic-disability-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/c/claro",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/c/community-connections-australia",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/c/complete-care-team",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/c/css---care-and-support-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/d/dans-in-home-care",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/d/drake-medox",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/e/ena-healthcare",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/f/forward-ability-support",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/g/global-disability-and-care-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/h/headstart-abi-service",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/h/holistic-care-solutions",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/i/interact-australia",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/j/jb-community-care-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/k/kanda-php",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/k/kinder-caring",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/l/leaders-care-pty-ltd",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/m/meditech",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/m/my-guardian",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/n/new-horizons",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/n/newcastle-and-district-nursing-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/n/nextt-dolleina",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/n/nursing-group",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/o/one-dream",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/s/southern-cross",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/s/st-george-and-shore-visiting-nurses",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/s/subee-pty-ltd",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/u/unidex-healthcare",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/v/vital-home-health-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/w/warhorse-disability-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/w/wellways-australia",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/w/whiddon",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/y/you-connect",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/y/youcare-disability-services-pty-ltd",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/a/alison-carver",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/a/alison-dermody",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/a/alison-elwin",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/a/alli-holdsworth",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/a/allison-elvish",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/a/amanda-macrae",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/a/andrew-munro",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/a/angela-richardson",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/a/anna-holder-graves",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/a/anoush-sarkissian",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/a/ashleigh-roser",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/b/barbara-france",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/b/belinda-moylan",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/b/belinda-shepherd",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/b/bonnie-conway",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/b/bronwyn-kelly",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/b/bronwyn-nagle",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/b/brooke-kooymans",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/b/bryony-clark",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/c/cara-merlino",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/c/carla-widloecher",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/c/carly-macleay",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/c/cate-millar",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/c/charissa-stewart",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/c/charisse-duval",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/c/cherie-marantz",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/c/cinamon-bohr",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/c/claire-maher",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/c/clare-seidel",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/c/claudia-di-lazaro",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/d/damien-barratt",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/d/danielle-mcglone",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/d/danielle-murphy",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/d/danielle-oconnor",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/d/david-power",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/d/debbie-sharp",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/d/deborah-toffolo",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/d/deborah-woodforde",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/d/deeba-hosseini",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/d/diena-grant-thomson",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/d/donna-duncan",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/d/dubbo-brain-injury-rehabilitation-program",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/e/elizabeth-mitchell",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/e/emily-marchese",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/e/emily-stone",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/e/emma-steele",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/e/emma-thomas",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/f/fern-muller",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/f/fiona-henderson",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/g/gemma-lloyd",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/g/gemma-matheson",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/g/gemma-nixon",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/g/geraldine-callan",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/g/gina-marozzi",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/g/giselle-elfman",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/g/greer-renshaw",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/h/hannah-essaih",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/h/hnekids-rehab-paediatric-brain-injury-rehabilitation-team",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/h/hunter-brain-injury-service",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/h/hunter-spinal-cord-injury-service",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/i/illawarra-brain-injury-service",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/i/inbal-luft",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/i/ivania-choi",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/jacqueline-winton",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/jaimee-palagyi",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/jamie-varoxis",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/jane-reynolds",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/janelle-toole",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/janine-kissick",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/jen-nicholls",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/jenny-wise",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/jo-bradford",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/joan-hacken",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/joanne-barrett",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/joe-mcdonnell",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/kali-ogle",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/karen-dempsey",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/karen-maurer",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/karen-opitz",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/karen-williams",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/karmen-mulley",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/kate-atkins",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/kate-gardner",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/kate-launt",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/kate-moore",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/kate-pollard",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/katherine-whitmore",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/kathryn-caukill",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/katie-gibson",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/katrina-carr",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/katrina-lethbridge",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/katrina-prior",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/kaye-bruce",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/kelly-strong",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/kirsty-honeysett",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/kyle-maloney",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/laura-begbie",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/laura-bodycoat",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/laura-taylor",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/lauren-procter",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/lauren-ward",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/lesley-ryan",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/linda-spencer",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/lisa-bowker",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/liverpool-brain-injury-rehabilitation-unit",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/liz-brownlee",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/louise-bonney",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/louise-crosskill",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/louise-diffley",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/louise-kelly",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/louise-pearson",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/louise-whitton",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/lucia-berlanga",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/lyndal-millikan",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/lyndal-percy",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/mallika-de-melo",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/mandy-hanna",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/marcia-forest-jones",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/margot-lilley",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/marion-fisher",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/mary-sticca",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/matthew-bartlett",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/matthew-underwood",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/meagen-pritchard",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/meaghan-bender",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/michael-graham",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/michael-skinner",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/michelle-van-wyck",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/michelle-wang",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/mid-north-coast-brain-injury-rehabilitation-service",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/mid-western-brain-injury-rehabilitation-program",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/n/natarsha-taylor-fick",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/n/new-england-brain-injury-rehabilitation-service",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/n/nigel-wind",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/n/noni-byron",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/n/northern-brain-injury-rehabilitation-service",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/p/paula-michelle",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/p/penelope-peadon",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/p/peta-mclean",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/p/peter-petrou",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/rachel-collis",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/rachel-lewis",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/rebecca-bonnar",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/rebecca-menzies",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/rebecca-pearson",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/rebecca-wainscoat",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/rehab2kids-sydney-children-hospital",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/renee-kelly",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/rosie-krause",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/roslyn-davis",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/ross-stanbury",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/royal-rehab-brain-injury-rehabilitation-service",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/sahra-maree-pihl",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/samantha-genco",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/sandra-krpez",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/sarah-cotter",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/sarah-strong",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/sharon-borchardt",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/sharon-breckenridge",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/sharon-duff",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/sharon-howell",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/sharon-poole",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/sigrun-wunram",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/simon-turnbull",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/simone-burley",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/simone-thompson",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/siobhan-gourd",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/sofie-raad",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/sonia-martinez",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/southern-area-brain-injury-service",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/spiros-katzakis",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/susan-molesworth",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/t/kids-rehab-the-childrens-hospital-at-westmead",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/t/terry-reynolds",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/t/timothy-fairbairn",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/t/tracey-josling",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/t/tracey-sullivan",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/t/trinity-glendenning",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/t/troy-de-cruz",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/v/vanessa-mahon",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/v/veronica-hamer",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/v/veronica-sestic",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/v/vicki-bowden",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/v/villia-greenslade",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/v/vincent-wilkinson",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/v/virginia-longbottom",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/w/westmead-brain-injury-rehabilitation-service",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/y/yasmin-duckworth",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/y/yvonne-varela"
+      ],
+      "coverageGaps": [],
+      "description": "Short directory entry page with compact title and a contact/details panel",
+      "blocks": []
+    },
+    {
+      "name": "directory-profile-variant",
+      "urls": [
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/h/h1-healthcare",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/l/leora-healthcare",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/t/twenty-four-seven-nursing-and-medical-services",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/b/belinda-carr",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/b/bianca-middleton",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/c/cathy-morrison",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/g/greg-mcdonnell",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/jarrad-carraro",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/jenny-wilkinson",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/john-huston",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/j/jung-chung",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/kay-andutan",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/lily-shen",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/ling-wang",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/l/livvie-duggan",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/m/magee-dwayhe",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/rebecca-brilleman",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/richard-parks",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/r/rosemary-mackey",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/t/tamsin-phillips",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/t/todd-marchese"
+      ],
+      "coverageGaps": [],
+      "description": "Directory entry page with compact title and details panel, slightly different layout from the standard profile",
+      "blocks": []
+    },
+    {
+      "name": "directory-profile-extended",
+      "urls": [
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/j/just-better-care-eastern-suburbs",
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/attendant-care/find-an-attendant-care-provider/r/regal-health-group"
+      ],
+      "coverageGaps": [],
+      "description": "Directory entry page with compact title and extended details content",
+      "blocks": []
+    },
+    {
+      "name": "directory-listing-with-hero",
+      "urls": [
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager"
+      ],
+      "coverageGaps": [],
+      "description": "Directory index page with tall hero banner and alphabetical entry list",
+      "blocks": []
+    },
+    {
+      "name": "directory-profile-long",
+      "urls": [
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/d/danielle-brown"
+      ],
+      "coverageGaps": [],
+      "description": "Directory entry page with compact title and longer details body",
+      "blocks": []
+    },
+    {
+      "name": "directory-profile-minimal",
+      "urls": [
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/k/kate-mather"
+      ],
+      "coverageGaps": [],
+      "description": "Minimal directory entry page with compact title and very short details",
+      "blocks": []
+    },
+    {
+      "name": "directory-profile-medium",
+      "urls": [
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/case-managers/find-a-case-manager/s/stephanie-medlin"
+      ],
+      "coverageGaps": [],
+      "description": "Directory entry page with compact title and medium-length details body",
+      "blocks": []
+    },
+    {
+      "name": "services-hub",
+      "urls": [
+        "https://icare.nsw.gov.au/injured-or-ill-people/motor-accident-injuries/services-and-support"
+      ],
+      "coverageGaps": [],
+      "description": "Services index page with compact title and hero intro section",
+      "blocks": []
+    },
+    {
+      "name": "directory-listing-alt",
+      "urls": [
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/attendant-care-and-domestic-services/find-an-attendant-care-provider"
+      ],
+      "coverageGaps": [],
+      "description": "Directory index page with tall banner and entry list, alternate layout",
+      "blocks": []
+    },
+    {
+      "name": "grants-landing",
+      "urls": [
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants"
+      ],
+      "coverageGaps": [],
+      "description": "Landing page with hero, carousel and stacked content sections",
+      "blocks": []
+    },
+    {
+      "name": "resource-list-with-hero",
+      "urls": [
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/grant-resources",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/grant-resources/templates",
+        "https://icare.nsw.gov.au/injured-or-ill-people/work-related-dust-disease/dust-diseases-board-research-grants/grant-resources/user-manuals"
+      ],
+      "coverageGaps": [],
+      "description": "Hero banner followed by a short list of resources",
+      "blocks": []
+    },
+    {
+      "name": "guidelines-index",
+      "urls": [
+        "https://icare.nsw.gov.au/injured-or-ill-people/workplace-injuries/guidelines-and-policies"
+      ],
+      "coverageGaps": [],
+      "description": "Index page with image banner and list of guideline links",
+      "blocks": []
+    },
+    {
+      "name": "microsite-content",
+      "urls": [
+        "https://icare.nsw.gov.au/mental-health-claims-hub/employers/complaints"
+      ],
+      "coverageGaps": [],
+      "description": "Content page with minimal microsite title bar and short body",
+      "blocks": []
+    },
+    {
+      "name": "news-article-hero-long",
+      "urls": [
+        "https://icare.nsw.gov.au/news-and-stories/2021/how-small-businesses-can-help-injured-employees-recover-at-work"
+      ],
+      "coverageGaps": [],
+      "description": "Long news article with tall title banner and hero image",
+      "blocks": []
+    },
+    {
+      "name": "news-article-text",
+      "urls": [
+        "https://icare.nsw.gov.au/news-and-stories/2021/mental-health-and-flexible-working-what-you-need-to-know-today"
+      ],
+      "coverageGaps": [],
+      "description": "News article with short title area and text body",
+      "blocks": []
+    },
+    {
+      "name": "news-article-hero-image",
+      "urls": [
+        "https://icare.nsw.gov.au/news-and-stories/2021/professional-standards-framework-designed-for-nsw-workers-compensation-scheme",
+        "https://icare.nsw.gov.au/news-and-stories/2025/hbcf-to-take-over-management-of-home-building-compensation-claims"
+      ],
+      "coverageGaps": [],
+      "description": "News article with title area, hero image and stacked body sections",
+      "blocks": []
+    },
+    {
+      "name": "news-article-hero-short",
+      "urls": [
+        "https://icare.nsw.gov.au/news-and-stories/2022/workers-compensation-for-contractors-and-other-non-employee-workers-in-the-construction-industry"
+      ],
+      "coverageGaps": [],
+      "description": "News article with tall title banner, hero image and moderate body",
+      "blocks": []
+    },
+    {
+      "name": "news-story-with-video",
+      "urls": [
+        "https://icare.nsw.gov.au/news-and-stories/2024/adaptive-sports-helps-jarrod-reimagine-whats-possible",
+        "https://icare.nsw.gov.au/news-and-stories/2024/annabelle-shares-her-passion-for-adaptive-sports",
+        "https://icare.nsw.gov.au/news-and-stories/2024/reimagining-your-life",
+        "https://icare.nsw.gov.au/news-and-stories/2024/shine-magazine-summer-2024-edition-is-out-now",
+        "https://icare.nsw.gov.au/news-and-stories/2025/icare-safeguards-nsw-workers-with-new-lung-health-mobile-clinic"
+      ],
+      "coverageGaps": [],
+      "description": "Short story article with tall title banner, hero image, body text and embedded video",
+      "blocks": []
+    },
+    {
+      "name": "content-page-short",
+      "urls": [
+        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/understanding-workers-compensation/who-is-covered-under-workers-compensation"
+      ],
+      "coverageGaps": [],
+      "description": "Short text content page with banner title and brief body",
+      "blocks": []
+    },
+    {
+      "name": "content-with-carousel",
+      "urls": [
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy/fees-and-charges-prior-to-october-2026"
+      ],
+      "coverageGaps": [],
+      "description": "Content page with title banner and carousel section",
+      "blocks": []
     },
     {
       "name": "section-landing",
       "urls": [
-        "https://www.icare.nsw.gov.au/about-us"
+        "https://icare.nsw.gov.au/workers-compensation/employers",
+        "https://icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors",
+        "https://icare.nsw.gov.au/builders-and-homeowners/homeowners",
+        "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy",
+        "https://icare.nsw.gov.au/workers-compensation/employers/new-policy",
+        "https://icare.nsw.gov.au/workers-compensation/employers/prevention-and-education"
       ],
-      "representativeUrl": "https://www.icare.nsw.gov.au/about-us",
-      "description": "Section landing page with large campaign hero banner, featured content module and repeated rows of three-up card grids",
-      "blocks": [],
-      "coverageGaps": [],
-      "urlPattern": "/*"
-    },
-    {
-      "name": "content-detail",
-      "urls": [
-        "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors",
-        "https://www.icare.nsw.gov.au/workers-compensation/employers/who-needs-a-policy"
-      ],
-      "representativeUrl": "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors",
-      "description": "Detail page with breadcrumbs, composite hero header, on-this-page anchor navigation and long-form rich text sections with call-to-action panels",
+      "representativeUrl": "https://icare.nsw.gov.au/workers-compensation/employers",
+      "description": "One-column section landing page: title banner, intro text, getting-started link rows, grey quick-task tiles and a row of image feature tiles",
       "blocks": [
         {
           "name": "hero",
@@ -216,6 +1905,7 @@
           ]
         }
       ],
+      "coverageGaps": [],
       "sections": [
         {
           "id": "1",
@@ -231,21 +1921,23 @@
         },
         {
           "id": "2",
-          "name": "I want to (quick task tiles)",
+          "name": "Popular / quick links tiles",
           "selector": [
-            ".l-one-column > section.all-category-home-tile-wrapper"
+            "div.l-layout > section.all-category-home-tile-wrapper",
+            "header.hero-composite-section + section.all-category-home-tile-wrapper"
           ],
           "style": "grey",
           "blocks": [
             "cards-audience"
           ],
           "defaultContent": [
-            ".l-one-column > section.all-category-home-tile-wrapper .home-tile-content-header"
+            "div.l-layout > section.all-category-home-tile-wrapper .home-tile-content-header",
+            "header.hero-composite-section + section.all-category-home-tile-wrapper .home-tile-content-header"
           ]
         },
         {
           "id": "3",
-          "name": "Getting started with (link rows)",
+          "name": "Getting started link rows",
           "selector": [
             ".l-main > section.cta-long-wrapper"
           ],
@@ -254,12 +1946,13 @@
             "columns-links"
           ],
           "defaultContent": [
-            ".cta-long-wrapper .col-2:first-child .cta-coloumn-headding h2"
+            ".l-main > section.cta-long-wrapper .col-2:first-child .cta-coloumn-headding h2",
+            ".l-main > .cm-rich-text"
           ]
         },
         {
           "id": "4",
-          "name": "Already with icare (quick task tiles)",
+          "name": "Already with icare tiles",
           "selector": [
             ".l-main > section.all-category-home-tile-wrapper"
           ],
@@ -273,9 +1966,24 @@
         },
         {
           "id": "5",
+          "name": "Related content tiles",
+          "selector": [
+            "div.l-layout ~ section.all-category-home-tile-wrapper"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-audience"
+          ],
+          "defaultContent": [
+            "div.l-layout ~ section.all-category-home-tile-wrapper .home-tile-content-header"
+          ]
+        },
+        {
+          "id": "6",
           "name": "Help and Resources",
           "selector": [
-            ".l-main > h2"
+            ".l-main > section.all-category-home-tile-wrapper + *",
+            ".l-main:has(> div.sl)"
           ],
           "style": null,
           "blocks": [
@@ -284,69 +1992,6 @@
           "defaultContent": [
             ".l-main > h2",
             ".l-main > div.tags"
-          ]
-        }
-      ],
-      "coverageGaps": [],
-      "urlPattern": "/*"
-    },
-    {
-      "name": "contact-directory",
-      "urls": [
-        "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/premiums/premium-calculator",
-        "https://www.icare.nsw.gov.au/contact-us"
-      ],
-      "representativeUrl": "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors/premiums/premium-calculator",
-      "description": "Directory-style page with simple content header, rich text intro, grid of icon tile links and an accordion explainer",
-      "blocks": [
-        {
-          "name": "embed-iframe",
-          "instances": [
-            ".l-main > div.cm-iframe"
-          ]
-        }
-      ],
-      "coverageGaps": [],
-      "urlPattern": "/*",
-      "sections": [
-        {
-          "id": "1",
-          "name": "Page intro and portal CTA",
-          "selector": [
-            ".l-main > div.sl"
-          ],
-          "style": null,
-          "blocks": [],
-          "defaultContent": [
-            ".l-main > div.sl header.content-header h1",
-            ".l-main > div.sl header.content-header p.intro",
-            ".l-main > div.sl .cm-rich-text p",
-            ".l-main > div.sl .cm-rich-text > a.cta-is-secondary"
-          ]
-        },
-        {
-          "id": "2",
-          "name": "Premium calculator embed",
-          "selector": [
-            ".l-main > div.cm-iframe"
-          ],
-          "style": null,
-          "blocks": [
-            "embed-iframe"
-          ],
-          "defaultContent": []
-        },
-        {
-          "id": "3",
-          "name": "Tags",
-          "selector": [
-            ".l-main > div.tags"
-          ],
-          "style": null,
-          "blocks": [],
-          "defaultContent": [
-            ".l-main > div.tags strong",
-            ".l-main > div.tags ul"
           ]
         }
       ]

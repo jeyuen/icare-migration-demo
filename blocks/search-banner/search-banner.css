@@ -9,9 +9,10 @@ main > .section.search-banner-container {
   z-index: 1;
   box-sizing: border-box;
 
-  /* overlap the hero by 40px; offsets the hero section's bottom spacing */
-  margin: calc(-40px - var(--section-spacing)) var(--content-gutter) 46px;
-  padding: 0 24px 15px;
+  /* overlap the hero by 40px; offsets the hero section's bottom spacing.
+     The source card sits off-centre: ~18px from the left edge, ~42px from the right. */
+  margin: calc(-40px - var(--section-spacing)) 42px 46px 18px;
+  padding: 0 24px 15.5px;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   background-color: var(--background-color);
@@ -44,6 +45,7 @@ main > .section.search-banner-container > .default-content-wrapper > :is(p, h2, 
 
 .search-banner .search-banner-form {
   display: block;
+  margin: 0;
 }
 
 .search-banner .search-banner-label {
@@ -85,6 +87,11 @@ main > .section.search-banner-container > .default-content-wrapper > :is(p, h2, 
   appearance: none;
 }
 
+.search-banner .search-banner-input::placeholder {
+  color: #757575;
+  opacity: 1;
+}
+
 /* the source field has no native clear button */
 .search-banner .search-banner-input::-webkit-search-cancel-button,
 .search-banner .search-banner-input::-webkit-search-decoration {
@@ -94,12 +101,13 @@ main > .section.search-banner-container > .default-content-wrapper > :is(p, h2, 
 .search-banner .search-banner-button {
   display: flex;
   flex: 0 0 auto;
+  align-self: flex-start;
   align-items: center;
   justify-content: center;
   width: 42px;
   height: 45px;
   box-sizing: border-box;
-  margin: 0 10px 0 0;
+  margin: 0 7px 0 0;
   padding: 14px 13px;
   border: 1px solid transparent;
   background: transparent;
@@ -145,10 +153,20 @@ main > .section.search-banner-container > .default-content-wrapper > :is(p, h2, 
 
 @media (width >= 900px) {
   main > .section.search-banner-container {
-    /* overlap the hero by 80px, align with the content column */
-    margin-top: calc(-80px - var(--section-spacing));
-    margin-inline: max(var(--content-gutter), (100% - var(--content-max-width)) / 2);
-    padding-bottom: 49px;
+    /* source: 1168px (73rem) card, centred then shifted 25px left */
+    margin-inline: max(27px, (100% - 1168px) / 2 - 25px) max(53px, (100% - 1168px) / 2 + 25px);
+    padding-bottom: 29.5px;
+  }
+
+  .search-banner .search-banner-results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* breakpoint-exception: the source switches to its large search card above 1024px */
+@media (width >= 1025px) {
+  main > .section.search-banner-container {
+    padding-bottom: 49.5px;
   }
 
   main > .section.search-banner-container > .default-content-wrapper {
@@ -160,7 +178,14 @@ main > .section.search-banner-container > .default-content-wrapper > :is(p, h2, 
     line-height: 40px;
   }
 
-  .search-banner .search-banner-results {
-    grid-template-columns: repeat(2, 1fr);
+  .search-banner .search-banner-button {
+    margin-right: 9px;
+  }
+}
+
+/* breakpoint-exception: the source deepens the hero overlap from 40px to 80px above 1243px */
+@media (width >= 1244px) {
+  main > .section.search-banner-container {
+    margin-top: calc(-80px - var(--section-spacing));
   }
 }

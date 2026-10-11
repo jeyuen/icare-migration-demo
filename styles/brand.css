@@ -28,4 +28,8 @@
   --section-spacing: 35px;
   --content-max-width: 1200px;
   --content-gutter: 20px;
+
+  /* body-copy heading sizes (source rich text) */
+  --heading-font-size-content-xl: 25.6px;
+  --heading-font-size-content-l: 20.8px;
 }

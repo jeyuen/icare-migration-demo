@@ -9,7 +9,8 @@ const ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.027 14.027
  * A `.json` link is treated as a query index (live results rendered in-block);
  * any other link is treated as a search results page (form submits `?q=`).
  * @param {Element} block
- * @returns {{ source: string, isIndex: boolean }}
+ * The link text (e.g. "Search icare") becomes the field placeholder.
+ * @returns {{ source: string, isIndex: boolean, placeholder: string }}
  */
 function readConfig(block) {
   const link = block.querySelector('a[href]');
@@ -22,7 +23,8 @@ function readConfig(block) {
   } catch {
     isIndex = source.endsWith('.json');
   }
-  return { source, isIndex };
+  const placeholder = link?.textContent.trim() || '';
+  return { source, isIndex, placeholder };
 }
 
 async function fetchIndex(source) {
@@ -91,6 +93,7 @@ export default async function decorate(block) {
   input.className = 'search-banner-input';
   input.autocomplete = 'off';
   input.spellcheck = false;
+  if (config.placeholder) input.placeholder = config.placeholder;
 
   // As on the source, the submit button stays disabled until something is typed.
   const button = document.createElement('button');

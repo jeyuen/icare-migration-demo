@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/builders-and-homeowners/homeowners",
+  "path": "builders-and-homeowners/homeowners",
+  "timestamp": "2026-10-11T09:45:13.389Z",
+  "title": "Homeowners - HBCF | icare",
+  "template": "section-landing",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-audience",
+    "columns-links",
+    "cards-feature"
+  ]
+}

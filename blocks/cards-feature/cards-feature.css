@@ -1,12 +1,12 @@
 /* cards-feature: stacked on mobile/tablet, 3 equal columns on desktop; borderless cards */
 .cards-feature {
-  margin: 35px 0;
+  margin: var(--section-spacing) 0;
 }
 
 .cards-feature > ul {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 35px;
+  gap: var(--section-spacing);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -19,7 +19,8 @@
   background-color: var(--background-color);
 }
 
-/* image: full card width, landscape crop (source ratio 1440 x 788) */
+/* image: full card width at its natural landscape ratio (source renders the authored
+   rendition uncropped: 1400 x 788 on employers, 1440 x 788 on builders) */
 .cards-feature .cards-feature-card-image {
   line-height: 0;
 }
@@ -31,8 +32,7 @@
 .cards-feature .cards-feature-card-image img {
   display: block;
   width: 100%;
-  aspect-ratio: 1440 / 788;
-  object-fit: cover;
+  height: auto;
 }
 
 /* body: heading, description, link stacked; link pinned to the bottom */
@@ -47,7 +47,7 @@
 .cards-feature .cards-feature-card-body h3 {
   margin: 0 0 15px;
   color: var(--heading-color);
-  font-size: 20.8px;
+  font-size: var(--heading-font-size-content-l);
   font-weight: 700;
   line-height: 34px;
 }
@@ -55,8 +55,8 @@
 .cards-feature .cards-feature-card-body p {
   margin: 0 0 24px;
   color: var(--text-color);
-  font-size: var(--body-font-size-m);
-  line-height: 26px;
+  font-size: 15px;
+  line-height: 24.45px;
 }
 
 .cards-feature .cards-feature-card-body > :last-child {

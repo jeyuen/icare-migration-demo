@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/employers/premiums",
+  "path": "employers/premiums",
+  "timestamp": "2026-10-11T09:45:32.223Z",
+  "title": "New policy | icare",
+  "template": "section-landing",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-audience",
+    "columns-links",
+    "cards-feature"
+  ]
+}

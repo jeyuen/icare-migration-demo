@@ -1,26 +1,39 @@
+/* values from the source .cm-iframe block: full content-column width, fixed 2600px frame */
 .embed-iframe {
   width: 100%;
+  overflow: hidden;
 }
 
 .embed-iframe .embed-iframe-frame {
   width: 100%;
 }
 
+/* source frame is a fixed height at every breakpoint; an inline height from the
+   app's resize message (see embed-iframe.js) overrides it */
 .embed-iframe .embed-iframe-frame iframe {
   display: block;
   width: 100%;
-  min-height: 1740px;
-  border: 0;
+  height: 2600px;
+  border: none;
 }
 
-/* once the embedded app reports its own height, let that drive the size */
-.embed-iframe.embed-iframe-resized .embed-iframe-frame iframe {
-  min-height: 0;
-}
-
+/* "open in a new tab" link, shown for when the embedded app refuses framing */
 .embed-iframe .embed-iframe-fallback {
   margin: 12px 0 0;
   font-size: var(--body-font-size-s);
+}
+
+/* same external-link icon the site uses on rich-text links that leave the site */
+.embed-iframe .embed-iframe-fallback a:any-link::after {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 12px;
+  margin-left: 10px;
+  margin-right: 2px;
+  vertical-align: text-top;
+  background-color: currentcolor;
+  mask: url("/icons/external-link.svg") center / contain no-repeat;
 }
 
 .embed-iframe .embed-iframe-placeholder {
@@ -69,23 +82,4 @@
   border-left: 6px solid;
   top: 4px;
   left: 7px;
-}
-
-/* fixed heights match the source calculator, used until the app reports its own height */
-@media (width >= 600px) {
-  .embed-iframe .embed-iframe-frame iframe {
-    min-height: 1300px;
-  }
-}
-
-@media (width >= 900px) {
-  .embed-iframe .embed-iframe-frame iframe {
-    min-height: 1100px;
-  }
-}
-
-@media (width >= 1200px) {
-  .embed-iframe .embed-iframe-frame iframe {
-    min-height: 1040px;
-  }
 }

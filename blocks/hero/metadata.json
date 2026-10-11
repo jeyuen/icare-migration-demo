@@ -25,13 +25,23 @@
       {
         "url": "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors",
         "documentPath": "/builders-and-homeowners/builders-and-distributors"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages",
+        "documentPath": "/workers-compensation/employers/manage-your-policy/declaring-wages"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/workers-compensation/employers",
+        "documentPath": "/workers-compensation/employers"
       }
     ],
-    "reuseCount": 2,
-    "lastUsed": "2026-10-07T00:25:41.885437Z",
+    "reuseCount": 4,
+    "lastUsed": "2026-10-11T07:57:24.327Z",
     "documentPaths": [
+      "/builders-and-homeowners/builders-and-distributors",
       "/index",
-      "/builders-and-homeowners/builders-and-distributors"
+      "/workers-compensation/employers",
+      "/workers-compensation/employers/manage-your-policy/declaring-wages"
     ]
   },
   "options": [],

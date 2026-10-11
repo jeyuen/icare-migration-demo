@@ -18,9 +18,19 @@
   },
   "usage": {
     "pagesUsing": [
-      { "url": "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors" }
+      {
+        "url": "https://www.icare.nsw.gov.au/builders-and-homeowners/builders-and-distributors"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/workers-compensation/employers",
+        "documentPath": "/workers-compensation/employers"
+      }
     ],
-    "reuseCount": 1
+    "reuseCount": 2,
+    "documentPaths": [
+      "/workers-compensation/employers"
+    ],
+    "lastUsed": "2026-10-11T07:57:24.392Z"
   },
   "options": [],
   "memberVariantIds": []
