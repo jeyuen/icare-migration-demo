@@ -1,0 +1,20 @@
+{
+  "variantName": "embed-video",
+  "baseBlock": "embed",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "structure": "single YouTube iframe in a 16:9 responsive frame, full content-column width",
+    "imagePattern": "video",
+    "colorScheme": "light",
+    "density": "minimal"
+  },
+  "contentPattern": "one row: video URL (YouTube) plus optional poster image and title",
+  "usage": {
+    "pagesUsing": [
+      { "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages" }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": []
+}

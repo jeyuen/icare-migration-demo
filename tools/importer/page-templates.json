@@ -1068,15 +1068,6 @@
       "name": "guide-with-page-nav",
       "urls": [
         "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages",
-        "https://icare.nsw.gov.au/archive/wage-declarations",
-        "https://icare.nsw.gov.au/employers/employer-obligations/injury-prevention",
-        "https://icare.nsw.gov.au/employers/employer-obligations/injury-prevention/education-and-training",
-        "https://icare.nsw.gov.au/employers/forms-and-resources",
-        "https://icare.nsw.gov.au/employers/premiums/calculating-the-cost-of-your-premium",
-        "https://icare.nsw.gov.au/employers/premiums/premium-reviews",
-        "https://icare.nsw.gov.au/employers/premiums/premium-updates",
-        "https://icare.nsw.gov.au/employers/premiums/ways-to-lower-your-premiums",
-        "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/understanding-workers-compensation/the-nsw-workers-compensation-system",
         "https://icare.nsw.gov.au/workers-compensation/employers/apprentice-incentive-scheme",
         "https://icare.nsw.gov.au/workers-compensation/employers/classifying-your-workers",
         "https://icare.nsw.gov.au/workers-compensation/employers/forms-and-resources",
@@ -1197,7 +1188,7 @@
           "selector": [
             "nav.on-this-page"
           ],
-          "style": null,
+          "style": "on-this-page",
           "blocks": [],
           "defaultContent": [
             "nav.on-this-page .on-this-page__title",
@@ -1224,7 +1215,7 @@
           "selector": [
             "div.l-layout"
           ],
-          "style": null,
+          "style": "content-column",
           "blocks": [
             "embed-video",
             "cards-downloads",

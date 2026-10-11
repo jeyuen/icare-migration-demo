@@ -1,0 +1,98 @@
+/* table: full content-width data table; header row + body rows.
+   Mobile: each body row stacks into "Header: value" pairs. >= 600px: a real table that
+   scrolls horizontally when its columns do not fit. */
+.table {
+  width: 100%;
+}
+
+.table .table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table .table-scroll:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 2px;
+}
+
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.table th,
+.table td {
+  padding: 20px;
+  border: 1px solid;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th p,
+.table td p {
+  margin: 0;
+}
+
+.table th p + p,
+.table td p + p {
+  margin-top: 0.25em;
+}
+
+/* mobile: stacked rows with header labels (only when a header row supplies them) */
+@media (width < 600px) {
+  .table.table-has-labels thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .table.table-has-labels table,
+  .table.table-has-labels tbody,
+  .table.table-has-labels tr,
+  .table.table-has-labels td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .table.table-has-labels tr {
+    padding: 10px;
+    border: 1px solid;
+  }
+
+  .table.table-has-labels tr + tr {
+    border-top: 0;
+  }
+
+  .table.table-has-labels td {
+    padding: 10px 0;
+    border: 0;
+  }
+
+  .table.table-has-labels td[data-label]::before {
+    content: attr(data-label) ": ";
+    font-weight: 700;
+  }
+
+  .table.table-has-labels td > p:first-child {
+    display: inline;
+  }
+}
+
+@media (width >= 600px) {
+  .table th,
+  .table td {
+    min-width: 120px;
+  }
+}
+
+@media (width >= 900px) {
+  .table th,
+  .table td {
+    min-width: 0;
+  }
+}

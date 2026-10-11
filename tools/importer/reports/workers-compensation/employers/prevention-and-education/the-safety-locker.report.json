@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/the-safety-locker",
+  "path": "workers-compensation/employers/prevention-and-education/the-safety-locker",
+  "timestamp": "2026-10-11T11:52:43.315Z",
+  "title": "The safety locker | icare",
+  "template": "guide-with-page-nav",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-audience"
+  ]
+}

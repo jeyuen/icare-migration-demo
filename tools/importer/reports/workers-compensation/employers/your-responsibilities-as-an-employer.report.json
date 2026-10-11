@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/your-responsibilities-as-an-employer",
+  "path": "workers-compensation/employers/your-responsibilities-as-an-employer",
+  "timestamp": "2026-10-11T11:54:35.662Z",
+  "title": "Your responsibilities | icare",
+  "template": "guide-with-page-nav",
+  "blocks": [
+    "hero",
+    "cards-audience"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/injury-prevention",
+  "path": "workers-compensation/employers/prevention-and-education/injury-prevention",
+  "timestamp": "2026-10-11T11:51:42.413Z",
+  "title": "Injury Prevention | icare",
+  "template": "guide-with-page-nav",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-audience",
+    "cards-feature",
+    "cards-feature",
+    "cards-feature",
+    "cards-feature"
+  ]
+}

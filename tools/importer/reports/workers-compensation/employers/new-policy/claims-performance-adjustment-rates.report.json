@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/new-policy/claims-performance-adjustment-rates",
+  "path": "workers-compensation/employers/new-policy/claims-performance-adjustment-rates",
+  "timestamp": "2026-10-11T11:47:21.507Z",
+  "title": "Claims performance adjustment rates | icare",
+  "template": "guide-with-page-nav",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-audience",
+    "cards-downloads"
+  ]
+}

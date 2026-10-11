@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/understanding-icare-and-workers-compensation",
+  "path": "workers-compensation/employers/understanding-icare-and-workers-compensation",
+  "timestamp": "2026-10-11T11:53:59.011Z",
+  "title": "Understanding ​​icare and Workers Compensation | icare",
+  "template": "guide-with-page-nav",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-audience",
+    "accordion"
+  ]
+}

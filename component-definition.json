@@ -145,6 +145,36 @@
           }
         },
         {
+          "title": "Cards Downloads",
+          "id": "cards-downloads",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards Downloads",
+                  "filter": "cards-downloads"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Download",
+          "id": "cards-downloads-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Download",
+                  "model": "cards-downloads-item"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Cards Feature",
           "id": "cards-feature",
           "plugins": {
@@ -379,6 +409,21 @@
           }
         },
         {
+          "title": "Embed Video",
+          "id": "embed-video",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Embed Video",
+                  "model": "embed-video"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Fragment",
           "id": "fragment",
           "plugins": {
@@ -418,6 +463,178 @@
                 "template": {
                   "name": "Search Banner",
                   "model": "search-banner"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Table",
+          "id": "table",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Table",
+                  "model": "table",
+                  "filter": "table"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Row",
+          "id": "table-row",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Row",
+                  "model": "table-row",
+                  "column1text": "Column1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Row (2 columns)",
+          "id": "table-col-2",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Row",
+                  "model": "table-col-2",
+                  "column1text": "Column1",
+                  "column2text": "Column2"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Row (3 columns)",
+          "id": "table-col-3",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Row",
+                  "model": "table-col-3",
+                  "column1text": "Column1",
+                  "column2text": "Column2",
+                  "column3text": "Column3"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Row (4 columns)",
+          "id": "table-col-4",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Row",
+                  "model": "table-col-4",
+                  "column1text": "Column1",
+                  "column2text": "Column2",
+                  "column3text": "Column3",
+                  "column4text": "Column4"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Row (5 columns)",
+          "id": "table-col-5",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Row",
+                  "model": "table-col-5",
+                  "column1text": "Column1",
+                  "column2text": "Column2",
+                  "column3text": "Column3",
+                  "column4text": "Column4",
+                  "column5text": "Column5"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Row (6 columns)",
+          "id": "table-col-6",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Row",
+                  "model": "table-col-6",
+                  "column1text": "Column1",
+                  "column2text": "Column2",
+                  "column3text": "Column3",
+                  "column4text": "Column4",
+                  "column5text": "Column5",
+                  "column6text": "Column6"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Row (7 columns)",
+          "id": "table-col-7",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Row",
+                  "model": "table-col-7",
+                  "column1text": "Column1",
+                  "column2text": "Column2",
+                  "column3text": "Column3",
+                  "column4text": "Column4",
+                  "column5text": "Column5",
+                  "column6text": "Column6",
+                  "column7text": "Column7"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Row (8 columns)",
+          "id": "table-col-8",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Row",
+                  "model": "table-col-8",
+                  "column1text": "Column1",
+                  "column2text": "Column2",
+                  "column3text": "Column3",
+                  "column4text": "Column4",
+                  "column5text": "Column5",
+                  "column6text": "Column6",
+                  "column7text": "Column7",
+                  "column8text": "Column8"
                 }
               }
             }
