@@ -522,6 +522,20 @@ main > .section.content-column .default-content-wrapper > h4 {
   line-height: 30px;
 }
 
+/* the source spaces image and accordion components 35px from the text around them;
+   text after them starts a new rich-text block, so its heading has no top margin */
+main > .section.content-column .default-content-wrapper > p:has(> picture) {
+  margin-block: 35px;
+}
+
+main > .section.content-column .default-content-wrapper > p:has(> picture) + :is(h2, h3) {
+  margin-top: 0;
+}
+
+main > .section.content-column > .accordion-wrapper {
+  margin-block: 35px;
+}
+
 /* short label above a row of audience tiles, e.g. "I want to" */
 main .section .default-content-wrapper:has(+ .cards-audience-wrapper) > p:last-child {
   margin: 0 0 10px;
