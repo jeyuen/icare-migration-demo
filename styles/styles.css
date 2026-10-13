@@ -506,6 +506,22 @@ main .default-content-wrapper > h1:first-child ~ p.button-wrapper {
   }
 }
 
+/* guide body copy headings: spacing from the source rich text (cm-rich-text) */
+main > .section.content-column .default-content-wrapper > h2 {
+  padding: 4px 0 10px;
+}
+
+main > .section.content-column .default-content-wrapper > h3 + p {
+  margin-top: -4px;
+}
+
+main > .section.content-column .default-content-wrapper > h4 {
+  margin: 40px 0 15px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+}
+
 /* short label above a row of audience tiles, e.g. "I want to" */
 main .section .default-content-wrapper:has(+ .cards-audience-wrapper) > p:last-child {
   margin: 0 0 10px;
