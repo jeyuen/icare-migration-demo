@@ -10,8 +10,9 @@ main > .section.search-banner-container {
   box-sizing: border-box;
 
   /* overlap the hero by 40px; offsets the hero section's bottom spacing.
-     The source card sits off-centre: ~18px from the left edge, ~42px from the right. */
-  margin: calc(-40px - var(--section-spacing)) 42px 46px 18px;
+     The source card sits off-centre: ~18px from the left edge, ~42px from the right,
+     with a 39px gap to the audience tiles below. */
+  margin: calc(-40px - var(--section-spacing)) 42px 39px 18px;
   padding: 0 24px 15.5px;
   border: 1px solid var(--border-color);
   border-radius: 8px;
@@ -151,11 +152,33 @@ main > .section.search-banner-container > .default-content-wrapper > :is(p, h2, 
   margin: 0.25em 0 0;
 }
 
+/* breakpoint-exception: from 768px the source card has a fixed width,
+   centred then shifted left by a small offset */
+@media (width >= 768px) {
+  main > .section.search-banner-container {
+    --search-card-width: 704px;
+    --search-card-shift: 12px;
+
+    width: var(--search-card-width);
+    margin-inline: calc((100% - var(--search-card-width)) / 2 - var(--search-card-shift)) auto;
+  }
+}
+
+/* breakpoint-exception: the source card grows taller and narrows slightly at 782px */
+@media (width >= 782px) {
+  main > .section.search-banner-container {
+    --search-card-width: 701px;
+    --search-card-shift: 18px;
+
+    margin-bottom: 40px;
+    padding-bottom: 29.5px;
+  }
+}
+
 @media (width >= 900px) {
   main > .section.search-banner-container {
-    /* source: 1168px (73rem) card, centred then shifted 25px left */
-    margin-inline: max(27px, (100% - 1168px) / 2 - 25px) max(53px, (100% - 1168px) / 2 + 25px);
-    padding-bottom: 29.5px;
+    --search-card-width: 691px;
+    --search-card-shift: 13px;
   }
 
   .search-banner .search-banner-results {
@@ -163,9 +186,22 @@ main > .section.search-banner-container > .default-content-wrapper > :is(p, h2, 
   }
 }
 
+/* breakpoint-exception: the source widens the gap to the tiles below at 955px */
+@media (width >= 955px) {
+  main > .section.search-banner-container {
+    --search-card-width: 688px;
+
+    margin-bottom: 46px;
+  }
+}
+
 /* breakpoint-exception: the source switches to its large search card above 1024px */
 @media (width >= 1025px) {
   main > .section.search-banner-container {
+    --search-card-width: 936px;
+    --search-card-shift: 25px;
+
+    margin-left: max(25px, (100% - var(--search-card-width)) / 2 - var(--search-card-shift));
     padding-bottom: 49.5px;
   }
 
@@ -187,5 +223,12 @@ main > .section.search-banner-container > .default-content-wrapper > :is(p, h2, 
 @media (width >= 1244px) {
   main > .section.search-banner-container {
     margin-top: calc(-80px - var(--section-spacing));
+  }
+}
+
+/* breakpoint-exception: the source widens the card to 1168px (73rem) at 1273px */
+@media (width >= 1273px) {
+  main > .section.search-banner-container {
+    --search-card-width: 1168px;
   }
 }
