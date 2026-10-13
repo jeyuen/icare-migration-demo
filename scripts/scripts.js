@@ -1,4 +1,5 @@
 import {
+  buildBlock,
   loadHeader,
   loadFooter,
   decorateIcons,
@@ -9,6 +10,7 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  toClassName,
 } from './aem.js';
 
 /**
@@ -58,12 +60,38 @@ async function loadFonts() {
 }
 
 /**
+ * Checks whether any section has a given style, either already applied as a class
+ * (Universal Editor markup) or still in an undecorated section-metadata table.
+ * @param {Element} main The container element
+ * @param {string} style The section style class name
+ * @returns {boolean}
+ */
+function hasSectionStyle(main, style) {
+  return [...main.querySelectorAll(':scope > div')].some((section) => section.classList.contains(style)
+    || [...section.querySelectorAll(':scope > .section-metadata > div')].some((row) => (
+      toClassName(row.children[0]?.textContent) === 'style'
+      && (row.children[1]?.textContent || '').split(',').map(toClassName).includes(style)
+    )));
+}
+
+/**
+ * Adds a breadcrumb above the title on guide pages (pages with a "Content column" section).
+ * @param {Element} main The container element
+ */
+function buildBreadcrumbBlock(main) {
+  if (!hasSectionStyle(main, 'content-column')) return;
+  const firstSection = main.querySelector(':scope > div');
+  if (!firstSection || firstSection.querySelector('.breadcrumb')) return;
+  firstSection.prepend(buildBlock('breadcrumb', ''));
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
-function buildAutoBlocks() {
+function buildAutoBlocks(main) {
   try {
-    // TODO: add auto block, if needed
+    buildBreadcrumbBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
