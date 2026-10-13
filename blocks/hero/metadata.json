@@ -33,10 +33,18 @@
       {
         "url": "https://www.icare.nsw.gov.au/workers-compensation/employers",
         "documentPath": "/workers-compensation/employers"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/employers/industry-and-partners/small-business-hub",
+        "documentPath": "/employers/industry-and-partners/small-business-hub"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/employers/make-a-claim/notify-us-of-an-injury-or-make-a-claim",
+        "documentPath": "/employers/make-a-claim/notify-us-of-an-injury-or-make-a-claim"
       }
     ],
-    "reuseCount": 4,
-    "lastUsed": "2026-10-11T07:57:24.327Z",
+    "reuseCount": 6,
+    "lastUsed": "2026-10-13T18:13:23.663375Z",
     "documentPaths": [
       "/builders-and-homeowners/builders-and-distributors",
       "/index",

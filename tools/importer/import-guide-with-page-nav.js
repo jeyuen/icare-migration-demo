@@ -172,21 +172,24 @@ const PAGE_TEMPLATE = {
       "id": "3",
       "name": "Quick links",
       "selector": [
-        "section.all-category-home-tile-wrapper:has(~ div.l-layout)"
+        "section.all-category-home-tile-wrapper:has(~ div.l-layout)",
+        "div.l-layout > section.all-category-home-tile-wrapper"
       ],
       "style": "grey",
       "blocks": [
         "cards-audience"
       ],
       "defaultContent": [
-        "section.all-category-home-tile-wrapper:has(~ div.l-layout) .home-tile-content-header"
+        "section.all-category-home-tile-wrapper:has(~ div.l-layout) .home-tile-content-header",
+        "div.l-layout > section.all-category-home-tile-wrapper .home-tile-content-header"
       ]
     },
     {
       "id": "4",
       "name": "Guide body",
       "selector": [
-        "div.l-layout"
+        "div.l-layout:not(:has(header.hero-composite-section))",
+        "div.l-layout > div.l-content-container"
       ],
       "style": "content-column",
       "blocks": [

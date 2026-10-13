@@ -75,13 +75,16 @@ function hasSectionStyle(main, style) {
 }
 
 /**
- * Adds a breadcrumb above the title on guide pages (pages with a "Content column" section).
+ * Adds a breadcrumb above the title on guide pages (pages with a "Content column" section
+ * opening with the blue title band, i.e. a hero without an image).
  * @param {Element} main The container element
  */
 function buildBreadcrumbBlock(main) {
   if (!hasSectionStyle(main, 'content-column')) return;
   const firstSection = main.querySelector(':scope > div');
   if (!firstSection || firstSection.querySelector('.breadcrumb')) return;
+  // photo banners (e.g. claim pages) have no breadcrumb on the source
+  if (firstSection.querySelector('.hero picture, .hero img')) return;
   firstSection.prepend(buildBlock('breadcrumb', ''));
 }
 

@@ -1,0 +1,18 @@
+{
+  "variantName": "cards-promo",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "vs 'cards-audience' (light bordered icon tiles): vertical stack of solid-colour promo tiles (first purple, rest teal), white H3, optional short text, white circled arrow bottom-left, rounded bottom-right corner; whole tile is a link",
+  "contentPattern": "N rows (typically 3), 1 cell each: <h3>title</h3>, optional <p>text</p>, <p><a href>title</a></p> (link drives the whole-tile click)",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.icare.nsw.gov.au/employers/make-a-claim/notify-us-of-an-injury-or-make-a-claim"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-13T00:00:00Z"
+  },
+  "options": [],
+  "memberVariantIds": []
+}

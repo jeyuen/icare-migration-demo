@@ -1,7 +1,11 @@
-/* Structural styles only — brand colors/typography are applied by the design pass. */
+/*
+ * Accordion: FAQ-style list of collapsible items (source: section.cm-accordion).
+ * Values taken from the source computed styles; the source switches spacing at 1024px.
+ */
 .accordion .accordion-item {
-  border-top: 1px solid currentcolor;
-  border-bottom: 1px solid currentcolor;
+  padding: 14px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .accordion .accordion-item + .accordion-item {
@@ -12,21 +16,35 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 16px 56px 16px 16px;
+  gap: 15px;
+  padding: 0 48px 0 0;
+  color: var(--heading-color);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 30px;
   cursor: pointer;
   list-style: none;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
 }
 
 .accordion .accordion-item-label::-webkit-details-marker {
   display: none;
 }
 
+/* source: 20x20 img, vertical-align: text-top -> top of the 22px text box in a 30px line (4px) */
 .accordion .accordion-item-icon {
   flex: 0 0 auto;
+  align-self: flex-start;
   display: inline-flex;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+}
+
+.accordion .accordion-item-icon .icon {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .accordion .accordion-item-icon picture,
@@ -43,47 +61,103 @@
   min-width: 0;
 }
 
-/* Plus / minus toggle indicator at the right edge */
+/* plus / minus toggle: two 24x2 magenta bars at the right edge */
 .accordion .accordion-item-label::before,
 .accordion .accordion-item-label::after {
   content: '';
   position: absolute;
   top: 50%;
-  right: 16px;
-  width: 20px;
+  right: 0;
+  width: 24px;
   height: 2px;
-  background-color: currentcolor;
+  background-color: var(--brand-magenta);
   transform: translateY(-50%);
-  transition: transform 0.2s;
+  transition: background-color 0.15s, transform 0.4s, opacity 0.2s;
 }
 
 .accordion .accordion-item-label::after {
   transform: translateY(-50%) rotate(90deg);
 }
 
-.accordion .accordion-item[open] .accordion-item-label::after {
-  transform: translateY(-50%) rotate(0deg);
+.accordion .accordion-item-body {
+  color: #666;
 }
 
-.accordion .accordion-item-body {
-  padding: 0 16px 16px;
+.accordion .accordion-item-body > :first-child {
+  margin-top: 0;
+}
+
+.accordion .accordion-item-body > :last-child {
+  margin-bottom: 0;
+}
+
+.accordion .accordion-item-body p {
+  margin: 0 0 14px;
+  color: var(--text-color);
+  line-height: 26.08px;
+}
+
+.accordion .accordion-item-body ul,
+.accordion .accordion-item-body ol {
+  margin: 14px 0 0;
+  padding: 0 0 0 35px;
+  line-height: 30px;
+}
+
+.accordion .accordion-item-body li {
+  margin: 20px 0 0;
+}
+
+/* explainer: single highlighted panel with a leading icon (source: .cm-explainer-module) */
+.accordion.explainer .accordion-item {
+  background-color: #f4f4f4;
+}
+
+.accordion.explainer .accordion-item-label {
+  padding: 0 73px 0 25px;
+}
+
+.accordion.explainer .accordion-item-label::before,
+.accordion.explainer .accordion-item-label::after {
+  right: 25px;
+}
+
+.accordion.explainer .accordion-item-body {
+  margin: 0 35px;
+}
+
+/* hover / open / closed state. Source: label turns magenta on hover and stays magenta
+   while the item is expanded. */
+.accordion .accordion-item-label:hover,
+.accordion .accordion-item[open] > .accordion-item-label {
+  color: var(--brand-magenta);
+}
+
+.accordion .accordion-item[open] .accordion-item-label::after {
+  opacity: 0;
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .accordion .accordion-item:not([open]) .accordion-item-body {
   display: none;
 }
 
-@media (width >= 900px) {
-  .accordion .accordion-item-label {
-    padding: 20px 64px 20px 24px;
-  }
+/* the source nests a list heading inside the accordion: 20px below the heading and no first
+   top rule. After import that heading closes the default content right before the block. */
+main .default-content-wrapper:has(> h2:last-child) + .accordion-wrapper > .accordion {
+  margin-top: -15px;
+}
 
-  .accordion .accordion-item-label::before,
-  .accordion .accordion-item-label::after {
-    right: 24px;
+main .default-content-wrapper:has(> h2:last-child) + .accordion-wrapper .accordion .accordion-item:first-child {
+  border-top: 0;
+}
+
+@media (width >= 1024px) {
+  .accordion .accordion-item {
+    padding: 20px 0;
   }
 
   .accordion .accordion-item-body {
-    padding: 0 24px 24px 64px;
+    padding: 25px 0 10px;
   }
 }

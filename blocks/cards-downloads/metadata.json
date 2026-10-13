@@ -11,9 +11,16 @@
   "contentPattern": "one row per document: link (title + href), meta line (size, type, date), description",
   "usage": {
     "pagesUsing": [
-      { "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages" }
+      {
+        "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/employers/make-a-claim/notify-us-of-an-injury-or-make-a-claim",
+        "documentPath": "/employers/make-a-claim/notify-us-of-an-injury-or-make-a-claim"
+      }
     ],
-    "reuseCount": 1
+    "reuseCount": 2,
+    "lastUsed": "2026-10-13T18:13:23.663375Z"
   },
   "options": [],
   "memberVariantIds": []

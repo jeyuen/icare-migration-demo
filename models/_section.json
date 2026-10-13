@@ -76,7 +76,10 @@
         "embed-iframe",
         "embed-video",
         "cards-downloads",
-        "table"
+        "table",
+        "columns-video",
+        "columns-panels",
+        "cards-promo"
       ]
     }
   ]

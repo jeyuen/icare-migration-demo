@@ -9,7 +9,8 @@
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
               "name": "Accordion",
-              "filter": "accordion"
+              "filter": "accordion",
+              "model": "accordion"
             }
           }
         }
@@ -34,6 +35,29 @@
     }
   ],
   "models": [
+    {
+      "id": "accordion",
+      "fields": [
+        {
+          "component": "select",
+          "name": "classes",
+          "value": "",
+          "label": "Style",
+          "description": "Explainer: a single grey panel with an icon, e.g. 'Need a mailing address?'",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Default",
+              "value": ""
+            },
+            {
+              "name": "Explainer",
+              "value": "explainer"
+            }
+          ]
+        }
+      ]
+    },
     {
       "id": "accordion-item",
       "fields": [

@@ -1,0 +1,17 @@
+{
+  "variantName": "columns-panels",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Two equal side-by-side light-grey panels, each with H3, text and pink circled-arrow links (Need help? / Live chat)",
+  "contentPattern": "1 row, 2 cells: [H3, p, p>a, p>a | H3, p]; a paragraph holding only a link renders as an arrow link",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.icare.nsw.gov.au/employers/industry-and-partners/small-business-hub"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": []
+}

@@ -52,5 +52,11 @@ export default function decorate(block) {
     img.closest('picture').replaceWith(optimizedPic);
   });
 
+  // Quick-link tiles (no icons, h4 titles) render as short single-row link bars.
+  if (!ul.querySelector('.cards-audience-tile-icon')
+    && ul.querySelector('.cards-audience-tile-body > h4')) {
+    block.classList.add('cards-audience-quicklinks');
+  }
+
   block.replaceChildren(ul);
 }

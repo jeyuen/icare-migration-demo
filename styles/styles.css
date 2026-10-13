@@ -586,3 +586,156 @@ main .section.on-this-page .default-content-wrapper a:any-link {
     max-width: 66.25%;
   }
 }
+
+/*
+ * hero-image-content-with-sidebar (e.g. Notify us of an injury): larger body-copy headings,
+ * roomier lists, and a large "Related content" band title.
+ */
+body.hero-image-content-with-sidebar main > .section .default-content-wrapper > h2 {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+body.hero-image-content-with-sidebar main > .section .default-content-wrapper > h3 {
+  font-size: 24px;
+}
+
+body.hero-image-content-with-sidebar main > .section .default-content-wrapper li {
+  line-height: 30px;
+}
+
+body.hero-image-content-with-sidebar main > .section .default-content-wrapper li + li {
+  margin-top: 5px;
+}
+
+body.hero-image-content-with-sidebar main > .section .default-content-wrapper > p.button-wrapper > .button {
+  margin: 20px 20px 0 0;
+}
+
+body.hero-image-content-with-sidebar main > .section.content-column {
+  margin-bottom: 70px;
+}
+
+body.hero-image-content-with-sidebar main > .section.grey {
+  padding-bottom: 60px;
+}
+
+
+/*
+ * section-overview-hub (e.g. Small business hub): hub pages set larger body-copy headings,
+ * a light lead paragraph, right-aligned "Back to top" links, full-bleed grey bands with
+ * dividers between tile groups, and an inset grey survey callout.
+ * Scoped to the template body class, so other templates are unaffected.
+ */
+body.section-overview-hub main > .section .default-content-wrapper > p:has(> a[href="#top"]) {
+  margin: 14px 0;
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  line-height: 26.08px;
+  text-align: right;
+}
+
+body.section-overview-hub main > .section:first-of-type + .section .default-content-wrapper > p:first-child {
+  margin: 30px 0;
+  color: #212121;
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 37.96px;
+}
+
+body.section-overview-hub main > .section .default-content-wrapper > h2 {
+  padding: 4px 0 10px;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+body.section-overview-hub main > .section .default-content-wrapper > h3 {
+  font-size: 24px;
+}
+
+body.section-overview-hub main > .section .default-content-wrapper li + li {
+  margin-top: 5px;
+}
+
+/* quick links: the source bolds the link text */
+body.section-overview-hub main > .section .default-content-wrapper strong > a:any-link {
+  font-weight: 700;
+}
+
+/* body links keep their colour on hover and only lose the underline */
+body.section-overview-hub main > .section .default-content-wrapper a:any-link:not(.button):hover {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+/* spacing around the intro, quick links and page foot */
+body.section-overview-hub main > .section:last-of-type {
+  margin-bottom: 70px;
+}
+
+body.section-overview-hub main > .section:first-of-type + .section {
+  margin-top: 60px;
+}
+
+body.section-overview-hub main > .section.highlight + .section {
+  margin-bottom: 75px;
+}
+
+body.section-overview-hub main > .section.highlight {
+  box-sizing: border-box;
+  width: min(1200px, 100% - 40px);
+  margin-inline: auto;
+  padding: 30px;
+}
+
+body.section-overview-hub main > .section.highlight > div {
+  padding-inline: 0;
+}
+
+body.section-overview-hub main > .section.highlight .default-content-wrapper > h2 {
+  margin-bottom: 0;
+}
+
+/* grey bands are full-bleed; their content sits 20px inside the 1200px column */
+body.section-overview-hub main > .section.grey {
+  padding: 60px 0;
+}
+
+body.section-overview-hub main > .section.grey > div {
+  margin-inline: 20px;
+  padding-inline: 20px;
+}
+
+/* divider between tile groups (source <hr>: 1px, 60px above, 70px below) */
+body.section-overview-hub main > .section.grey > .cards-audience-wrapper + .default-content-wrapper {
+  margin-top: 60px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 70px;
+}
+
+/* breakpoint-exception: from 1244px the source band content starts 20px inside the 1200px column
+   and runs 20px past its right edge */
+@media (width >= 1244px) {
+  body.section-overview-hub main > .section.grey > div {
+    max-width: 1220px;
+    margin-left: calc((100% - 1200px) / 2);
+    margin-right: auto;
+    padding-right: 0;
+  }
+}
+
+/* hero-image-content-with-sidebar: large "Related content" band title */
+body.hero-image-content-with-sidebar main > .section.grey .default-content-wrapper > h2 {
+  padding: 21px 0 10px;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 40px;
+}
+
+@media (width >= 600px) {
+  body.hero-image-content-with-sidebar main > .section.grey .default-content-wrapper > h2 {
+    font-size: 50px;
+    line-height: 50px;
+  }
+}

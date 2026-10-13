@@ -20,6 +20,13 @@
         "name": "keywords",
         "multi": true,
         "label": "Keywords"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "template",
+        "label": "Template",
+        "description": "Page template name, added to the body as a class for template-specific styling"
       }
     ]
   },
@@ -154,6 +161,29 @@
     ]
   },
   {
+    "id": "accordion",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Style",
+        "description": "Explainer: a single grey panel with an icon, e.g. 'Need a mailing address?'",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Explainer",
+            "value": "explainer"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "accordion-item",
     "fields": [
       {
@@ -246,6 +276,18 @@
         "name": "text",
         "value": "",
         "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-promo-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Heading, Text and Link",
         "valueType": "string"
       }
     ]
@@ -353,7 +395,45 @@
     ]
   },
   {
+    "id": "columns-panels",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "columns",
+        "value": "",
+        "label": "Columns"
+      },
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "rows",
+        "value": "",
+        "label": "Rows"
+      }
+    ]
+  },
+  {
     "id": "columns-story",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "columns",
+        "value": "",
+        "label": "Columns"
+      },
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "rows",
+        "value": "",
+        "label": "Rows"
+      }
+    ]
+  },
+  {
+    "id": "columns-video",
     "fields": [
       {
         "component": "text",

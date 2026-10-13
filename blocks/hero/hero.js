@@ -7,6 +7,7 @@
 export default function decorate(block) {
   const rows = [...block.children];
   let hasImage = false;
+  let hasContent = false;
 
   rows.forEach((row) => {
     const onlyPicture = row.querySelector('picture') && row.textContent.trim() === '';
@@ -14,12 +15,15 @@ export default function decorate(block) {
       row.classList.add('hero-image');
       hasImage = true;
     } else if (!row.textContent.trim()) {
-      // empty row (e.g. unset image field) — kept for UE instrumentation, hidden via CSS
+      // empty row (e.g. unset image/text field) — kept for UE instrumentation, hidden via CSS
       row.classList.add('hero-empty');
     } else {
       row.classList.add('hero-content');
+      hasContent = true;
     }
   });
 
   if (!hasImage) block.classList.add('no-image');
+  // image-only: a plain photo banner with no copy (text field left empty)
+  else if (!hasContent) block.classList.add('image-only');
 }

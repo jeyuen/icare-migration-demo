@@ -4,15 +4,28 @@
  * Renders as native <details>/<summary> for built-in keyboard and screen reader support.
  */
 
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createOptimizedPicture, decorateIcons } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
-// No authored options yet; branch on these tokens when variations are added.
-const OPTION_CLASSES = [];
+// Authored options. "explainer" is styling-only (grey highlighted panel, see accordion.css).
+const OPTION_CLASSES = ['explainer'];
 
 function buildLabel(labelCell) {
   const summary = document.createElement('summary');
   summary.className = 'accordion-item-label';
+
+  // The summary is a plain-text field, so an icon may also be authored as a leading
+  // ":icon-name:" token (e.g. ":location: Need a mailing address?").
+  const token = labelCell.querySelector('span.icon, img, picture') ? null : labelCell.textContent.match(/^\s*:([a-z0-9-]+):\s*/);
+  if (token) {
+    const walker = document.createTreeWalker(labelCell, NodeFilter.SHOW_TEXT);
+    const first = walker.nextNode();
+    if (first) first.textContent = first.textContent.replace(/^\s*:[a-z0-9-]+:\s*/, '');
+    const span = document.createElement('span');
+    span.className = `icon icon-${token[1]}`;
+    labelCell.prepend(span);
+    decorateIcons(labelCell);
+  }
 
   // Optional leading icon: a picture/img or an EDS icon span authored in the label cell.
   const iconSource = labelCell.querySelector('picture, img, span.icon');

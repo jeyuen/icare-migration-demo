@@ -21,9 +21,14 @@
         "url": "https://www.icare.nsw.gov.au/contact-us",
         "instanceId": "53683a60",
         "screenshot": ".pages/www_icare_nsw_gov_au_contact-us--3573871c/blocks/53683a60.jpg"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/employers/make-a-claim/notify-us-of-an-injury-or-make-a-claim",
+        "documentPath": "/employers/make-a-claim/notify-us-of-an-injury-or-make-a-claim"
       }
     ],
-    "reuseCount": 1
+    "reuseCount": 2,
+    "lastUsed": "2026-10-13T18:13:23.663375Z"
   },
   "options": [],
   "memberVariantIds": [

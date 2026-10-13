@@ -6,9 +6,20 @@
   "contentPattern": "3 rows, 2 cells: [image (optional; first item only) | eyebrow p (category/date), h3, p teaser, link 'Read more']",
   "usage": {
     "pagesUsing": [
-      { "url": "https://www.icare.nsw.gov.au/" }
+      {
+        "url": "https://www.icare.nsw.gov.au/"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/employers/industry-and-partners/small-business-hub",
+        "documentPath": "/employers/industry-and-partners/small-business-hub"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/employers/make-a-claim/notify-us-of-an-injury-or-make-a-claim",
+        "documentPath": "/employers/make-a-claim/notify-us-of-an-injury-or-make-a-claim"
+      }
     ],
-    "reuseCount": 1
+    "reuseCount": 3,
+    "lastUsed": "2026-10-13T18:13:23.663375Z"
   },
   "options": [],
   "memberVariantIds": []

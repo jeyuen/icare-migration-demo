@@ -20,6 +20,13 @@
   border: 0;
 }
 
+/* section-overview-hub: source keeps the 16:9 box but the player only fills
+   the top 80% of it (1200x540 in a 1200x675 box), leaving an empty band below */
+body.section-overview-hub .embed-video .embed-video-frame iframe {
+  bottom: auto;
+  height: 80%;
+}
+
 /* optional poster image with a play button; click loads the video */
 .embed-video .embed-video-placeholder {
   cursor: pointer;

@@ -1,0 +1,99 @@
+/*
+ * columns-video: text column (heading, paragraphs, pill CTA) beside a responsive
+ * 16:9 video. Stacked on mobile (text first), two equal columns from 900px.
+ * Sits in a grey section on the source; the section style supplies the background.
+ * Values extracted from icare .sl / .sl-item / .cm-video (small-business-hub).
+ */
+.columns-video {
+  margin: 35px 0;
+  color: var(--text-color);
+}
+
+.columns-video > div {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.columns-video > div > div {
+  min-width: 0;
+}
+
+/* text column */
+.columns-video .columns-video-text h3 {
+  margin: 0 0 15px;
+  color: var(--heading-color);
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  line-height: 34px;
+}
+
+.columns-video .columns-video-text p {
+  margin: 14px 0;
+  font-size: var(--body-font-size-m);
+  line-height: 26.08px;
+}
+
+/* source pulls the first paragraph up under the heading */
+.columns-video .columns-video-text :is(h1, h2, h3, h4, h5, h6) + p {
+  margin-top: -4px;
+}
+
+/*
+ * source keeps an empty spacer paragraph above the CTA (dropped by decorate()),
+ * which puts the CTA paragraph 55px below the copy; the link adds its own 20px
+ */
+.columns-video .columns-video-text p.button-wrapper {
+  margin: 55px 0 0;
+}
+
+/*
+ * hover is intentional: the source .cta:hover lightens bg/border to
+ * rgb(224, 73, 154) (= --brand-magenta-hover, from the global a.button.primary:hover).
+ * Only the timing differs from the global button: the source eases over 0.15s.
+ */
+main .columns-video .columns-video-text a.button:any-link {
+  margin: 20px 20px 0 0;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
+}
+
+.columns-video .columns-video-text > :first-child {
+  margin-top: 0;
+}
+
+.columns-video .columns-video-text > :last-child {
+  margin-bottom: 0;
+}
+
+/*
+ * responsive 16:9 frame; space is reserved before the iframe loads.
+ * the source player only fills the top 80% of the 16:9 box (iframe.intrinsic-el)
+ */
+.columns-video .columns-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.columns-video .columns-video-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  border: 0;
+  background-color: #bbb;
+}
+
+@media (width >= 900px) {
+  .columns-video > div {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .columns-video > div > div {
+    flex: 1 1 0;
+  }
+}

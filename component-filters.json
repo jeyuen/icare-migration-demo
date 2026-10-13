@@ -29,7 +29,10 @@
       "embed-iframe",
       "embed-video",
       "cards-downloads",
-      "table"
+      "table",
+      "columns-video",
+      "columns-panels",
+      "cards-promo"
     ]
   },
   {
@@ -63,6 +66,12 @@
     ]
   },
   {
+    "id": "cards-promo",
+    "components": [
+      "cards-promo-item"
+    ]
+  },
+  {
     "id": "cards-resources",
     "components": [
       "cards-resources-item"
@@ -93,7 +102,19 @@
     ]
   },
   {
+    "id": "columns-panels",
+    "components": [
+      "column"
+    ]
+  },
+  {
     "id": "columns-story",
+    "components": [
+      "column"
+    ]
+  },
+  {
+    "id": "columns-video",
     "components": [
       "column"
     ]

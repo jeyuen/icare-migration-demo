@@ -91,7 +91,8 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Accordion",
-                  "filter": "accordion"
+                  "filter": "accordion",
+                  "model": "accordion"
                 }
               }
             }
@@ -235,6 +236,36 @@
           }
         },
         {
+          "title": "Cards Promo",
+          "id": "cards-promo",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards Promo",
+                  "filter": "cards-promo"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Promo Tile",
+          "id": "cards-promo-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Promo Tile",
+                  "model": "cards-promo-item"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Cards Resources",
           "id": "cards-resources",
           "plugins": {
@@ -361,6 +392,24 @@
           }
         },
         {
+          "title": "Columns Panels",
+          "id": "columns-panels",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/columns/v1/columns",
+                "template": {
+                  "name": "Columns Panels",
+                  "model": "columns-panels",
+                  "filter": "columns-panels",
+                  "columns": "2",
+                  "rows": "1"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Columns Story",
           "id": "columns-story",
           "plugins": {
@@ -371,6 +420,24 @@
                   "name": "Columns Story",
                   "model": "columns-story",
                   "filter": "columns-story",
+                  "columns": "2",
+                  "rows": "1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Columns Video",
+          "id": "columns-video",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/columns/v1/columns",
+                "template": {
+                  "name": "Columns Video",
+                  "model": "columns-video",
+                  "filter": "columns-video",
                   "columns": "2",
                   "rows": "1"
                 }

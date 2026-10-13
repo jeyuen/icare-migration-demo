@@ -12,9 +12,19 @@
  * Iteration is keyed on the inner block wrapper (.tab-content), not the sibling anchors,
  * so html2md's inline-merge preprocessing cannot collapse the tiles. The href is read off the
  * wrapping anchor and re-attached to the heading. The decorative arrow icon is dropped.
+ *
+ * Section-overview-hub quick links (instance selector: .l-main .broker-hub-quicklinks .service-Block):
+ *   <div class="service-Block"><div class="service-item"><section class="cm cm-links cm-content-tile">
+ *   <a href="..." class="link-item"><div class="content"><h4>Title</h4></div>
+ *   <div class="redirectImg"><img alt="Redirect"></div></a></section></div>...</div>
+ * Iteration is keyed on the inner .content wrapper; the decorative redirect arrow is dropped
+ * (no icon -> empty image cell). Some tiles have href="" — the title is kept, linked only when
+ * the href is non-empty.
  */
 export default function parse(element, { document }) {
   let items = [...element.querySelectorAll('.tab-content')];
+  if (!items.length) items = [...element.querySelectorAll('.service-item .link-item > .content, .service-item .content')]
+    .filter((el, i, arr) => arr.indexOf(el) === i);
   if (!items.length) items = [...element.querySelectorAll(':scope > a.cm-home-tile, :scope > a')];
 
   const cells = [];

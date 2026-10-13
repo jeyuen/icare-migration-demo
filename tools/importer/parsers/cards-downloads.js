@@ -42,7 +42,8 @@ function getSydneyUploaded(document, pageData, title) {
   const date = new Date(match[1]);
   if (Number.isNaN(date.getTime()) || date.getUTCFullYear() < 1900) return '';
   return `Uploaded ${date.toLocaleDateString('en-AU', {
-    day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Australia/Sydney',
+    // the source pads the day ("Uploaded 01 July 2026")
+    day: '2-digit', month: 'short', year: 'numeric', timeZone: 'Australia/Sydney',
   })}`;
 }
 

@@ -12,6 +12,12 @@
   color: var(--text-color);
 }
 
+/* hero-image-content-with-sidebar: the source panel sits 20px under its "Related download" h2
+   (collapses with the h2's 15px bottom margin) */
+body.hero-image-content-with-sidebar .cards-downloads {
+  margin-top: 20px;
+}
+
 /* top rule: short magenta lead-in, then blue */
 .cards-downloads::before {
   content: '';
