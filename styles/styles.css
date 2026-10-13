@@ -535,7 +535,6 @@ main > .section.content-column .default-content-wrapper > p:has(> picture) + :is
 main > .section.content-column > .accordion-wrapper {
   margin-block: 35px;
 }
-
 /* short label above a row of audience tiles, e.g. "I want to" */
 main .section .default-content-wrapper:has(+ .cards-audience-wrapper) > p:last-child {
   margin: 0 0 10px;
