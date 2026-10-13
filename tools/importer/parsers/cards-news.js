@@ -2,7 +2,11 @@
 /* global WebImporter */
 /**
  * Parser for cards-news. Base: cards. Source: https://www.icare.nsw.gov.au/
- * Instance selector: .sl-list.has-feature-left
+ * Instance selectors: .sl-list.has-feature-left (homepage, one row per .sl-item),
+ *   .l-main > section.cm-featured-content-module (section-overview-hub, single featured card;
+ *   live DOM carries the image as background-image in the .module-background style attribute),
+ *   div.l-layout + div section.content-hero .sl-list (hero-image-content-with-sidebar related
+ *   content: .sl-list.has-4-items, text-only tiles; empty placeholder .sl-item divs are skipped)
  * UE model (blocks/cards-news/_cards-news.json): cards-news-item -> image (featured only), text
  * Rows: one per card -> [image | eyebrow (category/date), heading, teaser, Read more link]
  *
@@ -24,17 +28,29 @@ function getSydneyDate(document, pageData, title) {
   const data = document.getElementById('__NEXT_DATA__');
   // The bulk importer strips scripts from the DOM; the import script captures the data in onLoad.
   const json = (data && data.textContent) || pageData || '';
-  const at = json.indexOf(JSON.stringify(title).slice(1, -1));
+  const needle = JSON.stringify(title).slice(1, -1);
+  const at = json.indexOf(needle);
   if (at < 0) return '';
   const match = json.slice(at, at + 4000).match(/"authorDate":\{"jsonValue":\{"value":"([^"]+)"/);
-  if (!match) return '';
-  const date = new Date(match[1]);
-  if (Number.isNaN(date.getTime())) return '';
+  let value = match ? match[1] : '';
+  // Related-content cards (e.g. claim pages) store the page item as
+  // "Title":{"value":..} ... "AuthorDate":{"value":..} right after one of the title's occurrences;
+  // unset dates are "0001-01-01".
+  for (let i = at; !value && i >= 0; i = json.indexOf(needle, i + 1)) {
+    const near = json.slice(i, i + 600).match(/"AuthorDate":\{(?:"jsonValue":\{)?"value":"([^"]+)"/);
+    if (near && !near[1].startsWith('0001')) [, value] = near;
+  }
+  if (!value) return '';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime()) || date.getUTCFullYear() < 1900) return '';
   return date.toLocaleDateString('en-AU', { day: 'numeric', month: 'short', timeZone: 'Australia/Sydney' });
 }
 
 export default function parse(element, { document, pageData }) {
   let items = [...element.querySelectorAll(':scope > .sl-item')];
+  // Section-overview-hub: the instance is a single featured card
+  // (.l-main > section.cm-featured-content-module > a.cm-image-block-link > .module-background + .content)
+  if (!items.length && element.matches('section.cm-featured-content-module, section.cm')) items = [element];
   if (!items.length) items = [...element.querySelectorAll('.content')].map((c) => c.closest('section, div') || c);
 
   const cells = [];

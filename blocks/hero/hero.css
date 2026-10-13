@@ -224,3 +224,178 @@ main > .section.hero-container {
 main > .section.hero-container:has(.hero.no-image) {
   margin-bottom: 20px;
 }
+
+/*
+ * image-only: plain photo banner with no copy (text row left empty).
+ * Values extracted from icare section.cm-hero-image-module.
+ */
+.hero.image-only picture {
+  position: static;
+}
+
+.hero.image-only img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* source: 50px (60px from 1024px) between the banner and the page copy */
+main > .section.hero-container:has(.hero.image-only) {
+  margin-bottom: 50px;
+}
+
+/*
+ * campaign: photo background with a rounded purple copy panel (all heroes except the
+ * homepage, which is the only page with a search-banner). Values extracted from icare
+ * section.cm-campaign-hero-banner. Mobile: panel pinned to the bottom of the photo.
+ */
+main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) {
+  min-height: 335px;
+  overflow: hidden;
+}
+
+main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) picture {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+}
+
+main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) img {
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 150%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) .hero-content {
+  position: static;
+  background-color: transparent;
+  padding: 0;
+}
+
+main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) .hero-content > div {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+  height: 140px;
+  margin: 0;
+  padding: 25px 30px;
+  border-radius: 24px 24px 0 0;
+  background-color: rgb(112 32 130 / 95%);
+  opacity: 0.8;
+}
+
+main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) h1 {
+  max-width: none;
+  margin: 0 0 5px;
+  padding: 0 0 8px;
+  border-bottom: 2px solid var(--background-color);
+  color: var(--background-color);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) .hero-content p {
+  max-width: none;
+  margin: 0;
+  color: var(--background-color);
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.45;
+}
+
+/*
+ * breakpoint-exception: campaign hero follows the source grid
+ * (panel unpins at 640px, 768px / 1024px / 1272px containers, 36px gutter from 1244px)
+ */
+@media (width >= 640px) {
+  main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) .hero-content {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    padding: 0 20px;
+  }
+
+  main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) .hero-content > div {
+    position: static;
+    max-width: 412px;
+    height: auto;
+    padding: min(50px, 5%) 20px 28px;
+    border-radius: 0 0 24px;
+    opacity: 1;
+  }
+
+  main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) h1 {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    font-size: 40px;
+    line-height: 50px;
+  }
+}
+
+@media (width >= 768px) {
+  main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) .hero-content {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+}
+
+@media (width >= 1024px) {
+  .hero.image-only img {
+    height: 298px;
+  }
+
+  main > .section.hero-container:has(.hero.image-only) {
+    margin-bottom: 60px;
+  }
+
+  main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) {
+    min-height: 400px;
+  }
+
+  main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) img {
+    left: 0;
+    width: 100%;
+  }
+
+  main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) .hero-content {
+    max-width: 1024px;
+  }
+
+  main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) .hero-content > div {
+    max-width: 512px;
+    padding: min(50px, 5%) 40px 51px;
+  }
+
+  main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) h1 {
+    margin-bottom: 45px;
+    padding-bottom: 40px;
+    font-size: 45px;
+  }
+
+  main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) .hero-content p {
+    font-size: 36px;
+    line-height: 1.33;
+  }
+}
+
+@media (width >= 1244px) {
+  main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) .hero-content {
+    padding: 0 36px;
+  }
+}
+
+@media (width >= 1272px) {
+  main:not(:has(.search-banner)) .hero:not(.no-image, .image-only) .hero-content {
+    max-width: 1272px;
+  }
+}

@@ -38,3 +38,25 @@ main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/sear
 main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/searchresults"]) a:hover {
   text-decoration: underline;
 }
+
+/* hub and claim pages: tight chips (no list indent), 14px label, filled hover; label on its own line on mobile */
+:is(body.section-overview-hub, body.hero-image-content-with-sidebar) main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/searchresults"]) li {
+  padding: 0;
+}
+
+:is(body.section-overview-hub, body.hero-image-content-with-sidebar) main .default-content-wrapper p:has(> strong:only-child):has(+ ul a[href*="/searchresults"]) strong {
+  font-size: var(--body-font-size-s);
+}
+
+:is(body.section-overview-hub, body.hero-image-content-with-sidebar) main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/searchresults"]) a:hover {
+  background-color: var(--link-color);
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+@media (width < 600px) {
+  :is(body.section-overview-hub, body.hero-image-content-with-sidebar) main .default-content-wrapper p:has(> strong:only-child):has(+ ul a[href*="/searchresults"]) {
+    display: block;
+    margin: 0 0 10px;
+  }
+}

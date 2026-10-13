@@ -271,3 +271,134 @@ main .section:is(.light, .highlight, .grey, .lavender, .dark) .cards-audience {
     top: 106px;
   }
 }
+
+/* stylelint-disable no-descending-specificity -- quick-link overrides are grouped after the base tile rules */
+
+/* quick-link tiles (h4 titles, no icons; JS adds .cards-audience-quicklinks): short white
+   link bars with the title on the left and a pink arrow on the right, as in the source
+   broker-hub quick links. Values from the source .service-Block / .service-item / .link-item.
+   Icon tiles and h2 text tiles never get this class, so none of this applies to them. */
+main .cards-audience.cards-audience-quicklinks {
+  margin: 35px 0;
+}
+
+main .cards-audience.cards-audience-quicklinks > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-top: 0;
+}
+
+/* the tile itself carries the colour + transition (source a.link-item), title and link inherit */
+main .cards-audience.cards-audience-quicklinks .cards-audience-tile {
+  flex: 1 1 100%;
+  flex-direction: row;
+  align-items: center;
+  height: 88px;
+  min-height: 0;
+  padding: 0 36px;
+  border: 0;
+  background-color: var(--background-color);
+  color: #000;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
+}
+
+main .cards-audience.cards-audience-quicklinks .cards-audience-tile .cards-audience-tile-body {
+  flex: 0 0 auto;
+  width: 180px;
+  margin-top: 0;
+}
+
+main .cards-audience.cards-audience-quicklinks .cards-audience-tile-body h4 {
+  margin: 0;
+  padding: 0;
+  font-family: var(--heading-font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2em;
+  text-align: left;
+  color: inherit;
+}
+
+main .cards-audience.cards-audience-quicklinks .cards-audience-tile .cards-audience-tile-arrow {
+  top: 37px;
+  right: 36px;
+  width: 20px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 20' fill='none' stroke='%23D0006F' stroke-width='3'%3E%3Cpath d='M0 9.5h21.5'/%3E%3Cpath d='M13.5 1.5l8 8-8 8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  transform: none;
+  transition: right 0.5s;
+}
+
+main .cards-audience.cards-audience-quicklinks .cards-audience-tile:hover {
+  box-shadow: none;
+}
+
+main .cards-audience.cards-audience-quicklinks .cards-audience-tile.is-linked:hover {
+  color: var(--link-color);
+}
+
+main .cards-audience.cards-audience-quicklinks .cards-audience-tile:hover .cards-audience-tile-arrow {
+  transform: none;
+}
+
+main .cards-audience.cards-audience-quicklinks .cards-audience-tile.is-linked:hover .cards-audience-tile-arrow {
+  right: 24px;
+}
+
+@media (width >= 640px) {
+  main .cards-audience.cards-audience-quicklinks .cards-audience-tile {
+    flex: 0 0 46.3333%;
+  }
+
+  main .cards-audience.cards-audience-quicklinks .cards-audience-tile .cards-audience-tile-body {
+    width: 210px;
+  }
+}
+
+/* the source tiles are a % of a fixed-width container: 728px from 768px (48em), 984px from
+   1024px (64em), 1232px from 1280px (80em). Cap the list at that width and size tiles from it;
+   the -20px right margin only lets two 337px tiles fit at 768-778px, inside the wrapper padding */
+@media (width >= 768px) {
+  main .cards-audience.cards-audience-quicklinks > ul {
+    max-width: 728px;
+    margin-right: -20px;
+  }
+
+  main .cards-audience.cards-audience-quicklinks .cards-audience-tile {
+    flex: 0 0 calc(728px * 46.3333 / 100);
+  }
+}
+
+@media (width >= 1024px) {
+  main .cards-audience.cards-audience-quicklinks > ul {
+    max-width: 984px;
+  }
+
+  main .cards-audience.cards-audience-quicklinks .cards-audience-tile {
+    flex: 0 0 calc(984px * 46.3333 / 100);
+  }
+}
+
+/* 31.3333% of the 984px container is narrower than the 332px title + padding, so tiles stay
+   at 332px and two fit per row until the container widens at 1280px, as on the source */
+@media (width >= 1244px) {
+  main .cards-audience.cards-audience-quicklinks .cards-audience-tile {
+    flex: 0 0 31.3333%;
+  }
+
+  main .cards-audience.cards-audience-quicklinks .cards-audience-tile .cards-audience-tile-body {
+    width: 260px;
+  }
+}
+
+@media (width >= 1280px) {
+  main .cards-audience.cards-audience-quicklinks > ul {
+    max-width: none;
+    margin-right: 0;
+  }
+
+  main .cards-audience.cards-audience-quicklinks .cards-audience-tile {
+    flex: 0 0 calc(1232px * 31.3333 / 100);
+  }
+}

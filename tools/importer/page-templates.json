@@ -189,7 +189,212 @@
       ],
       "coverageGaps": [],
       "description": "Section hub with image hero banner, intro with related-links sidebar, feature card and stacked topic rows each paired with a side promo card",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            "section.cm-campaign-hero-banner"
+          ]
+        },
+        {
+          "name": "cards-audience",
+          "instances": [
+            ".l-main .broker-hub-quicklinks .service-Block"
+          ]
+        },
+        {
+          "name": "cards-news",
+          "instances": [
+            ".l-main > section.cm-featured-content-module"
+          ]
+        },
+        {
+          "name": "embed-video",
+          "instances": [
+            ".l-main > section.cm-video .intrinsic"
+          ]
+        },
+        {
+          "name": "columns-video",
+          "instances": [
+            ".l-main .content-hero .l-padding > div.sl"
+          ]
+        },
+        {
+          "name": "columns-panels",
+          "instances": [
+            ".l-main > div.sl"
+          ]
+        }
+      ],
+      "representativeUrl": "https://icare.nsw.gov.au/employers/industry-and-partners/small-business-hub",
+      "sections": [
+        {
+          "id": "1",
+          "name": "Campaign hero banner",
+          "selector": [
+            "section.cm-campaign-hero-banner"
+          ],
+          "style": null,
+          "blocks": [
+            "hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "Intro",
+          "selector": [
+            ".l-main > header.content-header"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".l-main > header.content-header",
+            ".l-main > div.cm-rich-text:first-of-type .ck-content > p",
+            ".l-main > div.cm-rich-text:first-of-type .ck-content > ul"
+          ]
+        },
+        {
+          "id": "3",
+          "name": "Survey callout panel",
+          "selector": [
+            ".l-main > div.cm-rich-text section.grouped-highlight"
+          ],
+          "style": "highlight",
+          "blocks": [],
+          "defaultContent": [
+            ".l-main > div.cm-rich-text section.grouped-highlight"
+          ]
+        },
+        {
+          "id": "4",
+          "name": "Quick links",
+          "selector": [
+            ".l-main > div.cm-rich-text section.grouped-highlight + h2",
+            ".l-main .ck-content > h2.scroll-to-broker-quicklink"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".l-main .ck-content > h2.scroll-to-broker-quicklink",
+            ".l-main .ck-content > h2.scroll-to-broker-quicklink + p"
+          ]
+        },
+        {
+          "id": "5",
+          "name": "Manage your premium",
+          "selector": [
+            ".l-main > section.content-hero.has-alt-bg:nth-of-type(1)"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-audience"
+          ],
+          "defaultContent": [
+            ".l-main > section.content-hero.has-alt-bg:nth-of-type(1) .broker-hub-quicklinks > h3"
+          ]
+        },
+        {
+          "id": "6",
+          "name": "What is included in my premium?",
+          "selector": [
+            ".l-main > h2:nth-of-type(1)"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".l-main > h2:nth-of-type(1)",
+            ".l-main > h2:nth-of-type(1) + div.cm-rich-text"
+          ]
+        },
+        {
+          "id": "7",
+          "name": "Safety and prevention",
+          "selector": [
+            ".l-main > h2:nth-of-type(2)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-news"
+          ],
+          "defaultContent": [
+            ".l-main > h2:nth-of-type(2)",
+            ".l-main > h2:nth-of-type(2) + div.cm-rich-text"
+          ]
+        },
+        {
+          "id": "8",
+          "name": "Safety tiles, Make a claim, Claims resources",
+          "selector": [
+            ".l-main > section.content-hero.has-alt-bg:nth-of-type(3)"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-audience"
+          ],
+          "defaultContent": [
+            ".l-main > section.content-hero.has-alt-bg:nth-of-type(3) .cm-rich-text",
+            ".l-main > section.content-hero.has-alt-bg:nth-of-type(3) .broker-hub-quicklinks > h3"
+          ]
+        },
+        {
+          "id": "9",
+          "name": "Video - The first few weeks of a worker's claim",
+          "selector": [
+            ".l-main > section.cm-video"
+          ],
+          "style": null,
+          "blocks": [
+            "embed-video"
+          ],
+          "defaultContent": [
+            ".l-main > section.cm-video .video-desc"
+          ]
+        },
+        {
+          "id": "10",
+          "name": "Education and events + For new employers",
+          "selector": [
+            ".l-main > section.content-hero.has-alt-bg:nth-of-type(5)"
+          ],
+          "style": "grey",
+          "blocks": [
+            "columns-video",
+            "cards-audience"
+          ],
+          "defaultContent": [
+            ".l-main > section.content-hero.has-alt-bg:nth-of-type(5) .cm-rich-text"
+          ]
+        },
+        {
+          "id": "11",
+          "name": "Contact us",
+          "selector": [
+            ".l-main > h2:nth-of-type(3)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-panels"
+          ],
+          "defaultContent": [
+            ".l-main > h2:nth-of-type(3)",
+            ".l-main > h2:nth-of-type(3) + div.cm-rich-text"
+          ]
+        },
+        {
+          "id": "12",
+          "name": "Tags",
+          "selector": [
+            ".l-main > div.tags"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".l-main > div.tags"
+          ]
+        }
+      ]
     },
     {
       "name": "hero-image-document-library",
@@ -936,7 +1141,86 @@
       ],
       "coverageGaps": [],
       "description": "Full-width image banner, long rich text body with sidebar promo cards, document download list and related-content cards",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            "section.cm-hero-image-module"
+          ]
+        },
+        {
+          "name": "cards-promo",
+          "instances": [
+            ".l-main > div.mobile-only:has(section.cm-cta-module)"
+          ]
+        },
+        {
+          "name": "accordion",
+          "instances": [
+            ".l-main > section.cm-accordion"
+          ]
+        },
+        {
+          "name": "cards-downloads",
+          "instances": [
+            "section.cm-links-downloads > ul"
+          ]
+        },
+        {
+          "name": "cards-news",
+          "instances": [
+            "div.l-layout ~ div section.content-hero .sl-list"
+          ]
+        }
+      ],
+      "representativeUrl": "https://icare.nsw.gov.au/employers/make-a-claim/notify-us-of-an-injury-or-make-a-claim",
+      "sections": [
+        {
+          "id": "1",
+          "name": "Image banner",
+          "selector": [
+            "section.cm-hero-image-module"
+          ],
+          "style": null,
+          "blocks": [
+            "hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "Main content column with right sidebar",
+          "selector": [
+            "div.l-layout > div.l-content-container"
+          ],
+          "style": "content-column",
+          "blocks": [
+            "cards-promo",
+            "accordion",
+            "cards-downloads"
+          ],
+          "defaultContent": [
+            ".l-main > header.content-header",
+            ".l-main > div.cm-rich-text",
+            "section.cm-links-downloads > h2",
+            ".l-main > div.tags"
+          ]
+        },
+        {
+          "id": "3",
+          "name": "Related content",
+          "selector": [
+            "div.l-layout + div:has(> section.content-hero)"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-news"
+          ],
+          "defaultContent": [
+            "div.l-layout ~ div section.content-hero .l-padding > h2"
+          ]
+        }
+      ]
     },
     {
       "name": "content-with-sidebar-cards",
@@ -1199,21 +1483,24 @@
           "id": "3",
           "name": "Quick links",
           "selector": [
-            "section.all-category-home-tile-wrapper:has(~ div.l-layout)"
+            "section.all-category-home-tile-wrapper:has(~ div.l-layout)",
+            "div.l-layout > section.all-category-home-tile-wrapper"
           ],
           "style": "grey",
           "blocks": [
             "cards-audience"
           ],
           "defaultContent": [
-            "section.all-category-home-tile-wrapper:has(~ div.l-layout) .home-tile-content-header"
+            "section.all-category-home-tile-wrapper:has(~ div.l-layout) .home-tile-content-header",
+            "div.l-layout > section.all-category-home-tile-wrapper .home-tile-content-header"
           ]
         },
         {
           "id": "4",
           "name": "Guide body",
           "selector": [
-            "div.l-layout"
+            "div.l-layout:not(:has(header.hero-composite-section))",
+            "div.l-layout > div.l-content-container"
           ],
           "style": "content-column",
           "blocks": [

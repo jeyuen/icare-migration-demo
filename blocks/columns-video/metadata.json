@@ -1,0 +1,17 @@
+{
+  "variantName": "columns-video",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Two-column layout: left H3, paragraphs and solid pink pill CTA; right responsive 16:9 YouTube embed from a link in the cell",
+  "contentPattern": "1 row, 2 cells: [H3, p, p, strong link CTA | YouTube/Vimeo link (or plain URL) rendered as a 16:9 player]",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.icare.nsw.gov.au/employers/industry-and-partners/small-business-hub"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": []
+}

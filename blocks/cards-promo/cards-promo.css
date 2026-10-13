@@ -1,0 +1,194 @@
+/* cards-promo: vertical stack of solid-colour promo tiles, whole tile clickable.
+   Colour by position: first tile purple, the rest teal.
+   Values sampled from the source cm-cta-module (mobile below 1024px, desktop from 1024px). */
+.cards-promo > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-promo .cards-promo-tile {
+  /* --tile-color tints the arrow and stays fixed; only the tile fill lightens on
+     hover (source: purple #702082 -> rgb(155 96 168); teal is visually unchanged) */
+  --tile-color: var(--brand-teal);
+  --tile-hover-color: var(--tile-color);
+
+  position: relative;
+  display: flex;
+  border-bottom-right-radius: 30px;
+  background-color: var(--tile-color);
+  color: #fff;
+  transition: background-color 150ms;
+}
+
+.cards-promo .cards-promo-tile:first-child {
+  --tile-color: var(--brand-purple);
+  --tile-hover-color: rgb(155 96 168);
+}
+
+.cards-promo .cards-promo-tile:hover {
+  background-color: var(--tile-hover-color);
+}
+
+.cards-promo .cards-promo-tile-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 25px 25px 45px;
+  box-sizing: border-box;
+}
+
+.cards-promo .cards-promo-tile-body > :is(h1, h2, h3, h4, h5, h6, p) {
+  margin: 0;
+  color: #fff;
+}
+
+.cards-promo .cards-promo-tile-body > :is(h1, h2, h3, h4, h5, h6) {
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 34px;
+}
+
+.cards-promo .cards-promo-tile-body > p {
+  margin-bottom: 14px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* the link paragraph collapses; the arrow carries the visual */
+.cards-promo .cards-promo-tile-body > p.cards-promo-tile-cta {
+  margin: 0;
+}
+
+.cards-promo .cards-promo-tile-link,
+.cards-promo .cards-promo-tile-link:any-link {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+.cards-promo .cards-promo-tile-link-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* stretch the link across the whole tile */
+.cards-promo .cards-promo-tile.is-linked .cards-promo-tile-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* white circled arrow, arrow tinted with the tile colour.
+   As on the source, the arrow is centred on a zero-height line 82px below the text
+   (66px on desktop), so its lower half hangs into the bottom padding; a tile without
+   text keeps the 14px of the source's empty paragraph. */
+.cards-promo .cards-promo-tile-arrow {
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  margin: 76px 0 -20px;
+  border-radius: 50%;
+  background-color: #fff;
+  pointer-events: none;
+  transition: transform 150ms;
+}
+
+/* source nudges circle and arrow 3px right on hover and on keyboard focus */
+.cards-promo .cards-promo-tile:hover .cards-promo-tile-arrow {
+  transform: translateX(3px);
+}
+
+.cards-promo .cards-promo-tile-body > p:not(.cards-promo-tile-cta) ~ .cards-promo-tile-arrow {
+  margin-top: 62px;
+}
+
+.cards-promo .cards-promo-tile:has(.cards-promo-tile-link:focus-visible) .cards-promo-tile-arrow {
+  transform: translateX(3px);
+}
+
+.cards-promo .cards-promo-tile-arrow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  width: 22px;
+  height: 21px;
+  transform: translateY(-50%);
+  background-color: var(--tile-color);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M17.096 9.16L10.71 4.223a.644.644 0 0 1-.071-.989.86.86 0 0 1 .598-.234.875.875 0 0 1 .527.171l7.815 6.044a.708.708 0 0 1 .41.765.705.705 0 0 1-.426.532l-7.8 6.03a.871.871 0 0 1-1.124-.062.644.644 0 0 1 .071-.989l6.378-4.931H1.358a.705.705 0 1 1 0-1.4h15.738z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* focus ring as on the source tile link: rgb(40 53 181) auto 3px, offset 4px */
+.cards-promo .cards-promo-tile:has(.cards-promo-tile-link:focus-visible) {
+  outline: 3px auto rgb(40 53 181);
+  outline-offset: 4px;
+}
+
+/* placement in a guide page body: inline after the intro on small screens,
+   with the source's 35px before the body copy */
+main > .section.content-column > .cards-promo-wrapper {
+  margin-bottom: 35px;
+}
+
+/* breakpoint-exception: the source switches tiles and layout to two columns at 1024px */
+@media (width >= 1024px) {
+  .cards-promo .cards-promo-tile {
+    border-bottom-right-radius: 10px;
+  }
+
+  .cards-promo .cards-promo-tile-body {
+    padding: 30px 30px 50px;
+  }
+
+  .cards-promo .cards-promo-tile-body > :is(h1, h2, h3, h4, h5, h6) {
+    font-size: 28px;
+  }
+
+  .cards-promo .cards-promo-tile-arrow {
+    margin-top: 60px;
+  }
+
+  .cards-promo .cards-promo-tile-body > p:not(.cards-promo-tile-cta) ~ .cards-promo-tile-arrow {
+    margin-top: 46px;
+  }
+
+  /* sidebar: the tiles leave the flow and sit in the right-hand column,
+     top-aligned with the page H1, beside the 66.25% body column */
+  main > .section.content-column:has(> .cards-promo-wrapper) {
+    position: relative;
+  }
+
+  /* the wrapper spans the whole content box to share the grid with the body
+     column, so it must not swallow clicks over that column; only the tiles do */
+  main > .section.content-column > .cards-promo-wrapper {
+    position: absolute;
+    inset: 0 0 auto;
+    margin: 0 auto;
+    pointer-events: none;
+  }
+
+  main > .section.content-column > .cards-promo-wrapper > .cards-promo {
+    width: 24.88%;
+    max-width: none;
+    margin-left: auto;
+    pointer-events: auto;
+  }
+}
+
+@media (width >= 1200px) {
+  main > .section.content-column > .cards-promo-wrapper > .cards-promo {
+    width: 24.17%;
+  }
+}

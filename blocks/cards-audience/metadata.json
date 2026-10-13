@@ -20,10 +20,14 @@
       {
         "url": "https://www.icare.nsw.gov.au/workers-compensation/employers",
         "documentPath": "/workers-compensation/employers"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/employers/industry-and-partners/small-business-hub",
+        "documentPath": "/employers/industry-and-partners/small-business-hub"
       }
     ],
-    "reuseCount": 4,
-    "lastUsed": "2026-10-11T07:57:24.349Z",
+    "reuseCount": 5,
+    "lastUsed": "2026-10-13T17:38:04Z",
     "documentPaths": [
       "/builders-and-homeowners/builders-and-distributors",
       "/workers-compensation/employers",

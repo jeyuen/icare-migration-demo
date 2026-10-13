@@ -107,5 +107,15 @@ export default function decorate(block) {
     img.closest('picture').replaceWith(optimizedPic);
   });
 
+  // Layout variant, derived from the authored cards:
+  // - is-news-grid: featured image card + text tiles (homepage news row)
+  // - is-single: one featured image card on its own (full-width promo)
+  // - is-text-only: text tiles without images (e.g. "Related content")
+  const cards = [...ul.children];
+  const featuredCount = cards.filter((li) => li.classList.contains('is-featured')).length;
+  if (!featuredCount) block.classList.add('is-text-only');
+  else if (cards.length === 1) block.classList.add('is-single');
+  else block.classList.add('is-news-grid');
+
   block.replaceChildren(ul);
 }

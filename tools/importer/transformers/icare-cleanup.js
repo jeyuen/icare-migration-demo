@@ -66,9 +66,82 @@ export default function transform(hookName, element, payload) {
         wrapper.remove();
       }
     });
+
+    // Duplicate sidebar promo tiles (hero-image-content-with-sidebar pages)
+    // Found: <main class="l-main"> ... <div class="mobile-only"><section class="cm cm-cta-module ...">x3</div>
+    //   and  <aside class="l-complementary desktop-only"><section class="cm cm-cta-module ...">x3 (same tiles)
+    // The .l-main > div.mobile-only copy is the cards-promo block; the desktop sidebar copy is dropped,
+    // but ONLY when every sidebar tile (href + heading) also exists in the mobile copy. Sidebars on pages
+    // without a populated mobile copy are left untouched.
+    const ctaKey = (cta) => {
+      const a = cta.querySelector('a[href]');
+      const h = cta.querySelector('h2, h3, h4');
+      return `${a ? a.getAttribute('href') : ''}|${h ? h.textContent.replace(/\s+/g, ' ').trim() : ''}`;
+    };
+    element.querySelectorAll('aside.l-complementary.desktop-only').forEach((aside) => {
+      const asideTiles = [...aside.querySelectorAll('section.cm-cta-module')];
+      if (!asideTiles.length) return;
+      const mobileKeys = new Set();
+      element.querySelectorAll('.l-main > div.mobile-only section.cm-cta-module')
+        .forEach((cta) => mobileKeys.add(ctaKey(cta)));
+      if (!mobileKeys.size) return;
+      if (asideTiles.every((cta) => mobileKeys.has(ctaKey(cta)))) aside.remove();
+    });
+
+    // Duplicate page H1 (section-overview-hub pages)
+    // Found: <section class="cm cm-campaign-hero-banner ..."> ... <h1 class="heading">Small business hub</h1>
+    //   and  <main id="main" class="l-main"><header class="content-header "><h1>Small business hub</h1><p class="intro">...</p>
+    // The hero block carries the H1, so the content-header copy is dropped. Only applies when the campaign
+    // hero is present; the header element and its lead paragraph are kept (it is a section boundary).
+    if (element.querySelector('section.cm-campaign-hero-banner')) {
+      WebImporter.DOMUtils.remove(element, ['.l-main > header.content-header > h1']);
+    }
+
+    // Body copy authored as a heading (section-overview-hub pages)
+    // Found: <h3><span style="font-weight: 400; font-size: 16px; color: #555555;">Your policy helps cover ...</span></h3>
+    // The inline style makes it render as a normal paragraph on the source, so it becomes a <p>.
+    // Only rich-text headings whose whole content is one span styled weight 400 at 18px or smaller.
+    element.querySelectorAll('.l-main .cm-rich-text :is(h2, h3, h4), .l-main .ck-content :is(h2, h3, h4)').forEach((h) => {
+      const span = h.children.length === 1 ? h.firstElementChild : null;
+      if (!span || span.tagName !== 'SPAN' || span.textContent.trim() !== h.textContent.trim()) return;
+      const style = span.getAttribute('style') || '';
+      const size = parseFloat((style.match(/font-size:\s*([\d.]+)px/i) || [])[1]);
+      if (!/font-weight:\s*(400|normal)/i.test(style) || !(size <= 18)) return;
+      const p = element.ownerDocument.createElement('p');
+      p.append(...span.childNodes);
+      h.replaceWith(p);
+    });
+
+    // Inline <style> elements authored inside rich text (section-overview-hub pages)
+    WebImporter.DOMUtils.remove(element, [
+      '.ck-content > style',
+      '.cm-rich-text style',
+    ]);
+
+    // Live-chat / script-only wrappers at the end of main (section-overview-hub pages)
+    // Found: <main class="l-main"> ... <div></div><div></div><div class="tags"> - plain, class-less divs
+    // that only held inline <script> (document.addEventListener ...) on the live page.
+    // Only direct, class/id-less <div> children of .l-main with no media and no text other than script code.
+    element.querySelectorAll('.l-main > div:not([class]):not([id])').forEach((div) => {
+      if (div.querySelector('img, picture, video, iframe, table, a, h1, h2, h3, h4, h5, h6, ul, ol')) return;
+      const clone = div.cloneNode(true);
+      clone.querySelectorAll('script, style').forEach((s) => s.remove());
+      const text = clone.textContent.replace(/ /g, ' ').trim();
+      if (!text || /^document\.addEventListener\s*\(/.test(text)) div.remove();
+    });
   }
 
   if (hookName === TransformHook.afterTransform) {
+    // Empty paragraphs in main rich text (section-overview-hub pages)
+    // Found: <div class="cm cm-rich-text ..."> ... <p>&nbsp;</p>, <p>\n</p>, <p><strong>&nbsp;</strong><strong>&nbsp;</strong></p>
+    // Only <p> with no visible text and no media/links; paragraphs inside parsed block tables are untouched.
+    element.querySelectorAll('.l-main .cm-rich-text p, .l-main .ck-content p').forEach((p) => {
+      if (p.closest('table')) return;
+      if (p.querySelector('img, picture, video, iframe, a')) return;
+      if (p.textContent.replace(/ /g, ' ').trim()) return;
+      p.remove();
+    });
+
     // Skip links. Found: <ul id="top" class="accessibility-links">
     WebImporter.DOMUtils.remove(element, ['ul.accessibility-links']);
 
