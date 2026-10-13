@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/insurance-for-related-businesses",
+  "path": "workers-compensation/employers/insurance-for-related-businesses",
+  "timestamp": "2026-10-11T11:44:58.129Z",
+  "title": "What is Grouping Insurance for Related Businesses? | icare",
+  "template": "guide-with-page-nav",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-downloads"
+  ]
+}

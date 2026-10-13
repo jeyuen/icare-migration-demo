@@ -37,6 +37,14 @@
             {
               "name": "Grey",
               "value": "grey"
+            },
+            {
+              "name": "On this page",
+              "value": "on-this-page"
+            },
+            {
+              "name": "Content column",
+              "value": "content-column"
             }
           ]
         }
@@ -65,7 +73,10 @@
         "cards-news",
         "cards-resources",
         "cards-feature",
-        "embed-iframe"
+        "embed-iframe",
+        "embed-video",
+        "cards-downloads",
+        "table"
       ]
     }
   ]

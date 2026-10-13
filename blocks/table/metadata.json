@@ -1,0 +1,20 @@
+{
+  "variantName": "table",
+  "baseBlock": "table",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "structure": "table with a teal header row and plain body rows",
+    "imagePattern": "noimg",
+    "colorScheme": "light",
+    "density": "dense"
+  },
+  "contentPattern": "rows x columns of text; first row is header",
+  "usage": {
+    "pagesUsing": [
+      { "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/new-policy/what-is-premium-capping-and-how-does-it-work" }
+    ],
+    "reuseCount": 1
+  },
+  "options": [],
+  "memberVariantIds": []
+}

@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/metcash",
+  "path": "workers-compensation/employers/prevention-and-education/metcash",
+  "timestamp": "2026-10-11T11:52:35.817Z",
+  "title": "Metcash | icare",
+  "template": "guide-with-page-nav",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "embed-video"
+  ]
+}

@@ -1,0 +1,126 @@
+/*
+ * breadcrumb: page trail on the brand-blue band above the guide page title.
+ * Values extracted from icare nav.breadcrumbs.breadcrumbs-cm; the content width
+ * follows the hero title band so the trail lines up with the title.
+ */
+main > .section > .breadcrumb-wrapper {
+  max-width: none;
+  margin: 0;
+  padding: 32px 20px 16px;
+  background-color: var(--brand-blue);
+}
+
+/* the band runs straight into the title: the source leaves 8px above the title */
+main > .section > .breadcrumb-wrapper + .hero-wrapper .hero.no-image .hero-content {
+  padding-top: 8px;
+}
+
+.breadcrumb nav {
+  margin: 0 auto;
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--background-color);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: '';
+  flex: 0 0 auto;
+  width: 7px;
+  height: 12px;
+  background: url('../../icons/chevron-right-white.svg') center / contain no-repeat;
+}
+
+.breadcrumb li > :is(a, span) {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 2px;
+  color: var(--background-color);
+  font-weight: 500;
+}
+
+.breadcrumb a:any-link {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus {
+  background-color: #cceee2;
+  color: #111;
+}
+
+.breadcrumb .breadcrumb-home {
+  margin-left: -8px;
+}
+
+.breadcrumb .breadcrumb-home > a {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0;
+}
+
+.breadcrumb .breadcrumb-home .icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.breadcrumb .breadcrumb-home .icon img {
+  display: block;
+}
+
+.breadcrumb .breadcrumb-current > span {
+  margin-inline: 0;
+  font-weight: 700;
+}
+
+/* breakpoint-exception: content widths follow the source title band (see hero no-image) */
+@media (width >= 768px) {
+  .breadcrumb nav {
+    max-width: 728px;
+  }
+}
+
+@media (width >= 1024px) {
+  .breadcrumb nav {
+    max-width: 984px;
+  }
+}
+
+@media (width >= 1244px) {
+  main > .section > .breadcrumb-wrapper {
+    padding-inline: 36px;
+  }
+
+  .breadcrumb nav {
+    max-width: 952px;
+  }
+}
+
+/* breakpoint-exception: the source band changes its padding at 1272px (79.5em) */
+@media (width >= 1272px) {
+  main > .section > .breadcrumb-wrapper {
+    padding-block: 48px 8px;
+  }
+
+  .breadcrumb nav {
+    max-width: var(--content-max-width);
+  }
+}

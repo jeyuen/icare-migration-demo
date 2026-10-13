@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/whats-covered",
+  "path": "workers-compensation/employers/whats-covered",
+  "timestamp": "2026-10-11T11:54:07.262Z",
+  "title": "Whats covered | icare",
+  "template": "guide-with-page-nav",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-audience",
+    "cards-downloads"
+  ]
+}

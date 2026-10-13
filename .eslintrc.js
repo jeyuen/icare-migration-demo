@@ -18,5 +18,12 @@ module.exports = {
     'import/extensions': ['error', { js: 'always' }], // require js file extensions in imports
     'linebreak-style': ['error', 'unix'], // enforce unix linebreaks
     'no-param-reassign': [2, { props: false }], // allow modifying properties of param
+    // table rows map one cell per column; source data tables have up to 8 columns
+    'xwalk/max-cells': ['error', {
+      'table-col-5': 5,
+      'table-col-6': 6,
+      'table-col-7': 7,
+      'table-col-8': 8,
+    }],
   },
 };

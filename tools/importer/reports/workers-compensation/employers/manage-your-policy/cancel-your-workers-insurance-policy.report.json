@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/cancel-your-workers-insurance-policy",
+  "path": "workers-compensation/employers/manage-your-policy/cancel-your-workers-insurance-policy",
+  "timestamp": "2026-10-11T11:45:11.110Z",
+  "title": "Cancel your workers insurance policy | icare",
+  "template": "guide-with-page-nav",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-audience"
+  ]
+}

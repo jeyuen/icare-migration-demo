@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/new-policy/understanding-your-premium",
+  "path": "workers-compensation/employers/new-policy/understanding-your-premium",
+  "timestamp": "2026-10-11T11:49:19.890Z",
+  "title": "Understanding your premium | icare",
+  "template": "guide-with-page-nav",
+  "blocks": [
+    "hero",
+    "cards-audience",
+    "cards-audience",
+    "cards-downloads",
+    "accordion"
+  ]
+}
