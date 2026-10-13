@@ -504,6 +504,14 @@
         "name": "link",
         "label": "Search Index or Results Page",
         "description": "Link to a query index (.json) for live results, or to a search results page"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "placeholder",
+        "label": "Placeholder",
+        "value": "Search icare",
+        "description": "Hint text shown in the empty search field"
       }
     ]
   },

@@ -3,8 +3,9 @@
 /**
  * Parser for search-banner. Base: search. Source: https://www.icare.nsw.gov.au/
  * Instance selector: .banner-search form
- * UE model (blocks/search-banner/_search-banner.json): link (aem-content)
+ * UE model (blocks/search-banner/_search-banner.json): link (aem-content), placeholder (text)
  * Rows: 1) link to the search index (.json) or a search results page.
+ *       2) placeholder text for the search field (e.g. "Search icare").
  *
  * The source is a JS-driven form (form#search-form-submit > .search-input > input + button)
  * with no action attribute and no authorable text. The search target is taken from the
@@ -32,6 +33,12 @@ export default function parse(element, { document }) {
   frag.appendChild(link);
 
   const cells = [[frag]];
+  if (placeholder) {
+    const placeholderFrag = document.createDocumentFragment();
+    placeholderFrag.appendChild(document.createComment(' field:placeholder '));
+    placeholderFrag.appendChild(document.createTextNode(placeholder));
+    cells.push([placeholderFrag]);
+  }
   const block = WebImporter.Blocks.createBlock(document, { name: 'search-banner', cells });
   element.replaceWith(block);
 }

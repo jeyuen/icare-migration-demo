@@ -1,15 +1,18 @@
 const MIN_QUERY_LENGTH = 3;
 const LABEL = 'Search (results will filter as you type)';
+const DEFAULT_PLACEHOLDER = 'Search icare';
 // magnifier glyph from the source site; coloured via currentColor (grey disabled, purple enabled)
 const ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.027 14.027" aria-hidden="true" focusable="false">'
   + '<path transform="translate(-10.236 0.5)" fill="currentColor" stroke="currentColor" stroke-width="1" d="M23.692,12.611l-3.8-3.8a5.055,5.055,0,0,0,1.568-3.645A5.273,5.273,0,0,0,16.1,0a5.273,5.273,0,0,0-5.364,5.165A5.273,5.273,0,0,0,16.1,10.33a5.465,5.465,0,0,0,3.419-1.188l3.8,3.81a.262.262,0,0,0,.361.007A.24.24,0,0,0,23.692,12.611ZM16.1,9.838a4.771,4.771,0,0,1-4.853-4.673A4.771,4.771,0,0,1,16.1.492a4.771,4.771,0,0,1,4.853,4.673A4.771,4.771,0,0,1,16.1,9.838Z"/></svg>';
 
 /**
- * Reads the configured search target from the block's single link cell.
+ * Reads the configured search target from the block's link cell.
  * A `.json` link is treated as a query index (live results rendered in-block);
  * any other link is treated as a search results page (form submits `?q=`).
+ * The placeholder comes from the optional placeholder row, then the link text
+ * (ignored when it is just the URL, as Universal Editor renders path-only links),
+ * then DEFAULT_PLACEHOLDER.
  * @param {Element} block
- * The link text (e.g. "Search icare") becomes the field placeholder.
  * @returns {{ source: string, isIndex: boolean, placeholder: string }}
  */
 function readConfig(block) {
@@ -23,7 +26,12 @@ function readConfig(block) {
   } catch {
     isIndex = source.endsWith('.json');
   }
-  const placeholder = link?.textContent.trim() || '';
+  const placeholderCell = [...block.querySelectorAll(':scope > div > div')]
+    .find((cell) => !cell.querySelector('a') && cell.textContent.trim());
+  const linkText = link?.textContent.trim() || '';
+  const placeholder = placeholderCell?.textContent.trim()
+    || (linkText && linkText !== href && linkText !== link?.href ? linkText : '')
+    || DEFAULT_PLACEHOLDER;
   return { source, isIndex, placeholder };
 }
 
@@ -93,7 +101,7 @@ export default async function decorate(block) {
   input.className = 'search-banner-input';
   input.autocomplete = 'off';
   input.spellcheck = false;
-  if (config.placeholder) input.placeholder = config.placeholder;
+  input.placeholder = config.placeholder;
 
   // As on the source, the submit button stays disabled until something is typed.
   const button = document.createElement('button');
