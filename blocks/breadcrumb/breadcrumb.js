@@ -45,6 +45,23 @@ function readLocation() {
   return { names, toHref };
 }
 
+/**
+ * Trail labels authored as page metadata ("Workers Compensation | Employers | Who needs a policy"),
+ * one per path level below Home. The source labels each level with that page's navigation title,
+ * which can't be derived from the URL. A single label applies to the current page only.
+ * @param {number} count number of path levels
+ * @returns {string[]} labels aligned to the path levels ('' where none is authored)
+ */
+function readLabels(count) {
+  // local previews keep the authored "Breadcrumb" casing; aem.live lowercases metadata names
+  const meta = document.head.querySelector('meta[name="breadcrumb" i]');
+  const labels = (meta?.content || '').split('|').map((label) => label.trim());
+  if (labels.length === count) return labels;
+  const aligned = new Array(count).fill('');
+  if (labels.length === 1) [aligned[count - 1]] = labels;
+  return aligned;
+}
+
 function buildLink(href, label) {
   const a = document.createElement('a');
   a.href = href;
@@ -63,6 +80,7 @@ export default function decorate(block) {
     block.remove();
     return;
   }
+  const labels = readLabels(names.length);
 
   const nav = document.createElement('nav');
   nav.setAttribute('aria-label', 'Breadcrumb');
@@ -83,7 +101,7 @@ export default function decorate(block) {
     const item = document.createElement('li');
     item.append(buildLink(
       toHref(folder?.path || pagePath),
-      folder?.label || labelFromName(name),
+      labels[i] || folder?.label || labelFromName(name),
     ));
     list.append(item);
   });
@@ -91,7 +109,7 @@ export default function decorate(block) {
   const current = document.createElement('li');
   current.className = 'breadcrumb-current';
   const currentLabel = document.createElement('span');
-  currentLabel.textContent = labelFromName(names[names.length - 1]);
+  currentLabel.textContent = labels[names.length - 1] || labelFromName(names[names.length - 1]);
   currentLabel.setAttribute('aria-current', 'page');
   current.append(currentLabel);
   list.append(current);

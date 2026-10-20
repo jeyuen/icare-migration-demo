@@ -45,6 +45,14 @@
             {
               "name": "Content column",
               "value": "content-column"
+            },
+            {
+              "name": "Panel",
+              "value": "panel"
+            },
+            {
+              "name": "Lead paragraph",
+              "value": "lead"
             }
           ]
         }
@@ -79,7 +87,8 @@
         "table",
         "columns-video",
         "columns-panels",
-        "cards-promo"
+        "cards-promo",
+        "formula"
       ]
     }
   ]

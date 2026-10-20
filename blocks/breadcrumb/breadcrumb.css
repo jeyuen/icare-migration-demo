@@ -38,12 +38,16 @@ main > .section > .breadcrumb-wrapper + .hero-wrapper .hero.no-image .hero-conte
   gap: 4px;
 }
 
+/*
+ * The source draws a 12x12-viewBox caret in a 7x12 box, so the glyph renders at
+ * 7/12 scale (about 4x7px) inset 1.75px from the left and centred vertically.
+ */
 .breadcrumb li:not(:last-child)::after {
   content: '';
   flex: 0 0 auto;
   width: 7px;
   height: 12px;
-  background: url('../../icons/chevron-right-white.svg') center / contain no-repeat;
+  background: url('../../icons/chevron-right-white.svg') 1.75px 2.5px / 4.0833px 7px no-repeat;
 }
 
 .breadcrumb li > :is(a, span) {
@@ -57,12 +61,18 @@ main > .section > .breadcrumb-wrapper + .hero-wrapper .hero.no-image .hero-conte
 .breadcrumb a:any-link {
   text-decoration: underline;
   text-underline-offset: 4px;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
 }
 
 .breadcrumb a:hover,
 .breadcrumb a:focus {
   background-color: #cceee2;
   color: #111;
+}
+
+.breadcrumb a:focus-visible {
+  outline: auto 1px;
+  outline-offset: 1px;
 }
 
 .breadcrumb .breadcrumb-home {
@@ -74,6 +84,7 @@ main > .section > .breadcrumb-wrapper + .hero-wrapper .hero.no-image .hero-conte
   align-items: center;
   gap: 20px;
   margin: 0;
+  border-radius: 5px;
 }
 
 .breadcrumb .breadcrumb-home .icon {

@@ -62,10 +62,33 @@ var CustomImportScript = (() => {
   });
 
   // tools/importer/parsers/hero.js
+  function decodeNextImage(url) {
+    if (!url || !url.includes("/_next/image")) return url;
+    try {
+      const original = new URL(url, "https://www.icare.nsw.gov.au/").searchParams.get("url");
+      if (!original) return url;
+      return original.startsWith("/") ? `https://www.icare.nsw.gov.au${original}` : original;
+    } catch (e) {
+      return url;
+    }
+  }
+  function normaliseImage(img) {
+    const srcset = img.getAttribute("srcset") || "";
+    const candidates = srcset.split(",").map((c) => c.trim().split(/\s+/)[0]).filter(Boolean);
+    const raw = (img.getAttribute("src") || candidates[candidates.length - 1] || "").replace(/&amp;/g, "&");
+    const src = decodeNextImage(raw);
+    if (src && src !== raw) {
+      img.setAttribute("src", src);
+      img.removeAttribute("srcset");
+      img.removeAttribute("sizes");
+    }
+    return img;
+  }
   function parse(element, { document: document2 }) {
     const scope = element.querySelector(":scope > .show-on-full-width") || element;
-    const image = scope.querySelector(".image-container img, img.image, img");
-    const content = scope.querySelector(".content-inner") || scope.querySelector(".content") || scope;
+    const image = scope.querySelector(".image-container img, img.image, img.hero-img, img");
+    if (image) normaliseImage(image);
+    const content = scope.querySelector(".content-inner") || scope.querySelector(".content") || scope.querySelector(".text-content") || scope;
     const heading = content.querySelector("h1, h2, .hero-banner-heading, .hero-composite-title");
     const paragraphs = [...content.querySelectorAll(":scope > p")];
     const ctas = [...content.querySelectorAll("a")].filter((a) => !paragraphs.some((p) => p.contains(a)));
@@ -105,6 +128,7 @@ var CustomImportScript = (() => {
   // tools/importer/parsers/cards-audience.js
   function parse2(element, { document: document2 }) {
     let items = [...element.querySelectorAll(".tab-content")];
+    if (!items.length) items = [...element.querySelectorAll(".service-item .link-item > .content, .service-item .content")].filter((el, i, arr) => arr.indexOf(el) === i);
     if (!items.length) items = [...element.querySelectorAll(":scope > a.cm-home-tile, :scope > a")];
     const cells = [];
     items.forEach((item) => {
@@ -266,7 +290,8 @@ var CustomImportScript = (() => {
     const date = new Date(match[1]);
     if (Number.isNaN(date.getTime()) || date.getUTCFullYear() < 1900) return "";
     return `Uploaded ${date.toLocaleDateString("en-AU", {
-      day: "numeric",
+      // the source pads the day ("Uploaded 01 July 2026")
+      day: "2-digit",
       month: "short",
       year: "numeric",
       timeZone: "Australia/Sydney"
@@ -345,10 +370,10 @@ var CustomImportScript = (() => {
   var isBlank = (node) => node.nodeType === 3 && !node.textContent.replace(/ /g, " ").trim();
   function normalizeContent(root, document2) {
     const out = [];
-    let para = null;
+    let para2 = null;
     const flush = () => {
-      if (para && para.textContent.replace(/ /g, " ").trim()) out.push(para);
-      para = null;
+      if (para2 && para2.textContent.replace(/ /g, " ").trim()) out.push(para2);
+      para2 = null;
     };
     const walk = (parent) => {
       [...parent.childNodes].forEach((node) => {
@@ -366,21 +391,34 @@ var CustomImportScript = (() => {
           }
           return;
         }
-        if (node.nodeType === 1 && node.tagName === "BR" && !para) return;
-        if (isBlank(node) && !para) return;
-        if (!para) para = document2.createElement("p");
-        para.appendChild(node);
+        if (node.nodeType === 1 && node.tagName === "BR" && !para2) return;
+        if (isBlank(node) && !para2) return;
+        if (!para2) para2 = document2.createElement("p");
+        para2.appendChild(node);
       });
     };
     walk(root);
     flush();
     return out;
   }
+  var ICON_NAMES = {
+    location2: "location",
+    location: "location",
+    "copy-of-gel-icons-1/magenta": "community-activities"
+  };
+  function getIconToken(trigger) {
+    const img = trigger && trigger.querySelector('img[src*="/icons/"]');
+    if (!img) return "";
+    const file = (img.getAttribute("src").match(/\/icons\/([a-z0-9/-]+)\.svg/i) || [])[1] || "";
+    const name = ICON_NAMES[file.toLowerCase()];
+    return name ? `:${name}: ` : "";
+  }
   function getSummary(trigger) {
     if (!trigger) return "";
     const clone = trigger.cloneNode(true);
     clone.querySelectorAll('img, picture, svg, .ec, [class*="icon"]').forEach((el) => el.remove());
-    return clone.textContent.replace(/ /g, " ").replace(/\s+/g, " ").trim();
+    const text = clone.textContent.replace(/ /g, " ").replace(/\s+/g, " ").trim();
+    return text ? `${getIconToken(trigger)}${text}` : "";
   }
   function parse6(element, { document: document2 }) {
     let panels = [...element.querySelectorAll(".expandcollapse-content")];
@@ -415,7 +453,11 @@ var CustomImportScript = (() => {
       element.replaceWith(...element.childNodes);
       return;
     }
-    const block = WebImporter.Blocks.createBlock(document2, { name: "accordion", cells });
+    const headings = [...element.querySelectorAll("h1, h2, h3, h4, h5, h6")].filter((h) => !h.closest("li, .expandcollapse-content, .js-ec") && h.textContent.trim());
+    const isExplainer = element.matches(".cm-explainer-module") || !!element.closest(".cm-explainer-module");
+    const name = isExplainer ? "accordion (explainer)" : "accordion";
+    const block = WebImporter.Blocks.createBlock(document2, { name, cells });
+    headings.forEach((h) => element.before(h));
     element.replaceWith(block);
   }
 
@@ -425,10 +467,10 @@ var CustomImportScript = (() => {
   var hasText = (n) => n.textContent.replace(/ /g, " ").trim().length > 0;
   function normalizeContent2(root, document2) {
     const out = [];
-    let para = null;
+    let para2 = null;
     const flush = () => {
-      if (para && (hasText(para) || para.querySelector("img, picture"))) out.push(para);
-      para = null;
+      if (para2 && (hasText(para2) || para2.querySelector("img, picture"))) out.push(para2);
+      para2 = null;
     };
     const pushMedia = (node) => {
       flush();
@@ -469,12 +511,12 @@ var CustomImportScript = (() => {
             if (node.tagName === "HR" || hasText(node) || node.querySelector("img, picture")) out.push(node);
             return;
           }
-          if (node.tagName === "BR" && !para) return;
-        } else if (node.nodeType === 3 && !para && !hasText(node)) {
+          if (node.tagName === "BR" && !para2) return;
+        } else if (node.nodeType === 3 && !para2 && !hasText(node)) {
           return;
         }
-        if (!para) para = document2.createElement("p");
-        para.appendChild(node);
+        if (!para2) para2 = document2.createElement("p");
+        para2.appendChild(node);
       });
     };
     walk(root);
@@ -630,6 +672,96 @@ var CustomImportScript = (() => {
     element.replaceWith(block);
   }
 
+  // tools/importer/parsers/formula.js
+  var TERM_SEL = ".first-block, .col-one, .col-two";
+  var OPERATOR_SEL = ".equals-block, .equals-small";
+  var NOTE_SEL = ".charges-disclaimer";
+  var SKIP_TAGS = /* @__PURE__ */ new Set(["STYLE", "SCRIPT", "NOSCRIPT", "TEMPLATE", "LINK", "META"]);
+  function textOf(node) {
+    if (!node) return "";
+    if (node.nodeType === 3) return node.textContent;
+    if (node.nodeType !== 1 || SKIP_TAGS.has(node.tagName)) return "";
+    return [...node.childNodes].map(textOf).join("");
+  }
+  var clean2 = (text) => (text || "").replace(/\u00a0/g, " ").replace(/\s+/g, " ").trim();
+  function para(document2, text) {
+    const p = document2.createElement("p");
+    p.textContent = text;
+    return p;
+  }
+  function field(document2, name, nodes) {
+    const frag = document2.createDocumentFragment();
+    frag.appendChild(document2.createComment(` field:${name} `));
+    nodes.forEach((n) => frag.appendChild(typeof n === "string" ? document2.createTextNode(n) : n));
+    return frag;
+  }
+  function termDescriptions(term) {
+    const descs = [...term.querySelectorAll(".description")];
+    if (descs.length) {
+      return descs.flatMap((d) => {
+        const ps = [...d.querySelectorAll("p")];
+        return (ps.length ? ps : [d]).map((p) => clean2(textOf(p)));
+      }).filter(Boolean);
+    }
+    return [...term.children].filter((c) => !SKIP_TAGS.has(c.tagName) && !c.querySelector(".formula-label") && !c.matches(".formula-label")).map((c) => clean2(textOf(c))).filter(Boolean);
+  }
+  function removeSiblingStyles(element) {
+    [element.previousElementSibling, element.nextElementSibling].forEach((sib) => {
+      if (sib && sib.tagName === "STYLE" && /premium-formula|formula-block|formula-label/.test(sib.textContent)) sib.remove();
+    });
+    [element.previousElementSibling, element.nextElementSibling].forEach((sib) => {
+      if (sib && sib.tagName === "P" && sib.children.length === 1 && sib.firstElementChild.tagName === "STYLE" && !clean2(textOf(sib)) && /premium-formula|formula-block|formula-label/.test(sib.textContent)) sib.remove();
+    });
+  }
+  function parse10(element, { document: document2 }) {
+    removeSiblingStyles(element);
+    const rows = [];
+    let seenMajor = false;
+    const walk = (parent) => {
+      [...parent.children].forEach((el) => {
+        if (SKIP_TAGS.has(el.tagName)) return;
+        if (el.matches(OPERATOR_SEL)) {
+          const symbol = clean2(textOf(el.querySelector(".formula-label") || el));
+          if (!symbol) return;
+          const major = el.matches(".equals-block");
+          const split = major && seenMajor;
+          if (major) seenMajor = true;
+          rows.push([
+            field(document2, "symbol", [symbol]),
+            "",
+            split ? field(document2, "split", ["true"]) : ""
+          ]);
+          return;
+        }
+        if (el.matches(NOTE_SEL)) {
+          const note = clean2(textOf(el));
+          if (note) rows.push(["", field(document2, "description", [para(document2, note)]), ""]);
+          return;
+        }
+        if (el.matches(TERM_SEL)) {
+          const symbol = clean2(textOf(el.querySelector(".formula-label")));
+          const descs = termDescriptions(el);
+          if (!symbol && !descs.length) return;
+          rows.push([
+            symbol ? field(document2, "symbol", [symbol]) : "",
+            descs.length ? field(document2, "description", descs.map((t) => para(document2, t))) : "",
+            ""
+          ]);
+          return;
+        }
+        walk(el);
+      });
+    };
+    walk(element);
+    if (!rows.length) {
+      element.querySelectorAll("style, script").forEach((s) => s.remove());
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+    const block = WebImporter.Blocks.createBlock(document2, { name: "formula", cells: rows });
+    element.replaceWith(block);
+  }
+
   // tools/importer/transformers/icare-cleanup.js
   var TransformHook = { beforeTransform: "beforeTransform", afterTransform: "afterTransform" };
   function transform(hookName, element, payload) {
@@ -664,8 +796,51 @@ var CustomImportScript = (() => {
           wrapper.remove();
         }
       });
+      const ctaKey = (cta) => {
+        const a = cta.querySelector("a[href]");
+        const h = cta.querySelector("h2, h3, h4");
+        return `${a ? a.getAttribute("href") : ""}|${h ? h.textContent.replace(/\s+/g, " ").trim() : ""}`;
+      };
+      element.querySelectorAll("aside.l-complementary.desktop-only").forEach((aside) => {
+        const asideTiles = [...aside.querySelectorAll("section.cm-cta-module")];
+        if (!asideTiles.length) return;
+        const mobileKeys = /* @__PURE__ */ new Set();
+        element.querySelectorAll(".l-main > div.mobile-only section.cm-cta-module").forEach((cta) => mobileKeys.add(ctaKey(cta)));
+        if (!mobileKeys.size) return;
+        if (asideTiles.every((cta) => mobileKeys.has(ctaKey(cta)))) aside.remove();
+      });
+      if (element.querySelector("section.cm-campaign-hero-banner")) {
+        WebImporter.DOMUtils.remove(element, [".l-main > header.content-header > h1"]);
+      }
+      element.querySelectorAll(".l-main .cm-rich-text :is(h2, h3, h4), .l-main .ck-content :is(h2, h3, h4)").forEach((h) => {
+        const span = h.children.length === 1 ? h.firstElementChild : null;
+        if (!span || span.tagName !== "SPAN" || span.textContent.trim() !== h.textContent.trim()) return;
+        const style = span.getAttribute("style") || "";
+        const size = parseFloat((style.match(/font-size:\s*([\d.]+)px/i) || [])[1]);
+        if (!/font-weight:\s*(400|normal)/i.test(style) || !(size <= 18)) return;
+        const p = element.ownerDocument.createElement("p");
+        p.append(...span.childNodes);
+        h.replaceWith(p);
+      });
+      WebImporter.DOMUtils.remove(element, [
+        ".ck-content > style",
+        ".cm-rich-text style"
+      ]);
+      element.querySelectorAll(".l-main > div:not([class]):not([id])").forEach((div) => {
+        if (div.querySelector("img, picture, video, iframe, table, a, h1, h2, h3, h4, h5, h6, ul, ol")) return;
+        const clone = div.cloneNode(true);
+        clone.querySelectorAll("script, style").forEach((s) => s.remove());
+        const text = clone.textContent.replace(/ /g, " ").trim();
+        if (!text || /^document\.addEventListener\s*\(/.test(text)) div.remove();
+      });
     }
     if (hookName === TransformHook.afterTransform) {
+      element.querySelectorAll(".l-main .cm-rich-text p, .l-main .ck-content p").forEach((p) => {
+        if (p.closest("table")) return;
+        if (p.querySelector("img, picture, video, iframe, a")) return;
+        if (p.textContent.replace(/ /g, " ").trim()) return;
+        p.remove();
+      });
       WebImporter.DOMUtils.remove(element, ["ul.accessibility-links"]);
       WebImporter.DOMUtils.remove(element, [
         "header.global-header",
@@ -798,22 +973,13 @@ var CustomImportScript = (() => {
     "accordion": parse6,
     "columns": parse7,
     "table": parse8,
-    "cards-feature": parse9
+    "cards-feature": parse9,
+    "formula": parse10
   };
   var PAGE_TEMPLATE = {
     "name": "guide-with-page-nav",
-    "description": "Coloured breadcrumb banner, on-this-page anchor list, quick-link cards, long guide content with video, accordions and related downloads",
     "urls": [
       "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages",
-      "https://icare.nsw.gov.au/archive/wage-declarations",
-      "https://icare.nsw.gov.au/employers/employer-obligations/injury-prevention",
-      "https://icare.nsw.gov.au/employers/employer-obligations/injury-prevention/education-and-training",
-      "https://icare.nsw.gov.au/employers/forms-and-resources",
-      "https://icare.nsw.gov.au/employers/premiums/calculating-the-cost-of-your-premium",
-      "https://icare.nsw.gov.au/employers/premiums/premium-reviews",
-      "https://icare.nsw.gov.au/employers/premiums/premium-updates",
-      "https://icare.nsw.gov.au/employers/premiums/ways-to-lower-your-premiums",
-      "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/understanding-workers-compensation/the-nsw-workers-compensation-system",
       "https://icare.nsw.gov.au/workers-compensation/employers/apprentice-incentive-scheme",
       "https://icare.nsw.gov.au/workers-compensation/employers/classifying-your-workers",
       "https://icare.nsw.gov.au/workers-compensation/employers/forms-and-resources",
@@ -856,6 +1022,8 @@ var CustomImportScript = (() => {
       "https://icare.nsw.gov.au/workers-compensation/employers/your-responsibilities-as-an-employer",
       "https://icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/injury-prevention-resource-hub"
     ],
+    "coverageGaps": [],
+    "description": "Coloured breadcrumb banner, on-this-page anchor list, quick-link cards, long guide content with video, accordions and related downloads",
     "blocks": [
       {
         "name": "hero",
@@ -910,8 +1078,15 @@ var CustomImportScript = (() => {
         "instances": [
           ".l-main > div.sl"
         ]
+      },
+      {
+        "name": "formula",
+        "instances": [
+          ".l-main .premium-formula-holder"
+        ]
       }
     ],
+    "representativeUrl": "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages",
     "sections": [
       {
         "id": "1",
@@ -958,7 +1133,7 @@ var CustomImportScript = (() => {
         "id": "4",
         "name": "Guide body",
         "selector": [
-          "div.l-layout:not(:has(header.hero-composite-section))",
+          "div.l-layout:not(:has(header.hero-composite-section)):not(:has(> section.all-category-home-tile-wrapper))",
           "div.l-layout > div.l-content-container"
         ],
         "style": "content-column",
@@ -967,7 +1142,8 @@ var CustomImportScript = (() => {
           "cards-downloads",
           "accordion",
           "columns",
-          "table"
+          "table",
+          "formula"
         ],
         "defaultContent": [
           ".l-main .cm-rich-text",
@@ -976,6 +1152,31 @@ var CustomImportScript = (() => {
           ".l-main section.cm-links-downloads > h2",
           ".l-main section.cm-links-related"
         ]
+      },
+      {
+        "id": "4a",
+        "name": "Calculation example panel",
+        "selector": [
+          ".l-main section.grouped-highlight"
+        ],
+        "style": "content-column, panel",
+        "blocks": [
+          "columns"
+        ],
+        "defaultContent": [
+          ".l-main section.grouped-highlight > h2"
+        ]
+      },
+      {
+        "id": "4b",
+        "name": "Guide body (after panel)",
+        "selector": [
+          ".l-main section.grouped-highlight + *",
+          ".l-main .cm-rich-text:has(section.grouped-highlight) + *"
+        ],
+        "style": "content-column",
+        "blocks": [],
+        "defaultContent": []
       },
       {
         "id": "5",
@@ -1072,10 +1273,26 @@ var CustomImportScript = (() => {
     return pageBlocks;
   }
   var pageData = "";
+  var breadcrumbLabels = [];
+  function readBreadcrumb(document2) {
+    const nav = document2.querySelector('nav[aria-label="Breadcrumb"]');
+    if (!nav || !nav.querySelector("a")) return [];
+    return [...nav.querySelectorAll("a, .breadcrumb-current-text")].map((el) => el.textContent.replace(/\s+/g, " ").trim()).filter((text, i) => !(i === 0 && /^home$/i.test(text)));
+  }
   var import_guide_with_page_nav_default = {
     onLoad: (_0) => __async(void 0, [_0], function* ({ document: document2 }) {
       const data = document2.getElementById("__NEXT_DATA__");
       pageData = data && data.textContent || "";
+      for (let i = 0; i < 40 && !readBreadcrumb(document2).length; i += 1) {
+        yield new Promise((r) => {
+          setTimeout(r, 250);
+        });
+      }
+      breadcrumbLabels = readBreadcrumb(document2);
+      if (!breadcrumbLabels.length) {
+        const nav = pageData.match(/"NavigationTitle":\{"value":"([^"]*)"/);
+        if (nav && nav[1]) breadcrumbLabels = [JSON.parse(`"${nav[1]}"`)];
+      }
     }),
     transform: (payload) => {
       const {
@@ -1087,6 +1304,8 @@ var CustomImportScript = (() => {
       const main = document2.body;
       const tagsMeta = document2.querySelector('meta[property="og:content-tags"], meta[name="og:content-tags"]');
       const tags = tagsMeta && tagsMeta.content.trim() || "";
+      const intro = document2.querySelector(".l-main p.intro");
+      const hasIntro = !!intro && !intro.previousElementSibling;
       executeTransformers("beforeTransform", main, payload);
       const pageBlocks = findBlocksOnPage(document2, PAGE_TEMPLATE);
       pageBlocks.forEach((block) => {
@@ -1109,16 +1328,28 @@ var CustomImportScript = (() => {
         }
       });
       executeTransformers("afterTransform", main, payload);
+      if (hasIntro) {
+        const bodyMeta = [...main.querySelectorAll("table")].find((t) => {
+          const cells = [...t.querySelectorAll("td, th")].map((c) => c.textContent.trim());
+          return /^section metadata$/i.test(cells[0] || "") && cells.includes("content-column");
+        });
+        if (bodyMeta) {
+          const cell = [...bodyMeta.querySelectorAll("td")].find((c) => c.textContent.trim() === "content-column");
+          cell.textContent = "content-column, lead";
+        }
+      }
       const hr = document2.createElement("hr");
       main.appendChild(hr);
       const meta = WebImporter.rules.createMetadata(main, document2);
-      if (tags && meta) {
+      if (meta) {
         const metadataBlock = [...main.querySelectorAll(":scope > table")].find((t) => {
           var _a;
           return /^metadata$/i.test(((_a = (t.querySelector("th, td") || {}).textContent) == null ? void 0 : _a.trim()) || "");
         });
         if (metadataBlock) {
-          meta.Tags = tags;
+          if (tags) meta.Tags = tags;
+          meta.Template = PAGE_TEMPLATE.name;
+          if (breadcrumbLabels.length) meta.Breadcrumb = breadcrumbLabels.join(" | ");
           metadataBlock.replaceWith(WebImporter.Blocks.getMetadataBlock(document2, meta));
         }
       }

@@ -1,0 +1,196 @@
+/* formula: equation graphic "P = (APP x CPA) + D + M - ..."
+ * values from the source .premium-formula-holder inline styles (icare premium calculation pages)
+ * mobile first: stacked result / "=" / wrapping grey panel; from 900px a single 797px row */
+.formula {
+  --formula-result-bg: var(--brand-blue);
+  --formula-panel-bg: #f1f1f1;
+  --formula-symbol-font: calibri, georgia, serif;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 797px;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.formula *,
+.formula *::before,
+.formula *::after {
+  box-sizing: border-box;
+}
+
+.formula p {
+  margin: 0;
+}
+
+.formula .formula-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.formula .formula-symbol {
+  display: block;
+  margin-bottom: 14px;
+  font-family: var(--formula-symbol-font);
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 38px;
+}
+
+/* result term: highlighted blue block */
+.formula .formula-result {
+  padding: 15px;
+  border-radius: 0 0 10px;
+  background: var(--formula-result-bg);
+  color: #fff;
+}
+
+.formula .formula-result .formula-symbol {
+  line-height: 36px;
+}
+
+.formula .formula-result .formula-description {
+  color: #fff;
+  font-size: 14px;
+  line-height: 22.82px;
+}
+
+/* "=" and panel-splitting operators */
+.formula .formula-operator-major {
+  margin: 20px 0;
+}
+
+.formula .formula-operator-major .formula-symbol {
+  margin: 0;
+}
+
+/* grey panel holding the terms */
+.formula .formula-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 20px;
+  border-radius: 0 0 10px;
+  background: var(--formula-panel-bg);
+}
+
+.formula .formula-term {
+  flex: 0 0 calc(50% - 37px);
+  min-width: 0;
+  padding: 5px;
+}
+
+.formula .formula-term-wide {
+  flex-basis: 100%;
+}
+
+.formula .formula-descriptions {
+  display: flex;
+  justify-content: center;
+}
+
+.formula .formula-term .formula-description {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 5px;
+  font-size: 14px;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+}
+
+.formula .formula-panel .formula-operator {
+  flex: 0 0 24px;
+  padding-top: 5px;
+}
+
+.formula .formula-panel .formula-operator .formula-symbol {
+  margin: 0;
+}
+
+.formula .formula-note {
+  flex: 0 0 100%;
+  padding: 10px 0 0 20px;
+  font-size: 10px;
+  font-style: italic;
+  line-height: 1.3;
+  text-align: left;
+}
+
+@media (width >= 900px) {
+  /* source: 8% result + 2% "=" + 89% panel, leaving 1% free on the right */
+  .formula {
+    display: flex;
+    align-items: flex-start;
+    padding-right: 1%;
+  }
+
+  .formula .formula-symbol {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .formula .formula-result {
+    flex: 0 0 8%;
+    align-self: stretch;
+    min-height: 110px;
+    padding: 20px 10px 10px;
+  }
+
+  .formula .formula-result .formula-symbol {
+    line-height: 22px;
+  }
+
+  .formula .formula-result .formula-description {
+    font-size: 10px;
+    line-height: 16.3px;
+  }
+
+  .formula .formula-operator-major {
+    flex: 0 0 2%;
+    margin: 30px 0 0;
+  }
+
+  .formula .formula-operator-major .formula-symbol {
+    line-height: 30px;
+  }
+
+  .formula .formula-panel {
+    flex: var(--formula-units, 1) 1 0;
+    align-self: stretch;
+    min-width: 0;
+    min-height: 110px;
+    padding: 0;
+  }
+
+  .formula .formula-term {
+    flex: 1 1 0;
+  }
+
+  .formula .formula-term-wide {
+    flex-grow: 2;
+  }
+
+  .formula .formula-term .formula-description {
+    font-size: 8px;
+  }
+
+  .formula .formula-panel .formula-operator {
+    flex: 0 0 2%;
+    padding-top: 0;
+    overflow: visible;
+  }
+
+  .formula .formula-panel .formula-operator .formula-symbol {
+    line-height: 30px;
+  }
+
+  .formula .formula-note {
+    padding: 0 0 10px 20px;
+    font-size: 9px;
+  }
+}
