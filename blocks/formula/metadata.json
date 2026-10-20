@@ -1,0 +1,22 @@
+{
+  "variantName": "formula",
+  "baseBlock": "formula",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "structure": "equation graphic: highlighted blue result block (symbol + label), large '=' operator, then one or more light grey panels of terms (serif symbol over small descriptions) separated by small +/- operators; a flagged operator splits panels; optional italic footnote",
+    "imagePattern": "none",
+    "colorScheme": "light",
+    "density": "high"
+  },
+  "contentPattern": "one row per item in reading order: [symbol | description paragraphs | optional split flag]; row 1 is the result; operator rows have only a symbol; description-only rows are footnotes",
+  "usage": {
+    "pagesUsing": [
+      { "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/new-policy/premium-calculation-experience-rated" },
+      { "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/new-policy/premium-calculation-for-small-employers" }
+    ],
+    "reuseCount": 2
+  },
+  "reuseGuidance": "Use for any symbolic formula (premium, rate or cost calculations). Do not use for prose explanations or tables.",
+  "options": [],
+  "memberVariantIds": []
+}

@@ -1,4 +1,5 @@
 /* table: full content-width data table; header row + body rows.
+   Values from the source rich-text table (.l-main .cm-rich-text table, icare guide pages).
    Mobile: each body row stacks into "Header: value" pairs. >= 600px: a real table that
    scrolls horizontally when its columns do not fit. */
 .table {
@@ -19,24 +20,74 @@
   width: 100%;
   border-collapse: collapse;
   table-layout: auto;
+  color: var(--text-color);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.table tbody {
+  border-inline: 1px solid var(--border-color);
 }
 
 .table th,
 .table td {
   padding: 20px;
-  border: 1px solid;
+  border: 0;
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   text-align: left;
   vertical-align: top;
 }
 
-.table th p,
-.table td p {
-  margin: 0;
+.table th {
+  border-block: 1px solid var(--light-color);
+  background-color: var(--brand-teal);
+  color: var(--light-color);
+  font-weight: 500;
+  line-height: 21px;
 }
 
-.table th p + p,
-.table td p + p {
-  margin-top: 0.25em;
+.table th p {
+  margin: 0;
+  font: inherit;
+  line-height: inherit;
+}
+
+.table td :is(p, ul, ol) {
+  margin: 14px 0;
+}
+
+.table td p {
+  font-size: 14px;
+  line-height: 22.82px;
+}
+
+.table td > :first-child {
+  margin-top: 0;
+}
+
+.table td > :last-child {
+  margin-bottom: 0;
+}
+
+.table td :is(ul, ol) {
+  padding-left: 35px;
+}
+
+.table td :is(ul, ol) :is(ul, ol) {
+  margin: 5px 0 0;
+}
+
+.table td li {
+  padding-left: 20px;
+}
+
+.table td li + li {
+  margin-top: 5px;
+}
+
+.table a:any-link {
+  font-weight: 500;
 }
 
 /* mobile: stacked rows with header labels (only when a header row supplies them) */
@@ -60,8 +111,7 @@
   }
 
   .table.table-has-labels tr {
-    padding: 10px;
-    border: 1px solid;
+    border-block: 1px solid var(--border-color);
   }
 
   .table.table-has-labels tr + tr {
@@ -69,7 +119,7 @@
   }
 
   .table.table-has-labels td {
-    padding: 10px 0;
+    padding: 10px;
     border: 0;
   }
 
@@ -78,7 +128,8 @@
     font-weight: 700;
   }
 
-  .table.table-has-labels td > p:first-child {
+  /* a single-paragraph cell reads "Label: value" on one line, like the source's plain-text cells */
+  .table.table-has-labels td > p:only-child {
     display: inline;
   }
 }

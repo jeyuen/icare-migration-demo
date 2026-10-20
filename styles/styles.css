@@ -587,6 +587,103 @@ main .section.on-this-page .default-content-wrapper a:any-link {
   }
 }
 
+/* stylelint-disable no-descending-specificity -- the rules below are grouped by section style and
+   template; template groups are scoped to mutually exclusive body classes, so their order is irrelevant */
+
+/*
+ * Section styles authors can add to any section:
+ * "Panel" - grey highlight panel around the section's content (source section.grouped-highlight)
+ * "Lead paragraph" - the section's opening paragraph is a large lead (source p.intro)
+ */
+main > .section.panel > div > * {
+  margin-block: 0;
+  padding: 0 30px;
+  background-color: var(--light-color);
+}
+
+main > .section.panel > div:first-child > :first-child {
+  padding-top: 30px;
+}
+
+main > .section.panel > div:last-child > :last-child {
+  padding-bottom: 30px;
+}
+
+main > .section.content-column.panel .default-content-wrapper > h2 {
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+main > .section.lead > .default-content-wrapper:first-child > p:first-child {
+  margin: 0 0 14px;
+  color: var(--heading-color);
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 36.4px;
+}
+
+/*
+ * guide-with-page-nav (e.g. Who needs a policy): spacing around the banner, "On this page",
+ * the guide body and its lists and buttons, measured on the source.
+ * Scoped to the template body class, so other templates are unaffected.
+ */
+body.guide-with-page-nav main > .section.hero-container:has(.hero.no-image) {
+  margin-bottom: 0;
+}
+
+body.guide-with-page-nav main .section.on-this-page .default-content-wrapper > h2 {
+  padding: 4px 0 10px;
+}
+
+body.guide-with-page-nav main .section.on-this-page .default-content-wrapper a:any-link {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+body.guide-with-page-nav main .section.on-this-page .default-content-wrapper a:any-link:hover {
+  background-color: rgb(204 238 226);
+  color: var(--heading-color);
+}
+
+/* the source body container sits 60px (50px mobile) below the section above, its text 35px further */
+body.guide-with-page-nav main > .section.content-column {
+  margin-block: 85px 120px;
+}
+
+body.guide-with-page-nav main > .section.content-column + .section.content-column {
+  margin-top: 0;
+}
+
+body.guide-with-page-nav main > .section.content-column > .default-content-wrapper:first-child > :first-child {
+  margin-top: 0;
+}
+
+body.guide-with-page-nav main > .section.content-column .default-content-wrapper > :is(ul, ol) {
+  box-sizing: border-box;
+}
+
+body.guide-with-page-nav main > .section.content-column .default-content-wrapper li + li {
+  margin-top: 5px;
+}
+
+body.guide-with-page-nav main > .section.content-column .default-content-wrapper > p.button-wrapper > .button {
+  margin: 20px 20px 0 0;
+}
+
+/* long button labels wrap (centred) instead of being cut off */
+body.guide-with-page-nav main > .section.content-column a.button {
+  max-width: 100%;
+  overflow: visible;
+  text-align: center;
+  white-space: normal;
+}
+
+@media (width >= 900px) {
+  body.guide-with-page-nav main > .section.content-column {
+    margin-block: 95px 0;
+  }
+}
+
 /*
  * hero-image-content-with-sidebar (e.g. Notify us of an injury): larger body-copy headings,
  * roomier lists, and a large "Related content" band title.

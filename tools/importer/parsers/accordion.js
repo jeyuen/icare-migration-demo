@@ -66,13 +66,18 @@ function normalizeContent(root, document) {
 }
 
 // Source system icons (media/icare/system/icons/<name>.svg) available in the project /icons folder
-const ICON_NAMES = { location2: 'location', location: 'location' };
+// keyed by the path below /icons/ without ".svg" (GEL icons are named by colour, so keep their folder)
+const ICON_NAMES = {
+  location2: 'location',
+  location: 'location',
+  'copy-of-gel-icons-1/magenta': 'community-activities',
+};
 
 // Leading ":icon-name:" token for the plain-text summary field (rendered by the block JS)
 function getIconToken(trigger) {
   const img = trigger && trigger.querySelector('img[src*="/icons/"]');
   if (!img) return '';
-  const file = (img.getAttribute('src').match(/\/icons\/([a-z0-9-]+)\.svg/i) || [])[1] || '';
+  const file = (img.getAttribute('src').match(/\/icons\/([a-z0-9/-]+)\.svg/i) || [])[1] || '';
   const name = ICON_NAMES[file.toLowerCase()];
   return name ? `:${name}: ` : '';
 }

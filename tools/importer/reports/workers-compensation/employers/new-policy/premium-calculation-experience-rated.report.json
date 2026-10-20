@@ -2,7 +2,7 @@
   "status": "success",
   "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/new-policy/premium-calculation-experience-rated",
   "path": "workers-compensation/employers/new-policy/premium-calculation-experience-rated",
-  "timestamp": "2026-10-11T11:48:21.064Z",
+  "timestamp": "2026-10-20T03:58:43.025Z",
   "title": "Premium calculation experience-rated | icare",
   "template": "guide-with-page-nav",
   "blocks": [
@@ -12,6 +12,7 @@
     "cards-downloads",
     "accordion",
     "columns",
-    "table"
+    "table",
+    "formula"
   ]
 }

@@ -104,8 +104,27 @@
   line-height: 30px;
 }
 
+/* source panel lists are nested inside the accordion list: `li li:first-child` gets 20px,
+   later items `li { margin-top: 5px }`, and the nested ul renders circle bullets */
+.accordion .accordion-item-body ul {
+  list-style-type: circle;
+}
+
+.accordion .accordion-item-body ul ul {
+  list-style-type: square;
+}
+
 .accordion .accordion-item-body li {
-  margin: 20px 0 0;
+  margin: 5px 0 0;
+}
+
+.accordion .accordion-item-body li:first-child {
+  margin-top: 20px;
+}
+
+/* source: global `a { font-weight: 500 }` */
+.accordion .accordion-item-body a:not(.button) {
+  font-weight: 500;
 }
 
 /* explainer: single highlighted panel with a leading icon (source: .cm-explainer-module) */
@@ -150,6 +169,12 @@ main .default-content-wrapper:has(> h2:last-child) + .accordion-wrapper > .accor
 
 main .default-content-wrapper:has(> h2:last-child) + .accordion-wrapper .accordion .accordion-item:first-child {
   border-top: 0;
+}
+
+/* guide pages: the source accordion (with its in-list heading) sits 35px below the rich text
+   (collapsed 35px margins), not the 40px default h2 top margin */
+body.guide-with-page-nav main .default-content-wrapper:has(+ .accordion-wrapper) > h2:last-child:not(:first-child) {
+  margin-top: 35px;
 }
 
 @media (width >= 1024px) {

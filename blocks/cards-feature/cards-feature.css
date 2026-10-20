@@ -59,6 +59,18 @@
   line-height: 24.45px;
 }
 
+/* guide pages: source tile description is 16px / 26px (section landings keep 15px / 24.45px) */
+body.guide-with-page-nav .cards-feature .cards-feature-card-body > p:not(.cards-feature-link-wrapper) {
+  font-size: var(--body-font-size-m);
+  line-height: 26px;
+}
+
+/* guide pages: a following h2 sits 40px below the tiles on source (its 40px top margin
+   collapses with the list's 35px); the global first-child h2 rule zeroes that margin here */
+body.guide-with-page-nav .cards-feature-wrapper:has(+ .default-content-wrapper > h2:first-child) > .cards-feature {
+  margin-bottom: 40px;
+}
+
 .cards-feature .cards-feature-card-body > :last-child {
   margin-bottom: 0;
 }
