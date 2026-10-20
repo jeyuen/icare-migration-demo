@@ -62,11 +62,34 @@ var CustomImportScript = (() => {
   });
 
   // tools/importer/parsers/hero.js
+  function decodeNextImage(url) {
+    if (!url || !url.includes("/_next/image")) return url;
+    try {
+      const original = new URL(url, "https://www.icare.nsw.gov.au/").searchParams.get("url");
+      if (!original) return url;
+      return original.startsWith("/") ? `https://www.icare.nsw.gov.au${original}` : original;
+    } catch (e) {
+      return url;
+    }
+  }
+  function normaliseImage(img) {
+    const srcset = img.getAttribute("srcset") || "";
+    const candidates = srcset.split(",").map((c) => c.trim().split(/\s+/)[0]).filter(Boolean);
+    const raw = (img.getAttribute("src") || candidates[candidates.length - 1] || "").replace(/&amp;/g, "&");
+    const src = decodeNextImage(raw);
+    if (src && src !== raw) {
+      img.setAttribute("src", src);
+      img.removeAttribute("srcset");
+      img.removeAttribute("sizes");
+    }
+    return img;
+  }
   function parse(element, { document: document2 }) {
     const scope = element.querySelector(":scope > .show-on-full-width") || element;
-    const image = scope.querySelector(".image-container img, img.image, img");
-    const content = scope.querySelector(".content") || scope;
-    const heading = content.querySelector("h1, h2, .hero-banner-heading");
+    const image = scope.querySelector(".image-container img, img.image, img.hero-img, img");
+    if (image) normaliseImage(image);
+    const content = scope.querySelector(".content-inner") || scope.querySelector(".content") || scope.querySelector(".text-content") || scope;
+    const heading = content.querySelector("h1, h2, .hero-banner-heading, .hero-composite-title");
     const paragraphs = [...content.querySelectorAll(":scope > p")];
     const ctas = [...content.querySelectorAll("a")].filter((a) => !paragraphs.some((p) => p.contains(a)));
     if (!image && !heading && !paragraphs.length) {
@@ -120,6 +143,12 @@ var CustomImportScript = (() => {
     frag.appendChild(document2.createComment(" field:link "));
     frag.appendChild(link);
     const cells = [[frag]];
+    if (placeholder) {
+      const placeholderFrag = document2.createDocumentFragment();
+      placeholderFrag.appendChild(document2.createComment(" field:placeholder "));
+      placeholderFrag.appendChild(document2.createTextNode(placeholder));
+      cells.push([placeholderFrag]);
+    }
     const block = WebImporter.Blocks.createBlock(document2, { name: "search-banner", cells });
     element.replaceWith(block);
   }
@@ -127,6 +156,7 @@ var CustomImportScript = (() => {
   // tools/importer/parsers/cards-audience.js
   function parse3(element, { document: document2 }) {
     let items = [...element.querySelectorAll(".tab-content")];
+    if (!items.length) items = [...element.querySelectorAll(".service-item .link-item > .content, .service-item .content")].filter((el, i, arr) => arr.indexOf(el) === i);
     if (!items.length) items = [...element.querySelectorAll(":scope > a.cm-home-tile, :scope > a")];
     const cells = [];
     items.forEach((item) => {
@@ -319,16 +349,23 @@ var CustomImportScript = (() => {
     if (!title) return "";
     const data = document2.getElementById("__NEXT_DATA__");
     const json = data && data.textContent || pageData2 || "";
-    const at = json.indexOf(JSON.stringify(title).slice(1, -1));
+    const needle = JSON.stringify(title).slice(1, -1);
+    const at = json.indexOf(needle);
     if (at < 0) return "";
     const match = json.slice(at, at + 4e3).match(/"authorDate":\{"jsonValue":\{"value":"([^"]+)"/);
-    if (!match) return "";
-    const date = new Date(match[1]);
-    if (Number.isNaN(date.getTime())) return "";
+    let value = match ? match[1] : "";
+    for (let i = at; !value && i >= 0; i = json.indexOf(needle, i + 1)) {
+      const near = json.slice(i, i + 600).match(/"AuthorDate":\{(?:"jsonValue":\{)?"value":"([^"]+)"/);
+      if (near && !near[1].startsWith("0001")) [, value] = near;
+    }
+    if (!value) return "";
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime()) || date.getUTCFullYear() < 1900) return "";
     return date.toLocaleDateString("en-AU", { day: "numeric", month: "short", timeZone: "Australia/Sydney" });
   }
   function parse7(element, { document: document2, pageData: pageData2 }) {
     let items = [...element.querySelectorAll(":scope > .sl-item")];
+    if (!items.length && element.matches("section.cm-featured-content-module, section.cm")) items = [element];
     if (!items.length) items = [...element.querySelectorAll(".content")].map((c) => c.closest("section, div") || c);
     const cells = [];
     items.forEach((item) => {
@@ -491,6 +528,46 @@ var CustomImportScript = (() => {
     element.replaceWith(block);
   }
 
+  // tools/importer/parsers/list.js
+  var SITE_HOSTS = /^(www\.)?icare\.nsw\.gov\.au$/i;
+  function toSitePath(href, document2) {
+    try {
+      const url = new URL(href, "https://www.icare.nsw.gov.au/");
+      if (!SITE_HOSTS.test(url.hostname)) return null;
+      return `${url.pathname.replace(/\/$/, "") || "/"}${url.search}${url.hash}`;
+    } catch (e) {
+      return null;
+    }
+  }
+  function parse9(element, { document: document2 }) {
+    const links = [...element.querySelectorAll("a[href]")];
+    const cells = [];
+    links.forEach((source) => {
+      const href = source.getAttribute("href");
+      if (!href) return;
+      const text = source.textContent.replace(/\s+/g, " ").trim();
+      const sitePath = toSitePath(href, document2);
+      const a = document2.createElement("a");
+      if (sitePath) {
+        a.href = sitePath;
+        a.textContent = sitePath;
+      } else {
+        a.href = href;
+        a.textContent = text || href;
+      }
+      const cell = document2.createDocumentFragment();
+      cell.appendChild(document2.createComment(" field:link "));
+      cell.appendChild(a);
+      cells.push([cell]);
+    });
+    if (!cells.length) {
+      element.remove();
+      return;
+    }
+    const block = WebImporter.Blocks.createBlock(document2, { name: "list", cells });
+    element.replaceWith(block);
+  }
+
   // tools/importer/transformers/icare-cleanup.js
   var TransformHook = { beforeTransform: "beforeTransform", afterTransform: "afterTransform" };
   function transform(hookName, element, payload) {
@@ -499,6 +576,7 @@ var CustomImportScript = (() => {
         ".feedback-overlay",
         "#main-feedback"
       ]);
+      WebImporter.DOMUtils.remove(element, [".cm-sitewide-message"]);
       WebImporter.DOMUtils.remove(element, [
         ".homepage-hero-banner > .show-on-mobile"
       ]);
@@ -507,8 +585,69 @@ var CustomImportScript = (() => {
         ".modal-bg",
         ".shade-bg"
       ]);
+      WebImporter.DOMUtils.remove(element, [
+        "#readspeaker_button1",
+        ".rsbtn"
+      ]);
+      WebImporter.DOMUtils.remove(element, [
+        "#embedded-messaging",
+        "#embeddedMessagingSiteContextFrame"
+      ]);
+      element.querySelectorAll("section.cm-cta-module").forEach((el) => {
+        const hasText = el.textContent.replace(/ /g, " ").trim().length > 0;
+        const hasMedia = el.querySelector("img, picture, video, iframe, a");
+        if (hasText || hasMedia) return;
+        const wrapper = el.parentElement;
+        el.remove();
+        if (wrapper && wrapper !== element && wrapper.classList.contains("sl-item") && !wrapper.textContent.trim() && !wrapper.children.length) {
+          wrapper.remove();
+        }
+      });
+      const ctaKey = (cta) => {
+        const a = cta.querySelector("a[href]");
+        const h = cta.querySelector("h2, h3, h4");
+        return `${a ? a.getAttribute("href") : ""}|${h ? h.textContent.replace(/\s+/g, " ").trim() : ""}`;
+      };
+      element.querySelectorAll("aside.l-complementary.desktop-only").forEach((aside) => {
+        const asideTiles = [...aside.querySelectorAll("section.cm-cta-module")];
+        if (!asideTiles.length) return;
+        const mobileKeys = /* @__PURE__ */ new Set();
+        element.querySelectorAll(".l-main > div.mobile-only section.cm-cta-module").forEach((cta) => mobileKeys.add(ctaKey(cta)));
+        if (!mobileKeys.size) return;
+        if (asideTiles.every((cta) => mobileKeys.has(ctaKey(cta)))) aside.remove();
+      });
+      if (element.querySelector("section.cm-campaign-hero-banner")) {
+        WebImporter.DOMUtils.remove(element, [".l-main > header.content-header > h1"]);
+      }
+      element.querySelectorAll(".l-main .cm-rich-text :is(h2, h3, h4), .l-main .ck-content :is(h2, h3, h4)").forEach((h) => {
+        const span = h.children.length === 1 ? h.firstElementChild : null;
+        if (!span || span.tagName !== "SPAN" || span.textContent.trim() !== h.textContent.trim()) return;
+        const style = span.getAttribute("style") || "";
+        const size = parseFloat((style.match(/font-size:\s*([\d.]+)px/i) || [])[1]);
+        if (!/font-weight:\s*(400|normal)/i.test(style) || !(size <= 18)) return;
+        const p = element.ownerDocument.createElement("p");
+        p.append(...span.childNodes);
+        h.replaceWith(p);
+      });
+      WebImporter.DOMUtils.remove(element, [
+        ".ck-content > style",
+        ".cm-rich-text style"
+      ]);
+      element.querySelectorAll(".l-main > div:not([class]):not([id])").forEach((div) => {
+        if (div.querySelector("img, picture, video, iframe, table, a, h1, h2, h3, h4, h5, h6, ul, ol")) return;
+        const clone = div.cloneNode(true);
+        clone.querySelectorAll("script, style").forEach((s) => s.remove());
+        const text = clone.textContent.replace(/ /g, " ").trim();
+        if (!text || /^document\.addEventListener\s*\(/.test(text)) div.remove();
+      });
     }
     if (hookName === TransformHook.afterTransform) {
+      element.querySelectorAll(".l-main .cm-rich-text p, .l-main .ck-content p").forEach((p) => {
+        if (p.closest("table")) return;
+        if (p.querySelector("img, picture, video, iframe, a")) return;
+        if (p.textContent.replace(/ /g, " ").trim()) return;
+        p.remove();
+      });
       WebImporter.DOMUtils.remove(element, ["ul.accessibility-links"]);
       WebImporter.DOMUtils.remove(element, [
         "header.global-header",
@@ -518,6 +657,17 @@ var CustomImportScript = (() => {
         "nav.mobile-toolbar"
       ]);
       WebImporter.DOMUtils.remove(element, ["footer.global-footer"]);
+      WebImporter.DOMUtils.remove(element, ["nav.breadcrumbs"]);
+      element.querySelectorAll(".cm-rich-text").forEach((el) => {
+        const hasText = el.textContent.replace(/ /g, " ").trim().length > 0;
+        const hasMedia = el.querySelector("img, picture, video, table, iframe, hr");
+        if (!hasText && !hasMedia) el.remove();
+      });
+      element.querySelectorAll("div.mobile-only").forEach((el) => {
+        const hasText = el.textContent.replace(/ /g, " ").trim().length > 0;
+        const hasMedia = el.querySelector("img, picture, video, table, iframe, hr");
+        if (!hasText && !hasMedia) el.remove();
+      });
       WebImporter.DOMUtils.remove(element, [
         ".skiptranslate",
         "#google_translate_element",
@@ -540,12 +690,38 @@ var CustomImportScript = (() => {
         "next-route-announcer",
         "byoc-registration"
       ]);
+      element.querySelectorAll("a.cta-is-secondary").forEach((a) => {
+        if (a.closest("table") || a.closest("em")) return;
+        a.removeAttribute("class");
+        const em = document.createElement("em");
+        a.replaceWith(em);
+        em.append(a);
+        if (em.parentElement && em.parentElement.tagName !== "P") {
+          const p = document.createElement("p");
+          em.replaceWith(p);
+          p.append(em);
+        }
+      });
+      element.querySelectorAll('a[class="cta"]').forEach((a) => {
+        if (a.closest("table") || a.closest("strong, em")) return;
+        a.removeAttribute("class");
+        const strong = document.createElement("strong");
+        a.replaceWith(strong);
+        strong.append(a);
+        if (strong.parentElement && strong.parentElement.tagName !== "P") {
+          const p = document.createElement("p");
+          strong.replaceWith(p);
+          p.append(strong);
+        }
+      });
       WebImporter.DOMUtils.remove(element, [
         "link",
-        "iframe",
         "noscript",
         "meta"
       ]);
+      element.querySelectorAll("iframe").forEach((iframe) => {
+        if (!iframe.closest("table")) iframe.remove();
+      });
     }
   }
 
@@ -603,7 +779,8 @@ var CustomImportScript = (() => {
     "columns-campaign": parse5,
     "columns-story": parse6,
     "cards-news": parse7,
-    "cards-resources": parse8
+    "cards-resources": parse8,
+    "list": parse9
   };
   var PAGE_TEMPLATE = {
     "name": "homepage",
@@ -634,6 +811,12 @@ var CustomImportScript = (() => {
         "name": "columns-links",
         "instances": [
           ".cta-long-wrapper .cta-long-section"
+        ]
+      },
+      {
+        "name": "list",
+        "instances": [
+          ".excat-list-block"
         ]
       },
       {
@@ -713,6 +896,18 @@ var CustomImportScript = (() => {
         "defaultContent": [
           ".cta-long-wrapper .col-2:first-child .cta-coloumn-headding h2"
         ]
+      },
+      {
+        "id": "4b",
+        "name": "I want to... dynamic list",
+        "selector": [
+          ".excat-list-block"
+        ],
+        "style": null,
+        "blocks": [
+          "list"
+        ],
+        "defaultContent": []
       },
       {
         "id": "5",
@@ -822,6 +1017,13 @@ var CustomImportScript = (() => {
         params
       } = payload;
       const main = document2.body;
+      const iWantTo = document2.querySelector(".cta-long-wrapper");
+      if (iWantTo && !document2.querySelector(".excat-list-block")) {
+        const holder = document2.createElement("div");
+        holder.className = "excat-list-block";
+        iWantTo.querySelectorAll(".cta-long-section a[href]").forEach((a) => holder.append(a.cloneNode(true)));
+        iWantTo.after(holder);
+      }
       executeTransformers("beforeTransform", main, payload);
       const pageBlocks = findBlocksOnPage(document2, PAGE_TEMPLATE);
       pageBlocks.forEach((block) => {
