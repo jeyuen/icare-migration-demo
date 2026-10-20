@@ -5,7 +5,6 @@
 import heroParser from './parsers/hero.js';
 import searchBannerParser from './parsers/search-banner.js';
 import cardsAudienceParser from './parsers/cards-audience.js';
-import columnsLinksParser from './parsers/columns-links.js';
 import columnsCampaignParser from './parsers/columns-campaign.js';
 import columnsStoryParser from './parsers/columns-story.js';
 import cardsNewsParser from './parsers/cards-news.js';
@@ -21,7 +20,6 @@ const parsers = {
   'hero': heroParser,
   'search-banner': searchBannerParser,
   'cards-audience': cardsAudienceParser,
-  'columns-links': columnsLinksParser,
   'columns-campaign': columnsCampaignParser,
   'columns-story': columnsStoryParser,
   'cards-news': cardsNewsParser,
@@ -56,15 +54,9 @@ const PAGE_TEMPLATE = {
       ]
     },
     {
-      "name": "columns-links",
-      "instances": [
-        ".cta-long-wrapper .cta-long-section"
-      ]
-    },
-    {
       "name": "list",
       "instances": [
-        ".excat-list-block"
+        ".cta-long-wrapper .cta-long-section"
       ]
     },
     {
@@ -139,23 +131,11 @@ const PAGE_TEMPLATE = {
       ],
       "style": null,
       "blocks": [
-        "columns-links"
+        "list"
       ],
       "defaultContent": [
         ".cta-long-wrapper .col-2:first-child .cta-coloumn-headding h2"
       ]
-    },
-    {
-      "id": "4b",
-      "name": "I want to... dynamic list",
-      "selector": [
-        ".excat-list-block"
-      ],
-      "style": null,
-      "blocks": [
-        "list"
-      ],
-      "defaultContent": []
     },
     {
       "id": "5",
@@ -283,16 +263,6 @@ export default {
       document, url, html, params,
     } = payload;
     const main = document.body;
-
-    // Content for the dynamic "list" block: a copy of the "I want to..." links in a holder placed
-    // directly below that section (it becomes its own section, see PAGE_TEMPLATE section 4b)
-    const iWantTo = document.querySelector('.cta-long-wrapper');
-    if (iWantTo && !document.querySelector('.excat-list-block')) {
-      const holder = document.createElement('div');
-      holder.className = 'excat-list-block';
-      iWantTo.querySelectorAll('.cta-long-section a[href]').forEach((a) => holder.append(a.cloneNode(true)));
-      iWantTo.after(holder);
-    }
 
     // 1. Initial cleanup + section break markers
     executeTransformers('beforeTransform', main, payload);

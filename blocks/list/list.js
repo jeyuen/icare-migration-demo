@@ -11,6 +11,10 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 const SITE_SUFFIX = /\s*\|\s*icare\s*$/i;
 // local preview of imported pages (aem up --html-folder content) serves pages under /content
 const PREVIEW_ROOT = '/content';
+// AEM page paths picked in Universal Editor: /content/<site>/<path>[.html] (not DAM assets)
+const AEM_PAGE = /^\/content\/(?!dam\/)[^/?#]+(\/[^?#]*?)?(?:\.html)?(?=[?#]|$)/;
+// Universal Editor serves pages as /content/<site>/<path>.html, where those links work as authored
+const AUTHOR_PAGE = /^\/content\/[^/]+.*\.html$/;
 
 let indexTitles;
 
@@ -96,6 +100,24 @@ async function resolveTitle(a) {
   return labelFromUrl(url);
 }
 
+/**
+ * Turns an AEM page path (/content/<site>/<path>.html) into the page's address where the block
+ * is shown: unchanged in Universal Editor, /<path> on the published site, /content/<path> in
+ * the local preview of imported pages. Other links are returned unchanged.
+ * @param {string} href
+ * @returns {string}
+ */
+function resolveHref(href) {
+  const match = href.match(AEM_PAGE);
+  const { pathname } = window.location;
+  if (!match || AUTHOR_PAGE.test(pathname)) return href;
+  const path = match[1] && match[1] !== '/' ? match[1].replace(/\/$/, '') : '/';
+  const rest = href.slice(match[0].length);
+  const isPreview = pathname === PREVIEW_ROOT || pathname.startsWith(`${PREVIEW_ROOT}/`);
+  if (!isPreview) return `${path}${rest}`;
+  return `${PREVIEW_ROOT}${path === '/' ? '/index' : path}${rest}`;
+}
+
 function buildLink(a, label) {
   const link = document.createElement('a');
   link.className = 'list-link';
@@ -124,6 +146,13 @@ export default async function decorate(block) {
   const items = [...block.children].map(async (row) => {
     const a = row.querySelector('a[href]');
     if (!a) return null;
+    const authored = a.getAttribute('href');
+    const href = resolveHref(authored);
+    if (href !== authored) {
+      // an untitled link shows its authored path; keep it recognisable as "no title"
+      if (a.textContent.trim() === authored) a.textContent = href;
+      a.setAttribute('href', href);
+    }
     const label = hasNoTitle(a) ? await resolveTitle(a) : a.textContent.trim();
     const li = document.createElement('li');
     li.className = 'list-item';

@@ -98,3 +98,20 @@
     width: auto;
   }
 }
+
+/* section spacing from the source "I want to..." section:
+   60px above the heading, 104px (81px from 900px) below the links */
+main .section.list-container {
+  margin: 0;
+  padding: 60px 0 104px;
+}
+
+main .section.list-container > .default-content-wrapper > :first-child {
+  margin-top: 0;
+}
+
+@media (width >= 900px) {
+  main .section.list-container {
+    padding-bottom: 81px;
+  }
+}
