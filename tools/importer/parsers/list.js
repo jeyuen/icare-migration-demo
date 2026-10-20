@@ -2,38 +2,48 @@
 /* global WebImporter */
 /**
  * Parser for list (dynamic page-link list). Base: list (project block).
- * Instance selector: .excat-list-block - a holder the homepage import script fills with copies
- * of the "I want to..." links (.cta-long-wrapper .cta-long-section a), placed below that section.
+ * Instance selector (homepage): .cta-long-wrapper .cta-long-section - the "I want to..." links
+ *   <div class="cta-long-section"><div class="col-2"><div class="cta-coloumn-headding"><h2>I want to...</h2></div>
+ *   <a class="cta-long" href="...">Declare wages ...</a> ...</div><div class="col-2">...</div></div>
+ * The column heading ("I want to...") is section default content: it is moved in front of the block.
  * UE model (blocks/list/_list.json): list-item -> link (aem-content) + linkText (collapsed into
  * the link). Rows: one per link -> [<a href>text</a>].
- * Links to icare pages are emitted without a title (text = href) so the block shows the linked
- * page's title; external links keep the source text as their title (their page title can't be read).
+ * Links to icare pages are authored as AEM page paths (/content/<site>/<path>.html, as the UE
+ * page picker stores them) without a title, so the block shows the linked page's title; external
+ * links keep the source text as their title (their page title can't be read).
  */
 const SITE_HOSTS = /^(www\.)?icare\.nsw\.gov\.au$/i;
+const AEM_SITE_PATH = '/content/icare-migration-demo';
 
-function toSitePath(href, document) {
+function toAemPagePath(href) {
   try {
     const url = new URL(href, 'https://www.icare.nsw.gov.au/');
     if (!SITE_HOSTS.test(url.hostname)) return null;
-    return `${url.pathname.replace(/\/$/, '') || '/'}${url.search}${url.hash}`;
+    const path = url.pathname.replace(/\/$/, '').replace(/\.html?$/, '');
+    return `${AEM_SITE_PATH}${path}.html${url.search}${url.hash}`;
   } catch (e) {
     return null;
   }
 }
 
 export default function parse(element, { document }) {
-  const links = [...element.querySelectorAll('a[href]')];
+  // Section heading (default content) - keep only non-empty ones, placed before the block
+  const headings = [...element.querySelectorAll('.cta-coloumn-headding h2, .cta-coloumn-headding h3')]
+    .filter((h) => h.textContent.trim());
+
+  const links = [...element.querySelectorAll('a[href]')]
+    .filter((a) => !a.closest('.cta-coloumn-headding'));
   const cells = [];
   links.forEach((source) => {
     const href = source.getAttribute('href');
     if (!href) return;
     const text = source.textContent.replace(/\s+/g, ' ').trim();
-    const sitePath = toSitePath(href, document);
+    const pagePath = toAemPagePath(href);
 
     const a = document.createElement('a');
-    if (sitePath) {
-      a.href = sitePath;
-      a.textContent = sitePath;
+    if (pagePath) {
+      a.href = pagePath;
+      a.textContent = pagePath;
     } else {
       a.href = href;
       a.textContent = text || href;
@@ -45,9 +55,10 @@ export default function parse(element, { document }) {
   });
 
   if (!cells.length) {
-    element.remove();
+    element.replaceWith(...headings);
     return;
   }
   const block = WebImporter.Blocks.createBlock(document, { name: 'list', cells });
+  headings.forEach((h) => element.before(h));
   element.replaceWith(block);
 }

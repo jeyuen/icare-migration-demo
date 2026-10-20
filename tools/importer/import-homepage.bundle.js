@@ -195,47 +195,6 @@ var CustomImportScript = (() => {
     element.replaceWith(block);
   }
 
-  // tools/importer/parsers/columns-links.js
-  function parse4(element, { document: document2 }) {
-    let columns = [...element.querySelectorAll(":scope > .col-2")];
-    if (!columns.length) columns = [...element.querySelectorAll(":scope > div")];
-    const headings = [];
-    const row = [];
-    columns.forEach((col) => {
-      col.querySelectorAll(".cta-coloumn-headding h2, .cta-coloumn-headding h3, :scope > h2").forEach((h) => {
-        if (h.textContent.trim()) headings.push(h);
-      });
-      let labels = [...col.querySelectorAll(".cta-content-headding")];
-      if (!labels.length) labels = [...col.querySelectorAll("a.cta-long, a[href]")];
-      const list = document2.createElement("ul");
-      labels.forEach((label) => {
-        const anchor = label.matches("a") ? label : label.closest("a[href]");
-        const textEl = label.querySelector(".tile-headding") || label;
-        const text = textEl.textContent.trim();
-        if (!text) return;
-        const li = document2.createElement("li");
-        if (anchor && anchor.getAttribute("href")) {
-          const a = document2.createElement("a");
-          a.href = anchor.getAttribute("href");
-          a.textContent = text;
-          li.appendChild(a);
-        } else {
-          li.textContent = text;
-        }
-        list.appendChild(li);
-      });
-      row.push(list.children.length ? list : "");
-    });
-    if (!row.some((c) => c)) {
-      element.replaceWith(...element.childNodes);
-      return;
-    }
-    const cells = [row];
-    const block = WebImporter.Blocks.createBlock(document2, { name: "columns-links", cells });
-    headings.forEach((h) => element.before(h));
-    element.replaceWith(block);
-  }
-
   // tools/importer/parsers/columns-campaign.js
   function linkedHeading(document2, srcHeading, href) {
     const h = document2.createElement(srcHeading ? srcHeading.tagName.toLowerCase() : "h3");
@@ -250,7 +209,7 @@ var CustomImportScript = (() => {
     }
     return h;
   }
-  function parse5(element, { document: document2 }) {
+  function parse4(element, { document: document2 }) {
     const primary = element.querySelector(".campaign-primary");
     const introCell = [];
     if (primary) {
@@ -299,7 +258,7 @@ var CustomImportScript = (() => {
     p.appendChild(link);
     return p;
   }
-  function parse6(element, { document: document2 }) {
+  function parse5(element, { document: document2 }) {
     element.querySelectorAll("hr").forEach((hr) => hr.remove());
     const feature = element.querySelector(".content-paralympic") || element.querySelector(".sl-item:not(.paralympic-right)");
     const featureCell = [];
@@ -363,7 +322,7 @@ var CustomImportScript = (() => {
     if (Number.isNaN(date.getTime()) || date.getUTCFullYear() < 1900) return "";
     return date.toLocaleDateString("en-AU", { day: "numeric", month: "short", timeZone: "Australia/Sydney" });
   }
-  function parse7(element, { document: document2, pageData: pageData2 }) {
+  function parse6(element, { document: document2, pageData: pageData2 }) {
     let items = [...element.querySelectorAll(":scope > .sl-item")];
     if (!items.length && element.matches("section.cm-featured-content-module, section.cm")) items = [element];
     if (!items.length) items = [...element.querySelectorAll(".content")].map((c) => c.closest("section, div") || c);
@@ -477,7 +436,7 @@ var CustomImportScript = (() => {
     if (/\.svg$/i.test(src)) src += "?iar=0";
     img.setAttribute("src", src);
   }
-  function parse8(element, { document: document2 }) {
+  function parse7(element, { document: document2 }) {
     const cardAnchors = [...element.querySelectorAll("a.icare-resource-card[href]")];
     let titles = [...element.querySelectorAll(".icare-resource-title")];
     if (!titles.length) titles = [...element.querySelectorAll("h3, h2, h4")];
@@ -530,27 +489,30 @@ var CustomImportScript = (() => {
 
   // tools/importer/parsers/list.js
   var SITE_HOSTS = /^(www\.)?icare\.nsw\.gov\.au$/i;
-  function toSitePath(href, document2) {
+  var AEM_SITE_PATH = "/content/icare-migration-demo";
+  function toAemPagePath(href) {
     try {
       const url = new URL(href, "https://www.icare.nsw.gov.au/");
       if (!SITE_HOSTS.test(url.hostname)) return null;
-      return `${url.pathname.replace(/\/$/, "") || "/"}${url.search}${url.hash}`;
+      const path = url.pathname.replace(/\/$/, "").replace(/\.html?$/, "");
+      return `${AEM_SITE_PATH}${path}.html${url.search}${url.hash}`;
     } catch (e) {
       return null;
     }
   }
-  function parse9(element, { document: document2 }) {
-    const links = [...element.querySelectorAll("a[href]")];
+  function parse8(element, { document: document2 }) {
+    const headings = [...element.querySelectorAll(".cta-coloumn-headding h2, .cta-coloumn-headding h3")].filter((h) => h.textContent.trim());
+    const links = [...element.querySelectorAll("a[href]")].filter((a) => !a.closest(".cta-coloumn-headding"));
     const cells = [];
     links.forEach((source) => {
       const href = source.getAttribute("href");
       if (!href) return;
       const text = source.textContent.replace(/\s+/g, " ").trim();
-      const sitePath = toSitePath(href, document2);
+      const pagePath = toAemPagePath(href);
       const a = document2.createElement("a");
-      if (sitePath) {
-        a.href = sitePath;
-        a.textContent = sitePath;
+      if (pagePath) {
+        a.href = pagePath;
+        a.textContent = pagePath;
       } else {
         a.href = href;
         a.textContent = text || href;
@@ -561,10 +523,11 @@ var CustomImportScript = (() => {
       cells.push([cell]);
     });
     if (!cells.length) {
-      element.remove();
+      element.replaceWith(...headings);
       return;
     }
     const block = WebImporter.Blocks.createBlock(document2, { name: "list", cells });
+    headings.forEach((h) => element.before(h));
     element.replaceWith(block);
   }
 
@@ -775,12 +738,11 @@ var CustomImportScript = (() => {
     "hero": parse,
     "search-banner": parse2,
     "cards-audience": parse3,
-    "columns-links": parse4,
-    "columns-campaign": parse5,
-    "columns-story": parse6,
-    "cards-news": parse7,
-    "cards-resources": parse8,
-    "list": parse9
+    "columns-campaign": parse4,
+    "columns-story": parse5,
+    "cards-news": parse6,
+    "cards-resources": parse7,
+    "list": parse8
   };
   var PAGE_TEMPLATE = {
     "name": "homepage",
@@ -808,15 +770,9 @@ var CustomImportScript = (() => {
         ]
       },
       {
-        "name": "columns-links",
-        "instances": [
-          ".cta-long-wrapper .cta-long-section"
-        ]
-      },
-      {
         "name": "list",
         "instances": [
-          ".excat-list-block"
+          ".cta-long-wrapper .cta-long-section"
         ]
       },
       {
@@ -891,23 +847,11 @@ var CustomImportScript = (() => {
         ],
         "style": null,
         "blocks": [
-          "columns-links"
+          "list"
         ],
         "defaultContent": [
           ".cta-long-wrapper .col-2:first-child .cta-coloumn-headding h2"
         ]
-      },
-      {
-        "id": "4b",
-        "name": "I want to... dynamic list",
-        "selector": [
-          ".excat-list-block"
-        ],
-        "style": null,
-        "blocks": [
-          "list"
-        ],
-        "defaultContent": []
       },
       {
         "id": "5",
@@ -1017,13 +961,6 @@ var CustomImportScript = (() => {
         params
       } = payload;
       const main = document2.body;
-      const iWantTo = document2.querySelector(".cta-long-wrapper");
-      if (iWantTo && !document2.querySelector(".excat-list-block")) {
-        const holder = document2.createElement("div");
-        holder.className = "excat-list-block";
-        iWantTo.querySelectorAll(".cta-long-section a[href]").forEach((a) => holder.append(a.cloneNode(true)));
-        iWantTo.after(holder);
-      }
       executeTransformers("beforeTransform", main, payload);
       const pageBlocks = findBlocksOnPage(document2, PAGE_TEMPLATE);
       pageBlocks.forEach((block) => {

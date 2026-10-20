@@ -7,7 +7,10 @@ Dynamic list of links to content pages, styled like the homepage "I want to..." 
 
 Add a **List** block, then one **List Item** per link:
 
-- **Page** - the content page to link to.
+- **Page** - the content page to link to. AEM page paths picked in the editor
+  (`/content/icare-migration-demo/<path>.html`) are turned into the page's address on the
+  published site (`/<path>`), and kept as-is in Universal Editor, where they work. Normal paths,
+  external URLs and DAM assets (`/content/dam/...`) are left unchanged.
 - **Title (optional)** - link text. Leave it empty to use the linked page's title
   (the page's metadata title without the " | icare" suffix).
 

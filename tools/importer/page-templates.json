@@ -27,15 +27,9 @@
           ]
         },
         {
-          "name": "columns-links",
-          "instances": [
-            ".cta-long-wrapper .cta-long-section"
-          ]
-        },
-        {
           "name": "list",
           "instances": [
-            ".excat-list-block"
+            ".cta-long-wrapper .cta-long-section"
           ]
         },
         {
@@ -111,23 +105,11 @@
           ],
           "style": null,
           "blocks": [
-            "columns-links"
+            "list"
           ],
           "defaultContent": [
             ".cta-long-wrapper .col-2:first-child .cta-coloumn-headding h2"
           ]
-        },
-        {
-          "id": "4b",
-          "name": "I want to... dynamic list",
-          "selector": [
-            ".excat-list-block"
-          ],
-          "style": null,
-          "blocks": [
-            "list"
-          ],
-          "defaultContent": []
         },
         {
           "id": "5",
