@@ -32,7 +32,8 @@
       "table",
       "columns-video",
       "columns-panels",
-      "cards-promo"
+      "cards-promo",
+      "formula"
     ]
   },
   {
@@ -132,6 +133,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "formula",
+    "components": [
+      "formula-item"
     ]
   },
   {

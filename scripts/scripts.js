@@ -160,6 +160,11 @@ export function decorateMain(main) {
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
+  // Local previews of imported HTML keep the authored "Template" casing (aem.live lowercases it)
+  const localTemplate = document.head.querySelector('meta[name="Template"]');
+  if (localTemplate && localTemplate.content) {
+    localTemplate.content.split(',').forEach((t) => document.body.classList.add(toClassName(t.trim())));
+  }
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);

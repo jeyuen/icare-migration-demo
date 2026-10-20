@@ -1450,6 +1450,12 @@
           "instances": [
             ".l-main > div.sl"
           ]
+        },
+        {
+          "name": "formula",
+          "instances": [
+            ".l-main .premium-formula-holder"
+          ]
         }
       ],
       "representativeUrl": "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages",
@@ -1499,7 +1505,7 @@
           "id": "4",
           "name": "Guide body",
           "selector": [
-            "div.l-layout:not(:has(header.hero-composite-section))",
+            "div.l-layout:not(:has(header.hero-composite-section)):not(:has(> section.all-category-home-tile-wrapper))",
             "div.l-layout > div.l-content-container"
           ],
           "style": "content-column",
@@ -1508,7 +1514,8 @@
             "cards-downloads",
             "accordion",
             "columns",
-            "table"
+            "table",
+            "formula"
           ],
           "defaultContent": [
             ".l-main .cm-rich-text",
@@ -1517,6 +1524,31 @@
             ".l-main section.cm-links-downloads > h2",
             ".l-main section.cm-links-related"
           ]
+        },
+        {
+          "id": "4a",
+          "name": "Calculation example panel",
+          "selector": [
+            ".l-main section.grouped-highlight"
+          ],
+          "style": "content-column, panel",
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": [
+            ".l-main section.grouped-highlight > h2"
+          ]
+        },
+        {
+          "id": "4b",
+          "name": "Guide body (after panel)",
+          "selector": [
+            ".l-main section.grouped-highlight + *",
+            ".l-main .cm-rich-text:has(section.grouped-highlight) + *"
+          ],
+          "style": "content-column",
+          "blocks": [],
+          "defaultContent": []
         },
         {
           "id": "5",

@@ -25,7 +25,18 @@ export default function decorate(block) {
   const tbody = document.createElement('tbody');
   const labels = [];
 
-  [...block.children].forEach((row, i) => {
+  // Imported (pre-publish) markup still carries the UE model's filter row ("table-4-columns")
+  // and a leading column-type cell per row ("table-col-4"); AEM strips both when publishing.
+  const rows = [...block.children];
+  if (rows[0] && rows[0].children.length === 1 && /^table-\d+-columns$/.test(rows[0].textContent.trim())) {
+    rows.shift().remove();
+  }
+  rows.forEach((row) => {
+    const first = row.firstElementChild;
+    if (first && row.children.length > 1 && /^table-col-\d+$/.test(first.textContent.trim())) first.remove();
+  });
+
+  rows.forEach((row, i) => {
     const cells = [...row.children];
     if (!cells.length) return;
     const isHeader = i === 0 && hasHeader;

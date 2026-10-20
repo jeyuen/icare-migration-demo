@@ -27,6 +27,13 @@
         "name": "template",
         "label": "Template",
         "description": "Page template name, added to the body as a class for template-specific styling"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "breadcrumb",
+        "label": "Breadcrumb labels",
+        "description": "Trail labels below Home, separated by |, e.g. Workers Compensation | Employers | Who needs a policy. Leave empty to derive labels from the URL."
       }
     ]
   },
@@ -155,6 +162,14 @@
           {
             "name": "Content column",
             "value": "content-column"
+          },
+          {
+            "name": "Panel",
+            "value": "panel"
+          },
+          {
+            "name": "Lead paragraph",
+            "value": "lead"
           }
         ]
       }
@@ -536,6 +551,35 @@
         "value": "",
         "label": "Title",
         "description": "Accessible title for the video frame"
+      }
+    ]
+  },
+  {
+    "id": "formula-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "symbol",
+        "value": "",
+        "label": "Symbol",
+        "description": "Term symbol, e.g. P, (APP x CPA), D. For an operator item enter only the operator (=, +, -) and leave Description empty. The first item is the result term (highlighted block)."
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description",
+        "description": "What the symbol stands for. Use one paragraph per meaning, e.g. two paragraphs for (APP x CPA). An item with a description but no symbol is shown as a footnote.",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "split",
+        "label": "Start a new panel",
+        "description": "Operator items only: show this operator large, between two separate grey panels.",
+        "value": false
       }
     ]
   },

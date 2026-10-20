@@ -11,6 +11,7 @@ import accordionParser from './parsers/accordion.js';
 import columnsParser from './parsers/columns.js';
 import tableParser from './parsers/table.js';
 import cardsFeatureParser from './parsers/cards-feature.js';
+import formulaParser from './parsers/formula.js';
 
 // TRANSFORMER IMPORTS
 import icareCleanupTransformer from './transformers/icare-cleanup.js';
@@ -27,23 +28,14 @@ const parsers = {
   'columns': columnsParser,
   'table': tableParser,
   'cards-feature': cardsFeatureParser,
+  'formula': formulaParser,
 };
 
 // PAGE TEMPLATE CONFIGURATION - Embedded from page-templates.json
 const PAGE_TEMPLATE = {
   "name": "guide-with-page-nav",
-  "description": "Coloured breadcrumb banner, on-this-page anchor list, quick-link cards, long guide content with video, accordions and related downloads",
   "urls": [
     "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages",
-    "https://icare.nsw.gov.au/archive/wage-declarations",
-    "https://icare.nsw.gov.au/employers/employer-obligations/injury-prevention",
-    "https://icare.nsw.gov.au/employers/employer-obligations/injury-prevention/education-and-training",
-    "https://icare.nsw.gov.au/employers/forms-and-resources",
-    "https://icare.nsw.gov.au/employers/premiums/calculating-the-cost-of-your-premium",
-    "https://icare.nsw.gov.au/employers/premiums/premium-reviews",
-    "https://icare.nsw.gov.au/employers/premiums/premium-updates",
-    "https://icare.nsw.gov.au/employers/premiums/ways-to-lower-your-premiums",
-    "https://icare.nsw.gov.au/practitioners-and-providers/gps-and-treating-doctors/understanding-workers-compensation/the-nsw-workers-compensation-system",
     "https://icare.nsw.gov.au/workers-compensation/employers/apprentice-incentive-scheme",
     "https://icare.nsw.gov.au/workers-compensation/employers/classifying-your-workers",
     "https://icare.nsw.gov.au/workers-compensation/employers/forms-and-resources",
@@ -86,6 +78,8 @@ const PAGE_TEMPLATE = {
     "https://icare.nsw.gov.au/workers-compensation/employers/your-responsibilities-as-an-employer",
     "https://icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/injury-prevention-resource-hub"
   ],
+  "coverageGaps": [],
+  "description": "Coloured breadcrumb banner, on-this-page anchor list, quick-link cards, long guide content with video, accordions and related downloads",
   "blocks": [
     {
       "name": "hero",
@@ -140,8 +134,15 @@ const PAGE_TEMPLATE = {
       "instances": [
         ".l-main > div.sl"
       ]
+    },
+    {
+      "name": "formula",
+      "instances": [
+        ".l-main .premium-formula-holder"
+      ]
     }
   ],
+  "representativeUrl": "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages",
   "sections": [
     {
       "id": "1",
@@ -188,7 +189,7 @@ const PAGE_TEMPLATE = {
       "id": "4",
       "name": "Guide body",
       "selector": [
-        "div.l-layout:not(:has(header.hero-composite-section))",
+        "div.l-layout:not(:has(header.hero-composite-section)):not(:has(> section.all-category-home-tile-wrapper))",
         "div.l-layout > div.l-content-container"
       ],
       "style": "content-column",
@@ -197,7 +198,8 @@ const PAGE_TEMPLATE = {
         "cards-downloads",
         "accordion",
         "columns",
-        "table"
+        "table",
+        "formula"
       ],
       "defaultContent": [
         ".l-main .cm-rich-text",
@@ -206,6 +208,31 @@ const PAGE_TEMPLATE = {
         ".l-main section.cm-links-downloads > h2",
         ".l-main section.cm-links-related"
       ]
+    },
+    {
+      "id": "4a",
+      "name": "Calculation example panel",
+      "selector": [
+        ".l-main section.grouped-highlight"
+      ],
+      "style": "content-column, panel",
+      "blocks": [
+        "columns"
+      ],
+      "defaultContent": [
+        ".l-main section.grouped-highlight > h2"
+      ]
+    },
+    {
+      "id": "4b",
+      "name": "Guide body (after panel)",
+      "selector": [
+        ".l-main section.grouped-highlight + *",
+        ".l-main .cm-rich-text:has(section.grouped-highlight) + *"
+      ],
+      "style": "content-column",
+      "blocks": [],
+      "defaultContent": []
     },
     {
       "id": "5",
@@ -321,11 +348,32 @@ function findBlocksOnPage(document, template) {
 // Next.js page data (__NEXT_DATA__) captured from the live DOM in onLoad, before the
 // importer strips scripts. Parsers use it for values the page renders client-side.
 let pageData = '';
+// Breadcrumb labels below Home. The source renders the trail client-side from each ancestor's
+// navigation title, and labels differ page to page ("Manage Your Policy" / "Manage your policy").
+let breadcrumbLabels = [];
+
+function readBreadcrumb(document) {
+  const nav = document.querySelector('nav[aria-label="Breadcrumb"]');
+  if (!nav || !nav.querySelector('a')) return [];
+  return [...nav.querySelectorAll('a, .breadcrumb-current-text')]
+    .map((el) => el.textContent.replace(/\s+/g, ' ').trim())
+    .filter((text, i) => !(i === 0 && /^home$/i.test(text)));
+}
 
 export default {
   onLoad: async ({ document }) => {
     const data = document.getElementById('__NEXT_DATA__');
     pageData = (data && data.textContent) || '';
+    for (let i = 0; i < 40 && !readBreadcrumb(document).length; i += 1) {
+      // eslint-disable-next-line no-await-in-loop
+      await new Promise((r) => { setTimeout(r, 250); });
+    }
+    breadcrumbLabels = readBreadcrumb(document);
+    if (!breadcrumbLabels.length) {
+      // fall back to the page's own navigation title (current item only)
+      const nav = pageData.match(/"NavigationTitle":\{"value":"([^"]*)"/);
+      if (nav && nav[1]) breadcrumbLabels = [JSON.parse(`"${nav[1]}"`)];
+    }
   },
 
   transform: (payload) => {
@@ -337,6 +385,9 @@ export default {
     // Page tags ("Tagged in") come from og:content-tags - read before cleanup strips <meta>
     const tagsMeta = document.querySelector('meta[property="og:content-tags"], meta[name="og:content-tags"]');
     const tags = (tagsMeta && tagsMeta.content.trim()) || '';
+    // only when the intro opens the body (nothing but whitespace before it in its rich text)
+    const intro = document.querySelector('.l-main p.intro');
+    const hasIntro = !!intro && !intro.previousElementSibling;
 
     // 1. Initial cleanup + section break markers
     executeTransformers('beforeTransform', main, payload);
@@ -364,16 +415,31 @@ export default {
     // 4. Final cleanup + section metadata
     executeTransformers('afterTransform', main, payload);
 
+    // Lead paragraph: the source styles the body's opening <p class="intro"> as a large lead;
+    // the guide body section gets the "lead" style, which styles its first paragraph that way.
+    if (hasIntro) {
+      const bodyMeta = [...main.querySelectorAll('table')].find((t) => {
+        const cells = [...t.querySelectorAll('td, th')].map((c) => c.textContent.trim());
+        return /^section metadata$/i.test(cells[0] || '') && cells.includes('content-column');
+      });
+      if (bodyMeta) {
+        const cell = [...bodyMeta.querySelectorAll('td')].find((c) => c.textContent.trim() === 'content-column');
+        cell.textContent = 'content-column, lead';
+      }
+    }
+
     // 5. WebImporter built-in rules
     const hr = document.createElement('hr');
     main.appendChild(hr);
     const meta = WebImporter.rules.createMetadata(main, document);
-    if (tags && meta) {
-      // Rebuild the metadata block with Tags added
+    if (meta) {
+      // Rebuild the metadata block with Tags and Template (body class for template-scoped styles)
       const metadataBlock = [...main.querySelectorAll(':scope > table')]
         .find((t) => /^metadata$/i.test((t.querySelector('th, td') || {}).textContent?.trim() || ''));
       if (metadataBlock) {
-        meta.Tags = tags;
+        if (tags) meta.Tags = tags;
+        meta.Template = PAGE_TEMPLATE.name;
+        if (breadcrumbLabels.length) meta.Breadcrumb = breadcrumbLabels.join(' | ');
         metadataBlock.replaceWith(WebImporter.Blocks.getMetadataBlock(document, meta));
       }
     }
