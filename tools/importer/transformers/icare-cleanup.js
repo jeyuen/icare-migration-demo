@@ -17,6 +17,11 @@ export default function transform(hookName, element, payload) {
       '#main-feedback',
     ]);
 
+    // Site-wide alert banner (temporary notices, e.g. "Scam Alert: icare impersonation Scam")
+    // Found: <div class="cm cm-sitewide-message is-medium"><div class="l-padding"><p>..</p><p>..</p><a>Learn more</a>
+    // above the homepage hero - a site-wide notice, not page content.
+    WebImporter.DOMUtils.remove(element, ['.cm-sitewide-message']);
+
     // Hidden duplicate mobile hero content (same image/h1/p as the desktop copy)
     // Found: <section class="hero-banner-section homepage-hero-banner">
     //          <div class="l-padding show-on-full-width">...</div>

@@ -1,0 +1,18 @@
+{
+  "variantName": "list",
+  "baseBlock": "list",
+  "canonicalModel": "container",
+  "visualCharacteristics": "list of bordered link rows with a trailing green arrow (homepage 'I want to...' style); link text defaults to the linked page's title",
+  "contentPattern": "N rows, 1 cell each: <a href=page>optional title</a> (link + linkText fields collapsed)",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.icare.nsw.gov.au/"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-20T00:00:00Z"
+  },
+  "options": [],
+  "memberVariantIds": []
+}

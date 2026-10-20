@@ -620,6 +620,25 @@
     ]
   },
   {
+    "id": "list-item",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Page",
+        "description": "The content page to link to"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Title (optional)",
+        "description": "Link text. Leave empty to use the linked page's title"
+      }
+    ]
+  },
+  {
     "id": "search-banner",
     "fields": [
       {

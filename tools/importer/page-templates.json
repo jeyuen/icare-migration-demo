@@ -33,6 +33,12 @@
           ]
         },
         {
+          "name": "list",
+          "instances": [
+            ".excat-list-block"
+          ]
+        },
+        {
           "name": "columns-campaign",
           "instances": [
             "section.cm-campaign-module"
@@ -110,6 +116,18 @@
           "defaultContent": [
             ".cta-long-wrapper .col-2:first-child .cta-coloumn-headding h2"
           ]
+        },
+        {
+          "id": "4b",
+          "name": "I want to... dynamic list",
+          "selector": [
+            ".excat-list-block"
+          ],
+          "style": null,
+          "blocks": [
+            "list"
+          ],
+          "defaultContent": []
         },
         {
           "id": "5",
