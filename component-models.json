@@ -24,6 +24,20 @@
       {
         "component": "text",
         "valueType": "string",
+        "name": "template",
+        "label": "Template",
+        "description": "Page template name, added to the body as a class for template-specific styling"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "breadcrumb",
+        "label": "Breadcrumb labels",
+        "description": "Trail labels below Home, separated by |, e.g. Workers Compensation | Employers | Who needs a policy. Leave empty to derive labels from the URL."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
         "name": "navigationtitle",
         "label": "Navigation Title"
       },
@@ -199,13 +213,6 @@
         "name": "image",
         "label": "Image",
         "multi": false
-      },
-      {
-        "component": "boolean",
-        "valueType": "boolean",
-        "name": "showBreadcrumbs",
-        "label": "Show Breadcrumbs",
-        "value": true
       },
       {
         "component": "select",
