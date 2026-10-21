@@ -25,16 +25,315 @@
         {
           "component": "text",
           "valueType": "string",
-          "name": "template",
-          "label": "Template",
-          "description": "Page template name, added to the body as a class for template-specific styling"
+          "name": "navigationtitle",
+          "label": "Navigation Title"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "breadcrumb",
-          "label": "Breadcrumb labels",
-          "description": "Trail labels below Home, separated by |, e.g. Workers Compensation | Employers | Who needs a policy. Leave empty to derive labels from the URL."
+          "name": "sling:vanityPath",
+          "label": "Vanity URL",
+          "multi": true
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "breadcrumbs",
+          "label": "Show Breadcrumbs",
+          "value": true
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "minimalHeaderFooter",
+          "label": "Show forms/Portal header and footer",
+          "value": false
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "inheritChatSettingsFromParent",
+          "label": "Inherit chat settings from parent",
+          "value": false
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "liveChat",
+          "label": "Enable live chat",
+          "value": false,
+          "condition": {
+            "==": [
+              {
+                "var": "inheritChatSettingsFromParent"
+              },
+              false
+            ]
+          }
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "liveChatQueue",
+          "label": "Live chat queue",
+          "condition": {
+            "==": [
+              {
+                "var": "inheritChatSettingsFromParent"
+              },
+              false
+            ]
+          },
+          "options": [
+            {
+              "name": "ACC",
+              "value": "acc"
+            },
+            {
+              "name": "Self Service General",
+              "value": "self-service-general"
+            },
+            {
+              "name": "Self Service Roadside Assistance",
+              "value": "self-service-roadside-assistance"
+            },
+            {
+              "name": "Bank",
+              "value": "bank"
+            },
+            {
+              "name": "CCMC",
+              "value": "ccmc"
+            },
+            {
+              "name": "Self Service Insurance",
+              "value": "self-service-insurance"
+            },
+            {
+              "name": "Claims",
+              "value": "claims"
+            },
+            {
+              "name": "IQ - Car",
+              "value": "iq-car"
+            },
+            {
+              "name": "IQ - Home",
+              "value": "iq-home"
+            },
+            {
+              "name": "IQ - Pet",
+              "value": "iq-pet"
+            },
+            {
+              "name": "General",
+              "value": "general"
+            },
+            {
+              "name": "Insurance Sales and Service",
+              "value": "insurance-sales-and-service"
+            },
+            {
+              "name": "Home Insurance Sales and Service",
+              "value": "home-insurance-sales-and-service"
+            },
+            {
+              "name": "Motor Insurance Sales and Service",
+              "value": "motor-insurance-sales-and-service"
+            },
+            {
+              "name": "Boat Insurance Sales and Service",
+              "value": "boat-insurance-sales-and-service"
+            },
+            {
+              "name": "Roadside Sales and Service",
+              "value": "roadside-sales-and-service"
+            },
+            {
+              "name": "General enquiries",
+              "value": "general-enquiries"
+            },
+            {
+              "name": "LD Training",
+              "value": "ld-training"
+            },
+            {
+              "name": "UW Support Hub",
+              "value": "uw-support-hub"
+            },
+            {
+              "name": "Technology Support",
+              "value": "technology-support"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "publicationDate",
+          "label": "Publication date"
+        },
+        {
+          "component": "number",
+          "valueType": "number",
+          "name": "boostValue",
+          "label": "Boost Value",
+          "value": 0
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "hideThingsToNote",
+          "label": "Hide 'Things to note'",
+          "value": false
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "icon48x48",
+          "label": "Icon 48 x 48",
+          "multi": false
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "showBreadcrumbs",
+          "label": "Show Breadcrumbs",
+          "value": true
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "minimalFooterVariant",
+          "label": "Minimal header/footer variant",
+          "value": "portal",
+          "condition": {
+            "==": [
+              {
+                "var": "minimalHeaderFooter"
+              },
+              true
+            ]
+          },
+          "options": [
+            {
+              "name": "Portal",
+              "value": "portal"
+            },
+            {
+              "name": "Form",
+              "value": "form"
+            }
+          ]
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "og:type",
+          "label": "Open Graph Type",
+          "value": "webpage",
+          "options": [
+            {
+              "name": "Webpage",
+              "value": "webpage"
+            },
+            {
+              "name": "Homepage",
+              "value": "homepage"
+            },
+            {
+              "name": "Article page",
+              "value": "article"
+            },
+            {
+              "name": "News page",
+              "value": "news"
+            },
+            {
+              "name": "Product page",
+              "value": "product"
+            },
+            {
+              "name": "Category page",
+              "value": "category"
+            },
+            {
+              "name": "Content page",
+              "value": "content"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "og:locale",
+          "label": "Open Graph Locale",
+          "value": "en_AU"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "og:site_name",
+          "label": "Open Graph Site Name",
+          "value": "RACQ"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "twitter:card",
+          "label": "Twitter Card",
+          "value": "summary",
+          "options": [
+            {
+              "name": "Summary",
+              "value": "summary"
+            },
+            {
+              "name": "Summary large image",
+              "value": "summary_large_image"
+            },
+            {
+              "name": "App",
+              "value": "app"
+            },
+            {
+              "name": "Player",
+              "value": "player"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "twitter:title",
+          "label": "Twitter Title"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "twitter:description",
+          "label": "Twitter Description"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "twitter:image",
+          "label": "Twitter Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "twitter:site",
+          "label": "Twitter Site",
+          "value": "RACQOfficial"
         }
       ]
     }
