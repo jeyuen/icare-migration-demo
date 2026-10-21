@@ -244,7 +244,8 @@
           "component": "select",
           "valueType": "string",
           "name": "og:type",
-          "label": "Open Graph Type",
+          "label": "Type",
+          "description": "Open Graph object type used for social sharing.",
           "value": "webpage",
           "options": [
             {
@@ -281,14 +282,16 @@
           "component": "text",
           "valueType": "string",
           "name": "og:locale",
-          "label": "Open Graph Locale",
+          "label": "Locale",
+          "description": "Open Graph locale used for social sharing (e.g. en_AU). Default: en_AU.",
           "value": "en_AU"
         },
         {
           "component": "text",
           "valueType": "string",
           "name": "og:site_name",
-          "label": "Open Graph Site Name",
+          "label": "Site Name",
+          "description": "Open Graph site name used for social sharing. Default: RACQ.",
           "value": "RACQ"
         },
         {
