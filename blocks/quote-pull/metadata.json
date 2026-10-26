@@ -1,0 +1,27 @@
+{
+  "variantName": "quote-pull",
+  "baseBlock": "quote",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "structure": "large pull quote, no border, light-weight large type, attribution below indented with leading em dash",
+    "imagePattern": "none",
+    "colorScheme": "light",
+    "density": "minimal",
+    "source": "source: 36px light (300) dark text, 40px vertical margins, 16px attribution indented 20px with em dash",
+    "purpose": "large display pull quote in news and story articles"
+  },
+  "contentPattern": {
+    "structure": "row 1 is the quotation (one or more paragraphs, a single Quotation richtext field); row 2 is the optional attribution (plain text name and role, Attribution field; the leading em dash is added by CSS)"
+  },
+  "reuseGuidance": "Use for the standard large pull quote in news and story articles (also seen on annabelle-shares, reimagining-your-life, shine-magazine stories). Use quote-bordered for inline statement quotes with a grey left rule.",
+  "options": [],
+  "memberVariantIds": [],
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.icare.nsw.gov.au/news-and-stories/2025/icare-safeguards-nsw-workers-with-new-lung-health-mobile-clinic"
+      }
+    ],
+    "reuseCount": 1
+  }
+}

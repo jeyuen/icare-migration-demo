@@ -2,11 +2,13 @@
   "status": "success",
   "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/asbjv",
   "path": "workers-compensation/employers/prevention-and-education/asbjv",
-  "timestamp": "2026-10-20T04:00:09.269Z",
+  "timestamp": "2026-10-20T22:22:20.748Z",
   "title": "ASBJV | icare",
   "template": "guide-with-page-nav",
   "blocks": [
     "hero",
-    "cards-audience"
+    "cards-audience",
+    "quote-bordered",
+    "quote-bordered"
   ]
 }

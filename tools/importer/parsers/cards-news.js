@@ -6,7 +6,11 @@
  *   .l-main > section.cm-featured-content-module (section-overview-hub, single featured card;
  *   live DOM carries the image as background-image in the .module-background style attribute),
  *   div.l-layout + div section.content-hero .sl-list (hero-image-content-with-sidebar related
- *   content: .sl-list.has-4-items, text-only tiles; empty placeholder .sl-item divs are skipped)
+ *   content: .sl-list.has-4-items, text-only tiles; empty placeholder .sl-item divs are skipped),
+ *   div.l-layout ~ div section.content-hero .sl-list (news-story-with-video related content, e.g.
+ *   https://www.icare.nsw.gov.au/news-and-stories/2025/icare-safeguards-nsw-workers-with-new-lung-health-mobile-clinic:
+ *   cm-content-tile tiles whose dates carry the year ("28 Aug 2026"); a tile may have a top
+ *   image in <div class="image"><img alt="" title="..."></div>, used as the card image)
  * UE model (blocks/cards-news/_cards-news.json): cards-news-item -> image (featured only), text
  * Rows: one per card -> [image | eyebrow (category/date), heading, teaser, Read more link]
  *
@@ -21,9 +25,10 @@
  *
  * Dates: the site renders each card's date client-side from authorDate (midnight UTC) in the
  * browser's timezone, so a non-Australian import browser shows the previous day. When the
- * Next.js page data is available, the date is re-derived from authorDate in Australia/Sydney.
+ * Next.js page data is available, the date is re-derived from authorDate in Australia/Sydney
+ * (as "06 Aug 2026", the site's long form, when the rendered date shows a year).
  */
-function getSydneyDate(document, pageData, title) {
+function getSydneyDate(document, pageData, title, withYear) {
   if (!title) return '';
   const data = document.getElementById('__NEXT_DATA__');
   // The bulk importer strips scripts from the DOM; the import script captures the data in onLoad.
@@ -43,7 +48,11 @@ function getSydneyDate(document, pageData, title) {
   if (!value) return '';
   const date = new Date(value);
   if (Number.isNaN(date.getTime()) || date.getUTCFullYear() < 1900) return '';
-  return date.toLocaleDateString('en-AU', { day: 'numeric', month: 'short', timeZone: 'Australia/Sydney' });
+  // Long form as rendered in the browser: "06 Aug 2026", "10 June 2026", "29 Sept 2026"
+  const format = withYear
+    ? { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'Australia/Sydney' }
+    : { day: 'numeric', month: 'short', timeZone: 'Australia/Sydney' };
+  return date.toLocaleDateString('en-AU', format);
 }
 
 export default function parse(element, { document, pageData }) {
@@ -74,14 +83,23 @@ export default function parse(element, { document, pageData }) {
         bgImg.alt = heading ? heading.textContent.trim() : '';
       }
     }
+    // Content tile top image (news-story related content): <div class="image"><img></div>
+    if (!bgImg) {
+      bgImg = item.querySelector('.image img[src]');
+      if (bgImg && !bgImg.getAttribute('alt') && bgImg.getAttribute('title')) {
+        bgImg.alt = bgImg.getAttribute('title').trim();
+      }
+    }
     const body = [];
 
     // Eyebrow: category + date
     const sub = content.querySelector('.subheading');
     if (sub) {
       const category = (sub.querySelector('.content-type')?.textContent || '').trim();
-      const date = getSydneyDate(document, pageData, heading ? heading.textContent.trim() : '')
-        || (sub.querySelector('.subtitle')?.textContent || '').trim();
+      const shownDate = (sub.querySelector('.subtitle')?.textContent || '').trim();
+      const withYear = /\b\d{4}\b/.test(shownDate);
+      const date = getSydneyDate(document, pageData, heading ? heading.textContent.trim() : '', withYear)
+        || shownDate;
       if (category || date) {
         const p = document.createElement('p');
         if (category) {

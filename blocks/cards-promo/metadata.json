@@ -8,10 +8,14 @@
     "pagesUsing": [
       {
         "url": "https://www.icare.nsw.gov.au/employers/make-a-claim/notify-us-of-an-injury-or-make-a-claim"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/news-and-stories/2025/icare-safeguards-nsw-workers-with-new-lung-health-mobile-clinic",
+        "documentPath": "/news-and-stories/2025/icare-safeguards-nsw-workers-with-new-lung-health-mobile-clinic"
       }
     ],
-    "reuseCount": 1,
-    "lastUsed": "2026-10-13T00:00:00Z"
+    "reuseCount": 2,
+    "lastUsed": "2026-10-20T21:18:44.897Z"
   },
   "options": [],
   "memberVariantIds": []

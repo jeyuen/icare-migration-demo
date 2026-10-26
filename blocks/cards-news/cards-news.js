@@ -35,7 +35,7 @@ function decorateEyebrow(p) {
 
 /**
  * News cards: each row is [image (optional) | eyebrow, heading, teaser, Read more].
- * A card that carries an image is treated as the featured card (image as backdrop).
+ * A first card that carries an image is the featured card (image as backdrop).
  * @param {Element} body
  */
 function decorateBody(body) {
@@ -81,7 +81,11 @@ export default function decorate(block) {
       }
     });
 
-    if (li.querySelector('.cards-news-card-image')) li.classList.add('is-featured');
+    // The first card with an image is the featured card (image as backdrop, homepage news row);
+    // an image on a later card is a plain tile image above its text (news story "Related content")
+    if (li.querySelector('.cards-news-card-image')) {
+      li.classList.add(ul.children.length === 0 ? 'is-featured' : 'has-image');
+    }
 
     // The whole tile links to the article; "Read more" stays as a visual cue inside it.
     const readMore = li.querySelector('a.cards-news-link');

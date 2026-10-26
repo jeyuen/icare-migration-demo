@@ -1,0 +1,55 @@
+/*
+ * quote-pull: large pull quote with a short teal rule before the attribution.
+ * Values from source `.cm-rich-text blockquote` (same at all viewports).
+ * The source footer is absolutely positioned below the quote, inside the
+ * blockquote's 40px bottom padding; the block mirrors that here.
+ */
+.quote-pull {
+  position: relative;
+  margin: 40px 0;
+  padding: 0 0 40px;
+  color: var(--heading-color, #111);
+}
+
+.quote-pull .quote-pull-quotation {
+  margin: 0;
+  padding: 0;
+}
+
+.quote-pull .quote-pull-quotation p {
+  margin: 0;
+  color: var(--heading-color, #111);
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.333;
+}
+
+.quote-pull .quote-pull-quotation p + p {
+  margin-top: 0.5em;
+}
+
+.quote-pull .quote-pull-attribution {
+  position: absolute;
+  margin: 10px 0 0;
+  padding: 0 0 0 20px;
+  color: var(--heading-color, #111);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.quote-pull .quote-pull-attribution::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 1px;
+  background-color: #007b83;
+}
+
+.quote-pull .quote-pull-attribution cite {
+  font-style: normal;
+}

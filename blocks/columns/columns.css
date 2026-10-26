@@ -31,3 +31,31 @@
     order: unset;
   }
 }
+
+/*
+ * News story (news-story-with-video): two-photo image pair.
+ * Source: .sl > .sl-list.has-2-items — 35px vertical margin, images stacked
+ * with 35px between them below 1024px, side by side with a 12px gap from 1024px.
+ */
+body.news-story-with-video .columns {
+  margin: 35px 0;
+}
+
+body.news-story-with-video .columns > div {
+  gap: 35px;
+}
+
+@media (width >= 900px) {
+  body.news-story-with-video .columns > div {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 35px;
+  }
+}
+
+@media (width >= 1024px) {
+  body.news-story-with-video .columns > div {
+    flex-direction: row;
+    gap: 12px;
+  }
+}

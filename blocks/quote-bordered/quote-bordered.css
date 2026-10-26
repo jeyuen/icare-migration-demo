@@ -1,0 +1,76 @@
+/* quote-bordered: inline quotation with left rule and em-dash attribution (structural styles) */
+.quote-bordered {
+  margin: 24px 0;
+  padding: 0 16px;
+  border-left: 5px solid var(--light-color, #ccc);
+}
+
+.quote-bordered .quote-bordered-quotation {
+  margin: 0;
+  padding: 0;
+}
+
+.quote-bordered .quote-bordered-quotation p {
+  margin: 0;
+  font-style: italic;
+}
+
+.quote-bordered .quote-bordered-quotation p + p {
+  margin-top: 0.75em;
+}
+
+.quote-bordered .quote-bordered-attribution {
+  margin: 12px 0 0;
+}
+
+.quote-bordered .quote-bordered-attribution cite {
+  font-style: normal;
+}
+
+.quote-bordered .quote-bordered-attribution cite::before {
+  content: '\2014\00a0';
+}
+
+@media (width >= 900px) {
+  .quote-bordered {
+    padding: 0 54px;
+  }
+}
+
+/* news-story-with-video: minister quote as on the source news story (ck-content blockquote).
+ * The source sits the attribution out of flow over the 40px bottom padding and marks it
+ * with a short teal rule; it adds empty spacer paragraphs around the quote, reproduced here as margins. */
+body.news-story-with-video .quote-bordered {
+  box-sizing: border-box;
+  margin: 80px 0;
+  padding: 0 54px 40px;
+  border-left-color: var(--border-color);
+}
+
+body.news-story-with-video .quote-bordered .quote-bordered-quotation p {
+  font-weight: 300;
+}
+
+body.news-story-with-video .quote-bordered .quote-bordered-quotation p:last-child {
+  margin-bottom: 14px;
+}
+
+body.news-story-with-video .quote-bordered .quote-bordered-attribution {
+  position: absolute;
+  margin: 10px 0 0;
+  padding-left: 20px;
+}
+
+body.news-story-with-video .quote-bordered .quote-bordered-attribution::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 1px;
+  background-color: rgb(0 123 131);
+}
+
+body.news-story-with-video .quote-bordered .quote-bordered-attribution cite::before {
+  content: none;
+}

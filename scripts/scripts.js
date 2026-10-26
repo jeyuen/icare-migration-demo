@@ -85,6 +85,8 @@ function buildBreadcrumbBlock(main) {
   if (!firstSection || firstSection.querySelector('.breadcrumb')) return;
   // photo banners (e.g. claim pages) have no breadcrumb on the source
   if (firstSection.querySelector('.hero picture, .hero img')) return;
+  // neither do news stories
+  if (document.body.classList.contains('news-story-with-video')) return;
   firstSection.prepend(buildBlock('breadcrumb', ''));
 }
 

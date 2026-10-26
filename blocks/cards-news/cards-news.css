@@ -388,6 +388,13 @@ main .section.cards-news-container:has(.cards-news.is-news-grid) {
   background-color: var(--brand-magenta);
 }
 
+/* a plain tile can carry an image above its text (news story "Related content") */
+.cards-news .cards-news-card.has-image .cards-news-card-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 @media (width >= 600px) {
   .cards-news.is-text-only > ul {
     grid-template-columns: 1fr;
@@ -442,4 +449,45 @@ main .section.cards-news-container:has(.cards-news.is-news-grid) {
   .cards-news.is-text-only .cards-news-card:not(.is-featured) .cards-news-title:first-child {
     margin-top: 40px;
   }
+}
+
+/*
+ * news-story-with-video "Related content" tiles (icare .sl-list > .cm-content-tile).
+ * Image flush with the tile top, no separator when there is no category,
+ * and the source hover: lighter magenta "Read more", white ring arrow nudged 3px right.
+ */
+body.news-story-with-video .cards-news .cards-news-card.has-image .cards-news-card-image > p {
+  margin: 0;
+}
+
+body.news-story-with-video .cards-news .cards-news-eyebrow.no-category .cards-news-date::before {
+  content: none;
+}
+
+body.news-story-with-video .cards-news .cards-news-card .cards-news-card-link .cards-news-link {
+  transition: color 0.15s;
+}
+
+body.news-story-with-video .cards-news .cards-news-card .cards-news-card-link .cards-news-link::after,
+body.news-story-with-video .cards-news .cards-news-card .cards-news-card-link .cards-news-link::before {
+  transition: right 0.15s;
+}
+
+body.news-story-with-video .cards-news .cards-news-card .cards-news-card-link .cards-news-link::after {
+  box-sizing: border-box;
+}
+
+body.news-story-with-video .cards-news a.cards-news-card-link:hover .cards-news-link {
+  color: var(--brand-magenta-hover);
+}
+
+body.news-story-with-video .cards-news a.cards-news-card-link:hover .cards-news-link::after {
+  right: -32px;
+  border: 1px solid var(--brand-magenta-hover);
+  background-color: var(--background-color);
+}
+
+body.news-story-with-video .cards-news a.cards-news-card-link:hover .cards-news-link::before {
+  right: -28px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M17.096 9.16L10.71 4.223a.644.644 0 0 1-.071-.989.86.86 0 0 1 .598-.234.875.875 0 0 1 .527.171l7.815 6.044a.708.708 0 0 1 .41.765.705.705 0 0 1-.426.532l-7.8 6.03a.871.871 0 0 1-1.124-.062.644.644 0 0 1 .071-.989l6.378-4.931H1.358a.705.705 0 1 1 0-1.4h15.738z' fill='%23E0499A'/%3E%3C/svg%3E");
 }
