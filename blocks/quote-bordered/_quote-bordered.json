@@ -1,0 +1,43 @@
+{
+  "definitions": [
+    {
+      "title": "Quote Bordered",
+      "id": "quote-bordered",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Quote Bordered",
+              "model": "quote-bordered"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "quote-bordered",
+      "fields": [
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "quotation",
+          "value": "",
+          "label": "Quotation",
+          "description": "The quoted text, including quotation marks as published."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "attribution",
+          "value": "",
+          "label": "Attribution",
+          "description": "Optional. Name and role of the person quoted (the em dash is added automatically)."
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

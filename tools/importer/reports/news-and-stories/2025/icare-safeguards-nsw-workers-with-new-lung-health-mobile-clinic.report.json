@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.icare.nsw.gov.au/news-and-stories/2025/icare-safeguards-nsw-workers-with-new-lung-health-mobile-clinic",
+  "path": "news-and-stories/2025/icare-safeguards-nsw-workers-with-new-lung-health-mobile-clinic",
+  "timestamp": "2026-10-21T01:30:07.156Z",
+  "title": "icare safeguards NSW workers with new Lung Health Mobile Clinic | icare",
+  "template": "news-story-with-video",
+  "blocks": [
+    "cards-promo",
+    "columns",
+    "quote-bordered",
+    "quote-pull",
+    "cards-news"
+  ]
+}

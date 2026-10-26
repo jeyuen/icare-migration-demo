@@ -40,7 +40,7 @@ main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/sear
 }
 
 /* hub, claim and guide pages: tight chips (no list indent), 14px label, filled hover; label on its own line on mobile */
-:is(body.section-overview-hub, body.hero-image-content-with-sidebar, body.guide-with-page-nav) main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/searchresults"]) li {
+:is(body.section-overview-hub, body.hero-image-content-with-sidebar, body.guide-with-page-nav, body.news-story-with-video) main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/searchresults"]) li {
   padding: 0;
 }
 
@@ -48,7 +48,7 @@ main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/sear
   font-size: var(--body-font-size-s);
 }
 
-:is(body.section-overview-hub, body.hero-image-content-with-sidebar, body.guide-with-page-nav) main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/searchresults"]) a:hover {
+:is(body.section-overview-hub, body.hero-image-content-with-sidebar, body.guide-with-page-nav, body.news-story-with-video) main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/searchresults"]) a:hover {
   background-color: var(--link-color);
   color: var(--background-color);
   text-decoration: none;
@@ -62,7 +62,7 @@ main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/sear
 }
 
 /* guide pages: the chips wrap as one group, so on narrow screens they sit together under the label */
-body.guide-with-page-nav main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/searchresults"]) {
+:is(body.guide-with-page-nav, body.news-story-with-video) main .default-content-wrapper p:has(> strong:only-child) + ul:has(a[href*="/searchresults"]) {
   display: inline-block;
   vertical-align: top;
 }

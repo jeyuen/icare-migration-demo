@@ -26,9 +26,14 @@
         "url": "https://www.icare.nsw.gov.au/about-us",
         "instanceId": "6b327a3a",
         "screenshot": ".pages/www_icare_nsw_gov_au_about-us--b913f1d0/blocks/6b327a3a.jpg"
+      },
+      {
+        "url": "https://www.icare.nsw.gov.au/news-and-stories/2025/icare-safeguards-nsw-workers-with-new-lung-health-mobile-clinic",
+        "documentPath": "/news-and-stories/2025/icare-safeguards-nsw-workers-with-new-lung-health-mobile-clinic"
       }
     ],
-    "reuseCount": 2
+    "reuseCount": 3,
+    "lastUsed": "2026-10-20T21:18:44.897Z"
   },
   "options": [],
   "memberVariantIds": [

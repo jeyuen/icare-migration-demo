@@ -1456,6 +1456,12 @@
           "instances": [
             ".l-main .premium-formula-holder"
           ]
+        },
+        {
+          "name": "quote-bordered",
+          "instances": [
+            ".l-main .ck-content blockquote"
+          ]
         }
       ],
       "representativeUrl": "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages",
@@ -1515,7 +1521,8 @@
             "accordion",
             "columns",
             "table",
-            "formula"
+            "formula",
+            "quote-bordered"
           ],
           "defaultContent": [
             ".l-main .cm-rich-text",
@@ -2156,8 +2163,85 @@
         "https://icare.nsw.gov.au/news-and-stories/2025/icare-safeguards-nsw-workers-with-new-lung-health-mobile-clinic"
       ],
       "coverageGaps": [],
-      "description": "Short story article with tall title banner, hero image, body text and embedded video",
-      "blocks": []
+      "description": "News story article: date, title and intro, lead image, rich text with pull and bordered quotes, image pairs and embedded video, sidebar CTA tile, tags, then a grey Related content band",
+      "blocks": [
+        {
+          "name": "cards-promo",
+          "instances": [
+            ".l-main > div.mobile-only:has(section.cm-cta-module)"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            ".l-main div.sl > .sl-list:has(> .sl-item > section.cm-image)"
+          ]
+        },
+        {
+          "name": "quote-bordered",
+          "instances": [
+            ".l-main .ck-content blockquote"
+          ]
+        },
+        {
+          "name": "quote-pull",
+          "instances": [
+            ".l-main .cm-rich-text > div > blockquote"
+          ]
+        },
+        {
+          "name": "embed-video",
+          "instances": [
+            ".l-main .cm-video .intrinsic"
+          ]
+        },
+        {
+          "name": "cards-news",
+          "instances": [
+            "div.l-layout ~ div section.content-hero .sl-list"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "1",
+          "name": "Article content column",
+          "selector": [
+            "div.l-layout > div.l-content-container"
+          ],
+          "style": "content-column",
+          "blocks": [
+            "cards-promo",
+            "columns",
+            "quote-bordered",
+            "quote-pull",
+            "embed-video"
+          ],
+          "defaultContent": [
+            ".l-main > header.content-header",
+            ".l-main section.cm-image",
+            ".l-main .cm-rich-text",
+            ".l-main .cm-video .video-desc",
+            ".l-main > div.tags"
+          ]
+        },
+        {
+          "id": "2",
+          "name": "Related content",
+          "selector": [
+            "div.l-layout + div:has(> section.content-hero)",
+            "div.l-layout ~ div:has(section.content-hero)"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-news"
+          ],
+          "defaultContent": [
+            "div.l-layout ~ div section.content-hero h2"
+          ]
+        }
+      ],
+      "representativeUrl": "https://www.icare.nsw.gov.au/news-and-stories/2025/icare-safeguards-nsw-workers-with-new-lung-health-mobile-clinic"
     },
     {
       "name": "content-page-short",

@@ -762,6 +762,92 @@ var CustomImportScript = (() => {
     element.replaceWith(block);
   }
 
+  // tools/importer/parsers/quote-bordered.js
+  var BLOCK_TAGS3 = /* @__PURE__ */ new Set(["P", "UL", "OL", "H1", "H2", "H3", "H4", "H5", "H6", "TABLE", "PRE", "DL"]);
+  var norm = (s) => (s || "").replace(/\u00a0/g, " ");
+  var hasText2 = (n) => norm(n.textContent).trim().length > 0;
+  function trimEdges(p) {
+    const edge = (first) => {
+      let n = first ? p.firstChild : p.lastChild;
+      while (n) {
+        if (n.nodeType === 1 && n.tagName === "BR") {
+          const next = first ? n.nextSibling : n.previousSibling;
+          n.remove();
+          n = next;
+        } else if (n.nodeType === 3) {
+          const t = first ? norm(n.textContent).replace(/^\s+/, "") : norm(n.textContent).replace(/\s+$/, "");
+          if (t) {
+            n.textContent = t;
+            return;
+          }
+          const next = first ? n.nextSibling : n.previousSibling;
+          n.remove();
+          n = next;
+        } else {
+          return;
+        }
+      }
+    };
+    edge(true);
+    edge(false);
+    return p;
+  }
+  function quoteContent(root, footer, document2) {
+    const out = [];
+    let para2 = null;
+    const flush = () => {
+      if (para2 && hasText2(para2)) out.push(trimEdges(para2));
+      para2 = null;
+    };
+    const walk = (parent) => {
+      [...parent.childNodes].forEach((node) => {
+        if (node.nodeType === 8) return;
+        if (node.nodeType === 1) {
+          if (node === footer || node.tagName === "FOOTER") return;
+          if (node.tagName === "DIV" || node.tagName === "SECTION") {
+            flush();
+            walk(node);
+            flush();
+            return;
+          }
+          if (BLOCK_TAGS3.has(node.tagName)) {
+            flush();
+            if (hasText2(node)) out.push(node.tagName === "P" ? trimEdges(node) : node);
+            return;
+          }
+        }
+        if (!para2) para2 = document2.createElement("p");
+        para2.appendChild(node);
+      });
+    };
+    walk(root);
+    flush();
+    return out;
+  }
+  function parse11(element, { document: document2 }) {
+    const footer = element.querySelector(":scope > footer, :scope > cite");
+    const footerParts = footer ? [...footer.querySelectorAll("p")] : [];
+    const attribution = norm((footerParts.length ? footerParts : [footer].filter(Boolean)).map((n) => n.textContent).join(" ")).replace(/\s+/g, " ").trim();
+    const content = quoteContent(element, footer, document2);
+    if (!content.length) {
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+    const cells = [];
+    const quoteCell = document2.createDocumentFragment();
+    quoteCell.appendChild(document2.createComment(" field:quotation "));
+    content.forEach((el) => quoteCell.appendChild(el));
+    cells.push([quoteCell]);
+    if (attribution) {
+      const attrCell = document2.createDocumentFragment();
+      attrCell.appendChild(document2.createComment(" field:attribution "));
+      attrCell.appendChild(document2.createTextNode(attribution));
+      cells.push([attrCell]);
+    }
+    const block = WebImporter.Blocks.createBlock(document2, { name: "quote-bordered", cells });
+    element.replaceWith(block);
+  }
+
   // tools/importer/transformers/icare-cleanup.js
   var TransformHook = { beforeTransform: "beforeTransform", afterTransform: "afterTransform" };
   function transform(hookName, element, payload) {
@@ -770,6 +856,7 @@ var CustomImportScript = (() => {
         ".feedback-overlay",
         "#main-feedback"
       ]);
+      WebImporter.DOMUtils.remove(element, [".cm-sitewide-message"]);
       WebImporter.DOMUtils.remove(element, [
         ".homepage-hero-banner > .show-on-mobile"
       ]);
@@ -787,9 +874,9 @@ var CustomImportScript = (() => {
         "#embeddedMessagingSiteContextFrame"
       ]);
       element.querySelectorAll("section.cm-cta-module").forEach((el) => {
-        const hasText2 = el.textContent.replace(/ /g, " ").trim().length > 0;
+        const hasText3 = el.textContent.replace(/ /g, " ").trim().length > 0;
         const hasMedia = el.querySelector("img, picture, video, iframe, a");
-        if (hasText2 || hasMedia) return;
+        if (hasText3 || hasMedia) return;
         const wrapper = el.parentElement;
         el.remove();
         if (wrapper && wrapper !== element && wrapper.classList.contains("sl-item") && !wrapper.textContent.trim() && !wrapper.children.length) {
@@ -833,6 +920,27 @@ var CustomImportScript = (() => {
         const text = clone.textContent.replace(/ /g, " ").trim();
         if (!text || /^document\.addEventListener\s*\(/.test(text)) div.remove();
       });
+      if (element.querySelector(".l-main > header.content-header.has-date")) {
+        element.querySelectorAll("div.l-layout > section.cm-hero-image-module").forEach((el) => {
+          const hasText3 = el.textContent.replace(/ /g, " ").trim().length > 0;
+          if (!hasText3 && !el.querySelector("img, picture, video, iframe, a")) el.remove();
+        });
+        element.querySelectorAll(".l-main > :is(h1, h2, h3, h4, h5, h6)").forEach((h) => {
+          const hasText3 = h.textContent.replace(/ /g, " ").trim().length > 0;
+          if (!hasText3 && !h.querySelector("img, picture")) h.remove();
+        });
+        element.querySelectorAll(".l-main > header.content-header.has-date > time").forEach((time) => {
+          const p = element.ownerDocument.createElement("p");
+          p.append(time.cloneNode(true));
+          time.remove();
+          const h1 = element.querySelector(".l-main > header.content-header.has-date > h1");
+          if (h1) h1.before(p);
+          else element.querySelector(".l-main > header.content-header.has-date").prepend(p);
+        });
+        element.querySelectorAll(".l-main q").forEach((q) => {
+          q.replaceWith(element.ownerDocument.createTextNode(`\u201C${q.textContent.trim()}\u201D`));
+        });
+      }
     }
     if (hookName === TransformHook.afterTransform) {
       element.querySelectorAll(".l-main .cm-rich-text p, .l-main .ck-content p").forEach((p) => {
@@ -852,14 +960,14 @@ var CustomImportScript = (() => {
       WebImporter.DOMUtils.remove(element, ["footer.global-footer"]);
       WebImporter.DOMUtils.remove(element, ["nav.breadcrumbs"]);
       element.querySelectorAll(".cm-rich-text").forEach((el) => {
-        const hasText2 = el.textContent.replace(/ /g, " ").trim().length > 0;
+        const hasText3 = el.textContent.replace(/ /g, " ").trim().length > 0;
         const hasMedia = el.querySelector("img, picture, video, table, iframe, hr");
-        if (!hasText2 && !hasMedia) el.remove();
+        if (!hasText3 && !hasMedia) el.remove();
       });
       element.querySelectorAll("div.mobile-only").forEach((el) => {
-        const hasText2 = el.textContent.replace(/ /g, " ").trim().length > 0;
+        const hasText3 = el.textContent.replace(/ /g, " ").trim().length > 0;
         const hasMedia = el.querySelector("img, picture, video, table, iframe, hr");
-        if (!hasText2 && !hasMedia) el.remove();
+        if (!hasText3 && !hasMedia) el.remove();
       });
       WebImporter.DOMUtils.remove(element, [
         ".skiptranslate",
@@ -974,7 +1082,8 @@ var CustomImportScript = (() => {
     "columns": parse7,
     "table": parse8,
     "cards-feature": parse9,
-    "formula": parse10
+    "formula": parse10,
+    "quote-bordered": parse11
   };
   var PAGE_TEMPLATE = {
     "name": "guide-with-page-nav",
@@ -1084,6 +1193,12 @@ var CustomImportScript = (() => {
         "instances": [
           ".l-main .premium-formula-holder"
         ]
+      },
+      {
+        "name": "quote-bordered",
+        "instances": [
+          ".l-main .ck-content blockquote"
+        ]
       }
     ],
     "representativeUrl": "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages",
@@ -1143,7 +1258,8 @@ var CustomImportScript = (() => {
           "accordion",
           "columns",
           "table",
-          "formula"
+          "formula",
+          "quote-bordered"
         ],
         "defaultContent": [
           ".l-main .cm-rich-text",

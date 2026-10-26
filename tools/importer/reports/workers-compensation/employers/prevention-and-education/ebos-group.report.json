@@ -2,12 +2,14 @@
   "status": "success",
   "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/prevention-and-education/ebos-group",
   "path": "workers-compensation/employers/prevention-and-education/ebos-group",
-  "timestamp": "2026-10-20T04:00:17.548Z",
+  "timestamp": "2026-10-20T22:22:29.134Z",
   "title": "EBOS Group | icare",
   "template": "guide-with-page-nav",
   "blocks": [
     "hero",
     "cards-audience",
-    "embed-video"
+    "embed-video",
+    "quote-bordered",
+    "quote-bordered"
   ]
 }

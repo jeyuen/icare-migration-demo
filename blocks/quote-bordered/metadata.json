@@ -1,0 +1,27 @@
+{
+  "variantName": "quote-bordered",
+  "baseBlock": "quote",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "structure": "inline quotation with 5px grey left rule and side padding, italic quote text, attribution below with leading em dash",
+    "imagePattern": "none",
+    "colorScheme": "light",
+    "density": "minimal",
+    "source": "source: 5px #ccc left border, 54px side padding, 16px italic #555 text, 16px attribution with em dash",
+    "purpose": "body-size statement quote set off with a grey left rule"
+  },
+  "contentPattern": {
+    "structure": "row 1 is the quotation (one or more paragraphs, a single Quotation richtext field); row 2 is the optional attribution (plain text name and role, Attribution field; the leading em dash is added by CSS)"
+  },
+  "reuseGuidance": "Use for body-size statement quotes (e.g. ministerial statements) set off with a left rule. Use quote-pull for large display pull quotes.",
+  "options": [],
+  "memberVariantIds": [],
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.icare.nsw.gov.au/news-and-stories/2025/icare-safeguards-nsw-workers-with-new-lung-health-mobile-clinic"
+      }
+    ],
+    "reuseCount": 1
+  }
+}

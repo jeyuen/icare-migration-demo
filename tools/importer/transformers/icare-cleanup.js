@@ -134,6 +134,43 @@ export default function transform(hookName, element, payload) {
       const text = clone.textContent.replace(/ /g, ' ').trim();
       if (!text || /^document\.addEventListener\s*\(/.test(text)) div.remove();
     });
+
+    // News story pages (news-story-with-video template) - gated on the dated article header,
+    // which no other template has: <main class="l-main"><header class="content-header has-date">
+    if (element.querySelector('.l-main > header.content-header.has-date')) {
+      // Empty hero spacer above the article column
+      // Found: <div class="l-layout l-two-column-left cf"><section class="cm cm-hero-image-module"></section>
+      // Only removed when it has no text and no media (populated hero modules on other templates are untouched).
+      element.querySelectorAll('div.l-layout > section.cm-hero-image-module').forEach((el) => {
+        const hasText = el.textContent.replace(/ /g, ' ').trim().length > 0;
+        if (!hasText && !el.querySelector('img, picture, video, iframe, a')) el.remove();
+      });
+
+      // Empty heading left after the tags list (shine-magazine page)
+      // Found: <div class="tags">...</div><h2></h2><div class="cm cm-rich-text is-medium "></div>
+      element.querySelectorAll('.l-main > :is(h1, h2, h3, h4, h5, h6)').forEach((h) => {
+        const hasText = h.textContent.replace(/ /g, ' ').trim().length > 0;
+        if (!hasText && !h.querySelector('img, picture')) h.remove();
+      });
+
+      // Publication date sits loose between the H1 and the intro paragraph
+      // Found: <header class="content-header has-date"><h1>..</h1><time datetime="2025-02-25">Tuesday 25 February 2025</time><p class="intro">
+      // Wrapped in its own <p> and placed before the H1, where the source displays it.
+      element.querySelectorAll('.l-main > header.content-header.has-date > time').forEach((time) => {
+        const p = element.ownerDocument.createElement('p');
+        p.append(time.cloneNode(true));
+        time.remove();
+        const h1 = element.querySelector('.l-main > header.content-header.has-date > h1');
+        if (h1) h1.before(p);
+        else element.querySelector('.l-main > header.content-header.has-date').prepend(p);
+      });
+
+      // Inline quotations: the source renders <q> with curly quotes, which the import would drop
+      // Found: <p><q>Along with enforcement of the recent ban on engineered stone, ...</q></p>
+      element.querySelectorAll('.l-main q').forEach((q) => {
+        q.replaceWith(element.ownerDocument.createTextNode(`“${q.textContent.trim()}”`));
+      });
+    }
   }
 
   if (hookName === TransformHook.afterTransform) {

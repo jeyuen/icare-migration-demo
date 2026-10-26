@@ -12,6 +12,7 @@ import columnsParser from './parsers/columns.js';
 import tableParser from './parsers/table.js';
 import cardsFeatureParser from './parsers/cards-feature.js';
 import formulaParser from './parsers/formula.js';
+import quoteBorderedParser from './parsers/quote-bordered.js';
 
 // TRANSFORMER IMPORTS
 import icareCleanupTransformer from './transformers/icare-cleanup.js';
@@ -29,6 +30,7 @@ const parsers = {
   'table': tableParser,
   'cards-feature': cardsFeatureParser,
   'formula': formulaParser,
+  'quote-bordered': quoteBorderedParser,
 };
 
 // PAGE TEMPLATE CONFIGURATION - Embedded from page-templates.json
@@ -140,6 +142,12 @@ const PAGE_TEMPLATE = {
       "instances": [
         ".l-main .premium-formula-holder"
       ]
+    },
+    {
+      "name": "quote-bordered",
+      "instances": [
+        ".l-main .ck-content blockquote"
+      ]
     }
   ],
   "representativeUrl": "https://icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/declaring-wages",
@@ -199,7 +207,8 @@ const PAGE_TEMPLATE = {
         "accordion",
         "columns",
         "table",
-        "formula"
+        "formula",
+        "quote-bordered"
       ],
       "defaultContent": [
         ".l-main .cm-rich-text",

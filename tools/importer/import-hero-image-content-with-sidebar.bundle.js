@@ -204,11 +204,15 @@ var CustomImportScript = (() => {
     flush();
     return out;
   }
-  var ICON_NAMES = { location2: "location", location: "location" };
+  var ICON_NAMES = {
+    location2: "location",
+    location: "location",
+    "copy-of-gel-icons-1/magenta": "community-activities"
+  };
   function getIconToken(trigger) {
     const img = trigger && trigger.querySelector('img[src*="/icons/"]');
     if (!img) return "";
-    const file = (img.getAttribute("src").match(/\/icons\/([a-z0-9-]+)\.svg/i) || [])[1] || "";
+    const file = (img.getAttribute("src").match(/\/icons\/([a-z0-9/-]+)\.svg/i) || [])[1] || "";
     const name = ICON_NAMES[file.toLowerCase()];
     return name ? `:${name}: ` : "";
   }
@@ -350,7 +354,7 @@ var CustomImportScript = (() => {
   }
 
   // tools/importer/parsers/cards-news.js
-  function getSydneyDate(document2, pageData2, title) {
+  function getSydneyDate(document2, pageData2, title, withYear) {
     if (!title) return "";
     const data = document2.getElementById("__NEXT_DATA__");
     const json = data && data.textContent || pageData2 || "";
@@ -366,7 +370,8 @@ var CustomImportScript = (() => {
     if (!value) return "";
     const date = new Date(value);
     if (Number.isNaN(date.getTime()) || date.getUTCFullYear() < 1900) return "";
-    return date.toLocaleDateString("en-AU", { day: "numeric", month: "short", timeZone: "Australia/Sydney" });
+    const format = withYear ? { day: "2-digit", month: "short", year: "numeric", timeZone: "Australia/Sydney" } : { day: "numeric", month: "short", timeZone: "Australia/Sydney" };
+    return date.toLocaleDateString("en-AU", format);
   }
   function parse5(element, { document: document2, pageData: pageData2 }) {
     let items = [...element.querySelectorAll(":scope > .sl-item")];
@@ -390,11 +395,19 @@ var CustomImportScript = (() => {
           bgImg.alt = heading ? heading.textContent.trim() : "";
         }
       }
+      if (!bgImg) {
+        bgImg = item.querySelector(".image img[src]");
+        if (bgImg && !bgImg.getAttribute("alt") && bgImg.getAttribute("title")) {
+          bgImg.alt = bgImg.getAttribute("title").trim();
+        }
+      }
       const body = [];
       const sub = content.querySelector(".subheading");
       if (sub) {
         const category = (((_a = sub.querySelector(".content-type")) == null ? void 0 : _a.textContent) || "").trim();
-        const date = getSydneyDate(document2, pageData2, heading ? heading.textContent.trim() : "") || (((_b = sub.querySelector(".subtitle")) == null ? void 0 : _b.textContent) || "").trim();
+        const shownDate = (((_b = sub.querySelector(".subtitle")) == null ? void 0 : _b.textContent) || "").trim();
+        const withYear = /\b\d{4}\b/.test(shownDate);
+        const date = getSydneyDate(document2, pageData2, heading ? heading.textContent.trim() : "", withYear) || shownDate;
         if (category || date) {
           const p = document2.createElement("p");
           if (category) {
@@ -449,6 +462,7 @@ var CustomImportScript = (() => {
         ".feedback-overlay",
         "#main-feedback"
       ]);
+      WebImporter.DOMUtils.remove(element, [".cm-sitewide-message"]);
       WebImporter.DOMUtils.remove(element, [
         ".homepage-hero-banner > .show-on-mobile"
       ]);
@@ -512,6 +526,27 @@ var CustomImportScript = (() => {
         const text = clone.textContent.replace(/ /g, " ").trim();
         if (!text || /^document\.addEventListener\s*\(/.test(text)) div.remove();
       });
+      if (element.querySelector(".l-main > header.content-header.has-date")) {
+        element.querySelectorAll("div.l-layout > section.cm-hero-image-module").forEach((el) => {
+          const hasText = el.textContent.replace(/ /g, " ").trim().length > 0;
+          if (!hasText && !el.querySelector("img, picture, video, iframe, a")) el.remove();
+        });
+        element.querySelectorAll(".l-main > :is(h1, h2, h3, h4, h5, h6)").forEach((h) => {
+          const hasText = h.textContent.replace(/ /g, " ").trim().length > 0;
+          if (!hasText && !h.querySelector("img, picture")) h.remove();
+        });
+        element.querySelectorAll(".l-main > header.content-header.has-date > time").forEach((time) => {
+          const p = element.ownerDocument.createElement("p");
+          p.append(time.cloneNode(true));
+          time.remove();
+          const h1 = element.querySelector(".l-main > header.content-header.has-date > h1");
+          if (h1) h1.before(p);
+          else element.querySelector(".l-main > header.content-header.has-date").prepend(p);
+        });
+        element.querySelectorAll(".l-main q").forEach((q) => {
+          q.replaceWith(element.ownerDocument.createTextNode(`\u201C${q.textContent.trim()}\u201D`));
+        });
+      }
     }
     if (hookName === TransformHook.afterTransform) {
       element.querySelectorAll(".l-main .cm-rich-text p, .l-main .ck-content p").forEach((p) => {

@@ -89,7 +89,9 @@
         "columns-panels",
         "cards-promo",
         "formula",
-        "list"
+        "list",
+        "quote-pull",
+        "quote-bordered"
       ]
     }
   ]

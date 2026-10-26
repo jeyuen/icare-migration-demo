@@ -62,10 +62,33 @@ var CustomImportScript = (() => {
   });
 
   // tools/importer/parsers/hero.js
+  function decodeNextImage(url) {
+    if (!url || !url.includes("/_next/image")) return url;
+    try {
+      const original = new URL(url, "https://www.icare.nsw.gov.au/").searchParams.get("url");
+      if (!original) return url;
+      return original.startsWith("/") ? `https://www.icare.nsw.gov.au${original}` : original;
+    } catch (e) {
+      return url;
+    }
+  }
+  function normaliseImage(img) {
+    const srcset = img.getAttribute("srcset") || "";
+    const candidates = srcset.split(",").map((c) => c.trim().split(/\s+/)[0]).filter(Boolean);
+    const raw = (img.getAttribute("src") || candidates[candidates.length - 1] || "").replace(/&amp;/g, "&");
+    const src = decodeNextImage(raw);
+    if (src && src !== raw) {
+      img.setAttribute("src", src);
+      img.removeAttribute("srcset");
+      img.removeAttribute("sizes");
+    }
+    return img;
+  }
   function parse(element, { document: document2 }) {
     const scope = element.querySelector(":scope > .show-on-full-width") || element;
-    const image = scope.querySelector(".image-container img, img.image, img");
-    const content = scope.querySelector(".content-inner") || scope.querySelector(".content") || scope;
+    const image = scope.querySelector(".image-container img, img.image, img.hero-img, img");
+    if (image) normaliseImage(image);
+    const content = scope.querySelector(".content-inner") || scope.querySelector(".content") || scope.querySelector(".text-content") || scope;
     const heading = content.querySelector("h1, h2, .hero-banner-heading, .hero-composite-title");
     const paragraphs = [...content.querySelectorAll(":scope > p")];
     const ctas = [...content.querySelectorAll("a")].filter((a) => !paragraphs.some((p) => p.contains(a)));
@@ -105,6 +128,7 @@ var CustomImportScript = (() => {
   // tools/importer/parsers/cards-audience.js
   function parse2(element, { document: document2 }) {
     let items = [...element.querySelectorAll(".tab-content")];
+    if (!items.length) items = [...element.querySelectorAll(".service-item .link-item > .content, .service-item .content")].filter((el, i, arr) => arr.indexOf(el) === i);
     if (!items.length) items = [...element.querySelectorAll(":scope > a.cm-home-tile, :scope > a")];
     const cells = [];
     items.forEach((item) => {
@@ -251,6 +275,7 @@ var CustomImportScript = (() => {
         ".feedback-overlay",
         "#main-feedback"
       ]);
+      WebImporter.DOMUtils.remove(element, [".cm-sitewide-message"]);
       WebImporter.DOMUtils.remove(element, [
         ".homepage-hero-banner > .show-on-mobile"
       ]);
@@ -263,6 +288,10 @@ var CustomImportScript = (() => {
         "#readspeaker_button1",
         ".rsbtn"
       ]);
+      WebImporter.DOMUtils.remove(element, [
+        "#embedded-messaging",
+        "#embeddedMessagingSiteContextFrame"
+      ]);
       element.querySelectorAll("section.cm-cta-module").forEach((el) => {
         const hasText = el.textContent.replace(/ /g, " ").trim().length > 0;
         const hasMedia = el.querySelector("img, picture, video, iframe, a");
@@ -273,8 +302,72 @@ var CustomImportScript = (() => {
           wrapper.remove();
         }
       });
+      const ctaKey = (cta) => {
+        const a = cta.querySelector("a[href]");
+        const h = cta.querySelector("h2, h3, h4");
+        return `${a ? a.getAttribute("href") : ""}|${h ? h.textContent.replace(/\s+/g, " ").trim() : ""}`;
+      };
+      element.querySelectorAll("aside.l-complementary.desktop-only").forEach((aside) => {
+        const asideTiles = [...aside.querySelectorAll("section.cm-cta-module")];
+        if (!asideTiles.length) return;
+        const mobileKeys = /* @__PURE__ */ new Set();
+        element.querySelectorAll(".l-main > div.mobile-only section.cm-cta-module").forEach((cta) => mobileKeys.add(ctaKey(cta)));
+        if (!mobileKeys.size) return;
+        if (asideTiles.every((cta) => mobileKeys.has(ctaKey(cta)))) aside.remove();
+      });
+      if (element.querySelector("section.cm-campaign-hero-banner")) {
+        WebImporter.DOMUtils.remove(element, [".l-main > header.content-header > h1"]);
+      }
+      element.querySelectorAll(".l-main .cm-rich-text :is(h2, h3, h4), .l-main .ck-content :is(h2, h3, h4)").forEach((h) => {
+        const span = h.children.length === 1 ? h.firstElementChild : null;
+        if (!span || span.tagName !== "SPAN" || span.textContent.trim() !== h.textContent.trim()) return;
+        const style = span.getAttribute("style") || "";
+        const size = parseFloat((style.match(/font-size:\s*([\d.]+)px/i) || [])[1]);
+        if (!/font-weight:\s*(400|normal)/i.test(style) || !(size <= 18)) return;
+        const p = element.ownerDocument.createElement("p");
+        p.append(...span.childNodes);
+        h.replaceWith(p);
+      });
+      WebImporter.DOMUtils.remove(element, [
+        ".ck-content > style",
+        ".cm-rich-text style"
+      ]);
+      element.querySelectorAll(".l-main > div:not([class]):not([id])").forEach((div) => {
+        if (div.querySelector("img, picture, video, iframe, table, a, h1, h2, h3, h4, h5, h6, ul, ol")) return;
+        const clone = div.cloneNode(true);
+        clone.querySelectorAll("script, style").forEach((s) => s.remove());
+        const text = clone.textContent.replace(/ /g, " ").trim();
+        if (!text || /^document\.addEventListener\s*\(/.test(text)) div.remove();
+      });
+      if (element.querySelector(".l-main > header.content-header.has-date")) {
+        element.querySelectorAll("div.l-layout > section.cm-hero-image-module").forEach((el) => {
+          const hasText = el.textContent.replace(/ /g, " ").trim().length > 0;
+          if (!hasText && !el.querySelector("img, picture, video, iframe, a")) el.remove();
+        });
+        element.querySelectorAll(".l-main > :is(h1, h2, h3, h4, h5, h6)").forEach((h) => {
+          const hasText = h.textContent.replace(/ /g, " ").trim().length > 0;
+          if (!hasText && !h.querySelector("img, picture")) h.remove();
+        });
+        element.querySelectorAll(".l-main > header.content-header.has-date > time").forEach((time) => {
+          const p = element.ownerDocument.createElement("p");
+          p.append(time.cloneNode(true));
+          time.remove();
+          const h1 = element.querySelector(".l-main > header.content-header.has-date > h1");
+          if (h1) h1.before(p);
+          else element.querySelector(".l-main > header.content-header.has-date").prepend(p);
+        });
+        element.querySelectorAll(".l-main q").forEach((q) => {
+          q.replaceWith(element.ownerDocument.createTextNode(`\u201C${q.textContent.trim()}\u201D`));
+        });
+      }
     }
     if (hookName === TransformHook.afterTransform) {
+      element.querySelectorAll(".l-main .cm-rich-text p, .l-main .ck-content p").forEach((p) => {
+        if (p.closest("table")) return;
+        if (p.querySelector("img, picture, video, iframe, a")) return;
+        if (p.textContent.replace(/ /g, " ").trim()) return;
+        p.remove();
+      });
       WebImporter.DOMUtils.remove(element, ["ul.accessibility-links"]);
       WebImporter.DOMUtils.remove(element, [
         "header.global-header",
@@ -287,6 +380,11 @@ var CustomImportScript = (() => {
       WebImporter.DOMUtils.remove(element, ["nav.breadcrumbs"]);
       element.querySelectorAll(".cm-rich-text").forEach((el) => {
         const hasText = el.textContent.replace(/ /g, " ").trim().length > 0;
+        const hasMedia = el.querySelector("img, picture, video, table, iframe, hr");
+        if (!hasText && !hasMedia) el.remove();
+      });
+      element.querySelectorAll("div.mobile-only").forEach((el) => {
+        const hasText = el.textContent.replace(/ /g, " ").trim().length > 0;
         const hasMedia = el.querySelector("img, picture, video, table, iframe, hr");
         if (!hasText && !hasMedia) el.remove();
       });
@@ -322,6 +420,18 @@ var CustomImportScript = (() => {
           const p = document.createElement("p");
           em.replaceWith(p);
           p.append(em);
+        }
+      });
+      element.querySelectorAll('a[class="cta"]').forEach((a) => {
+        if (a.closest("table") || a.closest("strong, em")) return;
+        a.removeAttribute("class");
+        const strong = document.createElement("strong");
+        a.replaceWith(strong);
+        strong.append(a);
+        if (strong.parentElement && strong.parentElement.tagName !== "P") {
+          const p = document.createElement("p");
+          strong.replaceWith(p);
+          p.append(strong);
         }
       });
       WebImporter.DOMUtils.remove(element, [
