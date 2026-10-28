@@ -447,8 +447,9 @@ export default {
         .find((t) => /^metadata$/i.test((t.querySelector('th, td') || {}).textContent?.trim() || ''));
       if (metadataBlock) {
         if (tags) meta.Tags = tags;
-        meta.Template = PAGE_TEMPLATE.name;
-        if (breadcrumbLabels.length) meta.Breadcrumb = breadcrumbLabels.join(' | ');
+        // keys match the page model fields (models/_page.json) so the AEM conversion keeps them
+        meta.template = PAGE_TEMPLATE.name;
+        if (breadcrumbLabels.length) meta.breadcrumb = breadcrumbLabels.join(' | ');
         metadataBlock.replaceWith(WebImporter.Blocks.getMetadataBlock(document, meta));
       }
     }

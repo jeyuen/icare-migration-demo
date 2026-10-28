@@ -876,11 +876,48 @@ body.news-story-with-video main > .section.content-column .cards-promo-wrapper +
   margin-top: 76px;
 }
 
+/* CTA tile straight after the intro (lead image below it): 40px under the intro, 35px from
+   the tile to the image; on desktop the tile sits in the sidebar and the 40px remains */
+body.news-story-with-video main > .section.content-column .default-content-wrapper > h1 + p:last-child {
+  margin-bottom: 40px;
+}
+
+body.news-story-with-video main > .section.content-column .cards-promo-wrapper + .default-content-wrapper > p:first-child:has(> picture) {
+  margin-top: 35px;
+}
+
+/* image caption (imported as an italic-only paragraph after the image): 10px under the image,
+   35px above the next paragraph */
+body.news-story-with-video main > .section.content-column .default-content-wrapper > p:has(> picture):has(+ p > em:only-child) {
+  margin-bottom: 0;
+}
+
+body.news-story-with-video main > .section.content-column .default-content-wrapper > p:has(> picture) + p:has(> em:only-child) {
+  margin: 10px 0 35px;
+  color: #555;
+  font-size: 14px;
+  line-height: 26px;
+}
+
+body.news-story-with-video main > .section.content-column .default-content-wrapper > p:has(> picture) + p > em:only-child {
+  font-style: normal;
+}
+
+/* heading directly above a video: 60px above, 45px to the player */
+body.news-story-with-video main > .section.content-column .default-content-wrapper:has(+ .embed-video-wrapper) > h2:last-child {
+  margin: 60px 0 45px;
+  padding: 4px 0 10px;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 40px;
+}
+
 body.news-story-with-video main > .section.content-column .default-content-wrapper > :is(ul, ol) {
   box-sizing: border-box;
 }
 
-body.news-story-with-video main > .section.content-column .default-content-wrapper li + li {
+/* not in the inline "Tagged in" chip row, where it would push the whole row down */
+body.news-story-with-video main > .section.content-column .default-content-wrapper :is(ul, ol):not(:has(a[href*="/searchresults"])) li + li {
   margin-top: 5px;
 }
 

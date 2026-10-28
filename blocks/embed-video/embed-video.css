@@ -20,11 +20,16 @@
   border: 0;
 }
 
-/* section-overview-hub: source keeps the 16:9 box but the player only fills
-   the top 80% of it (1200x540 in a 1200x675 box), leaving an empty band below */
-body.section-overview-hub .embed-video .embed-video-frame iframe {
+/* section-overview-hub and news-story-with-video: source keeps the 16:9 box but the player only
+   fills the top 80% of it (1200x540 in a 1200x675 box), leaving an empty band below */
+:is(body.section-overview-hub, body.news-story-with-video) .embed-video .embed-video-frame iframe {
   bottom: auto;
   height: 80%;
+}
+
+/* news-story-with-video: content after the video starts 35px below the 16:9 box */
+body.news-story-with-video main > .section.content-column .embed-video-wrapper + .default-content-wrapper > :first-child {
+  margin-top: 35px;
 }
 
 /* optional poster image with a play button; click loads the video */
