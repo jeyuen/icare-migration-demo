@@ -157,12 +157,39 @@ export default function transform(hookName, element, payload) {
       // Found: <header class="content-header has-date"><h1>..</h1><time datetime="2025-02-25">Tuesday 25 February 2025</time><p class="intro">
       // Wrapped in its own <p> and placed before the H1, where the source displays it.
       element.querySelectorAll('.l-main > header.content-header.has-date > time').forEach((time) => {
+        // The shown text is rendered in the import browser's time zone and can be a day off
+        // (e.g. "Wednesday 14 August 2024" for datetime="2024-08-15"): rebuild it from the
+        // datetime attribute, in the source's format "Thursday 15 August 2024".
+        const iso = (time.getAttribute('datetime') || '').match(/^(\d{4})-(\d{2})-(\d{2})/);
+        if (iso) {
+          const date = new Date(Date.UTC(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3])));
+          const parts = Object.fromEntries(new Intl.DateTimeFormat('en-AU', {
+            timeZone: 'UTC', weekday: 'long', day: '2-digit', month: 'long', year: 'numeric',
+          }).formatToParts(date).map((part) => [part.type, part.value]));
+          time.textContent = `${parts.weekday} ${parts.day} ${parts.month} ${parts.year}`;
+        }
         const p = element.ownerDocument.createElement('p');
         p.append(time.cloneNode(true));
         time.remove();
         const h1 = element.querySelector('.l-main > header.content-header.has-date > h1');
         if (h1) h1.before(p);
         else element.querySelector('.l-main > header.content-header.has-date').prepend(p);
+      });
+
+      // Image captions: imported as an italic paragraph after the image (the news template styles
+      // `p:has(> picture) + p > em:only-child` as a caption). Found:
+      // <section class="cm cm-image"><figure class="is-full"><div>..<img>..</div><figcaption><p>Annabelle Lindsay, ...</p></figcaption></figure>
+      element.querySelectorAll('.l-main section.cm-image figcaption').forEach((caption) => {
+        const text = caption.textContent.replace(/\s+/g, ' ').trim();
+        if (!text) {
+          caption.remove();
+          return;
+        }
+        const p = element.ownerDocument.createElement('p');
+        const em = element.ownerDocument.createElement('em');
+        em.textContent = text;
+        p.append(em);
+        caption.replaceWith(p);
       });
 
       // Inline quotations: the source renders <q> with curly quotes, which the import would drop
@@ -174,6 +201,28 @@ export default function transform(hookName, element, payload) {
   }
 
   if (hookName === TransformHook.afterTransform) {
+    // Next.js image-proxy URLs -> the real image URL
+    // Found: <img src="https://www.icare.nsw.gov.au/_next/image?url=https%3A%2F%2Fedge.sitecorecloud.io%2F...%2Flung-health-mobile-clinic-1.jpg%3Fh%3D788&w=3840&q=75">
+    // Every proxied image shares the path /_next/image, so the AEM upload stored them all as one
+    // asset. Only <img src> / <source srcset> values that use the proxy are rewritten.
+    const unwrapProxy = (value) => {
+      try {
+        const u = new URL(value, 'https://www.icare.nsw.gov.au/');
+        if (!/\/_next\/image\/?$/.test(u.pathname)) return value;
+        const real = u.searchParams.get('url');
+        return real ? new URL(real, 'https://www.icare.nsw.gov.au/').href : value;
+      } catch (e) {
+        return value;
+      }
+    };
+    element.querySelectorAll('img[src*="/_next/image"]').forEach((img) => {
+      img.setAttribute('src', unwrapProxy(img.getAttribute('src')));
+    });
+    element.querySelectorAll('img[srcset*="/_next/image"], source[srcset*="/_next/image"]').forEach((el) => {
+      const first = el.getAttribute('srcset').split(',')[0].trim().split(/\s+/)[0];
+      el.setAttribute('srcset', unwrapProxy(first));
+    });
+
     // Empty paragraphs in main rich text (section-overview-hub pages)
     // Found: <div class="cm cm-rich-text ..."> ... <p>&nbsp;</p>, <p>\n</p>, <p><strong>&nbsp;</strong><strong>&nbsp;</strong></p>
     // Only <p> with no visible text and no media/links; paragraphs inside parsed block tables are untouched.

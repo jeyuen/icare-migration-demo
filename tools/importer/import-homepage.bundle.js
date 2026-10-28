@@ -303,104 +303,41 @@ var CustomImportScript = (() => {
     element.replaceWith(block);
   }
 
-  // tools/importer/parsers/cards-news.js
-  function getSydneyDate(document2, pageData2, title, withYear) {
-    if (!title) return "";
-    const data = document2.getElementById("__NEXT_DATA__");
-    const json = data && data.textContent || pageData2 || "";
-    const needle = JSON.stringify(title).slice(1, -1);
-    const at = json.indexOf(needle);
-    if (at < 0) return "";
-    const match = json.slice(at, at + 4e3).match(/"authorDate":\{"jsonValue":\{"value":"([^"]+)"/);
-    let value = match ? match[1] : "";
-    for (let i = at; !value && i >= 0; i = json.indexOf(needle, i + 1)) {
-      const near = json.slice(i, i + 600).match(/"AuthorDate":\{(?:"jsonValue":\{)?"value":"([^"]+)"/);
-      if (near && !near[1].startsWith("0001")) [, value] = near;
+  // tools/importer/parsers/news-listing.js
+  var SITE_HOSTS = /^(www\.)?icare\.nsw\.gov\.au$/i;
+  var AEM_SITE_PATH = "/content/icare-migration-demo";
+  function toAemPagePath(href) {
+    try {
+      const url = new URL(href, "https://www.icare.nsw.gov.au/");
+      if (!SITE_HOSTS.test(url.hostname)) return null;
+      const path = url.pathname.replace(/\/$/, "").replace(/\.html?$/, "");
+      if (!path) return null;
+      return `${AEM_SITE_PATH}${path}.html`;
+    } catch (e) {
+      return null;
     }
-    if (!value) return "";
-    const date = new Date(value);
-    if (Number.isNaN(date.getTime()) || date.getUTCFullYear() < 1900) return "";
-    const format = withYear ? { day: "2-digit", month: "short", year: "numeric", timeZone: "Australia/Sydney" } : { day: "numeric", month: "short", timeZone: "Australia/Sydney" };
-    return date.toLocaleDateString("en-AU", format);
   }
-  function parse6(element, { document: document2, pageData: pageData2 }) {
+  function parse6(element, { document: document2 }) {
     let items = [...element.querySelectorAll(":scope > .sl-item")];
-    if (!items.length && element.matches("section.cm-featured-content-module, section.cm")) items = [element];
-    if (!items.length) items = [...element.querySelectorAll(".content")].map((c) => c.closest("section, div") || c);
+    if (!items.length) items = [element];
     const cells = [];
     items.forEach((item) => {
-      var _a, _b;
-      const content = item.querySelector(".content") || item;
-      const anchor = item.querySelector("a.cm-image-block-link[href]") || content.closest("a[href]") || item.querySelector("a[href]");
-      const href = anchor ? anchor.getAttribute("href") : "";
-      const heading = content.querySelector("h2, h3, h4");
-      let bgImg = item.querySelector(".module-background img");
-      if (!bgImg) {
-        const bgEl = item.querySelector('.module-background, [style*="background-image"]');
-        const style = bgEl ? bgEl.getAttribute("style") || "" : "";
-        const match = style.match(/background-image:\s*url\(\s*(['"]?)(.*?)\1\s*\)/i);
-        if (match && match[2]) {
-          bgImg = document2.createElement("img");
-          bgImg.src = match[2].replace(/&amp;/g, "&");
-          bgImg.alt = heading ? heading.textContent.trim() : "";
-        }
-      }
-      if (!bgImg) {
-        bgImg = item.querySelector(".image img[src]");
-        if (bgImg && !bgImg.getAttribute("alt") && bgImg.getAttribute("title")) {
-          bgImg.alt = bgImg.getAttribute("title").trim();
-        }
-      }
-      const body = [];
-      const sub = content.querySelector(".subheading");
-      if (sub) {
-        const category = (((_a = sub.querySelector(".content-type")) == null ? void 0 : _a.textContent) || "").trim();
-        const shownDate = (((_b = sub.querySelector(".subtitle")) == null ? void 0 : _b.textContent) || "").trim();
-        const withYear = /\b\d{4}\b/.test(shownDate);
-        const date = getSydneyDate(document2, pageData2, heading ? heading.textContent.trim() : "", withYear) || shownDate;
-        if (category || date) {
-          const p = document2.createElement("p");
-          if (category) {
-            const strong = document2.createElement("strong");
-            strong.textContent = category;
-            p.appendChild(strong);
-            if (date) p.appendChild(document2.createTextNode(" "));
-          }
-          if (date) p.appendChild(document2.createTextNode(date));
-          body.push(p);
-        }
-      }
-      if (heading) body.push(heading);
-      content.querySelectorAll(":scope > p:not(.subheading)").forEach((p) => {
-        if (p.textContent.trim()) body.push(p);
-      });
-      const more = content.querySelector(".faux-link");
-      const moreText = (more ? more.textContent : "").trim() || "Read more";
-      if (href) {
-        const p = document2.createElement("p");
-        const a = document2.createElement("a");
-        a.href = href;
-        a.textContent = moreText;
-        p.appendChild(a);
-        body.push(p);
-      }
-      if (!heading && !bgImg) return;
-      let imageCell = "";
-      if (bgImg) {
-        imageCell = document2.createDocumentFragment();
-        imageCell.appendChild(document2.createComment(" field:image "));
-        imageCell.appendChild(bgImg);
-      }
-      const textCell = document2.createDocumentFragment();
-      textCell.appendChild(document2.createComment(" field:text "));
-      body.forEach((el) => textCell.appendChild(el));
-      cells.push([imageCell, body.length ? textCell : ""]);
+      const anchor = item.querySelector("a.cm-image-block-link[href]") || item.querySelector("a[href]");
+      const pagePath = anchor ? toAemPagePath(anchor.getAttribute("href")) : null;
+      if (!pagePath) return;
+      const a = document2.createElement("a");
+      a.href = pagePath;
+      a.textContent = pagePath;
+      const cell = document2.createDocumentFragment();
+      cell.appendChild(document2.createComment(" field:link "));
+      cell.appendChild(a);
+      cells.push([cell]);
     });
     if (!cells.length) {
-      element.replaceWith(...element.childNodes);
+      element.remove();
       return;
     }
-    const block = WebImporter.Blocks.createBlock(document2, { name: "cards-news", cells });
+    const block = WebImporter.Blocks.createBlock(document2, { name: "news-listing", cells });
     element.replaceWith(block);
   }
 
@@ -497,14 +434,14 @@ var CustomImportScript = (() => {
   }
 
   // tools/importer/parsers/list.js
-  var SITE_HOSTS = /^(www\.)?icare\.nsw\.gov\.au$/i;
-  var AEM_SITE_PATH = "/content/icare-migration-demo";
-  function toAemPagePath(href) {
+  var SITE_HOSTS2 = /^(www\.)?icare\.nsw\.gov\.au$/i;
+  var AEM_SITE_PATH2 = "/content/icare-migration-demo";
+  function toAemPagePath2(href) {
     try {
       const url = new URL(href, "https://www.icare.nsw.gov.au/");
-      if (!SITE_HOSTS.test(url.hostname)) return null;
+      if (!SITE_HOSTS2.test(url.hostname)) return null;
       const path = url.pathname.replace(/\/$/, "").replace(/\.html?$/, "");
-      return `${AEM_SITE_PATH}${path}.html${url.search}${url.hash}`;
+      return `${AEM_SITE_PATH2}${path}.html${url.search}${url.hash}`;
     } catch (e) {
       return null;
     }
@@ -517,7 +454,7 @@ var CustomImportScript = (() => {
       const href = source.getAttribute("href");
       if (!href) return;
       const text = source.textContent.replace(/\s+/g, " ").trim();
-      const pagePath = toAemPagePath(href);
+      const pagePath = toAemPagePath2(href);
       const a = document2.createElement("a");
       if (pagePath) {
         a.href = pagePath;
@@ -622,6 +559,18 @@ var CustomImportScript = (() => {
           if (!hasText && !h.querySelector("img, picture")) h.remove();
         });
         element.querySelectorAll(".l-main > header.content-header.has-date > time").forEach((time) => {
+          const iso = (time.getAttribute("datetime") || "").match(/^(\d{4})-(\d{2})-(\d{2})/);
+          if (iso) {
+            const date = new Date(Date.UTC(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3])));
+            const parts = Object.fromEntries(new Intl.DateTimeFormat("en-AU", {
+              timeZone: "UTC",
+              weekday: "long",
+              day: "2-digit",
+              month: "long",
+              year: "numeric"
+            }).formatToParts(date).map((part) => [part.type, part.value]));
+            time.textContent = `${parts.weekday} ${parts.day} ${parts.month} ${parts.year}`;
+          }
           const p = element.ownerDocument.createElement("p");
           p.append(time.cloneNode(true));
           time.remove();
@@ -629,12 +578,41 @@ var CustomImportScript = (() => {
           if (h1) h1.before(p);
           else element.querySelector(".l-main > header.content-header.has-date").prepend(p);
         });
+        element.querySelectorAll(".l-main section.cm-image figcaption").forEach((caption) => {
+          const text = caption.textContent.replace(/\s+/g, " ").trim();
+          if (!text) {
+            caption.remove();
+            return;
+          }
+          const p = element.ownerDocument.createElement("p");
+          const em = element.ownerDocument.createElement("em");
+          em.textContent = text;
+          p.append(em);
+          caption.replaceWith(p);
+        });
         element.querySelectorAll(".l-main q").forEach((q) => {
           q.replaceWith(element.ownerDocument.createTextNode(`\u201C${q.textContent.trim()}\u201D`));
         });
       }
     }
     if (hookName === TransformHook.afterTransform) {
+      const unwrapProxy = (value) => {
+        try {
+          const u = new URL(value, "https://www.icare.nsw.gov.au/");
+          if (!/\/_next\/image\/?$/.test(u.pathname)) return value;
+          const real = u.searchParams.get("url");
+          return real ? new URL(real, "https://www.icare.nsw.gov.au/").href : value;
+        } catch (e) {
+          return value;
+        }
+      };
+      element.querySelectorAll('img[src*="/_next/image"]').forEach((img) => {
+        img.setAttribute("src", unwrapProxy(img.getAttribute("src")));
+      });
+      element.querySelectorAll('img[srcset*="/_next/image"], source[srcset*="/_next/image"]').forEach((el) => {
+        const first = el.getAttribute("srcset").split(",")[0].trim().split(/\s+/)[0];
+        el.setAttribute("srcset", unwrapProxy(first));
+      });
       element.querySelectorAll(".l-main .cm-rich-text p, .l-main .ck-content p").forEach((p) => {
         if (p.closest("table")) return;
         if (p.querySelector("img, picture, video, iframe, a")) return;
@@ -770,7 +748,7 @@ var CustomImportScript = (() => {
     "cards-audience": parse3,
     "columns-campaign": parse4,
     "columns-story": parse5,
-    "cards-news": parse6,
+    "news-listing": parse6,
     "cards-resources": parse7,
     "list": parse8
   };
@@ -818,7 +796,7 @@ var CustomImportScript = (() => {
         ]
       },
       {
-        "name": "cards-news",
+        "name": "news-listing",
         "instances": [
           ".sl-list.has-feature-left"
         ]
@@ -916,7 +894,7 @@ var CustomImportScript = (() => {
         ],
         "style": "grey",
         "blocks": [
-          "cards-news"
+          "news-listing"
         ],
         "defaultContent": [
           "section.content-hero.has-alt-bg:has(.has-feature-left) > .l-padding > h2",
@@ -979,7 +957,7 @@ var CustomImportScript = (() => {
   }
   var pageData = "";
   var import_homepage_default = {
-    onLoad: (_0) => __async(void 0, [_0], function* ({ document: document2 }) {
+    onLoad: (_0) => __async(null, [_0], function* ({ document: document2 }) {
       const data = document2.getElementById("__NEXT_DATA__");
       pageData = data && data.textContent || "";
     }),

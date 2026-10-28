@@ -45,7 +45,7 @@
           ]
         },
         {
-          "name": "cards-news",
+          "name": "news-listing",
           "instances": [
             ".sl-list.has-feature-left"
           ]
@@ -144,7 +144,7 @@
           ],
           "style": "grey",
           "blocks": [
-            "cards-news"
+            "news-listing"
           ],
           "defaultContent": [
             "section.content-hero.has-alt-bg:has(.has-feature-left) > .l-padding > h2",
