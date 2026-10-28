@@ -171,6 +171,21 @@ function findBlocksOnPage(document, template) {
 // importer strips scripts. Parsers use it for values the page renders client-side
 // (cards-news re-derives card dates in Australia/Sydney from it).
 let pageData = '';
+
+/**
+ * The article's own category (Sitecore route field ContentType: "News", "Articles",
+ * "Information" or empty), read from the page data. Shown on news cards (news-listing block).
+ * @returns {string}
+ */
+function getCategory() {
+  try {
+    const { route } = JSON.parse(pageData).props.pageProps.page.layout.sitecore;
+    return (route.fields.ContentType?.value || '').trim();
+  } catch (e) {
+    return '';
+  }
+}
+
 export default {
   onLoad: async ({ document }) => {
     const data = document.getElementById('__NEXT_DATA__');
@@ -223,6 +238,9 @@ export default {
         .find((t) => /^metadata$/i.test((t.querySelector('th, td') || {}).textContent?.trim() || ''));
       if (metadataBlock) {
         if (tags) meta.Tags = tags;
+        // Category page property (models/_page.json news-story-with-video-metadata)
+        const category = getCategory();
+        if (category) meta.category = category;
         // keys match the page model fields (models/_page.json) so the AEM conversion keeps them
         meta.template = PAGE_TEMPLATE.name;
         metadataBlock.replaceWith(WebImporter.Blocks.getMetadataBlock(document, meta));
