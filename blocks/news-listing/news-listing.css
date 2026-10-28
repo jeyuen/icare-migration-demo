@@ -1,0 +1,299 @@
+/*
+ * news-listing: featured image card (blue overlay panel) + white text tiles,
+ * same look as the homepage cards-news row (icare .sl-list.has-feature-left).
+ * Mobile: stacked. 600px: featured full row + 2-up tiles. 1024px: 2fr / 1fr / 1fr.
+ * Each tile is a single link to its article.
+ */
+
+.news-listing > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 35px 12px;
+  margin: 0;
+  padding: 0 6px;
+  list-style: none;
+}
+
+.news-listing .news-listing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 30px;
+}
+
+/* whole-tile link */
+.news-listing a.news-listing-card-link:any-link {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+}
+
+.news-listing a.news-listing-card-link:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 4px;
+}
+
+.news-listing .news-listing-card-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 29px 24px 20px;
+}
+
+.news-listing .news-listing-card-body > * {
+  margin: 0;
+}
+
+/* eyebrow: [category] | [date] */
+.news-listing .news-listing-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  color: var(--text-color);
+  font-size: var(--body-font-size-s);
+  line-height: 1.25;
+}
+
+.news-listing .news-listing-category {
+  font-weight: 500;
+}
+
+.news-listing .news-listing-category + .news-listing-date::before {
+  content: '|';
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.news-listing .news-listing-title {
+  margin: 40px 0 0;
+  color: var(--heading-color);
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  line-height: 34px;
+}
+
+.news-listing .news-listing-teaser {
+  margin: 19px 0 30px;
+  color: var(--text-color);
+  font-size: 15px;
+  line-height: 1.63;
+}
+
+.news-listing .news-listing-more-wrapper {
+  margin: 0;
+  line-height: 30px;
+}
+
+/* "Read more": blue text + round arrow icon */
+.news-listing .news-listing-more {
+  position: relative;
+  color: var(--brand-blue);
+  font-size: var(--body-font-size-s);
+  font-weight: 500;
+  line-height: 26.25px;
+}
+
+.news-listing .news-listing-more::after,
+.news-listing .news-listing-more::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.news-listing .news-listing-more::after {
+  right: -29px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: var(--brand-blue);
+}
+
+.news-listing .news-listing-more::before {
+  right: -25px;
+  z-index: 1;
+  width: 12px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M17.096 9.16L10.71 4.223a.644.644 0 0 1-.071-.989.86.86 0 0 1 .598-.234.875.875 0 0 1 .527.171l7.815 6.044a.708.708 0 0 1 .41.765.705.705 0 0 1-.426.532l-7.8 6.03a.871.871 0 0 1-1.124-.062.644.644 0 0 1 .071-.989l6.378-4.931H1.358a.705.705 0 1 1 0-1.4h15.738z' fill='%23FFFFFF'/%3E%3C/svg%3E");
+  background-size: cover;
+}
+
+/* text tiles; stacked, the source leaves 35px (8px on the last tile) under "Read more" */
+.news-listing .news-listing-card:not(.is-featured) {
+  padding-bottom: 39px;
+  background-color: var(--background-color);
+}
+
+.news-listing .news-listing-card:not(.is-featured):last-child {
+  padding-bottom: 11px;
+}
+
+.news-listing .news-listing-card:not(.is-featured) .news-listing-card-body {
+  border-top: 1px solid rgb(238 238 241);
+}
+
+/* featured card: image fills the card, text sits on a translucent blue panel */
+.news-listing .news-listing-card.is-featured .news-listing-card-image {
+  position: absolute;
+  inset: 0;
+}
+
+.news-listing .news-listing-card.is-featured .news-listing-card-image picture,
+.news-listing .news-listing-card.is-featured .news-listing-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 100% 50%;
+}
+
+.news-listing .news-listing-card.is-featured .news-listing-card-body {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 506px;
+  padding: 30px 25px;
+  border-bottom-right-radius: 30px;
+  background-color: rgb(0 76 151 / 86%);
+}
+
+.news-listing .news-listing-card.is-featured .news-listing-eyebrow {
+  color: #fff;
+  font-size: var(--body-font-size-xs);
+}
+
+.news-listing .news-listing-card.is-featured .news-listing-title {
+  margin: 23px 0 15px;
+  color: #fff;
+}
+
+.news-listing .news-listing-card.is-featured .news-listing-teaser {
+  margin: auto 0 14px;
+  color: #fff;
+  line-height: 24px;
+}
+
+.news-listing .news-listing-card.is-featured .news-listing-more-wrapper {
+  margin-top: 18px;
+  line-height: 26.25px;
+}
+
+/* white "Read more" on the blue panel (blue would not be readable) */
+.news-listing .news-listing-card.is-featured .news-listing-more {
+  color: #fff;
+}
+
+.news-listing .news-listing-card.is-featured .news-listing-more::after {
+  background-color: #fff;
+}
+
+.news-listing .news-listing-card.is-featured .news-listing-more::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M17.096 9.16L10.71 4.223a.644.644 0 0 1-.071-.989.86.86 0 0 1 .598-.234.875.875 0 0 1 .527.171l7.815 6.044a.708.708 0 0 1 .41.765.705.705 0 0 1-.426.532l-7.8 6.03a.871.871 0 0 1-1.124-.062.644.644 0 0 1 .071-.989l6.378-4.931H1.358a.705.705 0 1 1 0-1.4h15.738z' fill='%23004C97'/%3E%3C/svg%3E");
+}
+
+@media (width >= 600px) {
+  .news-listing > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .news-listing .news-listing-card.is-featured {
+    grid-column: 1 / -1;
+  }
+
+  .news-listing .news-listing-card.is-featured .news-listing-card-body {
+    width: 289px;
+  }
+
+  .news-listing .news-listing-card:not(.is-featured):last-child {
+    padding-bottom: 39px;
+  }
+}
+
+/* breakpoint-exception: the source puts all news tiles on one row from 1024px */
+@media (width >= 1024px) {
+  .news-listing > ul {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0;
+  }
+
+  .news-listing .news-listing-card.is-featured {
+    grid-column: span 2;
+  }
+
+  .news-listing .news-listing-card.is-featured .news-listing-card-body {
+    border-bottom-right-radius: 20px;
+  }
+
+  .news-listing .news-listing-card:not(.is-featured),
+  .news-listing .news-listing-card:not(.is-featured):last-child {
+    padding-bottom: 0;
+  }
+
+  .news-listing .news-listing-card:not(.is-featured) .news-listing-card-body {
+    padding: 20px 24px;
+  }
+
+  .news-listing .news-listing-card:not(.is-featured) .news-listing-teaser {
+    margin: 15px 0 64px;
+  }
+
+  /* "Read more" pinned to the bottom of equal-height tiles */
+  .news-listing .news-listing-card:not(.is-featured) .news-listing-more-wrapper {
+    position: absolute;
+    bottom: 30px;
+    left: 24px;
+    line-height: 26.25px;
+  }
+}
+
+/* section intro: "News and stories" heading with the "See all news" outline pill on the right */
+main .section.news-listing-container > .default-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 81px;
+}
+
+main .section.news-listing-container > .default-content-wrapper > * {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+main .section.news-listing-container > .default-content-wrapper > :is(h1, h2, h3, h4, h5, h6) {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+main .section.news-listing-container > .default-content-wrapper a:any-link {
+  display: inline-block;
+  border: 1px solid var(--brand-blue);
+  border-radius: 40px;
+  padding: 12px 20px;
+  color: var(--brand-blue);
+  font-size: var(--body-font-size-m);
+  font-weight: 500;
+  line-height: 24px;
+  text-decoration: none;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+main .section.news-listing-container > .default-content-wrapper a:hover,
+main .section.news-listing-container > .default-content-wrapper a:focus-visible {
+  border-color: var(--brand-blue);
+  background-color: var(--brand-blue);
+  color: var(--background-color);
+}
+
+@media (width >= 600px) {
+  main .section.news-listing-container > .default-content-wrapper a:any-link {
+    padding: 12px 40px;
+  }
+}
+
+main .section.news-listing-container {
+  padding-bottom: 101px;
+}

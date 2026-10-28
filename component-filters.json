@@ -36,7 +36,8 @@
       "formula",
       "list",
       "quote-pull",
-      "quote-bordered"
+      "quote-bordered",
+      "news-listing"
     ]
   },
   {
@@ -148,6 +149,12 @@
     "id": "list",
     "components": [
       "list-item"
+    ]
+  },
+  {
+    "id": "news-listing",
+    "components": [
+      "news-card"
     ]
   },
   {

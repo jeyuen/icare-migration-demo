@@ -38,6 +38,65 @@
     ]
   },
   {
+    "id": "news-story-with-video-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "jcr:title",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "jcr:description",
+        "label": "Description"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "keywords",
+        "multi": true,
+        "label": "Keywords"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "template",
+        "label": "Template",
+        "description": "Page template name, added to the body as a class for template-specific styling"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "breadcrumb",
+        "label": "Breadcrumb labels",
+        "description": "Trail labels below Home, separated by |, e.g. Workers Compensation | Employers | Who needs a policy. Leave empty to derive labels from the URL."
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "category",
+        "label": "Category",
+        "description": "Category tag shown before the date on news cards (News Listing block)",
+        "options": [
+          {
+            "name": "News",
+            "value": "News"
+          },
+          {
+            "name": "Articles",
+            "value": "Articles"
+          },
+          {
+            "name": "Information",
+            "value": "Information"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "image",
     "fields": [
       {
@@ -635,6 +694,22 @@
         "name": "linkText",
         "label": "Title (optional)",
         "description": "Link text. Leave empty to use the linked page's title"
+      }
+    ]
+  },
+  {
+    "id": "news-card",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "News article",
+        "description": "Content path of the news and stories page to show. The card's category, date, title, teaser and image are read from that page",
+        "required": true,
+        "validation": {
+          "rootPath": "/content/icare-migration-demo/news-and-stories"
+        }
       }
     ]
   },

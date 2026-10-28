@@ -919,6 +919,15 @@ var CustomImportScript = (() => {
     return pageBlocks;
   }
   var pageData = "";
+  function getCategory() {
+    var _a;
+    try {
+      const { route } = JSON.parse(pageData).props.pageProps.page.layout.sitecore;
+      return (((_a = route.fields.ContentType) == null ? void 0 : _a.value) || "").trim();
+    } catch (e) {
+      return "";
+    }
+  }
   var import_news_story_with_video_default = {
     onLoad: (_0) => __async(null, [_0], function* ({ document: document2 }) {
       const data = document2.getElementById("__NEXT_DATA__");
@@ -966,6 +975,8 @@ var CustomImportScript = (() => {
         });
         if (metadataBlock) {
           if (tags) meta.Tags = tags;
+          const category = getCategory();
+          if (category) meta.category = category;
           meta.template = PAGE_TEMPLATE.name;
           metadataBlock.replaceWith(WebImporter.Blocks.getMetadataBlock(document2, meta));
         }
