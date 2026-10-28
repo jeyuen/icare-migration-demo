@@ -7,7 +7,7 @@ import searchBannerParser from './parsers/search-banner.js';
 import cardsAudienceParser from './parsers/cards-audience.js';
 import columnsCampaignParser from './parsers/columns-campaign.js';
 import columnsStoryParser from './parsers/columns-story.js';
-import cardsNewsParser from './parsers/cards-news.js';
+import newsListingParser from './parsers/news-listing.js';
 import cardsResourcesParser from './parsers/cards-resources.js';
 import listParser from './parsers/list.js';
 
@@ -22,7 +22,7 @@ const parsers = {
   'cards-audience': cardsAudienceParser,
   'columns-campaign': columnsCampaignParser,
   'columns-story': columnsStoryParser,
-  'cards-news': cardsNewsParser,
+  'news-listing': newsListingParser,
   'cards-resources': cardsResourcesParser,
   'list': listParser,
 };
@@ -72,7 +72,7 @@ const PAGE_TEMPLATE = {
       ]
     },
     {
-      "name": "cards-news",
+      "name": "news-listing",
       "instances": [
         ".sl-list.has-feature-left"
       ]
@@ -170,7 +170,7 @@ const PAGE_TEMPLATE = {
       ],
       "style": "grey",
       "blocks": [
-        "cards-news"
+        "news-listing"
       ],
       "defaultContent": [
         "section.content-hero.has-alt-bg:has(.has-feature-left) > .l-padding > h2",
